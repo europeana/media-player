@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": false,
+        "module": "es6",
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "strictNullChecks": true,
+        "lib": ["es6"]
+    },
+    "files": [
+        "src/Definitions.ts"
+    ],
+    "include": [
+        "src/**/*",
+        "typings/**/*"
+    ]
+}
