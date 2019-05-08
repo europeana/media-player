@@ -1,0 +1,81 @@
+.annotation-element {
+    text-align: left;
+    margin: 10px 30px;   
+}
+
+#annotationtext {
+    width: 250px;
+    height: 60px;
+    resize: none;
+}
+
+.annotationtiming-element {
+    width: 70px;
+}
+
+#annotationtiming-start {
+    float: left;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.leftelement {
+    float: left;
+}
+
+.fa-step-backward.leftelement {
+    width: 1.25em;
+}
+
+#annotationtiming-end {
+    float: right;
+}
+
+.rightelement {
+    float: right;
+}
+
+.fa-stack {
+    height: 1em;
+    line-height: 1em;
+    width: 1em;
+}
+  
+.fa-stack .fa-sort-down {
+    position: absolute;
+    bottom: 0;
+    height: 0.5em;
+    /*line-height: 0.5em;*/
+}
+  
+.fa-stack .fa-sort-up {
+  position: absolute;
+  top: 0;
+  height: 0.5em;
+}
+
+#annotationsave-button {
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 6px;
+    background-color: #3D94F6;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#deleteannotation {
+    display: none;
+}
+
+#annotationtypedisplay {
+    display: none;
+}
+
+#annotationsave-submit {
+    display: none;
+}
