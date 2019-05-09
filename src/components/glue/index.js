@@ -8,7 +8,6 @@ export default class Glue {
     signal(item, event, data) {
         //console.log("signal that "+item+" "+event+" took place with data "+data);
         let signalItems = this.listeners.filter(obj => obj.item == item && obj.event == event);
-        console.log("signal "+signalItems.length+" objects");
         signalItems.forEach(function(obj) {
             obj.callback(data);
         });
