@@ -18,6 +18,8 @@ export default class AnnotationEditor {
 		glue.listen("timeline", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "selectitem", this, this.selectItem);
 		glue.listen("timeline", "click", this, this.deselectAnnotation);
+		glue.listen("timeline", "loaded", this, this.timelineLoaded);
+		glue.listen("main", "loadannotations", this, this.loadAnnotations);
 	}
 	
 	mediareadyListener(data) {
@@ -61,6 +63,11 @@ export default class AnnotationEditor {
 		this.handler.mediaduration = data;
 
 		let that = this.handler;
+
+		//load stored annotations
+		if (this.handler.annotations.length > 0) {
+			this.handler.updateAnnotationList(this.handler);
+		}
 
 		$("#annotationsave-button").click(function() {
 			var annotationForm = $('#annotation-form');
@@ -180,7 +187,7 @@ export default class AnnotationEditor {
 		glue.signal("annotationeditor", "deselectannotation", null);
 	}
 
-	updateAnnotationList(that) {
+	updateAnnotationList(that) {		
 		//update annotation list
 		let annotationselect = $("#annotationlist");
 		annotationselect.empty();
@@ -267,5 +274,21 @@ export default class AnnotationEditor {
 		let milliseconds = parseInt(secmsparts[1]);
 
 		return (hours*3600 + minutes*60 + seconds) * 1000 + milliseconds;
+	}
+
+	getAnnotations() {
+		return this.annotations;
+	}
+
+	loadAnnotations(data) {
+		this.handler.annotations = data;
+	}
+
+	timelineLoaded(data) {
+		if (this.handler.annotations.length > 0) {
+			this.handler.annotations.forEach(function(annotation) {
+				glue.signal("annotationeditor", "addannotation", annotation);
+			});
+		}
 	}
 }
