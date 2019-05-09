@@ -80,6 +80,8 @@ export default class Timeline {
 				glue.signal("timeline", "click", "");
 			}
 		});
+
+		glue.signal("timeline", "loaded", null);
 	}
 
 	mediareadyListener(data) {

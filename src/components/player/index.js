@@ -12,7 +12,8 @@ var helper, avcomponent, glue;
 export default class Player {
   constructor(elem) {
     if (!elem) return
-    this.elem = elem
+    this.elem = elem;
+    this.videoId;
     this.canvasready = false;
     this.avcomponent;
     this.timeupdate;
@@ -99,6 +100,8 @@ export default class Player {
   }
 
   itemSelectListener(data) {
+    this.handler.videoId = data;
+
     this.handler.loadManifest(data, function (helper) {
       console.log("SUCCESS: Manifest data loaded.", helper.manifest);
       var canvases = helper.getCanvases();
@@ -162,5 +165,9 @@ export default class Player {
 		let seconds = parseInt(parts[2]);
 
 		return (hours*3600 + minutes*60 + seconds) * 1000;
-	}
+  }
+  
+  getVideoId() {
+    return this.videoId;
+  }
 }
