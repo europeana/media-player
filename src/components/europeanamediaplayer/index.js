@@ -36,11 +36,10 @@ function EuropeanaMediaPlayer(container, videoObj) {
 
     glue.listen("annotationeditor", "addannotation", this, storeAnnotation);
     glue.listen("annotationeditor", "deleteannotation", this, storeAnnotation);
-    glue.listen("testItem", "clicked", this, getAnnotations);
+    glue.listen("player", "mediaready", this, getAnnotations);
 }
 
 function storeAnnotation(data) {
-    
     //update current storage
     localStorage.removeItem('annotations_'+player.getVideoId());
     localStorage.setItem("annotations_"+player.getVideoId(), JSON.stringify(annotationeditor.getAnnotations()));
