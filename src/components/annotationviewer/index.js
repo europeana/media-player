@@ -30,9 +30,9 @@ export default class  AnnotationViewer {
 
 		if (this.handler.elem) {
             this.handler.elem.innerHTML = `<div id="annotationviewer-header">
-            <span id="annotationviewer-edit-icon"><i class="far fa-edit pointer"></i></span></div>
+            <span id="annotationviewer-edit-icon"><i class="far fa-edit pointer"></i></span>
+            </div>
             <div id="annotationviewer-content">
-
             </div>
             `;
 
@@ -58,8 +58,9 @@ export default class  AnnotationViewer {
             var that = this;
 
 		    Object.keys(this.annotations).forEach(function(key, index) {
-                console.log(that.annotations);
-			    $("#annotationviewer-content").append("<div>"+that.formatTime(that.annotations[key].start) +" - "+ that.formatTime(that.annotations[key].end) +" "+that.annotations[key].text +"</div>");
+                $("#annotationviewer-content").append(`<div id="annotationviewer-content-id_${that.annotations[key].id}" class="annotationviewer-content-item">
+                <div class="annotationviewer-timing-info">${that.formatTime(that.annotations[key].start)} - ${that.formatTime(that.annotations[key].end)} </div>
+                <div class="annotationviewer-text">${that.annotations[key].text}</div></div>`);
 		    });
 		}
     }
