@@ -5,6 +5,7 @@ import Timeline from '../timeline';
 import AnnotationEditor from '../annotationeditor';
 
 import * as css from './index.css'
+import AnnotationViewer from '../annotationviewer/index';
 
 const environment = process.env.NODE_ENV;
 
@@ -13,9 +14,10 @@ var testData;
 var player;
 var timeline;
 var annotationeditor;
+var annotationviewer;
 
 function EuropeanaMediaPlayer(container, videoObj) {
-    $(container).append('<div id="eups-content-wrapper"><div id="eups-player"></div><div id="eups-timeline"></div></div><div id="eups-editor-wrapper"><div id="eups-annotationeditor"></div></div>');
+    $(container).append('<div id="eups-content-wrapper"><div id="eups-player"></div><div id="eups-timeline"></div><div id="eups-annotationviewer"></div></div><div id="eups-editor-wrapper"><div id="eups-annotationeditor"></div></div>');
 
     glue = new Glue();
 
@@ -28,19 +30,21 @@ function EuropeanaMediaPlayer(container, videoObj) {
     player = new Player(document.getElementById('eups-player'));
     timeline = new Timeline(document.getElementById('eups-timeline'));
     annotationeditor = new AnnotationEditor(document.getElementById('eups-annotationeditor'));
+    annotationviewer = new AnnotationViewer(document.getElementById('eups-annotationviewer'));
 
     // init / render elements    
     player.init(glue, videoObj);
     timeline.init(glue);
     annotationeditor.init(glue);
+    annotationviewer.init(glue);
 
     glue.listen("annotationeditor", "addannotation", this, storeAnnotation);
+    glue.listen("annotationeditor", "updateannotation", this, storeAnnotation);
     glue.listen("annotationeditor", "deleteannotation", this, storeAnnotation);
-    glue.listen("testItem", "clicked", this, getAnnotations);
+    glue.listen("player", "mediaready", this, getAnnotations);
 }
 
 function storeAnnotation(data) {
-    
     //update current storage
     localStorage.removeItem('annotations_'+player.getVideoId());
     localStorage.setItem("annotations_"+player.getVideoId(), JSON.stringify(annotationeditor.getAnnotations()));
