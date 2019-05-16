@@ -14,3 +14,19 @@
     max-height: 250px;
     overflow: auto;
 }
+
+.annotationviewer-timing-info {
+    background-color: #ccc;
+    float: left;
+    margin: 5px;
+}
+
+.annotationviewer-text {
+    background-color: #ddd;
+    float: left;
+    margin: 5px;
+}
+
+.annotationviewer-content-item {
+    clear: both;
+}
