@@ -1,0 +1,16 @@
+#annotationviewer-header {
+    height: 25px;
+}
+
+#annotationviewer-edit-icon {
+    float: right;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#annotationviewer-content {
+    max-height: 250px;
+    overflow: auto;
+}

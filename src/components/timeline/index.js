@@ -16,13 +16,13 @@ export default class Timeline {
 		glue = g;
 
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
-		glue.listen("player", "moreclicked", this, this.moreClickedListener);
 		glue.listen("player", "timeupdate", this, this.timeUpdate);
 		glue.listen("annotationeditor", "addannotation", this, this.addAnnotation);
 		glue.listen("annotationeditor", "updateannotation", this, this.updateAnnotation);
 		glue.listen("annotationeditor", "deleteannotation", this, this.deleteAnnotation);
 		glue.listen("annotationeditor", "selectannotation", this, this.selectAnnotation);
 		glue.listen("annotationeditor", "deselectannotation", this, this.deselectAnnotation);
+		glue.listen("annotationviewer", "edit", this, this.editClickedListener);
 	}
 
 	createTimeline(duration) {
@@ -91,7 +91,7 @@ export default class Timeline {
 		this.handler.mediaduration = data;		
 	}
 
-	moreClickedListener(data) {
+	editClickedListener(data) {
 		if (!this.handler.mediaready) {
 			return;
 		}
