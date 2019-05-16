@@ -1,4 +1,5 @@
 import * as css from './index.css'
+import { textChangeRangeIsUnchanged } from '../../../node_modules/typescript/lib/typescript';
 
 require("@iiif/base-component");
 require("@iiif/iiif-av-component");
@@ -13,7 +14,7 @@ export default class Player {
   constructor(elem) {
     if (!elem) return
     this.elem = elem;
-    this.videoId;
+    this.videoId = "";
     this.canvasready = false;
     this.avcomponent;
     this.timeupdate;
@@ -26,20 +27,20 @@ export default class Player {
     };
   }
 
-  init(g) {
-    console.log("applying glue to player");
+  init(g, videoObj) {
     glue = g;
+
     this.render();
+    this.createManifest(videoObj)
+
     glue.listen("timeline", "timeupdate", this, this.timeupdatefunction);
   }
 
   render() {
-    console.debug("render player");
     this.createAVComponent();
   }
 
   createAVComponent() {
-    console.debug("Create AV component");
     this.$avcomponent = $('<div id="iiif-av-component" class="iiif-av-component"></div>');
     $(this.elem).append(this.$avcomponent);
 
@@ -100,7 +101,9 @@ export default class Player {
   }
 
   itemSelectListener(data) {
-    this.handler.videoId = data;
+    if (this.handler === undefined) {
+      this.handler = this;
+    }
 
     this.handler.loadManifest(data, function (helper) {
       console.log("SUCCESS: Manifest data loaded.", helper.manifest);
@@ -125,16 +128,16 @@ export default class Player {
       sequenceIndex: 0,
       canvasIndex: 0
     }).then(function (h) {
-      that.helper = h;
+      helper = h;
 
       that.avcomponent.set({
-        helper: that.helper,
+        helper: helper,
         limitToRange: that.state.limitToRange,
         autoSelectRange: that.state.autoSelectRange,
         constrainNavigationToRange: that.state.constrainNavigationToRange,
         virtualCanvasEnabled: that.state.virtualCanvasEnabled
       });
-      successcb(that.helper);
+      successcb(helper);
       that.resize();
     }).catch(function (e) {
       errorcb(e);
@@ -169,5 +172,21 @@ export default class Player {
   
   getVideoId() {
     return this.videoId;
+  }
+
+  createManifest(vObj) {
+    let manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
+
+    if (vObj.width) {
+      manifest += "&width="+vObj.width;
+    } 
+    if (vObj.height) {
+      manifest += "&height="+vObj.height;
+    }
+    if (vObj.mediatype) {
+      manifest += "&mediatype="+vObj.mediatype;
+    }
+
+    this.itemSelectListener(manifest);
   }
 }

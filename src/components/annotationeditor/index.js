@@ -9,6 +9,7 @@ export default class AnnotationEditor {
 		this.mediaduration = 0;
 		this.annotations = [];
 	}
+	
 	init(g) {
 		console.log("applying glue to annotation editor");
 		glue = g;
