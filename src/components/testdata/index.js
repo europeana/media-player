@@ -7,8 +7,7 @@ export default class TestData {
         this.glue;
     }
 
-    init(glue) {
-        console.log("applying glue to testdata");        
+    init(glue) {       
         this.glue = glue;
         this.render();
     }

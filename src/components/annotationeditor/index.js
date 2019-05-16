@@ -8,10 +8,10 @@ export default class AnnotationEditor {
 		this.elem = elem;
 		this.mediaduration = 0;
 		this.annotations = [];
+		this.mediaready = false;
 	}
 	
 	init(g) {
-		console.log("applying glue to annotation editor");
 		glue = g;
 
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
@@ -21,9 +21,19 @@ export default class AnnotationEditor {
 		glue.listen("timeline", "click", this, this.deselectAnnotation);
 		glue.listen("timeline", "loaded", this, this.timelineLoaded);
 		glue.listen("main", "loadannotations", this, this.loadAnnotations);
+		glue.listen("annotationviewer", "edit", this, this.editClickedListener);
 	}
 	
 	mediareadyListener(data) {
+		this.handler.mediaready = true;
+		this.handler.mediaduration = data;
+	}
+
+	editClickedListener(data) {
+		if (!this.handler.mediaready) {
+			return;
+		}
+
 		if (this.handler.elem) {
 			this.handler.elem.innerHTML = `
 			<form id="annotation-form">
@@ -60,8 +70,6 @@ export default class AnnotationEditor {
 			</form>
 		`;
 		}
-
-		this.handler.mediaduration = data;
 
 		let that = this.handler;
 
@@ -201,7 +209,6 @@ export default class AnnotationEditor {
 		annotationselect.append($("<option></option>").attr("value", 0).text("Select an annotation"));
 		
 		//order annotations based on their starttime
-		
 		that.annotations.sort((a,b) => a.start - b.start);
 
 		Object.keys(that.annotations).forEach(function(key, index) {

@@ -7,11 +7,12 @@ var glue, timeline, currenttime;
 export default class Timeline {
 	constructor(elem) {
 		if (!elem) return
-		this.elem = elem
+		this.elem = elem;
+		this.mediaduration = 0;
+		this.mediaready = false;
 	}
 
 	init(g) {
-		console.log("applying glue to timeline");
 		glue = g;
 
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
@@ -21,6 +22,7 @@ export default class Timeline {
 		glue.listen("annotationeditor", "deleteannotation", this, this.deleteAnnotation);
 		glue.listen("annotationeditor", "selectannotation", this, this.selectAnnotation);
 		glue.listen("annotationeditor", "deselectannotation", this, this.deselectAnnotation);
+		glue.listen("annotationviewer", "edit", this, this.editClickedListener);
 	}
 
 	createTimeline(duration) {
@@ -85,7 +87,16 @@ export default class Timeline {
 	}
 
 	mediareadyListener(data) {
-		this.handler.createTimeline(data);
+		this.handler.mediaready = true;
+		this.handler.mediaduration = data;		
+	}
+
+	editClickedListener(data) {
+		if (!this.handler.mediaready) {
+			return;
+		}
+
+		this.handler.createTimeline(this.handler.mediaduration);
 	}
 
 	timeUpdate(data) {
