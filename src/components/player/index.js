@@ -175,16 +175,22 @@ export default class Player {
   }
 
   createManifest(vObj) {
-    let manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
+    let manifest;
+    
+    if (vObj.source.endsWith(".json")) {
+      manifest = vObj.source;
+    } else {
+      let manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
 
-    if (vObj.width) {
-      manifest += "&width="+vObj.width;
-    } 
-    if (vObj.height) {
-      manifest += "&height="+vObj.height;
-    }
-    if (vObj.mediatype) {
-      manifest += "&mediatype="+vObj.mediatype;
+      if (vObj.width) {
+        manifest += "&width="+vObj.width;
+      } 
+      if (vObj.height) {
+        manifest += "&height="+vObj.height;
+      }
+      if (vObj.mediatype) {
+        manifest += "&mediatype="+vObj.mediatype;
+      }
     }
 
     this.itemSelectListener(manifest);
