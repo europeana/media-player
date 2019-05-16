@@ -71,6 +71,8 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaready", function () {
+      $(".controls-container").append('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+
       //currently only way to retrieve duration from the canvasinstances
       glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
 
