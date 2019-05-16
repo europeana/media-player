@@ -1,5 +1,4 @@
 import * as css from './index.css'
-import { textChangeRangeIsUnchanged } from '../../../node_modules/typescript/lib/typescript';
 
 require("@iiif/base-component");
 require("@iiif/iiif-av-component");
@@ -71,7 +70,13 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaready", function () {
-      $(".controls-container").append('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+      //$(".controls-container").append('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+      let more = $('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+      more[0].addEventListener('click', (e) => {
+        e.preventDefault();
+        glue.signal("player", "moreclicked", null);
+      });
+      $(".controls-container").append(more);
 
       //currently only way to retrieve duration from the canvasinstances
       glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
@@ -106,6 +111,8 @@ export default class Player {
     if (this.handler === undefined) {
       this.handler = this;
     }
+
+    this.handler.videoId = data;
 
     this.handler.loadManifest(data, function (helper) {
       console.log("SUCCESS: Manifest data loaded.", helper.manifest);

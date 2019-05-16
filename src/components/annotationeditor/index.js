@@ -8,13 +8,14 @@ export default class AnnotationEditor {
 		this.elem = elem;
 		this.mediaduration = 0;
 		this.annotations = [];
+		this.mediaready = false;
 	}
 	
 	init(g) {
-		console.log("applying glue to annotation editor");
 		glue = g;
 
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
+		glue.listen("player", "moreclicked", this, this.moreClickedListener);
 		glue.listen("player", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "selectitem", this, this.selectItem);
@@ -24,6 +25,15 @@ export default class AnnotationEditor {
 	}
 	
 	mediareadyListener(data) {
+		this.handler.mediaready = true;
+		this.handler.mediaduration = data;
+	}
+
+	moreClickedListener(data) {
+		if (!this.handler.mediaready) {
+			return;
+		}
+
 		if (this.handler.elem) {
 			this.handler.elem.innerHTML = `
 			<form id="annotation-form">
@@ -60,8 +70,6 @@ export default class AnnotationEditor {
 			</form>
 		`;
 		}
-
-		this.handler.mediaduration = data;
 
 		let that = this.handler;
 
