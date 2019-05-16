@@ -15,13 +15,13 @@ export default class AnnotationEditor {
 		glue = g;
 
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
-		glue.listen("player", "moreclicked", this, this.moreClickedListener);
 		glue.listen("player", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "selectitem", this, this.selectItem);
 		glue.listen("timeline", "click", this, this.deselectAnnotation);
 		glue.listen("timeline", "loaded", this, this.timelineLoaded);
 		glue.listen("main", "loadannotations", this, this.loadAnnotations);
+		glue.listen("annotationviewer", "edit", this, this.editClickedListener);
 	}
 	
 	mediareadyListener(data) {
@@ -29,7 +29,7 @@ export default class AnnotationEditor {
 		this.handler.mediaduration = data;
 	}
 
-	moreClickedListener(data) {
+	editClickedListener(data) {
 		if (!this.handler.mediaready) {
 			return;
 		}
@@ -209,7 +209,6 @@ export default class AnnotationEditor {
 		annotationselect.append($("<option></option>").attr("value", 0).text("Select an annotation"));
 		
 		//order annotations based on their starttime
-		
 		that.annotations.sort((a,b) => a.start - b.start);
 
 		Object.keys(that.annotations).forEach(function(key, index) {
