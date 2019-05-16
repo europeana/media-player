@@ -1,7 +1,7 @@
 const path = require('path')
 var webpack = require('webpack')
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 process.env.EUPS_PORT = process.env.EUPS_PORT || 9000
 
 const config = function (mode) {
@@ -86,7 +86,11 @@ const config = function (mode) {
             compress: true,
             hot: true,
             port: process.env.EUPS_PORT
-        }
+        },
+        node: {
+            fs: 'empty'
+        }, 
+        devtool: 'nosources-source-map'
     }
 
     if (mode === 'development') {
