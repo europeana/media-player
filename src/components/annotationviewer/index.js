@@ -65,7 +65,6 @@ export default class  AnnotationViewer {
 				
 				$(".annotationviewer-timing-info,.annotationviewer-text").on('click', function() {
 						let starttime = $(this).data("start") / 1000;
-						console.log(starttime);
 						glue.signal("annotationviewer", "timeupdate", starttime);
 				});
 		}
