@@ -17,6 +17,7 @@ export default class AnnotationEditor {
 		glue.listen("player", "mediaready", this, this.mediareadyListener);
 		glue.listen("player", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "timeupdate", this, this.timeUpdate);
+		glue.listen("annotationviewer", "timeupdate", this, this.timeUpdate);
 		glue.listen("timeline", "selectitem", this, this.selectItem);
 		glue.listen("timeline", "click", this, this.deselectAnnotation);
 		glue.listen("timeline", "loaded", this, this.timelineLoaded);
@@ -52,7 +53,7 @@ export default class AnnotationEditor {
 			<div id="annotationtext-wrapper" class="annotation-element">
 				<span id="annotationtypedisplay"><i class="fas fa-sticky-note"></i> Note</span>
 				<i id="deleteannotation" class="fa fa-trash rightelement pointer" aria-hidden="true"></i><br/>
-				<textarea id="annotationtext" required placeholder="Enter your annotation here"></textarea>
+				<textarea id="annotationtext" required placeholder="Enter your annotation here" maxlength="60"></textarea>
 			</div>
 			<div id="annotationtiming-wrapper" class="annotation-element">
 				Timing<br/>
