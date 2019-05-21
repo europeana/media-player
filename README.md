@@ -48,8 +48,8 @@ The constructor accepts two parameters
 The videoObject has the following required properties
 
 - **id** the identifier of the video object
-- **source** the url source of the video file or the url source of a complete manifest
-- **duration** the duration of the video file
+- **source** the url source of the video file, the url source of a complete manifest or an EUscreen identifier
+- **duration** the duration of the video file, in case of a manifest or EUscreen identifier this can be set to -1
 
 Further the following optional properties can be specified
 

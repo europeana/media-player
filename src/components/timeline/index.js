@@ -102,7 +102,9 @@ export default class Timeline {
 
 	timeUpdate(data) {
 		let time = data * 1000;
-		timeline.setCustomTime(time, currenttime);
+		if (timeline !== undefined) {
+			timeline.setCustomTime(time, currenttime);
+		}
 	}
 
 	addAnnotation(annotation) {
