@@ -33,6 +33,7 @@ export default class Player {
     this.createManifest(videoObj)
 
     glue.listen("timeline", "timeupdate", this, this.timeupdatefunction);
+    glue.listen("annotationviewer", "timeupdate", this, this.timeupdatefunction);
   }
 
   render() {

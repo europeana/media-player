@@ -6,3 +6,8 @@
 .vis-custom-time {
     z-index: 9999;
 }
+
+.vis-item-content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
