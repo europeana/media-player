@@ -59,9 +59,15 @@ export default class  AnnotationViewer {
 
 		    Object.keys(this.annotations).forEach(function(key, index) {
                 $("#annotationviewer-content").append(`<div id="annotationviewer-content-id_${that.annotations[key].id}" class="annotationviewer-content-item">
-                <div class="annotationviewer-timing-info">${that.formatTime(that.annotations[key].start)} - ${that.formatTime(that.annotations[key].end)} </div>
-                <div class="annotationviewer-text">${that.annotations[key].text}</div></div>`);
-		    });
+                <div class="annotationviewer-timing-info pointer" data-start="${that.annotations[key].start}">${that.formatTime(that.annotations[key].start)} - ${that.formatTime(that.annotations[key].end)} </div>
+                <div class="annotationviewer-text pointer" data-start="${that.annotations[key].start}">${that.annotations[key].text}</div></div>`);
+				});
+				
+				$(".annotationviewer-timing-info,.annotationviewer-text").on('click', function() {
+						let starttime = $(this).data("start") / 1000;
+						console.log(starttime);
+						glue.signal("annotationviewer", "timeupdate", starttime);
+				});
 		}
     }
 
