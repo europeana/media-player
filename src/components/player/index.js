@@ -189,8 +189,10 @@ export default class Player {
     
     if (vObj.source.endsWith(".json")) {
       manifest = vObj.source;
+    } else if (vObj.source.startsWith("EUS_")) {
+        manifest = "https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id="+vObj.source;      
     } else {
-      let manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
+        manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
 
       if (vObj.width) {
         manifest += "&width="+vObj.width;
@@ -202,7 +204,6 @@ export default class Player {
         manifest += "&mediatype="+vObj.mediatype;
       }
     }
-
     this.itemSelectListener(manifest);
   }
 }
