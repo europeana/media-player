@@ -31,6 +31,8 @@ export default class Timeline {
 			$('#vis-timeline').remove();
 		}
 
+		$(this.elem).append(`<div class="loading-icon"><div></div><div></div><div></div><div></div></div>`);
+
 		this.$timeline = $('<div id="vis-timeline"></div>');
 		$(this.elem).append(this.$timeline);
 
@@ -52,6 +54,7 @@ export default class Timeline {
 			},
 			min: 0,
 			max: duration,
+			onInitialDrawComplete: this.hideLoading
 		}
 
 		//TODO: display annotations from IIIF
@@ -126,6 +129,10 @@ export default class Timeline {
 
 	deselectAnnotation(annotation) {
 		timeline.setSelection([]);
+	}
+
+	hideLoading() {
+		$("#eups-timeline > .loading-icon").hide();
 	}
 
 	IIIFAnnotationsToVisJS() {
