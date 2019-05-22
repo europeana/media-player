@@ -1,5 +1,7 @@
 import * as css from './index.css'
 
+const editor = process.env.EDITOR;
+
 var glue;
 
 export default class  AnnotationViewer {
@@ -9,13 +11,17 @@ export default class  AnnotationViewer {
 		this.mediaduration = 0;
 		this.annotations = [];
 		this.mediaready = false;
+		this.manifest;
+		this.eupsId;
 	}
 	
 	init(g) {
-        glue = g;
+		glue = g;
+		glue.listen("player", "manifest", this, this.manifestHandler);
         glue.listen("player", "mediaready", this, this.mediareadyListener);
         glue.listen("player", "moreclicked", this, this.moreClickedListener);
-        glue.listen("main", "loadannotations", this, this.loadAnnotations);
+		glue.listen("main", "loadannotations", this, this.loadAnnotations);
+		glue.listen("main", "eupsId", this, this.getEupsId);		
     }
 
     mediareadyListener(data) {
@@ -38,8 +44,14 @@ export default class  AnnotationViewer {
 
             var that = this;
             $("#annotationviewer-edit-icon").on('click', function() {
-                $(that.handler.elem).hide();
-                glue.signal("annotationviewer", "edit", null);
+				if (editor == "external") {
+					console.log("opening external editor");
+					window.open("https://videoeditor.noterik.com/?mode=editor&manifest="+that.handler.manifest+"&eupsid="+that.handler.eupsId, "_blank");
+				} else {		
+					console.log("Showing internal editor");
+					$(that.handler.elem).hide();
+					glue.signal("annotationviewer", "edit", null);
+				}
             });
 
             this.handler.showAnnotations();
@@ -47,13 +59,13 @@ export default class  AnnotationViewer {
     }
 
     loadAnnotations(data) {
-		this.handler.annotations = data;
+			this.handler.annotations = data;
     }
     
     showAnnotations() {
         if (this.annotations.length > 0) {
             //order annotations based on their starttime
-		    this.annotations.sort((a,b) => a.start - b.start);
+		    	this.annotations.sort((a,b) => a.start - b.start);
 
             var that = this;
 
@@ -67,7 +79,9 @@ export default class  AnnotationViewer {
 						let starttime = $(this).data("start") / 1000;
 						glue.signal("annotationviewer", "timeupdate", starttime);
 				});
-		}
+			} else {
+				$("#annotationviewer-content").append(`No annotations yet added`);
+			}
     }
 
     formatTime(time) {
@@ -87,5 +101,13 @@ export default class  AnnotationViewer {
 			timestring += milliseconds;
 		}
 		return timestring;
+	}
+
+	getEupsId(data) {
+		this.handler.eupsId = data;
+	}
+
+	manifestHandler(data) {
+		this.handler.manifest = data;
 	}
 }
