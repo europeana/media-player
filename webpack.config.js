@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path')
 var webpack = require('webpack')
 
@@ -77,6 +79,9 @@ const config = function (mode) {
                 $: 'jquery',
                 jquery: 'jquery'
             }),
+            new webpack.EnvironmentPlugin(
+                ['NODE_ENV', 'EDITOR']
+            ),
         ],
         devServer: {
             watchOptions: {

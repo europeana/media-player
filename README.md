@@ -1,6 +1,6 @@
 # Europeana Media Player
 
-Created as part of the DSI-4 project Europeana Media 
+Created as part of the Europeana Media Generic Services Project 
 
 ### First
 
@@ -15,6 +15,8 @@ It's possible to use a different port by specifying this first like so:
 `EUPS_PORT=7788 yarn start:dev` to start with port 7788. Same for npm just include `EUPS_PORT=7788` at the beginning.
 
 Development mode will include a testdata component that allows for easy testing different sources
+
+To open the editor mode in an external window specify `EDITOR=external` 
 
 ### Test with production environment 
 
@@ -57,3 +59,8 @@ Further the following optional properties can be specified
 - **height** the height of the video file (default is 480)
 - **mediatype** the mediatype of the video file (default is mp4)
 
+It's possible to override the following settings by providing them in the get parameters of the url
+
+- **manifest** the manifest to open
+- **eupsid** EUPS Id to identify same browser as on an other site
+- **mode** allows to set *editor* as mode to open directly the editor along with the player
