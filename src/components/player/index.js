@@ -1,4 +1,5 @@
 import * as css from './index.css'
+import { getSyntheticLeadingComments } from '../../../node_modules/typescript/lib/typescript';
 
 require("@iiif/base-component");
 require("@iiif/iiif-av-component");
@@ -113,6 +114,8 @@ export default class Player {
       this.handler = this;
     }
 
+    glue.signal("player", "manifest", data);
+
     this.handler.videoId = data;
 
     this.handler.loadManifest(data, function (helper) {
@@ -187,7 +190,7 @@ export default class Player {
   createManifest(vObj) {
     let manifest;
     
-    if (vObj.source.endsWith(".json")) {
+    if (vObj.source.endsWith(".json") || vObj.source.startsWith("http")) {
       manifest = vObj.source;
     } else if (vObj.source.startsWith("EUS_")) {
         manifest = "https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id="+vObj.source;      
