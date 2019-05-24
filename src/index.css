@@ -1,0 +1,20 @@
+#eups-content-wrapper {
+    float: left;
+}
+
+.editor {
+    width: 60%;
+}
+
+.no-editor {
+    width: 100%;
+    float: left;
+}
+
+#eups-editor-wrapper {
+    float: left;
+}
+
+#eups-annotationeditor {
+    padding-left: 5%;
+}
