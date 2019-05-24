@@ -1,11 +1,10 @@
 import * as css from './index.css'
 
-const editor = process.env.EDITOR;
-
 var glue;
+var editorurl;
 
-export default class  AnnotationViewer {
-	constructor(elem) {
+export default class AnnotationViewer {
+	constructor(elem, ) {
 		if (!elem) return
 		this.elem = elem;
 		this.mediaduration = 0;
@@ -15,8 +14,9 @@ export default class  AnnotationViewer {
 		this.eupsId;
 	}
 	
-	init(g) {
+	init(g, e) {
 		glue = g;
+		editorurl = e;
 		glue.listen("player", "manifest", this, this.manifestHandler);
         glue.listen("player", "mediaready", this, this.mediareadyListener);
         glue.listen("player", "moreclicked", this, this.moreClickedListener);
@@ -44,9 +44,9 @@ export default class  AnnotationViewer {
 
             var that = this;
             $("#annotationviewer-edit-icon").on('click', function() {
-				if (editor == "external") {
+				if (editorurl !== undefined) {
 					console.log("opening external editor");
-					window.open("https://videoeditor.noterik.com/?mode=editor&manifest="+that.handler.manifest+"&eupsid="+that.handler.eupsId, "_blank");
+					window.open(editorurl+"?mode=editor&manifest="+that.handler.manifest+"&eupsid="+that.handler.eupsId, "_blank");
 				} else {		
 					console.log("Showing internal editor");
 					$(that.handler.elem).hide();
