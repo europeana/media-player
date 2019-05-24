@@ -1,7 +1,9 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+var webpack = require('webpack');
+const libraryName = 'europeanamediaplayer';
+const outputFile = libraryName + '.js';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 process.env.EUPS_PORT = process.env.EUPS_PORT || 9000
@@ -10,11 +12,6 @@ const config = function (mode) {
     let conf = {
         mode: mode,
         entry: ['./src/index.js'],
-        resolve: {
-            alias: {
-                "jqueryui": "jqueryui/jquery-ui.js"
-            }
-        },
         module: {
             rules: [
             {
@@ -69,15 +66,19 @@ const config = function (mode) {
         ]
         },
         output: {
-            path: path.resolve(__dirname, 'public/'),
-            filename: 'bundle.js',
             publicPath: '/',
+            path: path.resolve(__dirname, './lib'),
+            filename: outputFile,
+            library: libraryName,
+            libraryTarget: 'umd',
+            umdNamedDefine: true
         },
         plugins: [ 
             new webpack.ProvidePlugin({
-                jQuery: 'jquery',
-                $: 'jquery',
-                jquery: 'jquery'
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery'",
+                "window.$": "jquery"
             }),
             new webpack.EnvironmentPlugin(
                 ['NODE_ENV', 'EDITOR']
