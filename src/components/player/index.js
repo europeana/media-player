@@ -1,12 +1,12 @@
 import * as css from './index.css'
-import { getSyntheticLeadingComments } from '../../../node_modules/typescript/lib/typescript';
 
 require("@iiif/base-component");
 require("@iiif/iiif-av-component");
 require("@iiif/iiif-tree-component");
 require("@iiif/manifold");
 
-require('jqueryui');
+require('webpack-jquery-ui/slider');
+require('webpack-jquery-ui/effects');
 
 var helper, avcomponent, glue;
 
@@ -105,8 +105,6 @@ export default class Player {
         $ppc.innerText("pause");
       }
     });
-
-    glue.listen("testItem", "clicked", this, this.itemSelectListener);
   }
 
   itemSelectListener(data) {
