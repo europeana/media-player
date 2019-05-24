@@ -1,7 +1,13 @@
 {
-  "name": "europeana-media-player",
-  "version": "0.1.0",
-  "private": true,
+  "name": "europeanamediaplayer",
+  "version": "0.3.0",
+  "license": "EUPL-1.2",
+  "main": "lib/europeanamediaplayer.js",
+  "author": {
+    "name": "Pieter van Leeuwen",
+    "email": "pieter@noterik.nl",
+    "url": "https://github.com/pietervanleeuwen"
+  },
   "scripts": {
     "build": "webpack-cli",
     "start:dev": "NODE_ENV=development webpack-dev-server",
@@ -19,9 +25,9 @@
     "babel-preset-es2015": "^6.24.1",
     "dotenv": "^8.0.0",
     "jquery": "^3.3.1",
-    "jqueryui": "^1.11.1",
     "source-map-support": "^0.5.12",
-    "vis": "^4.21.0"
+    "vis": "^4.21.0",
+    "webpack-jquery-ui": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
