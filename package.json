@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@iiif/base-component": "^1.1.4",
-    "@iiif/iiif-av-component": "^0.0.92",
+    "@iiif/iiif-av-component": "Noterik/iiif-av-component#build",
     "@iiif/iiif-tree-component": "^1.1.12",
     "@iiif/manifold": "^1.2.36",
     "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
