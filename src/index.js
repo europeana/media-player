@@ -58,7 +58,7 @@ function init(container, videoObj, options) {
 }
 
 function storeAnnotation(data) {
-    let link = "https://videoeditor.noterik.com/annotations/saveannotations.php?id="+player.getVideoId()+"&eupsid="+getUniqueEUPSId();
+    let link = "https://videoeditor.noterik.com/annotations/saveannotations.php?id="+encodeURIComponent(player.getVideoId())+"&eupsid="+getUniqueEUPSId();
 
     fetch(
         link, { 
@@ -82,7 +82,7 @@ function getAnnotations(data) {
         glue.signal("annotationviewer", "edit", null);
     }
 
-    let link = "https://videoeditor.noterik.com/annotations/getannotations.php?id="+player.getVideoId()+"&eupsid="+getUniqueEUPSId();
+    let link = "https://videoeditor.noterik.com/annotations/getannotations.php?id="+encodeURIComponent(player.getVideoId())+"&eupsid="+getUniqueEUPSId();
 
     fetch(
         link, { 
