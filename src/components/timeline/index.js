@@ -54,12 +54,18 @@ export default class Timeline {
 			},
 			min: 0,
 			max: duration,
-			onInitialDrawComplete: this.hideLoading
+			onInitialDrawComplete: this.hideLoading,
+			editable: {
+				add: true,         // add new items by double tapping
+				updateTime: true,  // drag items horizontally
+				updateGroup: false, // drag items from one group to another
+				remove: false,       // delete an item by tapping the delete button top right
+				overrideItems: false  // allow these options to override item.editable
+			  }
 		}
 
 		//TODO: display annotations from IIIF
 		let timelinedata = new DataSet([]);
-		//let timelinedata = new DataSet([{ id: 1, content: 'Annotation', start: 60000, end: 90000 }, {id: 2, content: 'The entire timeline', start: 0, end: 120000}]);
 
 		timeline = new visTimeline(this.$timeline[0], timelinedata, options);
 
@@ -85,6 +91,11 @@ export default class Timeline {
 			if (properties.item === null) {
 				glue.signal("timeline", "click", "");
 			}
+		});
+
+		timelinedata.on("update", function(event, properties) {
+			console.log(properties.data);
+			glue.signal("timeline", "itemupdate", {id: properties.data[0].id, start: properties.data[0].start, end: properties.data[0].end});
 		});
 
 		glue.signal("timeline", "loaded", null);
