@@ -52,6 +52,30 @@ export default class Player {
       target: this.$avcomponent[0]
     });
 
+    this.avcomponent.on("mediaerror", function(error) {
+      $(".player").removeClass("player--loading");
+      let errormessage = "Error: ";
+      switch (error.code) {
+        case 1:
+          errormessage += "loading aborted";
+        break;
+        case 2: 
+          errormessage += "network error";
+        break;
+        case 3:
+          errormessage += "decoding of media failed";
+        break;
+        case 4:
+            errormessage += "media format not suppported by this browser";
+        break;
+        default: 
+          errormessage += "unknown";
+        break;
+      }
+
+      $(".canvas-container").append("<div class='anno errormessage'>"+errormessage+"</div>")
+    });
+
     this.avcomponent.on("log", function (message) {
       console.log(message);
     });

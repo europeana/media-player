@@ -46,7 +46,7 @@ export default class AnnotationViewer {
             $("#annotationviewer-edit-icon").on('click', function() {
 				if (editorurl !== undefined) {
 					console.log("opening external editor");
-					window.open(editorurl+"?mode=editor&manifest="+that.handler.manifest+"&eupsid="+that.handler.eupsId, "_blank");
+					window.open(editorurl+"?mode=editor&manifest="+encodeURIComponent(that.handler.manifest)+"&eupsid="+that.handler.eupsId, "_blank");
 				} else {		
 					console.log("Showing internal editor");
 					$(that.handler.elem).hide();
