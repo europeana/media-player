@@ -94,7 +94,6 @@ export default class Timeline {
 		});
 
 		timelinedata.on("update", function(event, properties) {
-			console.log(properties.data);
 			glue.signal("timeline", "itemupdate", {id: properties.data[0].id, start: properties.data[0].start, end: properties.data[0].end});
 		});
 

@@ -38,6 +38,7 @@ function init(container, videoObj, options) {
 
     glue.listen("annotationeditor", "addannotation", this, storeAnnotation);
     glue.listen("annotationeditor", "updateannotation", this, storeAnnotation);
+    glue.listen("annotationeditor", "updateAnnotationfromtimeline", this, storeAnnotation);
     glue.listen("annotationeditor", "deleteannotation", this, storeAnnotation);
     glue.listen("player", "mediaready", this, getAnnotations);
 
