@@ -53,7 +53,7 @@ export default class Player {
     });
 
     this.avcomponent.on("log", function (message) {
-      //console.log(message);
+      console.log(message);
     });
     this.avcomponent.on("canvasready", function () {
       if (this.canvasready) return;
@@ -73,7 +73,6 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaready", function () {
-      //$(".controls-container").append('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
       let more = $('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
       more[0].addEventListener('click', (e) => {
         e.preventDefault();
