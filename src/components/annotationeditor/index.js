@@ -21,6 +21,7 @@ export default class AnnotationEditor {
 		glue.listen("timeline", "selectitem", this, this.selectItem);
 		glue.listen("timeline", "click", this, this.deselectAnnotation);
 		glue.listen("timeline", "loaded", this, this.timelineLoaded);
+		glue.listen("timeline", "itemupdate", this, this.itemUpdate);
 		glue.listen("main", "loadannotations", this, this.loadAnnotations);
 		glue.listen("annotationviewer", "edit", this, this.editClickedListener);
 	}
@@ -299,5 +300,10 @@ export default class AnnotationEditor {
 				glue.signal("annotationeditor", "addannotation", annotation);
 			});
 		}
+	}
+
+	itemUpdate(data) {
+		console.log("received an item update");
+		console.log(data);
 	}
 }
