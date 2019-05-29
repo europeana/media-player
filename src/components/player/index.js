@@ -189,7 +189,7 @@ export default class Player {
   createManifest(vObj) {
     let manifest;
     
-    if (vObj.source.endsWith(".json") || vObj.source.startsWith("http")) {
+    if (vObj.source.endsWith(".json") || vObj.source.includes("/manifest/")) {
       manifest = vObj.source;
     } else if (vObj.source.startsWith("EUS_")) {
         manifest = "https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id="+vObj.source;      
