@@ -303,7 +303,16 @@ export default class AnnotationEditor {
 	}
 
 	itemUpdate(data) {
-		console.log("received an item update");
-		console.log(data);
+		let annotation = this.handler.annotations[this.handler.annotations.findIndex(a => a.id === data.id)];
+		annotation.start = data.start instanceof Date ? data.start.getTime() : data.start;
+		annotation.end = data.end instanceof Date ? data.end.getTime() : data.end;
+
+		this.handler.annotations[this.handler.annotations.findIndex(a => a.id === data.id)] = annotation;
+
+		this.handler.updateAnnotationList(this.handler);
+		glue.signal("annotationeditor", "updateAnnotationfromtimeline", annotation);
+
+		$("#annotationtiming-start").val(this.handler.formatTime(annotation.start));
+		$("#annotationtiming-end").val(this.handler.formatTime(annotation.end));
 	}
 }
