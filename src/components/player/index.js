@@ -3,6 +3,7 @@ import * as css from './index.css'
 require("@iiif/base-component");
 require("@iiif/iiif-av-component");
 require("@iiif/iiif-tree-component");
+require("manifesto.js");
 require("@iiif/manifold");
 
 require('webpack-jquery-ui/slider');
