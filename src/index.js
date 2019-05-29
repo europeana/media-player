@@ -16,6 +16,14 @@ var mode = "player";
 var editorurl;
 
 function init(container, videoObj, options) {
+    if (!$("link[href='https://use.fontawesome.com/releases/v5.8.1/css/all.css']").length) {
+        $("<link/>", {
+            rel: "stylesheet",
+            type: "text/css",
+            href: "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          }).appendTo("head");
+    }
+
     $(container).append('<div id="eups-content-wrapper" class="editor"><div id="eups-player"></div><div id="eups-timeline"></div><div id="eups-annotationviewer"></div></div><div id="eups-editor-wrapper"><div id="eups-annotationeditor"></div></div>');
 
     videoObj.source = options.manifest || videoObj.source;
@@ -88,6 +96,7 @@ function getAnnotations(data) {
     })
     .catch(err => {
         console.error("Could not retrieve annotations");
+        console.log(err);
     });
 }
 
