@@ -12,6 +12,7 @@
     overflow: hidden;
     background: #000;
     height: 400px;
+    width: 100%;
     margin: 0 auto;
   }
    .iiif-av-component .player--loading {
@@ -273,4 +274,12 @@
   }
   .iiif-av-component .av-icon-more {
     background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAYElEQVRIie3RwQmAMBBE0WAH1mJx1mItawm2kFrGg7lENrBLBC//3cIMTGBLAQAA+J2kTVLVwyStmTza8YYv9fZMHu14w2+WyaOdxdk+J9/RTq/dx9pPj8GNh3m0A+AzN/Ok4vIgzbU1AAAAAElFTkSuQmCC');
+  }
+
+  .errormessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
