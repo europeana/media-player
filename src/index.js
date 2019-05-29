@@ -49,9 +49,23 @@ function init(container, videoObj, options) {
 }
 
 function storeAnnotation(data) {
-    //update current storage
-    localStorage.removeItem('annotations_'+player.getVideoId());
-    localStorage.setItem("annotations_"+player.getVideoId(), JSON.stringify(annotationeditor.getAnnotations()));
+    let link = "https://videoeditor.noterik.com/annotations/saveannotations.php?id="+player.getVideoId()+"&eupsid="+getUniqueEUPSId();
+
+    fetch(
+        link, { 
+            method: 'POST',
+            mode: 'cors',
+            headers: { "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(annotationeditor.getAnnotations())
+        })
+    .then(res => res.json())
+    .then(response => {
+
+    })
+    .catch(err => {
+        console.error("Could not save annotations");
+    });
 }
 
 function getAnnotations(data) {
@@ -59,11 +73,22 @@ function getAnnotations(data) {
         glue.signal("annotationviewer", "edit", null);
     }
 
-    if (localStorage.getItem("annotations_"+player.getVideoId()) !== null) {
-        let annotations = JSON.parse(localStorage.getItem("annotations_"+player.getVideoId()));
+    let link = "https://videoeditor.noterik.com/annotations/getannotations.php?id="+player.getVideoId()+"&eupsid="+getUniqueEUPSId();
 
-        glue.signal("main", "loadannotations", annotations);
-    }
+    fetch(
+        link, { 
+            method: 'GET',
+            mode: 'cors',
+            headers: { "Content-Type": "application/json; charset=utf-8" }
+        })
+    .then(res => res.json())
+    .then(response => {
+        console.log(response);
+        glue.signal("main", "loadannotations", response);
+    })
+    .catch(err => {
+        console.error("Could not retrieve annotations");
+    });
 }
 
 function setUniqueEUPSId() {    
