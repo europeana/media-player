@@ -83,7 +83,6 @@ function getAnnotations(data) {
         })
     .then(res => res.json())
     .then(response => {
-        console.log(response);
         glue.signal("main", "loadannotations", response);
     })
     .catch(err => {
@@ -117,6 +116,7 @@ function uuidv4() {
 
 export default class EuropeanaMediaPlayer {
     constructor(container, videoObj, options) {
+        options = arguments.length > 2 ? options : {};
         init(container, videoObj, options);
     }
 }
