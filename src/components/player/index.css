@@ -12,7 +12,6 @@
     overflow: hidden;
     background: #000;
     height: 400px;
-    max-width: 600px;
     margin: 0 auto;
   }
    .iiif-av-component .player--loading {
