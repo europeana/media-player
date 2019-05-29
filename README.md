@@ -26,6 +26,12 @@ To embed the player yourself first make sure to include the EuropeanaMediaPlayer
 import EuropeanaMediaPlayer from 'europeanamediaplayer';
 ```
 
+or 
+
+```
+const EuropeanaMediaPlayer = require("europeanamediaplayer").default;
+```
+
 The constructor of the EuropeanaMediaPlayer is
 
 ```
@@ -36,7 +42,7 @@ The constructor accepts three parameters
 
 - **container** is the DOM element in which to create the player.
 - **videoObject** is an object containing the video properties.
-- **options** is an object containing the player options.
+- **options** is an optional object containing the player options.
 
 The videoObject has the following required properties
 
