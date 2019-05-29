@@ -19,6 +19,7 @@ export default class Timeline {
 		glue.listen("player", "timeupdate", this, this.timeUpdate);
 		glue.listen("annotationviewer", "timeupdate", this, this.timeUpdate);
 		glue.listen("annotationeditor", "addannotation", this, this.addAnnotation);
+		glue.listen("annotationeditor", "annotationload", this, this.addAnnotation);
 		glue.listen("annotationeditor", "updateannotation", this, this.updateAnnotation);
 		glue.listen("annotationeditor", "deleteannotation", this, this.deleteAnnotation);
 		glue.listen("annotationeditor", "selectannotation", this, this.selectAnnotation);

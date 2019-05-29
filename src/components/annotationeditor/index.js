@@ -198,7 +198,7 @@ export default class AnnotationEditor {
 		glue.signal("annotationeditor", "deselectannotation", null);
 	}
 
-	updateAnnotationList(that) {		
+	updateAnnotationList(that) {	
 		//update annotation list
 		let annotationselect = $("#annotationlist");
 		annotationselect.empty();
@@ -292,12 +292,19 @@ export default class AnnotationEditor {
 
 	loadAnnotations(data) {
 		this.handler.annotations = data;
+		this.handler.updateAnnotationList(this.handler);
+		
+		if (this.handler.annotations.length > 0) {
+			this.handler.annotations.forEach(function(annotation) {
+				glue.signal("annotationeditor", "annotationload", annotation);
+			});
+		}
 	}
 
 	timelineLoaded(data) {
 		if (this.handler.annotations.length > 0) {
 			this.handler.annotations.forEach(function(annotation) {
-				glue.signal("annotationeditor", "addannotation", annotation);
+				glue.signal("annotationeditor", "annotationload", annotation);
 			});
 		}
 	}
