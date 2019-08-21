@@ -13,7 +13,7 @@ var annotationeditor;
 var annotationviewer;
 var eupsid;
 var mode = "player";
-var editorurl;
+var editorurl = "";
 
 function init(container, videoObj, options) {
     if (!$("link[href='https://use.fontawesome.com/releases/v5.8.1/css/all.css']").length) {
