@@ -62,7 +62,7 @@ const config = function (mode) {
                   }
                 }
                 ]
-            }
+            }            
         ]
         },
         output: {

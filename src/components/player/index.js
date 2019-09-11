@@ -20,6 +20,10 @@ export default class Player {
     this.canvasready = false;
     this.avcomponent;
     this.timeupdate;
+    this.manifest;
+    this.editorurl;
+    this.mode;
+    this.eupsid;
 
     this.state = {
       limitToRange: false,
@@ -29,11 +33,14 @@ export default class Player {
     };
   }
 
-  init(g, videoObj) {
+  init(g, videoObj, editorurl, mode, eupsid) {
     glue = g;
 
     this.render();
-    this.createManifest(videoObj)
+    this.createManifest(videoObj);
+    this.editorurl = editorurl;
+    this.mode =  mode;
+    this.eupsid = eupsid;
 
     glue.listen("timeline", "timeupdate", this, this.timeupdatefunction);
     glue.listen("annotationviewer", "timeupdate", this, this.timeupdatefunction);
@@ -86,6 +93,7 @@ export default class Player {
       this.canvasready = true;
     });
     this.avcomponent.on("play", function () {
+      $(".playwrapper").hide();
       that.timeupdate = setInterval(() => glue.signal("player", "timeupdate", that.avcomponent.getCurrentTime()), 25);
     });
 
@@ -98,12 +106,36 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaready", function () {
-      let more = $('<button class="btn" title="More" style="float:right;"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+      let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
+      $(".controls-container").append(subtitles);
+
+      console.log(that.mode);
+
+      let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
       more[0].addEventListener('click', (e) => {
         e.preventDefault();
-        glue.signal("player", "moreclicked", null);
+
+        if ($(".moremenu").is(":visible")) {
+          $(".moremenu").hide();
+        } else {
+          $(".moremenu").css({bottom: $(".options-container").height(), left: (($('.btn[title="More"]').offset().left - $('.player').offset().left) - ($(".moremenu").width() / 2))});
+          $(".moremenu").show();
+        }       
+        //glue.signal("player", "moreclicked", null);
       });
       $(".controls-container").append(more);
+
+      $(".canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
+      $(".canvas-container").append("<div class='anno moremenu'><div id='display-annotations-link' class='moremenu-option'>Display annotations</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
+
+      $("#create-annotations-link").on('click', function() {
+        window.open(that.editorurl+"?mode=editor&manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
+      });
+
+      $(".playcircle").on("click", function() {
+        $(".playwrapper").hide();
+        that.avcomponent.canvasInstances[0].play();
+      }); 
 
       //currently only way to retrieve duration from the canvasinstances
       glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
@@ -112,6 +144,10 @@ export default class Player {
       $(that.avcomponent.canvasInstances[0]._$canvasTimelineContainer).on("slide", function(event, ui) {
         glue.signal("player", "timeupdate", ui.value);
       });
+    });
+
+    this.avcomponent.on("fullscreen", function () {
+      $(".moremenu").hide();
     });
 
     var $ppc = $("#play-pause-combo");
@@ -230,6 +266,7 @@ export default class Player {
         manifest += "&mediatype="+vObj.mediatype;
       }
     }
+    this.manifest = manifest;
     this.itemSelectListener(manifest);
   }
 }
