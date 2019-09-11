@@ -40,7 +40,7 @@ function init(container, videoObj, options) {
     
     // init / render elements 
     annotationviewer.init(glue, editorurl);   
-    player.init(glue, videoObj);
+    player.init(glue, videoObj, editorurl, mode, eupsid);
     timeline.init(glue);
     annotationeditor.init(glue);
 
