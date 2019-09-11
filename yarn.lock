@@ -27,7 +27,7 @@
 
 "@iiif/iiif-av-component@Noterik/iiif-av-component#build":
   version "0.0.92"
-  resolved "https://codeload.github.com/Noterik/iiif-av-component/tar.gz/428a6e3eb9c45b642b4b9c246f4feb8e906825bc"
+  resolved "https://codeload.github.com/Noterik/iiif-av-component/tar.gz/b825dc26fc54d72c7bfe9a1a9ec9a78b21ad51cb"
   dependencies:
     "@iiif/base-component" "1.1.3"
     "@iiif/manifold" "1.2.36"

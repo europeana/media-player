@@ -126,7 +126,7 @@ export default class Player {
       $(".controls-container").append(more);
 
       $(".canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
-      $(".canvas-container").append("<div class='anno moremenu'><div id='display-annotations-link' class='moremenu-option'>Display annotations</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
+      $(".canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
 
       $("#create-annotations-link").on('click', function() {
         window.open(that.editorurl+"?mode=editor&manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
@@ -201,6 +201,8 @@ export default class Player {
       canvasIndex: 0
     }).then(function (h) {
       helper = h;
+
+      console.log(that.state);
 
       that.avcomponent.set({
         helper: helper,
