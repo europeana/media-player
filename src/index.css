@@ -1,6 +1,6 @@
 #eups-content-wrapper {
     float: left;
-    height: 100%;
+    max-height: inherit;
 }
 
 #eups-player {
