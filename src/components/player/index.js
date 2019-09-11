@@ -109,8 +109,6 @@ export default class Player {
       let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
       $(".controls-container").append(subtitles);
 
-      console.log(that.mode);
-
       let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
       more[0].addEventListener('click', (e) => {
         e.preventDefault();
@@ -136,6 +134,8 @@ export default class Player {
         $(".playwrapper").hide();
         that.avcomponent.canvasInstances[0].play();
       }); 
+
+      $("#eups-content-wrapper").css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
 
       //currently only way to retrieve duration from the canvasinstances
       glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
@@ -193,9 +193,6 @@ export default class Player {
   loadManifest(manifest, successcb, errorcb) {
     var that = this;
 
-    console.log("that 1");
-    console.log(that);
-
     Manifold.loadManifest({
       iiifResourceUri: manifest,
       collectionIndex: 0,
@@ -204,9 +201,6 @@ export default class Player {
       canvasIndex: 0
     }).then(function (h) {
       helper = h;
-
-      console.log("that 2");
-      console.log(that.state);
 
       that.avcomponent.set({
         helper: helper,
