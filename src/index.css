@@ -1,5 +1,11 @@
 #eups-content-wrapper {
     float: left;
+    height: 100%;
+}
+
+#eups-player {
+    height: 100%;
+    width: 100%;
 }
 
 .editor {
