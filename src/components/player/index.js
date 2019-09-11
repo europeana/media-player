@@ -193,6 +193,9 @@ export default class Player {
   loadManifest(manifest, successcb, errorcb) {
     var that = this;
 
+    console.log("that 1");
+    console.log(that);
+
     Manifold.loadManifest({
       iiifResourceUri: manifest,
       collectionIndex: 0,
@@ -202,6 +205,7 @@ export default class Player {
     }).then(function (h) {
       helper = h;
 
+      console.log("that 2");
       console.log(that.state);
 
       that.avcomponent.set({
