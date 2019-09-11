@@ -19,7 +19,7 @@ export default class AnnotationViewer {
 		editorurl = e;
 		glue.listen("player", "manifest", this, this.manifestHandler);
         glue.listen("player", "mediaready", this, this.mediareadyListener);
-        glue.listen("player", "moreclicked", this, this.moreClickedListener);
+        //glue.listen("player", "moreclicked", this, this.moreClickedListener);
 		glue.listen("main", "loadannotations", this, this.loadAnnotations);
 		glue.listen("main", "eupsId", this, this.getEupsId);		
     }
