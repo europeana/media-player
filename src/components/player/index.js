@@ -16,6 +16,7 @@ export default class Player {
   constructor(elem) {
     if (!elem) return
     this.elem = elem;
+
     this.videoId = "";
     this.canvasready = false;
     this.avcomponent;
@@ -24,13 +25,6 @@ export default class Player {
     this.editorurl;
     this.mode;
     this.eupsid;
-
-    this.state = {
-      limitToRange: false,
-      autoSelectRange: true,
-      constrainNavigationToRange: true,
-      virtualCanvasEnabled: true
-    };
   }
 
   init(g, videoObj, editorurl, mode, eupsid) {
@@ -41,6 +35,13 @@ export default class Player {
     this.editorurl = editorurl;
     this.mode =  mode;
     this.eupsid = eupsid;
+
+    this.state = {
+      limitToRange: false,
+      autoSelectRange: true,
+      constrainNavigationToRange: true,
+      virtualCanvasEnabled: true
+    };
 
     glue.listen("timeline", "timeupdate", this, this.timeupdatefunction);
     glue.listen("annotationviewer", "timeupdate", this, this.timeupdatefunction);
