@@ -52,7 +52,7 @@ export default class Player {
   }
 
   createAVComponent() {
-    this.$avcomponent = $('<div id="iiif-av-component" class="iiif-av-component"></div>');
+    this.$avcomponent = $('<div class="iiif-av-component"></div>');
     $(this.elem).append(this.$avcomponent);
 
     let that = this;
@@ -62,7 +62,8 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaerror", function(error) {
-      $(".player").removeClass("player--loading");
+      
+      $("#"+that.elem.id+" .player").removeClass("player--loading");
       let errormessage = "Error: ";
       switch (error.code) {
         case 1:
@@ -82,7 +83,7 @@ export default class Player {
         break;
       }
 
-      $(".canvas-container").append("<div class='anno errormessage'>"+errormessage+"</div>")
+      $("#"+that.elem.id+" .canvas-container").append("<div class='anno errormessage'>"+errormessage+"</div>")
     });
 
     this.avcomponent.on("log", function (message) {
@@ -94,7 +95,7 @@ export default class Player {
       this.canvasready = true;
     });
     this.avcomponent.on("play", function () {
-      $(".playwrapper").hide();
+      $("#"+that.elem.id+" .playwrapper").hide();
       that.timeupdate = setInterval(() => glue.signal("player", "timeupdate", that.avcomponent.getCurrentTime()), 25);
     });
 
@@ -108,35 +109,42 @@ export default class Player {
 
     this.avcomponent.on("mediaready", function () {
       let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
-      $(".controls-container").append(subtitles);
+      $("#"+that.elem.id+" .controls-container").append(subtitles);
 
-      let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
-      more[0].addEventListener('click', (e) => {
-        e.preventDefault();
+      if (that.editorurl && that.editorurl.length > 0) {
+        let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+        more[0].addEventListener('click', (e) => {
+          e.preventDefault();
 
-        if ($(".moremenu").is(":visible")) {
-          $(".moremenu").hide();
-        } else {
-          $(".moremenu").css({bottom: $(".options-container").height(), left: (($('.btn[title="More"]').offset().left - $('.player').offset().left) - ($(".moremenu").width() / 2))});
-          $(".moremenu").show();
-        }       
-        //glue.signal("player", "moreclicked", null);
-      });
-      $(".controls-container").append(more);
+          if ($("#"+that.elem.id+" .moremenu").is(":visible")) {
+            $("#"+that.elem.id+" .moremenu").hide();
+          } else {
+            $("#"+that.elem.id+" .moremenu").css({bottom: $("#"+that.elem.id+" .options-container").height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($("#"+that.elem.id+" .moremenu").width() / 2))});
+            $("#"+that.elem.id+" .moremenu").show();
+          }       
+          //glue.signal("player", "moreclicked", null);
+        });
+        $("#"+that.elem.id+" .controls-container").append(more);
 
-      $(".canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
-      $(".canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
+        $("#"+that.elem.id+" .canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
 
-      $("#create-annotations-link").on('click', function() {
-        window.open(that.editorurl+"?mode=editor&manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
-      });
+        $("#create-annotations-link").on('click', function() {
+          window.open(that.editorurl+"#annotation?manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
+        });
 
-      $(".playcircle").on("click", function() {
-        $(".playwrapper").hide();
+        $("#create-embed-link").on('click', function() {
+          window.open(that.editorurl+"#embed?manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
+        });
+      }
+
+      $("#"+that.elem.id+" .canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
+
+      $("#"+that.elem.id+" .playcircle").on("click", function() {
+        $("#"+that.elem.id+" .playwrapper").hide();
         that.avcomponent.canvasInstances[0].play();
       }); 
 
-      $("#eups-content-wrapper").css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
+      $("#"+that.elem.id).parent().css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
 
       //currently only way to retrieve duration from the canvasinstances
       glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
@@ -148,24 +156,7 @@ export default class Player {
     });
 
     this.avcomponent.on("fullscreen", function () {
-      $(".moremenu").hide();
-    });
-
-    var $ppc = $("#play-pause-combo");
-
-    this.avcomponent.on("medialoaded", function () {
-      $ppc.text("play");
-      $ppc.removeAttr("disabled");
-    });
-    $ppc.on("click", function (e) {
-      e.preventDefault();
-      if (this.avcomponent._isPlaying) {
-        this.avcomponent.pause();
-        $ppc.innerText("play");
-      } else {
-        this.avcomponent.play();
-        $ppc.innerText("pause");
-      }
+      $("#"+that.elem.id+" .moremenu").hide();
     });
   }
 
@@ -218,7 +209,7 @@ export default class Player {
   }
 
   resize() {
-    var $playerContainer = $(".playerContainer");
+    var $playerContainer = $("#"+this.elem.id+" .playerContainer");
     $playerContainer.height($playerContainer.width() * 0.75);
     this.avcomponent.resize();
   }
