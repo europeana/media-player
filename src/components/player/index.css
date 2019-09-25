@@ -465,6 +465,7 @@ button:focus {
   margin-bottom: 10px !important;
   padding: 10px !important;
   z-index: 100;
+  text-align: left;
 }
 
 .moremenu-option {
