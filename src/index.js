@@ -24,7 +24,9 @@ function init(container, videoObj, options) {
           }).appendTo("head");
     }
 
-    $(container).append('<div id="eups-content-wrapper" class="editor"><div id="eups-player"></div><div id="eups-timeline"></div><div id="eups-annotationviewer"></div></div><div id="eups-editor-wrapper"><div id="eups-annotationeditor"></div></div>');
+    let playerId = uuidv4();
+
+    $(container).append('<div class="eups-content-wrapper"><div id="eups-player-'+playerId+'" class="eups-player"></div><div id="eups-timeline"></div><div id="eups-annotationviewer"></div></div><div id="eups-editor-wrapper"><div id="eups-annotationeditor"></div></div>');
 
     videoObj.source = options.manifest || videoObj.source;
     mode = options.mode || mode;
@@ -33,21 +35,21 @@ function init(container, videoObj, options) {
     
     glue = new Glue();
     
-    annotationviewer = new AnnotationViewer(document.getElementById('eups-annotationviewer'));
-    player = new Player(document.getElementById('eups-player'));
-    timeline = new Timeline(document.getElementById('eups-timeline'));
-    annotationeditor = new AnnotationEditor(document.getElementById('eups-annotationeditor'));
+    //annotationviewer = new AnnotationViewer(document.getElementById('eups-annotationviewer'));
+    player = new Player(document.getElementById('eups-player-'+playerId));
+    //timeline = new Timeline(document.getElementById('eups-timeline'));
+    //annotationeditor = new AnnotationEditor(document.getElementById('eups-annotationeditor'));
     
     // init / render elements 
-    annotationviewer.init(glue, editorurl);   
+    //annotationviewer.init(glue, editorurl);   
     player.init(glue, videoObj, editorurl, mode, eupsid);
-    timeline.init(glue);
-    annotationeditor.init(glue);
+    //timeline.init(glue);
+    //annotationeditor.init(glue);
 
-    glue.listen("annotationeditor", "addannotation", this, storeAnnotation);
-    glue.listen("annotationeditor", "updateannotation", this, storeAnnotation);
-    glue.listen("annotationeditor", "updateAnnotationfromtimeline", this, storeAnnotation);
-    glue.listen("annotationeditor", "deleteannotation", this, storeAnnotation);
+    //glue.listen("annotationeditor", "addannotation", this, storeAnnotation);
+    //glue.listen("annotationeditor", "updateannotation", this, storeAnnotation);
+    //glue.listen("annotationeditor", "updateAnnotationfromtimeline", this, storeAnnotation);
+    //glue.listen("annotationeditor", "deleteannotation", this, storeAnnotation);
     glue.listen("player", "mediaready", this, getAnnotations);
 
     glue.signal("main", "eupsId", getUniqueEUPSId());
