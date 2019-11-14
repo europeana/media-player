@@ -15,19 +15,6 @@ const config = function (mode) {
         module: {
             rules: [
             {
-                test: /node_modules[\\\/]vis[\\\/].*\.js$/, // vis.js files
-                loader: 'babel-loader',
-                query: {
-                    cacheDirectory: true,
-                    presets: [ "babel-preset-es2015" ].map(require.resolve),
-                    plugins: [
-                        "transform-es3-property-literals", // see https://github.com/almende/vis/pull/2452
-                        "transform-es3-member-expression-literals", // see https://github.com/almende/vis/pull/2566
-                        "transform-runtime" // see https://github.com/almende/vis/pull/2566
-                    ]
-                }
-            }, 
-            {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {

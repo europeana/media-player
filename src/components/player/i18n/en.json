@@ -13,5 +13,7 @@
     "player-subtitles": "Subtitles",
     "player-more": "More",
     "player-create-annotations": "Create annotations",
-    "player-create-embed": "Create embed"
+	"player-create-embed": "Create embed",
+	"player-create-playlist": "Create playlist",
+	"player-create-subtitles": "Create subtitles"
 }
