@@ -126,6 +126,14 @@ export default class Player {
         $("#create-embed-link").on('click', function() {
           window.open(that.editorurl+"#embed?manifest="+encodeURIComponent(that.manifesturl), "_blank");
         });
+
+        $("#create-playlist-link").on('click', function() {
+          window.open(that.editorurl+"#playlist?manifest="+encodeURIComponent(that.manifesturl), "_blank");
+        });
+
+        $("#create-subtitles-link").on('click', function() {
+          window.open(that.editorurl+"#subtitles?manifest="+encodeURIComponent(that.manifesturl), "_blank");
+        });
       }
 
       $("#"+that.elem.id+" .canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
