@@ -10,7 +10,7 @@ require("dashjs");
 require('webpack-jquery-ui/slider');
 require('webpack-jquery-ui/effects');
 
-var helper, avcomponent, glue;
+var helper, avcomponent;
 
 export default class Player {
   constructor(elem) {
@@ -22,19 +22,15 @@ export default class Player {
     this.avcomponent;
     this.timeupdate;
     this.manifest;
+    this.manifesturl;
     this.editorurl;
     this.mode;
-    this.eupsid;
   }
 
-  init(g, videoObj, editorurl, mode, eupsid) {
-    glue = g;
-
+  init(videoObj, editorurl) {
     this.render();
     this.createManifest(videoObj);
     this.editorurl = editorurl;
-    this.mode =  mode;
-    this.eupsid = eupsid;
 
     this.state = {
       limitToRange: false,
@@ -42,9 +38,6 @@ export default class Player {
       constrainNavigationToRange: true,
       virtualCanvasEnabled: true
     };
-
-    glue.listen("timeline", "timeupdate", this, this.timeupdatefunction);
-    glue.listen("annotationviewer", "timeupdate", this, this.timeupdatefunction);
   }
 
   render() {
@@ -96,7 +89,6 @@ export default class Player {
     });
     this.avcomponent.on("play", function () {
       $("#"+that.elem.id+" .playwrapper").hide();
-      that.timeupdate = setInterval(() => glue.signal("player", "timeupdate", that.avcomponent.getCurrentTime()), 25);
     });
 
     this.avcomponent.on("pause", function () {
@@ -122,18 +114,17 @@ export default class Player {
             $("#"+that.elem.id+" .moremenu").css({bottom: $("#"+that.elem.id+" .options-container").height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($("#"+that.elem.id+" .moremenu").width() / 2))});
             $("#"+that.elem.id+" .moremenu").show();
           }       
-          //glue.signal("player", "moreclicked", null);
         });
         $("#"+that.elem.id+" .controls-container").append(more);
 
-        $("#"+that.elem.id+" .canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div></div>");
+        $("#"+that.elem.id+" .canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div><div id='create-playlist-link' class='moremenu-option'>Create playlist</div><div id='create-subtitles-link' class='moremenu-option'>Create subtitles</div></div>");
 
         $("#create-annotations-link").on('click', function() {
-          window.open(that.editorurl+"#annotation?manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
+          window.open(that.editorurl+"#annotation?manifest="+encodeURIComponent(that.manifesturl), "_blank");
         });
 
         $("#create-embed-link").on('click', function() {
-          window.open(that.editorurl+"#embed?manifest="+encodeURIComponent(that.manifest)+"&eupsid="+that.eupsId, "_blank");
+          window.open(that.editorurl+"#embed?manifest="+encodeURIComponent(that.manifesturl), "_blank");
         });
       }
 
@@ -144,15 +135,7 @@ export default class Player {
         that.avcomponent.canvasInstances[0].play();
       }); 
 
-      $("#"+that.elem.id).parent().css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
-
-      //currently only way to retrieve duration from the canvasinstances
-      glue.signal("player", "mediaready", that.deformatTimeToMs(that.avcomponent.canvasInstances[0]._$canvasDuration[0].innerText));
-
-      //attach slide listener
-      $(that.avcomponent.canvasInstances[0]._$canvasTimelineContainer).on("slide", function(event, ui) {
-        glue.signal("player", "timeupdate", ui.value);
-      });
+      $("#"+that.elem.id).css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
     });
 
     this.avcomponent.on("fullscreen", function () {
@@ -165,11 +148,12 @@ export default class Player {
       this.handler = this;
     }
 
-    glue.signal("player", "manifest", data);
-
     this.handler.videoId = data;
 
+    var that = this;
+
     this.handler.loadManifest(data, function (helper) {
+      that.manifest = helper.manifest;
       console.log("SUCCESS: Manifest data loaded.", helper.manifest);
       var canvases = helper.getCanvases();
       if (canvases.length > 1) {
@@ -218,21 +202,6 @@ export default class Player {
   timeupdatefunction(data) {
     avcomponent.setCurrentTime(data);
   }
-
-  deformatTimeToMs(time) {
-		let parts = time.split(":");
-
-		parts = parts.length > 3 ? parts.slice(parts.length-3) : parts; 
-		for (let i = parts.length; i < 3; i++) {
-			parts.unshift(0);
-		}
-
-		let hours = parseInt(parts[0]);
-		let minutes = parseInt(parts[1]);
-		let seconds = parseInt(parts[2]);
-
-		return (hours*3600 + minutes*60 + seconds) * 1000;
-  }
   
   getVideoId() {
     return this.videoId;
@@ -240,8 +209,10 @@ export default class Player {
 
   createManifest(vObj) {
     let manifest;
-    
-    if (vObj.source.endsWith(".json") || vObj.source.includes("/manifest/")) {
+
+    if (vObj.manifest) {
+      manifest = vObj.manifest;
+    } else if (vObj.source.endsWith(".json") || vObj.source.includes("/manifest/")) {
       manifest = vObj.source;
     } else if (vObj.source.startsWith("EUS_")) {
         manifest = "https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id="+vObj.source;      
@@ -258,7 +229,7 @@ export default class Player {
         manifest += "&mediatype="+vObj.mediatype;
       }
     }
-    this.manifest = manifest;
+    this.manifesturl = manifest;
     this.itemSelectListener(manifest);
   }
 }
