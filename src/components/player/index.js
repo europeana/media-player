@@ -10,6 +10,8 @@ require("dashjs");
 require('webpack-jquery-ui/slider');
 require('webpack-jquery-ui/effects');
 
+const languages = require("../languages/lang.js").default.locales;
+
 var helper, avcomponent;
 
 export default class Player {
@@ -55,7 +57,9 @@ export default class Player {
     });
 
     this.avcomponent.on("mediaerror", function(error) {
-      
+      console.log("media error");
+      console.log(error);
+
       $("#"+that.elem.id+" .player").removeClass("player--loading");
       let errormessage = "Error: ";
       switch (error.code) {
@@ -96,10 +100,15 @@ export default class Player {
     });
 
     this.avcomponent.on("rangechanged", function() {
-      console.log("range changed");
+      //console.log("range changed");
     });
 
     this.avcomponent.on("mediaready", function () {
+      if (that.avcomponent.canvasInstances[0]._canvasWidth < 400) {
+        $(".iiif-av-component .controls-container .volume").css({ "width": 80});
+        $(".iiif-av-component .controls-container .volume .volume-slider").css({"width": 42});
+      }
+
       let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
       $("#"+that.elem.id+" .controls-container").append(subtitles);
 
@@ -138,16 +147,29 @@ export default class Player {
 
       $("#"+that.elem.id+" .canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
 
-      $("#"+that.elem.id+" .playcircle").on("click", function() {
-        $("#"+that.elem.id+" .playwrapper").hide();
-        that.avcomponent.canvasInstances[0].play();
-      }); 
+      //$("#"+that.elem.id+" .playcircle").on("click", function() {
+        //$("#"+that.elem.id+" .playwrapper").hide();
+        //that.avcomponent.canvasInstances[0].play();
+      //}); 
 
       $("#"+that.elem.id).css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
+    
+      $("#"+that.elem.id+" .canvas-container").on('click', function() {
+        if (that.avcomponent.canvasInstances[0].isPlaying()) {
+          that.avcomponent.canvasInstances[0].pause();
+        } else {
+          //hide playcircle if showing
+          if ($("#"+that.elem.id+" .playwrapper").is(":visible")) {
+            $("#"+that.elem.id+" .playwrapper").hide();
+          }
+          that.avcomponent.canvasInstances[0].play();
+        }
+      });
     });
 
     this.avcomponent.on("fullscreen", function () {
       $("#"+that.elem.id+" .moremenu").hide();
+      $("#"+that.elem.id+" .subtitlemenu").hide();
     });
   }
 
@@ -162,7 +184,7 @@ export default class Player {
 
     this.handler.loadManifest(data, function (helper) {
       that.manifest = helper.manifest;
-      console.log("SUCCESS: Manifest data loaded.", helper.manifest);
+      //console.log("SUCCESS: Manifest data loaded.", helper.manifest);
       var canvases = helper.getCanvases();
       if (canvases.length > 1) {
         initCanvasNavigation(canvases);
@@ -239,5 +261,65 @@ export default class Player {
     }
     this.manifesturl = manifest;
     this.itemSelectListener(manifest);
+  }
+
+  //todo: address correct object with class / id
+  initLanguages() {
+    let textTracks = $("video")[0].textTracks;
+
+    //check if we have any texttracks
+    if (textTracks.length == 0) {
+      return;
+    }
+
+    //show button only if we have at least one language set
+    $(".btn[title=Subtitles]").show();
+
+    let menu = "<div class='anno subtitlemenu'>";
+    for (let i = 0; i < textTracks.length; i++) {
+      menu += "<div class='subtitlemenu-option' data-language='"+textTracks[i].language+"'>"+languages.find(lang => lang.iso == textTracks[i].language).name+"</div>";
+    }
+    menu += "</div>";
+
+    $("#"+this.elem.id+" .canvas-container").append(menu);
+
+    $('button[title="Subtitles"]')[0].addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if ($("#"+this.elem.id+" .subtitlemenu").is(":visible")) {
+        $("#"+this.elem.id+" .subtitlemenu").hide();
+      } else {
+        $("#"+this.elem.id+" .subtitlemenu").css({bottom: $("#"+this.elem.id+" .options-container").height(), left: (($('#'+this.elem.id+' .btn[title="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($("#"+this.elem.id+" .subtitlemenu").width() / 2))});
+        $("#"+this.elem.id+" .subtitlemenu").show();
+      }       
+    });
+
+    let that = this;
+
+    $(".subtitlemenu-option").on('click', function(e) {
+      $("#"+that.elem.id+" .subtitlemenu").hide();
+      let textTracks = $("video")[0].textTracks;
+
+      for (let i = 0; i < textTracks.length; i++) {
+        if ($(this).data("language") == textTracks[i].language) {
+          textTracks[i].mode = "showing";
+        } else {
+          textTracks[i].mode = "hidden";
+        }
+      }
+      //prevent the play/pause handler to react
+      e.stopPropagation();
+
+    });
+  }
+
+  //todo: address correct object with class / id
+  //todo: address audio as well
+  hasEnded() {
+    if ($("video").length) {
+      return $("video")[0].ended;
+    } else {
+      return false;
+    }
   }
 }
