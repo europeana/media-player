@@ -1,25 +1,27 @@
-import * as css from './index.css'
+/* global $ Manifold IIIFComponents initCanvasNavigation */
 
-require("@iiif/base-component");
-require("@iiif/iiif-av-component");
-require("@iiif/iiif-tree-component");
-require("manifesto.js");
-require("@iiif/manifold");
-require("dashjs");
+import './index.css';
+
+require('@iiif/base-component');
+require('@iiif/iiif-av-component');
+require('@iiif/iiif-tree-component');
+require('manifesto.js');
+require('@iiif/manifold');
+require('dashjs');
 
 require('webpack-jquery-ui/slider');
 require('webpack-jquery-ui/effects');
 
-const languages = require("../languages/lang.js").default.locales;
+const languages = require('../languages/lang.js').default.locales;
 
-var helper, avcomponent;
+let helper, avcomponent;
 
 export default class Player {
   constructor(elem) {
-    if (!elem) return
+    if (!elem) return;
     this.elem = elem;
 
-    this.videoId = "";
+    this.videoId = '';
     this.canvasready = false;
     this.avcomponent;
     this.timeupdate;
@@ -56,120 +58,120 @@ export default class Player {
       target: this.$avcomponent[0]
     });
 
-    this.avcomponent.on("mediaerror", function(error) {
-      console.log("media error");
+    this.avcomponent.on('mediaerror', (error) => {
+      console.log('media error');
       console.log(error);
 
-      $("#"+that.elem.id+" .player").removeClass("player--loading");
-      let errormessage = "Error: ";
+      $('#'+that.elem.id+' .player').removeClass('player--loading');
+      let errormessage = 'Error: ';
       switch (error.code) {
         case 1:
-          errormessage += "loading aborted";
-        break;
-        case 2: 
-          errormessage += "network error";
-        break;
+          errormessage += 'loading aborted';
+          break;
+        case 2:
+          errormessage += 'network error';
+          break;
         case 3:
-          errormessage += "decoding of media failed";
-        break;
+          errormessage += 'decoding of media failed';
+          break;
         case 4:
-            errormessage += "media format not suppported by this browser";
-        break;
-        default: 
-          errormessage += "unknown";
-        break;
+          errormessage += 'media format not suppported by this browser';
+          break;
+        default:
+          errormessage += 'unknown';
+          break;
       }
 
-      $("#"+that.elem.id+" .canvas-container").append("<div class='anno errormessage'>"+errormessage+"</div>")
+      $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno errormessage\'>'+errormessage+'</div>');
     });
 
-    this.avcomponent.on("log", function (message) {
+    this.avcomponent.on('log', (message) => {
       console.log(message);
     });
-    this.avcomponent.on("canvasready", function () {
+    this.avcomponent.on('canvasready', function() {
       if (this.canvasready) return;
 
       this.canvasready = true;
     });
-    this.avcomponent.on("play", function () {
-      $("#"+that.elem.id+" .playwrapper").hide();
+    this.avcomponent.on('play', () => {
+      $('#'+that.elem.id+' .playwrapper').hide();
     });
 
-    this.avcomponent.on("pause", function () {
+    this.avcomponent.on('pause', () => {
       clearInterval(that.timeupdate);
     });
 
-    this.avcomponent.on("rangechanged", function() {
+    this.avcomponent.on('rangechanged', () => {
       //console.log("range changed");
     });
 
-    this.avcomponent.on("mediaready", function () {
+    this.avcomponent.on('mediaready', () => {
       if (that.avcomponent.canvasInstances[0]._canvasWidth < 400) {
-        $(".iiif-av-component .controls-container .volume").css({ "width": 80});
-        $(".iiif-av-component .controls-container .volume .volume-slider").css({"width": 42});
+        $('.iiif-av-component .controls-container .volume').css({ 'width': 80 });
+        $('.iiif-av-component .controls-container .volume .volume-slider').css({ 'width': 42 });
       }
 
       let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
-      $("#"+that.elem.id+" .controls-container").append(subtitles);
+      $('#'+that.elem.id+' .controls-container').append(subtitles);
 
       if (that.editorurl && that.editorurl.length > 0) {
         let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
         more[0].addEventListener('click', (e) => {
           e.preventDefault();
 
-          if ($("#"+that.elem.id+" .moremenu").is(":visible")) {
-            $("#"+that.elem.id+" .moremenu").hide();
+          if ($('#'+that.elem.id+' .moremenu').is(':visible')) {
+            $('#'+that.elem.id+' .moremenu').hide();
           } else {
-            $("#"+that.elem.id+" .moremenu").css({bottom: $("#"+that.elem.id+" .options-container").height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($("#"+that.elem.id+" .moremenu").width() / 2))});
-            $("#"+that.elem.id+" .moremenu").show();
-          }       
+            $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
+            $('#'+that.elem.id+' .moremenu').show();
+          }
         });
-        $("#"+that.elem.id+" .controls-container").append(more);
+        $('#'+that.elem.id+' .controls-container').append(more);
 
-        $("#"+that.elem.id+" .canvas-container").append("<div class='anno moremenu'><div id='create-embed-link' class='moremenu-option'>Create embed</div><div id='create-annotations-link' class='moremenu-option'>Create annotations</div><div id='create-playlist-link' class='moremenu-option'>Create playlist</div><div id='create-subtitles-link' class='moremenu-option'>Create subtitles</div></div>");
+        $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>Create embed</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>Create annotations</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>Create playlist</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>Create subtitles</div></div>');
 
-        $("#create-annotations-link").on('click', function() {
-          window.open(that.editorurl+"#annotation?manifest="+encodeURIComponent(that.manifesturl), "_blank");
-        });
-
-        $("#create-embed-link").on('click', function() {
-          window.open(that.editorurl+"#embed?manifest="+encodeURIComponent(that.manifesturl), "_blank");
+        $('#create-annotations-link').on('click', () => {
+          window.open(that.editorurl+'#annotation?manifest='+encodeURIComponent(that.manifesturl), '_blank');
         });
 
-        $("#create-playlist-link").on('click', function() {
-          window.open(that.editorurl+"#playlist?manifest="+encodeURIComponent(that.manifesturl), "_blank");
+        $('#create-embed-link').on('click', () => {
+          window.open(that.editorurl+'#embed?manifest='+encodeURIComponent(that.manifesturl), '_blank');
         });
 
-        $("#create-subtitles-link").on('click', function() {
-          window.open(that.editorurl+"#subtitles?manifest="+encodeURIComponent(that.manifesturl), "_blank");
+        $('#create-playlist-link').on('click', () => {
+          window.open(that.editorurl+'#playlist?manifest='+encodeURIComponent(that.manifesturl), '_blank');
+        });
+
+        $('#create-subtitles-link').on('click', () => {
+          window.open(that.editorurl+'#subtitles?manifest='+encodeURIComponent(that.manifesturl), '_blank');
         });
       }
 
-      $("#"+that.elem.id+" .canvas-container").append("<div class='anno playwrapper'><span class='playcircle'></span></div>");
+      $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
       //$("#"+that.elem.id+" .playcircle").on("click", function() {
-        //$("#"+that.elem.id+" .playwrapper").hide();
-        //that.avcomponent.canvasInstances[0].play();
-      //}); 
+      //$("#"+that.elem.id+" .playwrapper").hide();
+      //that.avcomponent.canvasInstances[0].play();
+      //});
 
-      $("#"+that.elem.id).css({width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight});
-    
-      $("#"+that.elem.id+" .canvas-container").on('click', function() {
+      $('#'+that.elem.id).css({ width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight });
+
+      $('#'+that.elem.id+' .canvas-container').on('click', () => {
         if (that.avcomponent.canvasInstances[0].isPlaying()) {
           that.avcomponent.canvasInstances[0].pause();
         } else {
           //hide playcircle if showing
-          if ($("#"+that.elem.id+" .playwrapper").is(":visible")) {
-            $("#"+that.elem.id+" .playwrapper").hide();
+          if ($('#'+that.elem.id+' .playwrapper').is(':visible')) {
+            $('#'+that.elem.id+' .playwrapper').hide();
           }
           that.avcomponent.canvasInstances[0].play();
         }
       });
     });
 
-    this.avcomponent.on("fullscreen", function () {
-      $("#"+that.elem.id+" .moremenu").hide();
-      $("#"+that.elem.id+" .subtitlemenu").hide();
+    this.avcomponent.on('fullscreen', () => {
+      $('#'+that.elem.id+' .moremenu').hide();
+      $('#'+that.elem.id+' .subtitlemenu').hide();
     });
   }
 
@@ -180,24 +182,24 @@ export default class Player {
 
     this.handler.videoId = data;
 
-    var that = this;
+    let that = this;
 
-    this.handler.loadManifest(data, function (helper) {
+    this.handler.ldManifest(data, (helper) => {
       that.manifest = helper.manifest;
       //console.log("SUCCESS: Manifest data loaded.", helper.manifest);
-      var canvases = helper.getCanvases();
+      let canvases = helper.getCanvases();
       if (canvases.length > 1) {
         initCanvasNavigation(canvases);
       } else {
-        $(".canvasNavigationContainer").hide();
+        $('.canvasNavigationContainer').hide();
       }
-    }, function (error) {
-      console.error("ERROR: Could not load manifest data.", error);
+    }, (error) => {
+      console.error('ERROR: Could not load manifest data.', error);
     });
   }
-  
-  loadManifest(manifest, successcb, errorcb) {
-    var that = this;
+
+  ldManifest(manifest, successcb, errorcb) {
+    let that = this;
 
     Manifold.loadManifest({
       iiifResourceUri: manifest,
@@ -205,11 +207,11 @@ export default class Player {
       manifestIndex: 0,
       sequenceIndex: 0,
       canvasIndex: 0
-    }).then(function (h) {
+    }).then((h) => {
       helper = h;
 
       that.avcomponent.set({
-        helper: helper,
+        helper,
         limitToRange: that.state.limitToRange,
         autoSelectRange: that.state.autoSelectRange,
         constrainNavigationToRange: that.state.constrainNavigationToRange,
@@ -217,13 +219,13 @@ export default class Player {
       });
       successcb(helper);
       that.resize();
-    }).catch(function (e) {
+    }).catch((e) => {
       errorcb(e);
     });
   }
 
   resize() {
-    var $playerContainer = $("#"+this.elem.id+" .playerContainer");
+    let $playerContainer = $('#'+this.elem.id+' .playerContainer');
     $playerContainer.height($playerContainer.width() * 0.75);
     this.avcomponent.resize();
   }
@@ -232,7 +234,7 @@ export default class Player {
   timeupdatefunction(data) {
     avcomponent.setCurrentTime(data);
   }
-  
+
   getVideoId() {
     return this.videoId;
   }
@@ -242,21 +244,21 @@ export default class Player {
 
     if (vObj.manifest) {
       manifest = vObj.manifest;
-    } else if (vObj.source.endsWith(".json") || vObj.source.includes("/manifest/")) {
+    } else if (vObj.source.endsWith('.json') || vObj.source.includes('/manifest/')) {
       manifest = vObj.source;
-    } else if (vObj.source.startsWith("EUS_")) {
-        manifest = "https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id="+vObj.source;      
+    } else if (vObj.source.startsWith('EUS_')) {
+      manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id='+vObj.source;
     } else {
-        manifest = "https://videoeditor.noterik.com/manifest/createmanifest.php?src="+vObj.source+"&duration="+vObj.duration+"&id="+vObj.id;
+      manifest = 'https://videoeditor.noterik.com/manifest/createmanifest.php?src='+vObj.source+'&duration='+vObj.duration+'&id='+vObj.id;
 
       if (vObj.width) {
-        manifest += "&width="+vObj.width;
-      } 
+        manifest += '&width='+vObj.width;
+      }
       if (vObj.height) {
-        manifest += "&height="+vObj.height;
+        manifest += '&height='+vObj.height;
       }
       if (vObj.mediatype) {
-        manifest += "&mediatype="+vObj.mediatype;
+        manifest += '&mediatype='+vObj.mediatype;
       }
     }
     this.manifesturl = manifest;
@@ -265,46 +267,46 @@ export default class Player {
 
   //todo: address correct object with class / id
   initLanguages() {
-    let textTracks = $("video")[0].textTracks;
+    let textTracks = $('video')[0].textTracks;
 
     //check if we have any texttracks
-    if (textTracks.length == 0) {
+    if (textTracks.length === 0) {
       return;
     }
 
     //show button only if we have at least one language set
-    $(".btn[title=Subtitles]").show();
+    $('.btn[title=Subtitles]').show();
 
-    let menu = "<div class='anno subtitlemenu'>";
+    let menu = '<div class=\'anno subtitlemenu\'>';
     for (let i = 0; i < textTracks.length; i++) {
-      menu += "<div class='subtitlemenu-option' data-language='"+textTracks[i].language+"'>"+languages.find(lang => lang.iso == textTracks[i].language).name+"</div>";
+      menu += '<div class=\'subtitlemenu-option\' data-language=\''+textTracks[i].language+'\'>'+languages.find(lang => lang.iso === textTracks[i].language).name+'</div>';
     }
-    menu += "</div>";
+    menu += '</div>';
 
-    $("#"+this.elem.id+" .canvas-container").append(menu);
+    $('#'+this.elem.id+' .canvas-container').append(menu);
 
     $('button[title="Subtitles"]')[0].addEventListener('click', (e) => {
       e.preventDefault();
 
-      if ($("#"+this.elem.id+" .subtitlemenu").is(":visible")) {
-        $("#"+this.elem.id+" .subtitlemenu").hide();
+      if ($('#'+this.elem.id+' .subtitlemenu').is(':visible')) {
+        $('#'+this.elem.id+' .subtitlemenu').hide();
       } else {
-        $("#"+this.elem.id+" .subtitlemenu").css({bottom: $("#"+this.elem.id+" .options-container").height(), left: (($('#'+this.elem.id+' .btn[title="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($("#"+this.elem.id+" .subtitlemenu").width() / 2))});
-        $("#"+this.elem.id+" .subtitlemenu").show();
-      }       
+        $('#'+this.elem.id+' .subtitlemenu').css({ bottom: $('#'+this.elem.id+' .options-container').height(), left: (($('#'+this.elem.id+' .btn[title="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($('#'+this.elem.id+' .subtitlemenu').width() / 2)) });
+        $('#'+this.elem.id+' .subtitlemenu').show();
+      }
     });
 
     let that = this;
 
-    $(".subtitlemenu-option").on('click', function(e) {
-      $("#"+that.elem.id+" .subtitlemenu").hide();
-      let textTracks = $("video")[0].textTracks;
+    $('.subtitlemenu-option').on('click', function(e) {
+      $('#'+that.elem.id+' .subtitlemenu').hide();
+      let textTracks = $('video')[0].textTracks;
 
       for (let i = 0; i < textTracks.length; i++) {
-        if ($(this).data("language") == textTracks[i].language) {
-          textTracks[i].mode = "showing";
+        if ($(this).data('language') === textTracks[i].language) {
+          textTracks[i].mode = 'showing';
         } else {
-          textTracks[i].mode = "hidden";
+          textTracks[i].mode = 'hidden';
         }
       }
       //prevent the play/pause handler to react
@@ -316,8 +318,8 @@ export default class Player {
   //todo: address correct object with class / id
   //todo: address audio as well
   hasEnded() {
-    if ($("video").length) {
-      return $("video")[0].ended;
+    if ($('video').length) {
+      return $('video')[0].ended;
     } else {
       return false;
     }

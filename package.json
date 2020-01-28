@@ -10,9 +10,10 @@
   },
   "scripts": {
     "build": "webpack-cli",
-    "start:dev": "NODE_ENV=development webpack-dev-server",
-    "test:prod": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint src/",
+    "lint:fix": "npx eslint --fix src/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stats": "webpack-cli --profile --json > lib/stats.json && webpack-bundle-analyzer lib/stats.json"
   },
   "dependencies": {
     "@iiif/base-component": "^1.1.4",
@@ -39,7 +40,12 @@
     "image-webpack-loader": "^4.6.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.16.0",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.0.0",
     "webpack-dev-server": "^3.1.0"
+  },
+  "resolutions": {
+    "**/**/serialize-javascript": "^2.1.1",
+    "**/**/braces": "^2.3.1"
   }
 }
