@@ -1,18 +1,10 @@
-# Europeana Media Player
+# Europeana Media Player Library
 
-Created as part of the Europeana Media Generic Services Project 
+Created as part of the [Europeana Media Project](https://pro.europeana.eu/project/europeana-media)
 
 ### First
 
 Install deps from project root with `yarn` or `npm i`
-
-### Start development server with:
-
-`yarn start:dev` or `npm run start:dev`
-
-It's possible to use a different port by specifying this first like so: 
-
-`EUPS_PORT=7788 yarn start:dev` to start with port 7788. Same for npm just include `EUPS_PORT=7788` at the beginning.
 
 ### Build for production
 
@@ -20,7 +12,7 @@ It's possible to use a different port by specifying this first like so:
 
 ### Embed player
 
-To embed the player yourself first make sure to include the EuropeanaMediaPlayer library
+To embed the player yourself first make sure to include the Europeana Media Player Library
 
 ```
 import EuropeanaMediaPlayer from 'europeanamediaplayer';
@@ -32,7 +24,7 @@ or
 const EuropeanaMediaPlayer = require("europeanamediaplayer").default;
 ```
 
-The constructor of the EuropeanaMediaPlayer is
+The constructor of the Europeana Media Player is
 
 ```
 var player = new EuropeanaMediaPlayer(container, videoObject, options);
@@ -46,28 +38,18 @@ The constructor accepts three parameters
 
 The videoObject has the following required properties
 
-- **id** the identifier of the video object
-- **source** the url source of the video file, the url source of a complete manifest or an EUscreen identifier
-- **duration** the duration of the video file, in case of a manifest or EUscreen identifier this can be set to -1
+- **manifest** the url of the IIIF manifest for the media item
 
-Further the following optional video object properties can be specified
+ It's possible to override the following settings by providing them in the options object
 
-- **width** the width of the video file (default is 640)
-- **height** the height of the video file (default is 480)
-- **mediatype** the mediatype of the video file (default is mp4)
-
-It's possible to override the following settings by providing them in the options object
-
-- **mode** allows to set *editor* as mode to open directly the editor along with the player, default is *player* mode that only shows the player with a more button that will open when clicked the annotation viewer / editor.
 - **editor** url, allows to configure an external editor so that editing is not done on the page itself.
-- **eupsid** EUPS Id to identify same browser as on an other site
 
 ### Example
 
 ```
 var container = document.body;
-var videoObj = { source : "EUS_DD3FEB690A8A4AC0920BDC89EFC29B10", duration: -1, id: "EUS_DD3FEB690A8A4AC0920BDC89EFC29B10" };
-var options = { editor: "https://videoeditor.noterik.com", mode: "player" };
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_9972/manifest?format=3" };
+var options = { editor: "https://video-editor.eu" };
 new EuropeanaMediaPlayer(container, videoObj, options);
 ```
 
