@@ -230,44 +230,14 @@ export default class Player {
 
   handleMediaReady(that) {
     if (that.avcomponent.canvasInstances[0]._canvasWidth < 400) {
-      $('.iiif-av-component .controls-container .volume').css({ 'width': 80 });
-      $('.iiif-av-component .controls-container .volume .volume-slider').css({ 'width': 42 });
+      this.optimizeForSmallerScreens();
     }
 
     let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
-      let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
-      more[0].addEventListener('click', (e) => {
-        e.preventDefault();
-
-        if ($('#'+that.elem.id+' .moremenu').is(':visible')) {
-          $('#'+that.elem.id+' .moremenu').hide();
-        } else {
-          $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
-          $('#'+that.elem.id+' .moremenu').show();
-        }
-      });
-      $('#'+that.elem.id+' .controls-container').append(more);
-
-      $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>Create embed</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>Create annotations</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>Create playlist</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>Create subtitles</div></div>');
-
-      $('#create-annotations-link').on('click', (e) => {
-        this.openEditorType(that, e, 'annotation');
-      });
-
-      $('#create-embed-link').on('click', (e) => {
-        this.openEditorType(that, e, 'embed');
-      });
-
-      $('#create-playlist-link').on('click', (e) => {
-        this.openEditorType(that, e, 'playlist');
-      });
-
-      $('#create-subtitles-link').on('click', (e) => {
-        this.openEditorType(that, e, 'subtitles');
-      });
+      this.addEditorOption(that);
     }
 
     $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
@@ -275,15 +245,7 @@ export default class Player {
     $('#'+that.elem.id).css({ width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight });
 
     $('#'+that.elem.id+' .canvas-container').on('click', () => {
-      if (that.avcomponent.canvasInstances[0].isPlaying()) {
-        that.avcomponent.canvasInstances[0].pause();
-      } else {
-        //hide playcircle if showing
-        if ($('#'+that.elem.id+' .playwrapper').is(':visible')) {
-          $('#'+that.elem.id+' .playwrapper').hide();
-        }
-        that.avcomponent.canvasInstances[0].play();
-      }
+      this.handlePlayPause(that);
     });
   }
 
@@ -323,5 +285,59 @@ export default class Player {
     event.stopPropagation();
 
     window.open(that.editorurl+'#'+type+'?manifest='+encodeURIComponent(that.manifesturl), '_blank');
+  }
+
+  optimizeForSmallerScreens() {
+    $('.iiif-av-component .controls-container .volume').css({ 'width': 80 });
+    $('.iiif-av-component .controls-container .volume .volume-slider').css({ 'width': 42 });
+  }
+
+  addEditorOption(that) {
+    let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+    more[0].addEventListener('click', (e) => {
+      this.handleEditorButton(e, that);
+    });
+    $('#'+that.elem.id+' .controls-container').append(more);
+
+    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>Create embed</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>Create annotations</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>Create playlist</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>Create subtitles</div></div>');
+
+    $('#create-annotations-link').on('click', (e) => {
+      this.openEditorType(that, e, 'annotation');
+    });
+
+    $('#create-embed-link').on('click', (e) => {
+      this.openEditorType(that, e, 'embed');
+    });
+
+    $('#create-playlist-link').on('click', (e) => {
+      this.openEditorType(that, e, 'playlist');
+    });
+
+    $('#create-subtitles-link').on('click', (e) => {
+      this.openEditorType(that, e, 'subtitles');
+    });
+  }
+
+  handleEditorButton(e, that) {
+    e.preventDefault();
+
+    if ($('#'+that.elem.id+' .moremenu').is(':visible')) {
+      $('#'+that.elem.id+' .moremenu').hide();
+    } else {
+      $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
+      $('#'+that.elem.id+' .moremenu').show();
+    }
+  }
+
+  handlePlayPause(that) {
+    if (that.avcomponent.canvasInstances[0].isPlaying()) {
+      that.avcomponent.canvasInstances[0].pause();
+    } else {
+      //hide playcircle if showing
+      if ($('#'+that.elem.id+' .playwrapper').is(':visible')) {
+        $('#'+that.elem.id+' .playwrapper').hide();
+      }
+      that.avcomponent.canvasInstances[0].play();
+    }
   }
 }
