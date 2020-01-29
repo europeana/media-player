@@ -449,7 +449,7 @@ button:focus {
   float: right !important;
 }
 
-.btn[title=More] {
+.btn[data-name=More] {
   float: right !important;
 }
 
