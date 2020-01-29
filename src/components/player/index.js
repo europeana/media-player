@@ -17,7 +17,7 @@ import Banana from 'banana-i18n';
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
 
-let helper, avcomponent;
+let helper;
 
 export default class Player {
   constructor(elem) {
@@ -61,7 +61,7 @@ export default class Player {
 
     let that = this;
 
-    avcomponent = this.avcomponent = new IIIFComponents.AVComponent({ target: this.$avcomponent[0] });
+    this.avcomponent = new IIIFComponents.AVComponent({ target: this.$avcomponent[0] });
 
     this.avcomponent.on('mediaerror', (error) => {
       this.handleMediaError(that, error);
@@ -237,7 +237,7 @@ export default class Player {
 
     this.updateAVComponentLanguage(that);
 
-    let subtitles = this.createButton("Subtitles", this.banana.i18n('player-subtitles'), "av-icon-subtitles");
+    let subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
@@ -297,7 +297,7 @@ export default class Player {
   }
 
   addEditorOption(that) {
-    let more = this.createButton("More", this.banana.i18n('player-more'), "av-icon-more");
+    let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more');
     more[0].addEventListener('click', (e) => {
       this.handleEditorButton(e, that);
     });
