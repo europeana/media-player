@@ -445,7 +445,7 @@ button:focus {
   display: none;
 }
 
-.btn[title=Fullscreen] {
+.btn.button-fullscreen {
   float: right !important;
 }
 

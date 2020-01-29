@@ -2,7 +2,6 @@
     "en": {
         "player-play": "Play",
         "player-pause": "Pause",
-        "player-volume": "Volume",
         "player-fullscreen": "Fullscreen",
         "player-mute": "Mute",
         "player-unmute": "Unmute",
@@ -22,7 +21,6 @@
     "nl": {
         "player-play": "Afspelen",
         "player-pause": "Pauzeren",
-        "player-volume": "Volume",
         "player-fullscreen": "Volledig scherm",
         "player-mute": "Dempen",
         "player-unmute": "Dempen opheffen",
