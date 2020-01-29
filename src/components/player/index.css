@@ -453,7 +453,7 @@ button:focus {
   float: right !important;
 }
 
-.btn[title=Subtitles] {
+.btn[data-name=Subtitles] {
   display: none;
   float: right !important;
 }
