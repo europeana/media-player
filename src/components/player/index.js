@@ -96,11 +96,8 @@ export default class Player {
     });
 
     this.avcomponent.on('volumechanged', (value) => {
-      if (value !== 0) {
-        $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-mute'));
-      } else {
-        $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-unmute'));
-      }
+      let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
+      $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n(muteType));
     });
   }
 
