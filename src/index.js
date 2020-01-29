@@ -5,6 +5,7 @@ import Player from './components/player';
 
 let editorurl = '';
 let player;
+let language = '';
 
 function init(container, videoObj, options) {
   //Create unique player id
@@ -19,12 +20,13 @@ function init(container, videoObj, options) {
   }
   videoObj.source = options.source || videoObj.source;
   editorurl = options.editor || editorurl;
+  language = options.language || language;
 
   //Create player
   player = new Player(document.getElementById('eups-player-'+playerId));
 
   //Initialize player
-  player.init(videoObj, editorurl);
+  player.init(videoObj, editorurl, language);
 }
 
 function uuidv4() {

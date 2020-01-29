@@ -1,0 +1,42 @@
+{
+    "en": {
+        "player-play": "Play",
+        "player-pause": "Pause",
+        "player-volume": "Volume",
+        "player-fullscreen": "Fullscreen",
+        "player-mute": "Mute",
+        "player-unmute": "Unmute",
+        "player-subtitles": "Subtitles",
+        "player-more": "More",
+        "player-create-annotations": "Create annotations",
+        "player-create-embed": "Create embed",
+        "player-create-playlist": "Create playlist",
+        "player-create-subtitles": "Create subtitles",
+        "player-error": "Error",
+        "player-error-loading": "loading aborted",
+        "player-error-network": "network error",
+        "player-error-decoding": "decoding of media failed",
+        "player-error-format": "media format not suppported by this browser",
+        "player-error-unknown": "unknown"
+    },
+    "nl": {
+        "player-play": "Afspelen",
+        "player-pause": "Pauzeren",
+        "player-volume": "Volume",
+        "player-fullscreen": "Volledig scherm",
+        "player-mute": "Dempen",
+        "player-unmute": "Dempen opheffen",
+        "player-subtitles": "Ondertitels",
+        "player-more": "Meer",
+        "player-create-annotations": "Maak annotaties",
+        "player-create-embed": "Maak een embed",
+        "player-create-playlist": "Maak een playlist",
+        "player-create-subtitles": "Maak ondertitels",
+        "player-error": "Error",
+        "player-error-loading": "laden geannuleerd",
+        "player-error-network": "netwerk error",
+        "player-error-decoding": "media decoderen mislukt",
+        "player-error-format": "media formaat wordt niet ondersteund door deze browser",
+        "player-error-unknown": "onbekend"
+    }
+}

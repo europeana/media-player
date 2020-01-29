@@ -20,7 +20,7 @@
     "@iiif/iiif-av-component": "Noterik/iiif-av-component#build",
     "@iiif/iiif-tree-component": "^1.1.12",
     "@iiif/manifold": "^1.2.36",
-    "@wikimedia/jquery.i18n": "^1.0.5",
+    "banana-i18n": "^1.2.1",
     "dashjs": "^2.9.3",
     "dotenv": "^8.0.0",
     "jquery": "^3.3.1",
