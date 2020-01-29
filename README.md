@@ -10,9 +10,13 @@ Install deps from project root with `yarn` or `npm i`
 
 `yarn build` or `npm run build`
 
+### Dependencies
+
+The player has an unbundled dependency on [jQuery](https://www.npmjs.com/package/jquery) that has not been packed into this library. Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
+
 ### Embed player
 
-To embed the player yourself first make sure to include the Europeana Media Player Library
+To embed the player please firstyourself first make sure to include the Europeana Media Player Library
 
 ```
 import EuropeanaMediaPlayer from 'europeanamediaplayer';
@@ -40,9 +44,10 @@ The videoObject has the following required properties
 
 - **manifest** the url of the IIIF manifest for the media item
 
- It's possible to override the following settings by providing them in the options object
+ It's possible to set the following options to extend / change the default player
 
 - **editor** url, allows to configure an external editor so that editing is not done on the page itself.
+- **language** 2 character iso 639-1 language code, all official languages of the European Union are supported. The default language is English.
 
 ### Example
 

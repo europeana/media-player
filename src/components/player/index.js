@@ -12,7 +12,10 @@ require('dashjs');
 require('webpack-jquery-ui/slider');
 require('webpack-jquery-ui/effects');
 
+import Banana from 'banana-i18n';
+
 const languages = require('../languages/lang.js').default.locales;
+const i18n = require('./i18n/languages.json');
 
 let helper, avcomponent;
 
@@ -29,9 +32,10 @@ export default class Player {
     this.manifesturl;
     this.editorurl;
     this.mode;
+    this.banana;
   }
 
-  init(videoObj, editorurl) {
+  init(videoObj, editorurl, language) {
     this.render();
     this.createManifest(videoObj);
     this.editorurl = editorurl;
@@ -42,6 +46,16 @@ export default class Player {
       constrainNavigationToRange: true,
       virtualCanvasEnabled: true
     };
+
+    //Check if the language is set, and if we have this present, otherwise default to English
+    if (language.length === 0 || languages.find(lang => lang.code === language) === undefined) {
+      language = 'en';
+    }
+
+    const banana = new Banana(language);
+    banana.load(i18n[language], language);
+
+    this.banana = banana;
   }
 
   render() {
@@ -206,22 +220,22 @@ export default class Player {
     console.error('media error', error);
 
     $('#'+that.elem.id+' .player').removeClass('player--loading');
-    let errormessage = 'Error: ';
+    let errormessage = this.banana.i18n('player-error')+': ';
     switch (error.code) {
       case 1:
-        errormessage += 'loading aborted';
+        errormessage += this.banana.i18n('player-error-loading');
         break;
       case 2:
-        errormessage += 'network error';
+        errormessage += this.banana.i18n('player-error-network');
         break;
       case 3:
-        errormessage += 'decoding of media failed';
+        errormessage += this.banana.i18n('player-error-decoding');
         break;
       case 4:
-        errormessage += 'media format not suppported by this browser';
+        errormessage += this.banana.i18n('player-error-format');
         break;
       default:
-        errormessage += 'unknown';
+        errormessage += this.banana.i18n('player-error-unknown');
         break;
     }
 
@@ -293,13 +307,13 @@ export default class Player {
   }
 
   addEditorOption(that) {
-    let more = $('<button class="btn" title="More"><i class="av-icon av-icon-more" aria-hidden="true"></i>More</button>');
+    let more = $('<button class="btn" data-name="More" title="'+this.banana.i18n('player-more')+'"><i class="av-icon av-icon-more" aria-hidden="true"></i>'+this.banana.i18n('player-more')+'</button>');
     more[0].addEventListener('click', (e) => {
       this.handleEditorButton(e, that);
     });
     $('#'+that.elem.id+' .controls-container').append(more);
 
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>Create embed</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>Create annotations</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>Create playlist</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>Create subtitles</div></div>');
+    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-embed')+'</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-annotations')+'</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-playlist')+'</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-subtitles')+'</div></div>');
 
     $('#create-annotations-link').on('click', (e) => {
       this.openEditorType(that, e, 'annotation');
@@ -324,7 +338,7 @@ export default class Player {
     if ($('#'+that.elem.id+' .moremenu').is(':visible')) {
       $('#'+that.elem.id+' .moremenu').hide();
     } else {
-      $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[title="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
+      $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[data-name="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
       $('#'+that.elem.id+' .moremenu').show();
     }
   }
