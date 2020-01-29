@@ -25,7 +25,6 @@ export default class Player {
     this.elem = elem;
 
     this.videoId = '';
-    this.canvasready = false;
     this.avcomponent;
     this.timeupdate;
     this.manifest;
@@ -77,16 +76,15 @@ export default class Player {
     this.avcomponent.on('log', (message) => {
       console.log(message);
     });
-    this.avcomponent.on('canvasready', function() {
-      if (this.canvasready) return;
-      this.canvasready = true;
-    });
+
     this.avcomponent.on('play', () => {
       $('#'+that.elem.id+' .playwrapper').hide();
+      $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-pause'));
     });
 
     this.avcomponent.on('pause', () => {
       clearInterval(that.timeupdate);
+      $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-play'));
     });
 
     this.avcomponent.on('mediaready', () => {
@@ -95,6 +93,14 @@ export default class Player {
 
     this.avcomponent.on('fullscreen', () => {
       this.handleFullScreen(that);
+    });
+
+    this.avcomponent.on('volumechanged', (value) => {
+      if (value !== 0) {
+        $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-mute'));
+      } else {
+        $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-unmute'));
+      }
     });
   }
 
@@ -247,6 +253,8 @@ export default class Player {
       this.optimizeForSmallerScreens();
     }
 
+    this.updateAVComponentLanguage(that);
+
     let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
@@ -353,5 +361,11 @@ export default class Player {
       }
       that.avcomponent.canvasInstances[0].play();
     }
+  }
+
+  updateAVComponentLanguage(that) {
+    $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-mute'));
+    $('#'+that.elem.id+' .button-fullscreen').attr('title', that.banana.i18n('player-fullscreen'));
+    $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-play'));
   }
 }
