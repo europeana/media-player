@@ -188,7 +188,7 @@ export default class Player {
     }
 
     //show button only if we have at least one language set
-    $('.btn[title=Subtitles]').show();
+    $('.btn[data-name=Subtitles]').show();
 
     let menu = '<div class=\'anno subtitlemenu\'>';
     for (let i = 0; i < textTracks.length; i++) {
@@ -198,7 +198,7 @@ export default class Player {
 
     $('#'+this.elem.id+' .canvas-container').append(menu);
 
-    $('button[title="Subtitles"]')[0].addEventListener('click', (e) => {
+    $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
       this.toggleSubtitles(e);
     });
 
@@ -252,7 +252,7 @@ export default class Player {
 
     this.updateAVComponentLanguage(that);
 
-    let subtitles = $('<button class="btn" title="Subtitles"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>Subtitles</button>');
+    let subtitles = $('<button class="btn" data-name="Subtitles" title="'+this.banana.i18n('player-subtitles')+'"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>'+this.banana.i18n('player-subtitles')+'</button>');
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
@@ -279,7 +279,7 @@ export default class Player {
     if ($('#'+this.elem.id+' .subtitlemenu').is(':visible')) {
       $('#'+this.elem.id+' .subtitlemenu').hide();
     } else {
-      $('#'+this.elem.id+' .subtitlemenu').css({ bottom: $('#'+this.elem.id+' .options-container').height(), left: (($('#'+this.elem.id+' .btn[title="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($('#'+this.elem.id+' .subtitlemenu').width() / 2)) });
+      $('#'+this.elem.id+' .subtitlemenu').css({ bottom: $('#'+this.elem.id+' .options-container').height(), left: (($('#'+this.elem.id+' .btn[data-name="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($('#'+this.elem.id+' .subtitlemenu').width() / 2)) });
       $('#'+this.elem.id+' .subtitlemenu').show();
     }
   }
