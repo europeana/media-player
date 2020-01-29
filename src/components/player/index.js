@@ -30,12 +30,11 @@ export default class Player {
     this.manifest;
     this.manifesturl;
     this.editorurl;
-    this.mode;
     this.banana;
   }
 
   init(videoObj, editorurl, language) {
-    this.render();
+    this.createAVComponent();
     this.createManifest(videoObj);
     this.editorurl = editorurl;
 
@@ -53,12 +52,7 @@ export default class Player {
 
     const banana = new Banana(language);
     banana.load(i18n[language], language);
-
     this.banana = banana;
-  }
-
-  render() {
-    this.createAVComponent();
   }
 
   createAVComponent() {
@@ -156,15 +150,6 @@ export default class Player {
     this.avcomponent.resize();
   }
 
-  //time update from other components
-  timeupdatefunction(data) {
-    avcomponent.setCurrentTime(data);
-  }
-
-  getVideoId() {
-    return this.videoId;
-  }
-
   createManifest(vObj) {
     let manifest;
 
@@ -252,7 +237,8 @@ export default class Player {
 
     this.updateAVComponentLanguage(that);
 
-    $('#'+that.elem.id+' .controls-container').append($('<button class="btn" data-name="Subtitles" title="'+this.banana.i18n('player-subtitles')+'"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>'+this.banana.i18n('player-subtitles')+'</button>'));
+    let subtitles = this.createButton("Subtitles", this.banana.i18n('player-subtitles'), "av-icon-subtitles");
+    $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
       this.addEditorOption(that);
@@ -311,7 +297,7 @@ export default class Player {
   }
 
   addEditorOption(that) {
-    let more = $('<button class="btn" data-name="More" title="'+this.banana.i18n('player-more')+'"><i class="av-icon av-icon-more" aria-hidden="true"></i>'+this.banana.i18n('player-more')+'</button>');
+    let more = this.createButton("More", this.banana.i18n('player-more'), "av-icon-more");
     more[0].addEventListener('click', (e) => {
       this.handleEditorButton(e, that);
     });
@@ -363,5 +349,10 @@ export default class Player {
     $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-mute'));
     $('#'+that.elem.id+' .button-fullscreen').attr('title', that.banana.i18n('player-fullscreen'));
     $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-play'));
+  }
+
+  createButton(name, text, classname) {
+    let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
+    return button;
   }
 }
