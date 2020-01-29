@@ -252,8 +252,7 @@ export default class Player {
 
     this.updateAVComponentLanguage(that);
 
-    let subtitles = $('<button class="btn" data-name="Subtitles" title="'+this.banana.i18n('player-subtitles')+'"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>'+this.banana.i18n('player-subtitles')+'</button>');
-    $('#'+that.elem.id+' .controls-container').append(subtitles);
+    $('#'+that.elem.id+' .controls-container').append($('<button class="btn" data-name="Subtitles" title="'+this.banana.i18n('player-subtitles')+'"><i class="av-icon av-icon-subtitles" aria-hidden="true"</i>'+this.banana.i18n('player-subtitles')+'</button>'));
 
     if (that.editorurl && that.editorurl.length > 0) {
       this.addEditorOption(that);
