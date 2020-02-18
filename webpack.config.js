@@ -115,7 +115,7 @@ const output = function() {
 
 const externals = function() {
   let externals = {
-    jquery: 'jQuery',
+    jquery: 'jquery',
     dashjs: 'dashjs'
   };
 
