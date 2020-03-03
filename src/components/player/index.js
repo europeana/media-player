@@ -380,14 +380,23 @@ export default class Player {
     
     val = that.determineNewVolume(val, rate);
     
+
     $('#'+that.elem.id+' .volume-slider').slider('value', val);
   }
 
   determineNewVolume(val, rate) {
     if (rate < 0) {
-      return val < 0.1 ? 0 : val - 0.1;
+      if (val < rate) {
+        return 0;
+      } else {
+        return val + rate;
+      }
     } else {
-      return val > 0.9 ? 1 : val + 0.1;
+      if (val + rate > 1) {
+        return 1;
+      } else {
+        return val + rate;
+      }
     }
   }
 
