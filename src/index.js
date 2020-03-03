@@ -7,7 +7,7 @@ let editorurl = '';
 let player;
 let language = '';
 
-function init(container, videoObj, options) {
+export const init = (container, videoObj, options) => {
   //Create unique player id
   let playerId = uuidv4();
 
@@ -27,7 +27,7 @@ function init(container, videoObj, options) {
 
   //Initialize player
   player.init(videoObj, editorurl, language);
-}
+};
 
 function uuidv4() {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
