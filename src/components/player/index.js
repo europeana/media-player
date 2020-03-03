@@ -378,26 +378,25 @@ export default class Player {
   handleVolume(that, rate) {
     let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
     
-    val = that.determineNewVolume(val, rate);
+    val = that.determineNewVolume(that, val, rate);
     
-
     $('#'+that.elem.id+' .volume-slider').slider('value', val);
   }
 
-  determineNewVolume(val, rate) {
+  determineNewVolume(that, val, rate) {
     if (rate < 0) {
-      if (val < rate) {
-        return 0;
-      } else {
-        return val + rate;
-      }
+      return that.decreaseVolume(val, rate);
     } else {
-      if (val + rate > 1) {
-        return 1;
-      } else {
-        return val + rate;
-      }
+      return that.increaseVolume(val, rate);
     }
+  }
+
+  decreaseVolume(val, rate) {
+    return val < rate ? 0 : val + rate;
+  }
+
+  increaseVolume(val, rate) {
+    return val > rate + val > 1 ? 1 : val + rate;
   }
 
   needToShowMenu(that) {
