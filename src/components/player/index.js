@@ -102,14 +102,10 @@ export default class Player {
         $('#'+that.elem.id+' .button-fullscreen').click();
       }
       if (e.keyCode === 38) { //volume up by 10%
-        let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
-        val = val > 0.9 ? 1 : val + 0.1;
-        $('#'+that.elem.id+' .volume-slider').slider('value', val);
+        that.handleVolume(that, 0.1);
       }
       if (e.keyCode === 40) { //volume down by 10%
-        let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
-        val = val < 0.1 ? 0 : val - 0.1;
-        $('#'+that.elem.id+' .volume-slider').slider('value', val);
+        that.handleVolume(that, -0.1);
       }
     });
   }
@@ -259,13 +255,8 @@ export default class Player {
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
-      let showMenu = false;
-      for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
-        if (value === 'allowed' && (key === 'embed' || key === 'annotation' || key === 'playlist' || key === 'subtitles')) {
-          showMenu = true;
-          break;
-        }
-      }
+      let showMenu = that.needToShowMenu(that);
+
       if (showMenu) {
         this.addEditorOption(that);
       }
@@ -330,50 +321,7 @@ export default class Player {
     });
     $('#'+that.elem.id+' .controls-container').append(more);
 
-    let embed, annotation, playlist, subtitles = false;
-
-    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
-      if (key === 'embed' && value === 'allowed') {
-        embed = true;
-      } else if (key === 'annotation' && value === 'allowed') {
-        annotation = true;
-      } else if (key === 'playlist' && value === 'allowed') {
-        playlist = true;
-      } else if (key === 'subtitles' && value === 'allowed') {
-        subtitles = true;
-      }
-    }
-
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
-
-    if (embed) {
-      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-embed-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-embed')+'</div>');
-    }
-    if (annotation) {
-      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-annotations-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-annotations')+'</div>');
-    }
-    if (playlist) {
-      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-playlist-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-playlist')+'</div>');
-    }
-    if (subtitles) {
-      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-subtitles-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-subtitles')+'</div>');
-    }
-
-    $('#create-annotations-link').on('click', (e) => {
-      this.openEditorType(that, e, 'annotation');
-    });
-
-    $('#create-embed-link').on('click', (e) => {
-      this.openEditorType(that, e, 'embed');
-    });
-
-    $('#create-playlist-link').on('click', (e) => {
-      this.openEditorType(that, e, 'playlist');
-    });
-
-    $('#create-subtitles-link').on('click', (e) => {
-      this.openEditorType(that, e, 'subtitles');
-    });
+    this.handleMenuOptions(that);
   }
 
   handleEditorButton(e, that) {
@@ -408,5 +356,47 @@ export default class Player {
   createButton(name, text, classname) {
     let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
     return button;
+  }
+
+  handleMenuOptions(that) {
+    let options = { embed: true, annotation: false, playlist: false, subtitles: false };
+
+    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+      if (value === 'allowed') {
+        options[key] = true;
+      }
+    }
+
+    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
+
+    for (let [key, value] of Object.entries(options)) {
+      if (value) {
+        $('#'+that.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
+
+        $('#create-'+key+'-link').on('click', (e) => {
+          this.openEditorType(that, e, key);
+        });
+      }
+    }
+  }
+
+  handleVolume(that, rate) {
+    let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
+    if (rate < 0) {
+      val = val < 0.1 ? 0 : val - 0.1;
+    } else {
+      val = val > 0.9 ? 1 : val + 0.1;
+    }
+
+    $('#'+that.elem.id+' .volume-slider').slider('value', val);
+  }
+
+  needToShowMenu(that) {
+    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+      if (value === 'allowed' && (key === 'embed' || key === 'annotation' || key === 'playlist' || key === 'subtitles')) {
+        return true;
+      }
+    }
+    return false;
   }
 }
