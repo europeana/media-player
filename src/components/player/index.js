@@ -359,16 +359,11 @@ export default class Player {
   }
 
   handleMenuOptions(that) {
-    let options = { embed: true, annotation: false, playlist: false, subtitles: false };
-
-    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
-      if (value === 'allowed') {
-        options[key] = true;
-      }
-    }
-
     $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
 
+    let options = { embed: true, annotation: false, playlist: false, subtitles: false };
+    options = that.determineOptionDisplay(that, options);
+    
     for (let [key, value] of Object.entries(options)) {
       if (value) {
         $('#'+that.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
@@ -382,13 +377,18 @@ export default class Player {
 
   handleVolume(that, rate) {
     let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
-    if (rate < 0) {
-      val = val < 0.1 ? 0 : val - 0.1;
-    } else {
-      val = val > 0.9 ? 1 : val + 0.1;
-    }
-
+    
+    val = that.determineNewVolume(val, rate);
+    
     $('#'+that.elem.id+' .volume-slider').slider('value', val);
+  }
+
+  determineNewVolume(val, rate) {
+    if (rate < 0) {
+      return val < 0.1 ? 0 : val - 0.1;
+    } else {
+      return val > 0.9 ? 1 : val + 0.1;
+    }
   }
 
   needToShowMenu(that) {
@@ -398,5 +398,14 @@ export default class Player {
       }
     }
     return false;
+  }
+
+  determineOptionDisplay(that, options) {
+    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+      if (value === 'allowed') {
+        options[key] = true;
+      }
+    }
+    return options;
   }
 }
