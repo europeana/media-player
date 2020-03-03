@@ -22,7 +22,7 @@ const client = function() {
 
 const customLaunchers = function() {
   let customLaunchers = {
-    Chrome_travis_ci: {
+    chromeTravisCi: {
       base: 'Chrome',
       flags: ['--no-sandbox']
     }
