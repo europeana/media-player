@@ -1,4 +1,4 @@
-module.exports = function (config) {
+const configuration = function(config) {
   config.set({
     basePath: '',
     exclude: [],
@@ -45,30 +45,8 @@ module.exports = function (config) {
        eg. import, export keywords */
     webpack: {
       module: {
-        rules: [
-          {
-            test: /\.js$/i,
-            exclude: /(node_modules)/,
-            loader: 'babel-loader',
-            options: {
-              //presets: ['@babel/preset-env']
-              presets: ["babel-preset-es2015"].map(require.resolve)
-            }
-          },
-          {
-            test: /\.[s]?css$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true,
-                }
-              }
-            ],
-
-          }
-        ]
+        rules: 
+          rules()
       }
     },
     preprocessors: {
@@ -94,4 +72,46 @@ module.exports = function (config) {
       }
     }
   });
+};
+
+const rules = function() {
+  let rules =
+    [
+      jsRule(), cssRule()
+    ];
+
+  return rules;
+};
+
+const jsRule = function() {
+  let jsRule = {
+    test: /\.js$/i,
+    exclude: /(node_modules)/,
+    loader: 'babel-loader',
+    options: {
+      presets: ["babel-preset-es2015"].map(require.resolve)
+    }
+  };
+
+  return jsRule;
+};
+
+const cssRule = function() {
+  let cssRule = {
+    test: /\.[s]?css$/,
+    use: [
+      'style-loader', {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+        }
+      }
+    ]
+  };
+
+  return cssRule;
+};
+
+module.exports = function(config) {
+  configuration(config);
 };
