@@ -3,8 +3,8 @@
 import './index.css';
 
 require('@iiif/base-component');
-require('@iiif/iiif-av-component');
 require('@iiif/iiif-tree-component');
+require('@iiif/iiif-av-component');
 require('manifesto.js');
 require('@iiif/manifold');
 require('dashjs');
@@ -56,7 +56,7 @@ export default class Player {
   }
 
   createAVComponent() {
-    this.$avcomponent = $('<div class="iiif-av-component"></div>');
+    this.$avcomponent = $('<div class="iiif-av-component" tabindex="0"></div>');
     $(this.elem).append(this.$avcomponent);
 
     let that = this;
@@ -92,6 +92,25 @@ export default class Player {
     this.avcomponent.on('volumechanged', (value) => {
       let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
       $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n(muteType));
+    });
+
+    this.$avcomponent.on('keydown', (e) => {
+      if (e.keyCode === 32 || e.keyCode === 75) {  //space bar, k button
+        that.handlePlayPause(that);
+      }
+      if (e.keyCode === 70) { //f button
+        $('#'+that.elem.id+' .button-fullscreen').click();
+      }
+      if (e.keyCode === 38) { //volume up by 10%
+        let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
+        val = val > 0.9 ? 1 : val + 0.1;
+        $('#'+that.elem.id+' .volume-slider').slider('value', val);
+      }
+      if (e.keyCode === 40) { //volume down by 10%
+        let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
+        val = val < 0.1 ? 0 : val - 0.1;
+        $('#'+that.elem.id+' .volume-slider').slider('value', val);
+      }
     });
   }
 
@@ -163,7 +182,6 @@ export default class Player {
     this.itemSelectListener(manifest);
   }
 
-  //todo: address correct object with class / id
   initLanguages() {
     let textTracks = $('video')[0].textTracks;
 
@@ -241,7 +259,16 @@ export default class Player {
     $('#'+that.elem.id+' .controls-container').append(subtitles);
 
     if (that.editorurl && that.editorurl.length > 0) {
-      this.addEditorOption(that);
+      let showMenu = false;
+      for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+        if (value === 'allowed' && (key === 'embed' || key === 'annotation' || key === 'playlist' || key === 'subtitles')) {
+          showMenu = true;
+          break;
+        }
+      }
+      if (showMenu) {
+        this.addEditorOption(that);
+      }
     }
 
     $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
@@ -288,7 +315,7 @@ export default class Player {
     //prevent the play/pause handler to react
     event.stopPropagation();
 
-    window.open(that.editorurl+'#'+type+'?manifest='+encodeURIComponent(that.manifesturl), '_blank');
+    window.open(that.editorurl+'?manifest='+encodeURIComponent(that.manifesturl)+'#'+type, '_blank');
   }
 
   optimizeForSmallerScreens() {
@@ -303,7 +330,34 @@ export default class Player {
     });
     $('#'+that.elem.id+' .controls-container').append(more);
 
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'><div id=\'create-embed-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-embed')+'</div><div id=\'create-annotations-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-annotations')+'</div><div id=\'create-playlist-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-playlist')+'</div><div id=\'create-subtitles-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-subtitles')+'</div></div>');
+    let embed, annotation, playlist, subtitles = false;
+
+    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+      if (key === 'embed' && value === 'allowed') {
+        embed = true;
+      } else if (key === 'annotation' && value === 'allowed') {
+        annotation = true;
+      } else if (key === 'playlist' && value === 'allowed') {
+        playlist = true;
+      } else if (key === 'subtitles' && value === 'allowed') {
+        subtitles = true;
+      }
+    }
+
+    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
+
+    if (embed) {
+      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-embed-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-embed')+'</div>');
+    }
+    if (annotation) {
+      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-annotations-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-annotations')+'</div>');
+    }
+    if (playlist) {
+      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-playlist-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-playlist')+'</div>');
+    }
+    if (subtitles) {
+      $('#'+that.elem.id+' .moremenu').append('<div id=\'create-subtitles-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-subtitles')+'</div>');
+    }
 
     $('#create-annotations-link').on('click', (e) => {
       this.openEditorType(that, e, 'annotation');

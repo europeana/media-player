@@ -6,6 +6,7 @@
   width: 100%;
   margin: 0 auto;
   font-family: "Open Sans";
+  outline: none;
 }
 
 .iiif-av-component .player {
@@ -70,7 +71,6 @@
 
 .iiif-av-component .canvas-container .anno {
   position: absolute;
-  /*border: 1px solid rgba(0,255,0,.4);*/
   background: transparent;
   font-size: 14px;
   font-weight: bold;

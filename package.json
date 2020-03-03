@@ -12,7 +12,7 @@
     "build": "webpack-cli",
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start",
     "stats": "webpack-cli --profile --json > lib/stats.json && webpack-bundle-analyzer lib/stats.json"
   },
   "dependencies": {
@@ -34,18 +34,28 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
     "css-loader": "^2.0.0",
     "eslint": "^6.5.1",
     "file-loader": "^3.0.1",
+    "ignore-styles": "^5.0.1",
     "image-webpack-loader": "^4.6.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.16.0",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.0.0",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-server": "^3.1.0",
+    "webpack-karma-jasmine": "^3.0.8"
   },
   "resolutions": {
     "**/**/serialize-javascript": "^2.1.1",
     "**/**/braces": "^2.3.1"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }
