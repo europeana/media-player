@@ -53,24 +53,21 @@ function increaseVolume(val, rate) {
 }
 
 function handleEditorButtonEvent(player, e) {
-    e.preventDefault();
-
-    if ($('#'+player.elem.id+' .moremenu').is(':visible')) {
-      $('#'+player.elem.id+' .moremenu').hide();
-    } else {
-      $('#'+player.elem.id+' .moremenu').css({ bottom: $('#'+player.elem.id+' .options-container').height(), left: (($('#'+player.elem.id+' .btn[data-name="More"]').offset().left - $('#'+player.elem.id+' .player').offset().left) - ($('#'+player.elem.id+' .moremenu').width() / 2)) });
-      $('#'+player.elem.id+' .moremenu').show();
-    }
+    toggleMenuOption(player, e, "moremenu", "More");
 }
 
 function toggleSubtitlesEvent(player, e) {
+    toggleMenuOption(player, e, "subtitlemenu", "Subtitles");
+}
+
+function toggleMenuOption(player, e, cls, name) {
     e.preventDefault();
 
-    if ($('#'+player.elem.id+' .subtitlemenu').is(':visible')) {
-      $('#'+player.elem.id+' .subtitlemenu').hide();
+    if ($('#'+player.elem.id+' .'+cls).is(':visible')) {
+      $('#'+player.elem.id+' .'+cls).hide();
     } else {
-      $('#'+player.elem.id+' .subtitlemenu').css({ bottom: $('#'+player.elem.id+' .options-container').height(), left: (($('#'+player.elem.id+' .btn[data-name="Subtitles"]').offset().left - $('#'+player.elem.id+' .player').offset().left) - ($('#'+player.elem.id+' .subtitlemenu').width() / 2)) });
-      $('#'+player.elem.id+' .subtitlemenu').show();
+      $('#'+player.elem.id+' .'+cls).css({ bottom: $('#'+player.elem.id+' .options-container').height(), left: (($('#'+player.elem.id+' .btn[data-name="'+name+'"]').offset().left - $('#'+player.elem.id+' .player').offset().left) - ($('#'+player.elem.id+' .'+cls).width() / 2)) });
+      $('#'+player.elem.id+' .'+cls).show();
     }
 }
 
