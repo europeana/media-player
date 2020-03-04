@@ -1,9 +1,18 @@
-dist: bionic
+dist: xenial
+services:
+  - xvfb
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
 language: node_js
 node_js:
   - "node"
-addons:
-  chrome: stable
 
-before_script:
-  - export CHROME_BIN=chromium-browser
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
+
+  script: xvfb-run yarn test
