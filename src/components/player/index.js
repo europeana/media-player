@@ -14,6 +14,8 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
+const { handleKeyEvents, handlePlayPauseEvent, handleFullScreenEvent, handleEditorButtonEvent, toggleSubtitlesEvent, handleSubtitleMenuEvent, openEditorTypeEvent } = require('./playerEvents');
+
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
 
@@ -59,12 +61,12 @@ export default class Player {
     this.$avcomponent = $('<div class="iiif-av-component" tabindex="0"></div>');
     $(this.elem).append(this.$avcomponent);
 
-    let that = this;
+    let player = this;
 
     this.avcomponent = new IIIFComponents.AVComponent({ target: this.$avcomponent[0] });
 
     this.avcomponent.on('mediaerror', (error) => {
-      this.handleMediaError(that, error);
+      this.handleMediaError(player, error);
     });
 
     this.avcomponent.on('log', (message) => {
@@ -72,41 +74,30 @@ export default class Player {
     });
 
     this.avcomponent.on('play', () => {
-      $('#'+that.elem.id+' .playwrapper').hide();
-      $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-pause'));
+      $('#'+player.elem.id+' .playwrapper').hide();
+      $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-pause'));
     });
 
     this.avcomponent.on('pause', () => {
-      clearInterval(that.timeupdate);
-      $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-play'));
+      clearInterval(player.timeupdate);
+      $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
     });
 
     this.avcomponent.on('mediaready', () => {
-      this.handleMediaReady(that);
+      this.handleMediaReady(player);
     });
 
     this.avcomponent.on('fullscreen', () => {
-      this.handleFullScreen(that);
+      handleFullScreenEvent(player);
     });
 
     this.avcomponent.on('volumechanged', (value) => {
       let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
-      $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n(muteType));
+      $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n(muteType));
     });
 
     this.$avcomponent.on('keydown', (e) => {
-      if (e.keyCode === 32 || e.keyCode === 75) {  //space bar, k button
-        that.handlePlayPause(that);
-      }
-      if (e.keyCode === 70) { //f button
-        $('#'+that.elem.id+' .button-fullscreen').click();
-      }
-      if (e.keyCode === 38) { //volume up by 10%
-        that.handleVolume(that, 0.1);
-      }
-      if (e.keyCode === 40) { //volume down by 10%
-        that.handleVolume(that, -0.1);
-      }
+      handleKeyEvents(player, e);
     });
   }
 
@@ -179,7 +170,7 @@ export default class Player {
   }
 
   initLanguages() {
-    let textTracks = $('video')[0].textTracks;
+    let textTracks = $('#'+this.elem.id+' video')[0].textTracks;
 
     //check if we have any texttracks
     if (textTracks.length === 0) {
@@ -198,21 +189,20 @@ export default class Player {
     $('#'+this.elem.id+' .canvas-container').append(menu);
 
     $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
-      this.toggleSubtitles(e);
+      toggleSubtitlesEvent(this, e);
     });
 
     let that = this;
 
     $('.subtitlemenu-option').on('click', function(e) {
-      this.handleSubtitleMenu(that, e);
+      handleSubtitleMenuEvent(that, e);
     });
   }
 
-  //todo: address correct object with class / id
   //todo: address audio as well
   hasEnded() {
-    if ($('video').length) {
-      return $('video')[0].ended;
+    if ($('#'+this.elem.id+' video').length) {
+      return $('#'+this.elem.id+' video')[0].ended;
     } else {
       return false;
     }
@@ -267,46 +257,8 @@ export default class Player {
     $('#'+that.elem.id).css({ width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight });
 
     $('#'+that.elem.id+' .canvas-container').on('click', () => {
-      this.handlePlayPause(that);
+      handlePlayPauseEvent(that);
     });
-  }
-
-  handleFullScreen(that) {
-    $('#'+that.elem.id+' .moremenu').hide();
-    $('#'+that.elem.id+' .subtitlemenu').hide();
-  }
-
-  toggleSubtitles(e) {
-    e.preventDefault();
-
-    if ($('#'+this.elem.id+' .subtitlemenu').is(':visible')) {
-      $('#'+this.elem.id+' .subtitlemenu').hide();
-    } else {
-      $('#'+this.elem.id+' .subtitlemenu').css({ bottom: $('#'+this.elem.id+' .options-container').height(), left: (($('#'+this.elem.id+' .btn[data-name="Subtitles"]').offset().left - $('#'+this.elem.id+' .player').offset().left) - ($('#'+this.elem.id+' .subtitlemenu').width() / 2)) });
-      $('#'+this.elem.id+' .subtitlemenu').show();
-    }
-  }
-
-  handleSubtitleMenu(that, e) {
-    $('#'+that.elem.id+' .subtitlemenu').hide();
-    let textTracks = $('video')[0].textTracks;
-
-    for (let i = 0; i < textTracks.length; i++) {
-      if ($(this).data('language') === textTracks[i].language) {
-        textTracks[i].mode = 'showing';
-      } else {
-        textTracks[i].mode = 'hidden';
-      }
-    }
-    //prevent the play/pause handler to react
-    e.stopPropagation();
-  }
-
-  openEditorType(that, event, type) {
-    //prevent the play/pause handler to react
-    event.stopPropagation();
-
-    window.open(that.editorurl+'?manifest='+encodeURIComponent(that.manifesturl)+'#'+type, '_blank');
   }
 
   optimizeForSmallerScreens() {
@@ -317,34 +269,11 @@ export default class Player {
   addEditorOption(that) {
     let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more');
     more[0].addEventListener('click', (e) => {
-      this.handleEditorButton(e, that);
+      handleEditorButtonEvent(that, e);
     });
     $('#'+that.elem.id+' .controls-container').append(more);
 
     this.handleMenuOptions(that);
-  }
-
-  handleEditorButton(e, that) {
-    e.preventDefault();
-
-    if ($('#'+that.elem.id+' .moremenu').is(':visible')) {
-      $('#'+that.elem.id+' .moremenu').hide();
-    } else {
-      $('#'+that.elem.id+' .moremenu').css({ bottom: $('#'+that.elem.id+' .options-container').height(), left: (($('#'+that.elem.id+' .btn[data-name="More"]').offset().left - $('#'+that.elem.id+' .player').offset().left) - ($('#'+that.elem.id+' .moremenu').width() / 2)) });
-      $('#'+that.elem.id+' .moremenu').show();
-    }
-  }
-
-  handlePlayPause(that) {
-    if (that.avcomponent.canvasInstances[0].isPlaying()) {
-      that.avcomponent.canvasInstances[0].pause();
-    } else {
-      //hide playcircle if showing
-      if ($('#'+that.elem.id+' .playwrapper').is(':visible')) {
-        $('#'+that.elem.id+' .playwrapper').hide();
-      }
-      that.avcomponent.canvasInstances[0].play();
-    }
   }
 
   updateAVComponentLanguage(that) {
@@ -369,34 +298,10 @@ export default class Player {
         $('#'+that.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
 
         $('#create-'+key+'-link').on('click', (e) => {
-          this.openEditorType(that, e, key);
+          openEditorTypeEvent(that, e, key);
         });
       }
     }
-  }
-
-  handleVolume(that, rate) {
-    let val = $('#'+that.elem.id+' .volume-slider').slider('option', 'value');
-    
-    val = that.determineNewVolume(that, val, rate);
-    
-    $('#'+that.elem.id+' .volume-slider').slider('value', val);
-  }
-
-  determineNewVolume(that, val, rate) {
-    if (rate < 0) {
-      return that.decreaseVolume(val, rate);
-    } else {
-      return that.increaseVolume(val, rate);
-    }
-  }
-
-  decreaseVolume(val, rate) {
-    return val < rate ? 0 : val + rate;
-  }
-
-  increaseVolume(val, rate) {
-    return val > rate + val > 1 ? 1 : val + rate;
   }
 
   needToShowMenu(that) {
