@@ -225,8 +225,6 @@ export default class Player {
 
     $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
-    $('#'+player.elem.id).css({ width: player.avcomponent.canvasInstances[0]._canvasWidth, height: player.avcomponent.canvasInstances[0]._canvasHeight });
-
     this.handleMediaType(player);
 
     $('#'+player.elem.id+' .canvas-container').on('click', () => {
@@ -296,10 +294,17 @@ export default class Player {
   }
 
   handleMediaType(player) {
+    let w, h;
+    w = h = 400;
     switch (this.getMediaType(player)) {
       case 'Audio':
         this.setImage(player, player.manifest.__jsonld.thumbnail[0].id);
+        break;
+      case 'Video':
+        w = player.avcomponent.canvasInstances[0]._canvasWidth;
+        h = player.avcomponent.canvasInstances[0]._canvasHeight;
     }
+    $('#'+player.elem.id).css({ width : w, height : h });
   }
 
   getMediaType(player) {
