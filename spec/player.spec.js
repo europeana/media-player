@@ -27,8 +27,8 @@ describe('index functions', () => {
   });
 
   it('should contain a play button', () => {
-    let playCircle = document.querySelector('.playcircle');
-    expect(playCircle).toBeTruthy();
+    let playButton = document.querySelector('.button-play');
+    expect(playButton).toBeTruthy();
   });
 
   it('should have a duration of 1:00', () => {
