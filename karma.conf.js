@@ -23,8 +23,8 @@ const client = function() {
 const customLaunchers = function() {
   let customLaunchers = {
     chromeTravisCi: {
-      base: 'Chrome',
-      flags: ['--no-sandbox', '--disable-setuid-sandbox']
+      base: 'ChromeHeadless',
+      flags: [ '--no-sandbox', '--disable-setuid-sandbox' ]
     }
   };
 
