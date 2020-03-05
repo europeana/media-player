@@ -1,5 +1,6 @@
 # Europeana Media Player Library
 
+[![Build Status](https://travis-ci.com/europeana/media-player.svg?branch=master)](https://travis-ci.com/europeana/media-player)
 [![Maintainability](https://api.codeclimate.com/v1/badges/034304037fa168609682/maintainability)](https://codeclimate.com/github/europeana/media-player/maintainability)
 
 Created as part of the [Europeana Media Project](https://pro.europeana.eu/project/europeana-media)
