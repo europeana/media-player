@@ -1,10 +1,16 @@
 # Europeana Media Player Library
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/034304037fa168609682/maintainability)](https://codeclimate.com/github/europeana/media-player/maintainability)
+
 Created as part of the [Europeana Media Project](https://pro.europeana.eu/project/europeana-media)
 
 ### First
 
 Install deps from project root with `yarn` or `npm i`
+
+### Testing
+
+Run tests with `yarn test` or `npm run test`
 
 ### Build for production
 
