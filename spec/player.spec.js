@@ -18,7 +18,7 @@ describe('index functions', () => {
 
     index.init(wrapperElement, videoObj, options);
 
-    setTimeout(done, 3500);
+    setTimeout(done, 3000);
   });
 
   it('should load the player', () => {
