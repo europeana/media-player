@@ -24,7 +24,7 @@ const customLaunchers = function() {
   let customLaunchers = {
     chromeTravisCi: {
       base: 'Chrome',
-      flags: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--disable-software-rasterizer', '--gpu-sandbox-start-early']
+      flags: ['--headless', '--no-sandbox' ]
     }
   };
 
