@@ -24,7 +24,7 @@ const customLaunchers = function() {
   let customLaunchers = {
     chromeTravisCi: {
       base: 'Chrome',
-      flags: ['--headless', '--no-sandbox' ]
+      flags: [ '--no-sandbox' ]
     }
   };
 
