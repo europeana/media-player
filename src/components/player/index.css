@@ -489,3 +489,9 @@ button:focus {
 .subtitlemenu-option {
   cursor: pointer;
 }
+
+.iiif-av-component .canvas-container .audio-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

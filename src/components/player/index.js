@@ -14,7 +14,7 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { handleKeyEvents, handlePlayPauseEvent, handleFullScreenEvent, handleEditorButtonEvent, toggleSubtitlesEvent, handleSubtitleMenuEvent, openEditorTypeEvent } = require('./playerEvents');
+const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler } = require('./playerEventHandlers');
 
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
@@ -66,7 +66,7 @@ export default class Player {
     this.avcomponent = new IIIFComponents.AVComponent({ target: this.$avcomponent[0] });
 
     this.avcomponent.on('mediaerror', (error) => {
-      this.handleMediaError(player, error);
+      mediaErrorHandler(player, error);
     });
 
     this.avcomponent.on('log', (message) => {
@@ -74,13 +74,11 @@ export default class Player {
     });
 
     this.avcomponent.on('play', () => {
-      $('#'+player.elem.id+' .playwrapper').hide();
-      $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-pause'));
+      playEventHandler(player);
     });
 
     this.avcomponent.on('pause', () => {
-      clearInterval(player.timeupdate);
-      $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
+      pauseEventHandler(player);
     });
 
     this.avcomponent.on('mediaready', () => {
@@ -88,16 +86,15 @@ export default class Player {
     });
 
     this.avcomponent.on('fullscreen', () => {
-      handleFullScreenEvent(player);
+      fullScreenEventHandler(player);
     });
 
     this.avcomponent.on('volumechanged', (value) => {
-      let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
-      $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n(muteType));
+      volumeChangedEventHandler(player, value);
     });
 
     this.$avcomponent.on('keydown', (e) => {
-      handleKeyEvents(player, e);
+      keyEventHandler(player, e);
     });
   }
 
@@ -108,10 +105,10 @@ export default class Player {
 
     this.handler.videoId = data;
 
-    let that = this;
+    let player = this;
 
     this.handler.ldManifest(data, (helper) => {
-      that.manifest = helper.manifest;
+      player.manifest = helper.manifest;
 
       let canvases = helper.getCanvases();
       if (canvases.length > 1) {
@@ -125,7 +122,7 @@ export default class Player {
   }
 
   ldManifest(manifest, successcb, errorcb) {
-    let that = this;
+    let player = this;
 
     Manifold.loadManifest({
       iiifResourceUri: manifest,
@@ -136,15 +133,15 @@ export default class Player {
     }).then((h) => {
       helper = h;
 
-      that.avcomponent.set({
+      player.avcomponent.set({
         helper,
-        limitToRange: that.state.limitToRange,
-        autoSelectRange: that.state.autoSelectRange,
-        constrainNavigationToRange: that.state.constrainNavigationToRange,
-        virtualCanvasEnabled: that.state.virtualCanvasEnabled
+        limitToRange: player.state.limitToRange,
+        autoSelectRange: player.state.autoSelectRange,
+        constrainNavigationToRange: player.state.constrainNavigationToRange,
+        virtualCanvasEnabled: player.state.virtualCanvasEnabled
       });
       successcb(helper);
-      that.resize();
+      player.resize();
     }).catch((e) => {
       errorcb(e);
     });
@@ -189,13 +186,13 @@ export default class Player {
     $('#'+this.elem.id+' .canvas-container').append(menu);
 
     $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
-      toggleSubtitlesEvent(this, e);
+      toggleSubtitlesEventHandler(this, e);
     });
 
-    let that = this;
+    let player = this;
 
-    $('.subtitlemenu-option').on('click', function(e) {
-      handleSubtitleMenuEvent(that, e);
+    $('.subtitlemenu-option').on('click', (e) => {
+      subtitleMenuEventHandler(player, e);
     });
   }
 
@@ -208,56 +205,30 @@ export default class Player {
     }
   }
 
-  handleMediaError(that, error) {
-    console.error('media error', error);
-
-    $('#'+that.elem.id+' .player').removeClass('player--loading');
-    let errormessage = this.banana.i18n('player-error')+': ';
-    switch (error.code) {
-      case 1:
-        errormessage += this.banana.i18n('player-error-loading');
-        break;
-      case 2:
-        errormessage += this.banana.i18n('player-error-network');
-        break;
-      case 3:
-        errormessage += this.banana.i18n('player-error-decoding');
-        break;
-      case 4:
-        errormessage += this.banana.i18n('player-error-format');
-        break;
-      default:
-        errormessage += this.banana.i18n('player-error-unknown');
-        break;
-    }
-
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno errormessage\'>'+errormessage+'</div>');
-  }
-
-  handleMediaReady(that) {
-    if (that.avcomponent.canvasInstances[0]._canvasWidth < 400) {
+  handleMediaReady(player) {
+    if (player.avcomponent.canvasInstances[0]._canvasWidth < 400) {
       this.optimizeForSmallerScreens();
     }
 
-    this.updateAVComponentLanguage(that);
+    this.updateAVComponentLanguage(player);
 
     let subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
-    $('#'+that.elem.id+' .controls-container').append(subtitles);
+    $('#'+player.elem.id+' .controls-container').append(subtitles);
 
-    if (that.editorurl && that.editorurl.length > 0) {
-      let showMenu = that.needToShowMenu(that);
+    if (player.editorurl && player.editorurl.length > 0) {
+      let showMenu = player.needToShowMenu(player);
 
       if (showMenu) {
-        this.addEditorOption(that);
+        this.addEditorOption(player);
       }
     }
 
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
+    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
-    $('#'+that.elem.id).css({ width: that.avcomponent.canvasInstances[0]._canvasWidth, height: that.avcomponent.canvasInstances[0]._canvasHeight });
+    this.handleMediaType(player);
 
-    $('#'+that.elem.id+' .canvas-container').on('click', () => {
-      handlePlayPauseEvent(that);
+    $('#'+player.elem.id+' .canvas-container').on('click', () => {
+      playPauseEventHandler(player);
     });
   }
 
@@ -266,20 +237,20 @@ export default class Player {
     $('.iiif-av-component .controls-container .volume .volume-slider').css({ 'width': 42 });
   }
 
-  addEditorOption(that) {
+  addEditorOption(player) {
     let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more');
     more[0].addEventListener('click', (e) => {
-      handleEditorButtonEvent(that, e);
+      editorButtonEventHandler(player, e);
     });
-    $('#'+that.elem.id+' .controls-container').append(more);
+    $('#'+player.elem.id+' .controls-container').append(more);
 
-    this.handleMenuOptions(that);
+    this.handleMenuOptions(player);
   }
 
-  updateAVComponentLanguage(that) {
-    $('#'+that.elem.id+' .volume-mute').attr('title', that.banana.i18n('player-mute'));
-    $('#'+that.elem.id+' .button-fullscreen').attr('title', that.banana.i18n('player-fullscreen'));
-    $('#'+that.elem.id+' .button-play').attr('title', that.banana.i18n('player-play'));
+  updateAVComponentLanguage(player) {
+    $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n('player-mute'));
+    $('#'+player.elem.id+' .button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
+    $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
   }
 
   createButton(name, text, classname) {
@@ -287,25 +258,25 @@ export default class Player {
     return button;
   }
 
-  handleMenuOptions(that) {
-    $('#'+that.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
+  handleMenuOptions(player) {
+    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
 
     let options = { embed: true, annotation: false, playlist: false, subtitles: false };
-    options = that.determineOptionDisplay(that, options);
-    
+    options = player.determineOptionDisplay(player, options);
+
     for (let [key, value] of Object.entries(options)) {
       if (value) {
-        $('#'+that.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
+        $('#'+player.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
 
-        $('#create-'+key+'-link').on('click', (e) => {
-          openEditorTypeEvent(that, e, key);
+        $('#'+player.elem.id+' #create-'+key+'-link').on('click', (e) => {
+          openEditorTypeEventHandler(player, e, key);
         });
       }
     }
   }
 
-  needToShowMenu(that) {
-    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+  needToShowMenu(player) {
+    for (let [key, value] of Object.entries(player.manifest.__jsonld.rights)) {
       if (value === 'allowed' && (key === 'embed' || key === 'annotation' || key === 'playlist' || key === 'subtitles')) {
         return true;
       }
@@ -313,12 +284,35 @@ export default class Player {
     return false;
   }
 
-  determineOptionDisplay(that, options) {
-    for (let [key, value] of Object.entries(that.manifest.__jsonld.rights)) {
+  determineOptionDisplay(player, options) {
+    for (let [key, value] of Object.entries(player.manifest.__jsonld.rights)) {
       if (value === 'allowed') {
         options[key] = true;
       }
     }
     return options;
+  }
+
+  handleMediaType(player) {
+    let w, h;
+    w = h = 400;
+    switch (this.getMediaType(player)) {
+      case 'Audio':
+        this.setImage(player, player.manifest.__jsonld.thumbnail[0].id);
+        break;
+      case 'Video':
+        w = player.avcomponent.canvasInstances[0]._canvasWidth;
+        h = player.avcomponent.canvasInstances[0]._canvasHeight;
+    }
+    $('#'+player.elem.id).css({ width : w, height : h });
+  }
+
+  getMediaType(player) {
+    return player.manifest.__jsonld.items[0].items[0].items[0].body.type;
+  }
+
+  setImage(player, image) {
+    $('#'+player.elem.id+' .playwrapper').css({ 'background-image' : 'url(' + image +')' });
+    $('#'+player.elem.id+' .playwrapper').addClass('audio-background');
   }
 }
