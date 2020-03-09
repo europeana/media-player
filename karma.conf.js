@@ -10,7 +10,7 @@ const files = function() {
 
 const client = function() {
   let client = {
-    captureConsole: true,
+    captureConsole: false,
     clearContext: false,
     jasmine: {
       random: false
@@ -23,8 +23,8 @@ const client = function() {
 const customLaunchers = function() {
   let customLaunchers = {
     chromeTravisCi: {
-      base: 'Chrome',
-      flags: ['--no-sandbox', '--disable-setuid-sandbox']
+      base: 'ChromeHeadless',
+      flags: [ '--no-sandbox', '--disable-setuid-sandbox' ]
     }
   };
 
@@ -95,7 +95,7 @@ const configuration = {
   exclude: [],
   files: files(),
   autoWatch: true,
-  singleRun: false,
+  singleRun: true,
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
