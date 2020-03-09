@@ -490,7 +490,7 @@ button:focus {
   cursor: pointer;
 }
 
-.iiif-av-component .canvas-container .audio-background {
+.iiif-av-component .audio-background {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
