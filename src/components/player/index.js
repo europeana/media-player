@@ -312,7 +312,7 @@ export default class Player {
   }
 
   setImage(player, image) {
-    $('#'+player.elem.id+' .playwrapper').css({ 'background-image' : 'url(' + image +')' });
-    $('#'+player.elem.id+' .playwrapper').addClass('audio-background');
+    $('#'+player.elem.id+' .canvas-container').css({ 'background-image' : 'url(' + image +')' });
+    $('#'+player.elem.id+' .canvas-container').addClass('audio-background');
   }
 }
