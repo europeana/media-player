@@ -1,8 +1,8 @@
 const files = function() {
   let files = [
-      { pattern: 'spec/*.js', watched: true, served: true, type: 'module', included: true },
-      'https://code.jquery.com/jquery-3.4.1.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
+    { pattern: 'spec/**/*.js', watched: true, served: true, type: 'module', included: true },
+    'https://code.jquery.com/jquery-3.4.1.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
   ];
 
   return files;
@@ -34,7 +34,7 @@ const customLaunchers = function() {
 const webpack = function() {
   let webpack = {
     module: {
-      rules: 
+      rules:
         rules()
     }
   };
@@ -99,7 +99,7 @@ const configuration = {
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
-  reporters: ['mocha', 'kjhtml'/*,'dots','progress','spec'*/],
+  reporters: ['mocha', 'kjhtml', 'progress', 'coverage'/*,'dots','progress','spec'*/],
 
   //address that the server will listen on, '0.0.0.0' is default
   listenAddress: '0.0.0.0',
@@ -127,8 +127,15 @@ const configuration = {
 
   preprocessors: {
     //add webpack as preprocessor to support require() in test-suits .js files
-    './spec/*.js': ['webpack']
+    './spec/**/*.js': ['webpack'],
   },
+
+  coverageReporter: {
+    dir : 'coverage/',
+    includeAllSources: true,
+    type: 'html'
+  },
+
   webpackMiddleware: webpackMiddleware(),
 
   /*karma-mocha-reporter config*/
