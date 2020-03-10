@@ -17,7 +17,7 @@ function volumeChangedEventHandler(player, value) {
 
 function keyEventHandler(player, e) {
   if (e.keyCode === 32 || e.keyCode === 75) {  //space bar, k button
-    player.handlePlayPause(player);
+    playPauseEventHandler(player);
   }
   if (e.keyCode === 70) { //f button
     $('#'+player.elem.id+' .button-fullscreen').click();
