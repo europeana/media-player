@@ -30,39 +30,38 @@ const webpack = () => {
     cache: true,
     devtool: 'inline-source-map',
     module: {
-      rules: [
-        {
-          enforce: 'pre',
-          test: /.spec\.js$/,
-          include: /spec/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: 'babel-loader'
-              //  options: { presets: ['env'] }
-            }
-          ]
-        },
-        {
-          enforce: 'pre',
-          test: /\.js$/,
-          include: /src/,
-          exclude: /node_modules/,
-          use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
-        },
-        {
-          test: /\.js$/,
-          include: /src/,
-          exclude: /node_modules|spec/,
-          use: [{ loader: 'babel-loader' }]
-        },
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader']
-        }
-      ]
+      rules: rules()
     }
   }
+};
+
+const rules = () => {
+  return [
+    {
+      enforce: 'pre',
+      test: /.spec\.js$/,
+      include: /spec/,
+      exclude: /node_modules/,
+      use: [{ loader: 'babel-loader' }]
+    },
+    {
+      enforce: 'pre',
+      test: /\.js$/,
+      include: /src/,
+      exclude: /node_modules/,
+      use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
+    },
+    {
+      test: /\.js$/,
+      include: /src/,
+      exclude: /node_modules|spec/,
+      use: [{ loader: 'babel-loader' }]
+    },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }
+  ]
 };
 
 const webpackMiddleware = function() {
