@@ -1,96 +1,80 @@
 const files = function() {
-  let files = [
-    { pattern: 'spec/**/*.js', watched: true, served: true, type: 'module', included: true },
+  return [
+    { pattern: './spec/**/*.js', watched: true, type: 'module'  },
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
   ];
-
-  return files;
 };
 
 const client = function() {
-  let client = {
+  return {
     captureConsole: false,
     clearContext: false,
     jasmine: {
       random: false
     }
   };
-
-  return client;
 };
 
 const customLaunchers = function() {
-  let customLaunchers = {
+  return {
     chromeTravisCi: {
       base: 'ChromeHeadless',
       flags: [ '--no-sandbox', '--disable-setuid-sandbox' ]
     }
   };
-
-  return customLaunchers;
 };
 
-const webpack = function() {
-  let webpack = {
+const webpack = () => {
+  return {
+    cache: true,
+    devtool: 'inline-source-map',
     module: {
-      rules:
-        rules()
-    }
-  };
-
-  return webpack;
-};
-
-const rules = function() {
-  let rules =
-    [
-      jsRule(), cssRule()
-    ];
-
-  return rules;
-};
-
-const jsRule = function() {
-  let jsRule = {
-    test: /\.js$/i,
-    exclude: /(node_modules)/,
-    loader: 'babel-loader',
-    options: {
-      presets: ["babel-preset-es2015"].map(require.resolve)
-    }
-  };
-
-  return jsRule;
-};
-
-const cssRule = function() {
-  let cssRule = {
-    test: /\.[s]?css$/,
-    use: [
-      'style-loader', {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
+      rules: [
+        {
+          enforce: 'pre',
+          test: /.spec\.js$/,
+          include: /spec/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader'
+              //  options: { presets: ['env'] }
+            }
+          ]
+        },
+        {
+          enforce: 'pre',
+          test: /\.js$/,
+          include: /src/,
+          exclude: /node_modules/,
+          use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
+        },
+        {
+          test: /\.js$/,
+          include: /src/,
+          exclude: /node_modules|spec/,
+          use: [{ loader: 'babel-loader' }]
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
         }
-      }
-    ]
-  };
-
-  return cssRule;
+      ]
+    }
+  }
 };
 
 const webpackMiddleware = function() {
-  let webpackMiddleware = {
+  return {
     //turn off webpack bash output when run the tests
     noInfo: true,
     stats: 'errors-only'
   };
-
-  return webpackMiddleware;
 }
 
 const configuration = {
+  //logLevel: 'DEBUG',
   basePath: '',
   exclude: [],
   files: files(),
@@ -99,8 +83,7 @@ const configuration = {
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
-  reporters: ['mocha', 'kjhtml', 'progress', 'coverage'/*,'dots','progress','spec'*/],
-
+  reporters: ['progress', 'spec', 'coverage'],//, 'kjhtml', 'dots', ],
   //address that the server will listen on, '0.0.0.0' is default
   listenAddress: '0.0.0.0',
   //hostname to be used when capturing browsers, 'localhost' is default
@@ -115,34 +98,20 @@ const configuration = {
   browserNoActivityTimeout: 10000,
   //timeout for capturing a browser, 60000 is default
   captureTimeout: 60000,
-
   client: client(),
-
-  /* karma-webpack config
-    pass your webpack configuration for karma
-    add `babel-loader` to the webpack configuration to make
-    the ES6+ code in the test files readable to the browser
-    eg. import, export keywords */
   webpack: webpack(),
-
   preprocessors: {
     //add webpack as preprocessor to support require() in test-suits .js files
     './spec/**/*.js': ['webpack'],
+    './src/**/*.js': ['webpack', 'coverage'],
   },
-
-  coverageReporter: {
+  coverageIstanbulReporter: {
     dir : 'coverage/',
-    includeAllSources: true,
-    type: 'html'
+    reports: [ 'html' ],
+    fixWebpackSourcePaths: true
   },
 
   webpackMiddleware: webpackMiddleware(),
-
-  /*karma-mocha-reporter config*/
-  mochaReporter: {
-    output: 'noFailures'  //full, autowatch, minimal
-  },
-
   customLaunchers: customLaunchers()
 };
 
