@@ -1,9 +1,21 @@
 const files = function() {
   return [
-    { pattern: './spec/**/*.js', watched: true, type: 'module'  },
+    { pattern: './spec/**/*.spec.js', watched: true, type: 'module' },
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
-  ];
+    //'http://localhost:9876/base/spec/fixture-data/jquery-3.4.1.min.js',
+    //'http://localhost:9876/base/spec/fixture-data/jquery-ui.min.js'
+  ]
+  .concat(
+    ['jpg', 'js', 'json', 'mp3', 'mp4'].map((ext) => {
+      return {
+        pattern:  `./spec/fixture-data/*.${ext}`,
+        included: false,
+        watched:  true,
+        served:   true
+      }
+    })
+  );
 };
 
 const client = function() {
