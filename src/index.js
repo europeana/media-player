@@ -5,8 +5,6 @@ import Player from './components/player';
 
 let editorurl = '';
 let player;
-export { player };
-
 let language = '';
 
 export const init = (container, videoObj, options) => {

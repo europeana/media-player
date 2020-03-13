@@ -1,14 +1,13 @@
+/*
 import * as pEvents  from '../../../src/components/player/playerEventHandlers';
 import Player from '../../../src/components/player/index';
 const $ = require("jquery");
-import slider from '../../../node_modules/jquery-ui/ui/widgets/slider'
 
-const manifest = 'https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/manifest?format=3&wskey=api2demo';
-const manifestEdiatble = 'https://beta.qandr.eu/euscreenxlmanifestservlet/?videoid=http://stream4.noterik.com/progressive/stream4/domain/euscreen/user/eu_luce/video/1323/rawvideo/1/raw.mp4&ticket=83510250&duration=73&maggieid=/domain/euscreenxl/user/eu_luce/video/EUS_DD5A286675EE415894693ED77BCC41A5'
+//const manifest = 'https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/manifest?format=3&wskey=api2demo';
+//const manifestEditable = 'https://beta.qandr.eu/euscreenxlmanifestservlet/?videoid=http://stream4.noterik.com/progressive/stream4/domain/euscreen/user/eu_luce/video/1323/rawvideo/1/raw.mp4&ticket=83510250&duration=73&maggieid=/domain/euscreenxl/user/eu_luce/video/EUS_DD5A286675EE415894693ED77BCC41A5'
+const manifestEditable = 'http://localhost:9876/base/spec/fixture-data/manifest.json';
 
 describe('Event Handling', () => {
-
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
   const fixture = '<div id="eups-player-123" class="eups-player"></div>';
   let player;
@@ -18,7 +17,7 @@ describe('Event Handling', () => {
     let wrapperElement = $('.eups-player');
     console.log('wrapperElement[0] ' + wrapperElement[0]);
     player = new Player(wrapperElement[0]);
-    player.init({ manifest: manifestEdiatble }, manifestEdiatble, '');
+    player.init({ manifest: manifestEditable }, manifestEditable, '');
     player.avcomponent.on('mediaready', function() {
       done();
     });
@@ -84,8 +83,8 @@ describe('Event Handling', () => {
   it('should open types', () => {
     spyOn(window, 'open').and.callFake(() => {});
     const player = {
-      editorurl: manifestEdiatble,
-      manifesturl: manifestEdiatble
+      editorurl: manifestEditable,
+      manifesturl: manifestEditable
     };
     const e = {
       stopPropagation: () => {}
@@ -108,3 +107,4 @@ describe('Event Handling', () => {
   });
 
 });
+*/
