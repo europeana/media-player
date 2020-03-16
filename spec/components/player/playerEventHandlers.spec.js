@@ -1,20 +1,22 @@
 import * as pEvents  from '../../../src/components/player/playerEventHandlers';
 import Player from '../../../src/components/player/index';
 const $ = require("jquery");
-import slider from 'jquery-ui/ui/widgets/slider'
+//import slider from 'jquery-ui/ui/widgets/slider'
 
 const manifest = 'https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/manifest?format=3&wskey=api2demo';
 
 describe('Event Handling', () => {
 
-  const fixture = '<div id="eups-player-123" class="eups-player"></div>';
+  const fixture = '<div class="eups-player"></div>';
   let player;
 
   beforeEach((done) => {
     document.body.insertAdjacentHTML('afterbegin', fixture);
     let wrapperElement = $('.eups-player');
+    wrapperElement.attr('id', Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)));
 
     console.log('wrapperElement[0] ' + wrapperElement[0]);
+    console.log('wrapperElement[0].id ' + wrapperElement[0].id);
 
     player = new Player(wrapperElement[0]);
     player.init({ manifest: manifest }, '', '');
@@ -22,6 +24,10 @@ describe('Event Handling', () => {
     player.avcomponent.on('mediaready', function() {
       done();
     });
+  });
+
+  afterEach(() => {
+    $('.eups-player').remove();
   });
 
   it('should pause on space', () => {

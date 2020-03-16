@@ -31,7 +31,7 @@ function keyEventHandler(player, e) {
 }
 
 function playPauseEventHandler(player) {
-  if (player.avcomponent.canvasInstances[0].isPlaying()) {
+  if (player.avcomponent.canvasInstances[0]._isPlaying) {
     player.avcomponent.canvasInstances[0].pause();
   } else {
     //hide playcircle if showing
