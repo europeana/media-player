@@ -1,8 +1,10 @@
 const files = function() {
   let files = [
-    { pattern: 'spec/**/*.js', watched: true, served: true, type: 'module', included: true },
     'https://code.jquery.com/jquery-3.4.1.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+    /*{ pattern: './src/index.js', },*/
+    { pattern: 'spec/player.spec.js', watched: false, served: true, type: 'module', included: true },
+    { pattern: 'spec/components/player/playerEventHandlers.spec.js', watched: false, served: true, type: 'js', included: true }
   ];
 
   return files;
@@ -36,7 +38,8 @@ const webpack = function() {
     module: {
       rules:
         rules()
-    }
+    },
+    devtool: 'inline-source-map'
   };
 
   return webpack;
@@ -56,9 +59,6 @@ const jsRule = function() {
     test: /\.js$/i,
     exclude: /(node_modules)/,
     loader: 'babel-loader',
-    options: {
-      presets: ["babel-preset-es2015"].map(require.resolve)
-    }
   };
 
   return jsRule;
@@ -99,7 +99,7 @@ const configuration = {
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
-  reporters: ['mocha', 'kjhtml', 'progress', 'coverage'/*,'dots','progress','spec'*/],
+  reporters: ['kjhtml', 'coverage'/*,'dots','progress','spec'*/],
 
   //address that the server will listen on, '0.0.0.0' is default
   listenAddress: '0.0.0.0',
@@ -127,7 +127,8 @@ const configuration = {
 
   preprocessors: {
     //add webpack as preprocessor to support require() in test-suits .js files
-    './spec/**/*.js': ['webpack'],
+    'src/**/*.js': ['webpack', 'sourcemap'],
+    './spec/**/*.js': ['webpack', 'sourcemap'],
   },
 
   coverageReporter: {
@@ -137,11 +138,6 @@ const configuration = {
   },
 
   webpackMiddleware: webpackMiddleware(),
-
-  /*karma-mocha-reporter config*/
-  mochaReporter: {
-    output: 'noFailures'  //full, autowatch, minimal
-  },
 
   customLaunchers: customLaunchers()
 };
