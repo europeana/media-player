@@ -1,3 +1,4 @@
+
 import * as empIndex  from '../src/index';
 
 const $ = require("jquery");
@@ -15,9 +16,16 @@ describe('Player functions', () => {
     return $(markup).appendTo('body');
   };
 
+  const elClass        =  'eups-player';
+  const elWrapperClass =  'player-wrapper';
+
+  const removeFixtures = (className, id) => {
+    $(`.${elClass}`).remove();
+    $(`.${elWrapperClass}`).remove();
+
+  };
+
   const getPlayer = (manifestToUse, cbDone) => {
-    const elClass        =  'eups-player';
-    const elWrapperClass =  'player-wrapper';
     const EuropeanaMediaPlayer = empIndex.default;
 
     let emp = new EuropeanaMediaPlayer(
@@ -35,6 +43,10 @@ describe('Player functions', () => {
       cbDone(emp.player);
     });
   };
+
+  beforeEach(() => {
+    removeFixtures();
+  });
 
   describe('player tests', () => {
     it('should not be constructed without an element', () => {
