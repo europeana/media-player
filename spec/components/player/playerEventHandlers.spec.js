@@ -1,4 +1,4 @@
-/*
+
 import * as pEvents  from '../../../src/components/player/playerEventHandlers';
 import Player from '../../../src/components/player/index';
 const $ = require("jquery");
@@ -9,40 +9,44 @@ const manifestEditable = 'http://localhost:9876/base/spec/fixture-data/manifest.
 
 describe('Event Handling', () => {
 
-  const fixture = '<div class="eups-player"></div>';
+  const appendFixture = (className, id) => {
+    $(`.${className}`).remove();
+    let markup = `<div class="${className}" ${id ? 'id="' + id + '"' : ''}></div>`;
+    return $(markup).appendTo('body');
+  };
+
   let player;
+
   beforeEach((done) => {
-    $('.eups-player').remove();
-    document.body.insertAdjacentHTML('afterbegin', fixture);
-    let wrapperElement = $('.eups-player');
-    wrapperElement.attr('id', Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)));
-
-    console.log('wrapperElement[0] ' + wrapperElement[0]);
-    console.log('wrapperElement[0].id ' + wrapperElement[0].id);
-
-    player = new Player(wrapperElement[0]);
+    player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
     player.init({ manifest: manifestEditable }, manifestEditable, '');
     player.avcomponent.on('mediaready', function() {
       done();
     });
   });
 
-  afterEach(() => {
-    $('.eups-player').remove();
-  });
+  it('should close the subtitle menu', () => {
+    if($('.subtitlemenu').length > 0){
+      $('.subtitlemenu').show();
+      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+      pEvents.subtitleMenuEventHandler(player, {stopPropagation: () => {}});
+      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+    }
+    else{
+      expect('skip').toBeTruthy();
+    }
+  })
 
-  it('has a shortcut for fullscreen', () => {
-
+  it('has a key shortcut for fullscreen', () => {
     let sel = '.button-fullscreen';
     const spy = { cb: () => {}};
     spyOn(spy, 'cb');
     $(sel)[0].addEventListener('click', spy.cb);
     pEvents.keyEventHandler(player, { keyCode: 70 });
     expect(spy.cb).toHaveBeenCalled();
-    //pEvents.keyEventHandler(player, { keyCode: 70 });
   });
 
-  it('should handle errors', () => {
+  it('should show an error message', () => {
     [
       'Error: loading aborted',
       'Error: network error',
@@ -57,7 +61,7 @@ describe('Event Handling', () => {
     $('.errormessage').remove();
   });
 
-  it('should mute and unmute', () => {
+  it('should toggle mute', () => {
     expect($('.volume-mute').attr('title')).toEqual('Mute');
     pEvents.volumeChangedEventHandler(player, 0);
     expect($('.volume-mute').attr('title')).toEqual('Unmute');
@@ -79,40 +83,57 @@ describe('Event Handling', () => {
     pEvents.keyEventHandler(player, { keyCode: 75 });
   });
 
-  it('should increase and decrease the volume', () => {
+  it('has key shortcuts for the volume', () => {
     const selSlider = '.volume-slider .ui-slider-range';
     expect($(selSlider).attr('style')).toEqual('width: 100%;');
-    pEvents.keyEventHandler(player, { keyCode: 40 });
-    expect($(selSlider).attr('style')).toEqual('width: 90%;');
-    pEvents.keyEventHandler(player, { keyCode: 38 });
-    expect($(selSlider).attr('style')).toEqual('width: 100%;');
+
+    const getRange = (offset) => [...Array(10)].map((_,i) => (i + (offset ? 1 : 0)) * 10);
+    const fireKeyUp = () => pEvents.keyEventHandler(player, { keyCode: 38 });
+    const fireKeyDown = () => pEvents.keyEventHandler(player, { keyCode: 40 });
+
+    // decrement in units of 10
+    getRange().reverse().forEach((pct) => {
+      fireKeyDown();
+      expect($(selSlider).attr('style')).toEqual(`width: ${pct}%;`);
+    })
+
+    // never fall below 0
+    expect($(selSlider).attr('style')).toEqual(`width: 0%;`);
+    fireKeyDown();
+    expect($(selSlider).attr('style')).toEqual(`width: 0%;`);
+
+    // increment in units of 10
+    getRange(true).forEach((pct) => {
+      fireKeyUp();
+      expect($(selSlider).attr('style')).toEqual(`width: ${pct}%;`);
+    })
+
+    // never go above 100%
+    expect($(selSlider).attr('style')).toEqual(`width: 100%;`);
+    fireKeyUp();
+    expect($(selSlider).attr('style')).toEqual(`width: 100%;`);
   });
+
+  /*
+  it('should toggle the subtitles', () => {
+    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+    // not exported...
+    pEvents.toggleMenuOption(player, { preventDefault: () => {} }, 'subtitlemenu', 'Subtitles');
+    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+  });
+  */
 
   it('should open types', () => {
     spyOn(window, 'open').and.callFake(() => {});
-    const player = {
+    const e = {
+      stopPropagation: () => {}
+    };
+    expect(window.open).not.toHaveBeenCalled();
+    pEvents.openEditorTypeEventHandler({
       editorurl: manifestEditable,
       manifesturl: manifestEditable
-    };
-    const e = {
-      stopPropagation: () => {}
-    };
-    pEvents.openEditorTypeEventHandler(player, e, 'type')
+    }, e, 'type')
     expect(window.open).toHaveBeenCalled();
   });
-
-  it('should show the more menu', () => {
-    const e = {
-      preventDefault: () => {},
-      stopPropagation: () => {}
-    };
-    player.addEditorOption(player);
-    expect($('.moremenu').is(':visible')).toBeFalsy();
-    pEvents.editorButtonEventHandler(player, e);
-    expect($('.moremenu').is(':visible')).toBeTruthy();
-    pEvents.editorButtonEventHandler(player, e);
-    expect($('.moremenu').is(':visible')).toBeFalsy();
-  });
-
 });
-*/
+
