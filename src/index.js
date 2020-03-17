@@ -15,10 +15,6 @@ export const init = (container, videoObj, options) => {
   $(container).append('<div id="eups-player-'+playerId+'" class="eups-player"></div>');
 
   //Set options
-  if (Object.prototype.hasOwnProperty.call(options, 'manifest')) {
-    videoObj.manifest = options.manifest;
-  }
-  videoObj.source = options.source || videoObj.source;
   editorurl = options.editor || editorurl;
   language = options.language || language;
 
