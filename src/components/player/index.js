@@ -1,12 +1,12 @@
-/* global $ Manifold IIIFComponents initCanvasNavigation */
+/* global $ initCanvasNavigation */
 
 import './index.css';
 
-require('@iiif/base-component');
 require('@iiif/iiif-tree-component');
-require('@iiif/iiif-av-component');
+require('@iiif/base-component');
 require('manifesto.js');
-require('@iiif/manifold');
+const Manifold = require('@iiif/manifold');
+const IIIFAVComponent = require('@iiif/iiif-av-component');
 require('dashjs');
 
 require('webpack-jquery-ui/slider');
@@ -63,7 +63,7 @@ export default class Player {
 
     let player = this;
 
-    this.avcomponent = new IIIFComponents.AVComponent({ target: this.$avcomponent[0] });
+    this.avcomponent = new IIIFAVComponent.AVComponent({ target: this.$avcomponent[0] });
 
     this.avcomponent.on('mediaerror', (error) => {
       mediaErrorHandler(player, error);
@@ -125,7 +125,7 @@ export default class Player {
     let player = this;
 
     Manifold.loadManifest({
-      iiifResourceUri: manifest,
+      manifestUri: manifest,
       collectionIndex: 0,
       manifestIndex: 0,
       sequenceIndex: 0,
