@@ -173,7 +173,7 @@ describe('Player functions', () => {
 
   });
 
-  describe('Event Handling', () => {
+  /*describe('Event Handling', () => {
 
     let player;
 
@@ -283,7 +283,7 @@ describe('Player functions', () => {
     });
     */
 
-    it('should open types', () => {
+    /*it('should open types', () => {
       spyOn(window, 'open').and.callFake(() => {});
       const e = {
         stopPropagation: () => {}
@@ -296,6 +296,6 @@ describe('Player functions', () => {
       expect(window.open).toHaveBeenCalled();
     });
 
-  });
+  });*/
 
 });
