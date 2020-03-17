@@ -16,6 +16,10 @@ import Banana from 'banana-i18n';
 
 const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler } = require('./playerEventHandlers');
 
+const { handleEUscreenItem } = require('./EUscreen');
+
+const { handleTranscriptionAnnotations } = require('./transcriptionAnnotations');
+
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
 
@@ -133,15 +137,20 @@ export default class Player {
     }).then((h) => {
       helper = h;
 
-      player.avcomponent.set({
-        helper,
-        limitToRange: player.state.limitToRange,
-        autoSelectRange: player.state.autoSelectRange,
-        constrainNavigationToRange: player.state.constrainNavigationToRange,
-        virtualCanvasEnabled: player.state.virtualCanvasEnabled
-      });
-      successcb(helper);
-      player.resize();
+      //handleEUscreenItem(player, helper, "http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A");
+      if (helper.manifest.__jsonld.items[0].items[0].items[0].body.id.indexOf("http://www.euscreen.eu/item.html?id=") > -1) {
+        handleEUscreenItem(player, helper.manifest.__jsonld.items[0].items[0].items[0].body.id);
+      } else {
+        player.avcomponent.set({
+          helper,
+          limitToRange: player.state.limitToRange,
+          autoSelectRange: player.state.autoSelectRange,
+          constrainNavigationToRange: player.state.constrainNavigationToRange,
+          virtualCanvasEnabled: player.state.virtualCanvasEnabled
+        });
+        successcb(helper);
+        player.resize();
+      }
     }).catch((e) => {
       errorcb(e);
     });
@@ -154,16 +163,16 @@ export default class Player {
   }
 
   createManifest(vObj) {
-    let manifest;
+    /*let manifest;
 
     if (vObj.manifest) {
       manifest = vObj.manifest;
     } else if (vObj.source.startsWith('EUS_')) {
       manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id='+vObj.source;
-    }
+    }*/
 
-    this.manifesturl = manifest;
-    this.itemSelectListener(manifest);
+    this.manifesturl = vObj.manifest;
+    this.itemSelectListener(vObj.manifest);
   }
 
   initLanguages() {
@@ -226,6 +235,7 @@ export default class Player {
     $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
     this.handleMediaType(player);
+    handleTranscriptionAnnotations(player);
 
     $('#'+player.elem.id+' .canvas-container').on('click', () => {
       playPauseEventHandler(player);
