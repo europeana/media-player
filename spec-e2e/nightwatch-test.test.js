@@ -5,24 +5,6 @@ module.exports = {
       .assert.visible('body')
       .end()
   },
-  'Clicking play': (browser) => {
-    browser.end()
-  },
-  'Clicking stop': (browser) => {
-    browser.end()
-  },
-  'Clicking slider (timeline / scrubbing)': (browser) => {
-    browser.end()
-  },
-  'Maximising & minimising the player (incl. key combinations)': (browser) => {
-    browser.end()
-  },
-  'Volume controls (incl. key combinations - increase / decrease)': (browser) => {
-    browser.end()
-  },
-  'Language switch': (browser) => {
-    browser.end()
-  },
   'Search Europeana': (browser) => {
     const parisText = `Paris as seen from the air . Showing the Place de L'etoile . 1 November 1928 | TopFoto.co.uk`;
     browser
