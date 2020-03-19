@@ -2,7 +2,8 @@ module.exports = {
   'Load local fixture': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
-      .assert.visible('body')
+      .pause(2000)
+      .assert.visible('div[class=eups-player]')
       .end()
   },
   'Search Europeana': (browser) => {
