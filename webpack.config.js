@@ -114,11 +114,13 @@ const output = function() {
 };
 
 const externals = function() {
-  let externals = {
-    jquery: 'jquery',
-    dashjs: 'dashjs'
-  };
-
+  let externals = {};
+  if (process.env.NODE_ENV !== "development") {
+    externals = {
+      jquery: 'jquery',
+      dashjs: 'dashjs'
+    };
+  }
   return externals;
 };
 

@@ -13,7 +13,7 @@
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
     "test": "karma start",
-    "test:e2e": "nightwatch",
+    "test:e2e": "node spec-e2e/runner.js",
     "stats": "webpack-cli --profile --json > lib/stats.json && webpack-bundle-analyzer lib/stats.json"
   },
   "dependencies": {
