@@ -20,6 +20,14 @@ module.exports = {
       .click('.button-play')
       .waitForElementVisible('.play', 5000)
       .end()
+  }, 
+  'Clicking fullscreen': (browser) => {
+    browser
+      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .waitForElementVisible('.av-icon-fullscreen', 5000)
+      .click('.av-icon-fullscreen')
+      .waitForElementVisible('.play', 5000)
+      .end()
   },
   after: (browser)=> {
       browser.end()
