@@ -20,6 +20,17 @@ module.exports = {
       .click('.button-play')
       .waitForElementVisible('.play', 5000)
       .end()
+  },
+  'Using slider to scrub to 00:13': (browser) => {
+    browser
+      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .waitForElementVisible('.ui-corner-all', 5000)
+      .moveToElement('.ui-corner-all', 0, 0)
+      .mouseButtonDown(0)
+      .moveToElement('.ui-corner-all', 200, 0)
+      .mouseButtonUp(0)
+      .assert.containsText('.canvas-time', '00:13')
+      .end()
   }, 
   'Clicking fullscreen': (browser) => {
     browser
@@ -28,7 +39,7 @@ module.exports = {
       .click('.av-icon-fullscreen')
       .waitForElementVisible('.play', 5000)
       .end()
-  },
+  }, 
   after: (browser)=> {
       browser.end()
   }
