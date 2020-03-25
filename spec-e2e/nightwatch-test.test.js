@@ -1,4 +1,4 @@
-module.exports = { 
+module.exports = {
   'Clicking play': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
@@ -16,6 +16,8 @@ module.exports = {
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
       .waitForElementVisible('.button-play', 5000)
       .click('.button-play')
+      .pause(2000)
+      .assert.not.containsText('.canvas-time', '00:01')
       .waitForElementVisible('.pause', 5000)
       .click('.button-play')
       .waitForElementVisible('.play', 5000)
@@ -32,14 +34,27 @@ module.exports = {
       .assert.containsText('.canvas-time', '00:13')
       .end()
   }, 
-  'Clicking fullscreen': (browser) => {
+  'Maximising & minimising the player': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
       .waitForElementVisible('.av-icon-fullscreen', 5000)
       .click('.av-icon-fullscreen')
       .waitForElementVisible('.play', 5000)
+      .click('.av-icon-fullscreen')
+      .waitForElementVisible('.play', 5000)
       .end()
-  }, 
+  },
+  'Volume controls': (browser) => {
+    browser
+      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .waitForElementVisible('.volume-slider', 5000)
+      .moveToElement('.volume-slider', 0, 5)
+      .mouseButtonDown(0)
+      .moveToElement('.volume-slider', 0, 5)
+      .mouseButtonUp(0)
+      .assert.attributeEquals('.volume-mute', 'title','Unmute')
+      .end()
+  },
   after: (browser)=> {
       browser.end()
   }
