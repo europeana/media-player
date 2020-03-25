@@ -88,12 +88,12 @@ function toggleMenuOption(player, e, cls, name) {
   }
 }
 
-function subtitleMenuEventHandler(player, e) {
+function subtitleMenuEventHandler(player,  e) {
   $('#'+player.elem.id+' .subtitlemenu').hide();
   let textTracks = $('#'+player.elem.id+' video')[0].textTracks;
 
   for (let i = 0; i < textTracks.length; i++) {
-    if ($(this).data('language') === textTracks[i].language) {
+    if ($(e.target).data('language') === textTracks[i].language) {
       textTracks[i].mode = 'showing';
     } else {
       textTracks[i].mode = 'hidden';
