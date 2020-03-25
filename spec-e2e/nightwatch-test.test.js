@@ -5,6 +5,7 @@ module.exports = {
       .waitForElementVisible('.button-play', 5000)
       .waitForElementVisible('.canvas-time', 5000)
       .assert.containsText('.canvas-time', '00:01')
+      .assert.attributeContains('.button-play', 'title', 'Play')
       .click('.button-play')
       .waitForElementVisible('.pause', 5000)
       .assert.attributeContains('.button-play', 'title', 'Pause')
@@ -18,22 +19,30 @@ module.exports = {
       .click('.button-play')
       .pause(2000)
       .assert.not.containsText('.canvas-time', '00:01')
-      .waitForElementVisible('.pause', 5000)
+      .assert.attributeContains('.button-play', 'title', 'Pause')
       .click('.button-play')
-      .waitForElementVisible('.play', 5000)
+      .assert.attributeContains('.button-play', 'title', 'Play')
       .end()
-  },
+  }, 
   'Using slider to scrub video': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
       .waitForElementVisible('.ui-corner-all', 5000)
+      .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement('.ui-corner-all', 0, 0)
       .mouseButtonDown(0)
       .moveToElement('.ui-corner-all', 200, 0)
       .mouseButtonUp(0)
       .assert.containsText('.canvas-time', '00:13')
+      .assert.attributeContains('.ui-slider-handle', 'style', 'left: 14')
+      .moveToElement('.ui-corner-all', 200, 0)
+      .mouseButtonDown(0)
+      .moveToElement('.ui-corner-all', 760, 0)
+      .mouseButtonUp(0)
+      .assert.containsText('.canvas-time', '00:49')
+      .assert.attributeContains('.ui-slider-handle', 'style', 'left: 56')
       .end()
-  }, 
+  },
   'Maximising & minimising the player': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
