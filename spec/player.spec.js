@@ -7,6 +7,7 @@ import Player from '../src/components/player/index';
 
 const manifestEditable = 'http://localhost:9876/base/spec/fixture-data/manifest.json';
 const manifestAudio = 'http://localhost:9876/base/spec/fixture-data/manifest-audio.json';
+const manifestEUscreen = 'http://localhost:9876/base/spec/fixture-data/manifest-euscreen.json';
 
 describe('Player functions', () => {
 
@@ -40,6 +41,25 @@ describe('Player functions', () => {
     expect('.button-play').toBeTruthy();
 
     emp.player.avcomponent.on('mediaready', () => {
+      cbDone(emp.player);
+    });
+  };
+
+  const getSubtitlePlayer = (manifestToUse, cbDone) => {
+    const EuropeanaMediaPlayer = empIndex.default;
+
+    let emp = new EuropeanaMediaPlayer(
+      appendFixture(elWrapperClass),
+      {manifest: manifestToUse},
+      {mode: 'player', manifest: manifestToUse}
+    );
+
+    expect(emp.player).toBeTruthy();
+    expect(emp.player.avcomponent).toBeTruthy();
+    expect(document.querySelector(`.${elClass}`)).toBeTruthy();
+    expect('.button-play').toBeTruthy();
+
+    emp.player.avcomponent.on('languagesinitialized', () => {
       cbDone(emp.player);
     });
   };
@@ -185,129 +205,28 @@ describe('Player functions', () => {
 
   });
 
-  /*describe('Event Handling', () => {
+  describe('EUscreen manifest', () => {
 
     let player;
 
     beforeEach((done) => {
-      player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
-      player.init({ manifest: manifestEditable }, manifestEditable, '');
-      player.avcomponent.on('mediaready', function() {
+      getSubtitlePlayer(manifestEUscreen, (innerPlayer) => {
+        player = innerPlayer;
         done();
       });
     });
 
-    it('should close the subtitle menu', () => {
-      if($('.subtitlemenu').length > 0){
-        $('.subtitlemenu').show();
-        expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-        pEvents.subtitleMenuEventHandler(player, {stopPropagation: () => {}});
-        expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-      }
-      else{
-        expect('skip').toBeTruthy();
-      }
-    })
-
-    it('has a key shortcut for fullscreen', () => {
-      let sel = '.button-fullscreen';
-      const spy = { cb: () => {}};
-      spyOn(spy, 'cb');
-      $(sel)[0].addEventListener('click', spy.cb);
-      pEvents.keyEventHandler(player, { keyCode: 70 });
-      expect(spy.cb).toHaveBeenCalled();
+    it('should have a video component', () => {
+      expect($('video').length).toBeTruthy();
     });
 
-    it('should show an error message', () => {
-      [
-        'Error: loading aborted',
-        'Error: network error',
-        'Error: decoding of media failed',
-        'Error: media format not suppported by this browser',
-        'Error: unknown'
-      ].forEach((msg, index) => {
-        $('.errormessage').remove();
-        pEvents.mediaErrorHandler(player, { code: index + 1 });
-        expect($('.errormessage').text()).toEqual(msg);
-      })
-      $('.errormessage').remove();
+    it('should have a subtitles button', () => {
+      expect($('.btn[data-name=Subtitles').length).toBeTruthy();
     });
 
-    it('should toggle mute', () => {
-      expect($('.volume-mute').attr('title')).toEqual('Mute');
-      pEvents.volumeChangedEventHandler(player, 0);
-      expect($('.volume-mute').attr('title')).toEqual('Unmute');
-      pEvents.volumeChangedEventHandler(player, 1);
-      expect($('.volume-mute').attr('title')).toEqual('Mute');
+    it('should hold only the Polish subtitles', () => {
+      expect($('.subtitlemenu-option').length).toEqual(1);
+      expect($('.subtitlemenu-option').attr('data-language')).toEqual("pl-PL");
     });
-
-    it('should pause on space', () => {
-      expect($('.playwrapper').is(':visible')).toBeTruthy();
-      pEvents.keyEventHandler(player, { keyCode: 32 });
-      expect($('.playwrapper').is(':visible')).toBeFalsy();
-      pEvents.keyEventHandler(player, { keyCode: 32 });
-    });
-
-    it('should pause on K', () => {
-      expect($('.playwrapper').is(':visible')).toBeTruthy();
-      pEvents.keyEventHandler(player, { keyCode: 75 });
-      expect($('.playwrapper').is(':visible')).toBeFalsy();
-      pEvents.keyEventHandler(player, { keyCode: 75 });
-    });
-
-    it('has key shortcuts for the volume', () => {
-      const selSlider = '.volume-slider .ui-slider-range';
-      expect($(selSlider).attr('style')).toEqual('width: 100%;');
-
-      const getRange = (offset) => [...Array(10)].map((_,i) => (i + (offset ? 1 : 0)) * 10);
-      const fireKeyUp = () => pEvents.keyEventHandler(player, { keyCode: 38 });
-      const fireKeyDown = () => pEvents.keyEventHandler(player, { keyCode: 40 });
-
-      // decrement in units of 10
-      getRange().reverse().forEach((pct) => {
-        fireKeyDown();
-        expect($(selSlider).attr('style')).toEqual(`width: ${pct}%;`);
-      })
-
-      // never fall below 0
-      expect($(selSlider).attr('style')).toEqual(`width: 0%;`);
-      fireKeyDown();
-      expect($(selSlider).attr('style')).toEqual(`width: 0%;`);
-
-      // increment in units of 10
-      getRange(true).forEach((pct) => {
-        fireKeyUp();
-        expect($(selSlider).attr('style')).toEqual(`width: ${pct}%;`);
-      })
-
-      // never go above 100%
-      expect($(selSlider).attr('style')).toEqual(`width: 100%;`);
-      fireKeyUp();
-      expect($(selSlider).attr('style')).toEqual(`width: 100%;`);
-    });
-
-    /*
-    it('should toggle the subtitles', () => {
-      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-      // not exported...
-      pEvents.toggleMenuOption(player, { preventDefault: () => {} }, 'subtitlemenu', 'Subtitles');
-      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-    });
-    */
-
-    /*it('should open types', () => {
-      spyOn(window, 'open').and.callFake(() => {});
-      const e = {
-        stopPropagation: () => {}
-      };
-      expect(window.open).not.toHaveBeenCalled();
-      pEvents.openEditorTypeEventHandler({
-        editorurl: manifestEditable,
-        manifesturl: manifestEditable
-      }, e, 'type')
-      expect(window.open).toHaveBeenCalled();
-    });
-
-  });*/
-
+  });
 });
