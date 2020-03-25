@@ -137,23 +137,30 @@ export default class Player {
     }).then((h) => {
       helper = h;
 
-      //handleEUscreenItem(player, helper, "http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A");
-      if (helper.manifest.__jsonld.items[0].items[0].items[0].body.id.indexOf("http://www.euscreen.eu/item.html?id=") > -1) {
-        handleEUscreenItem(player, helper.manifest.__jsonld.items[0].items[0].items[0].body.id);
+      if (helper.manifest.__jsonld.items[0].items[0].items[0].body.id.indexOf('http://www.euscreen.eu/item.html?id=') > -1) {
+        handleEUscreenItem(player, helper)
+          .then((h) => {
+            helper = h;
+            player.setAvComponent(player, successcb);
+          });
       } else {
-        player.avcomponent.set({
-          helper,
-          limitToRange: player.state.limitToRange,
-          autoSelectRange: player.state.autoSelectRange,
-          constrainNavigationToRange: player.state.constrainNavigationToRange,
-          virtualCanvasEnabled: player.state.virtualCanvasEnabled
-        });
-        successcb(helper);
-        player.resize();
+        player.setAvComponent(player, successcb);
       }
     }).catch((e) => {
       errorcb(e);
     });
+  }
+
+  setAvComponent(player, successcb) {
+    player.avcomponent.set({
+      helper,
+      limitToRange: player.state.limitToRange,
+      autoSelectRange: player.state.autoSelectRange,
+      constrainNavigationToRange: player.state.constrainNavigationToRange,
+      virtualCanvasEnabled: player.state.virtualCanvasEnabled
+    });
+    successcb(helper);
+    player.resize();
   }
 
   resize() {
@@ -163,13 +170,9 @@ export default class Player {
   }
 
   createManifest(vObj) {
-    /*let manifest;
-
-    if (vObj.manifest) {
-      manifest = vObj.manifest;
-    } else if (vObj.source.startsWith('EUS_')) {
-      manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id='+vObj.source;
-    }*/
+    if (!vObj.manifest && vObj.source.startsWith('EUS_')) {
+      vObj.manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id='+vObj.source;
+    }
 
     this.manifesturl = vObj.manifest;
     this.itemSelectListener(vObj.manifest);
@@ -203,6 +206,7 @@ export default class Player {
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
     });
+    this.avcomponent.fire('languagesinitialized');
   }
 
   //todo: address audio as well
