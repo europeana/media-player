@@ -1,7 +1,8 @@
 module.exports = { 
-  'Clicking play': (browser) => { 
+  'Clicking play': (browser) => {
+    target_url = 'http://127.0.0.1:8081/spec/fixture-data/index.html';
     browser
-      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .url(target_url)
       .waitForElementVisible('.button-play', 5000)
       .waitForElementVisible('.canvas-time', 5000)
       .assert.containsText('.canvas-time', '00:01')
@@ -14,7 +15,7 @@ module.exports = {
   },
   'Clicking play and then pause': (browser) => {
     browser
-      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .url(target_url)
       .waitForElementVisible('.button-play', 5000)
       .click('.button-play')
       .pause(2000)
@@ -26,7 +27,7 @@ module.exports = {
   }, 
   'Using slider to scrub video': (browser) => {
     browser
-      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .url(target_url)
       .waitForElementVisible('.ui-corner-all', 5000)
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement('.ui-corner-all', 0, 0)
@@ -45,7 +46,7 @@ module.exports = {
   }, 
   'Maximising & minimising the player': (browser) => {
     browser
-      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .url(target_url)
       .waitForElementVisible('.av-icon-fullscreen', 5000)
       .getElementSize('.canvas-container', function (result) {
         this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px before clicking fullscreen.')
@@ -66,7 +67,7 @@ module.exports = {
     },
   'Volume controls': (browser) => {
     browser
-      .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
+      .url(target_url)
       .waitForElementVisible('.volume-slider', 5000)
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .moveToElement('.volume-slider', 0, 4)
