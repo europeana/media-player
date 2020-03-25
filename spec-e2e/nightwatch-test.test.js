@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
   'Clicking play': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
@@ -23,7 +23,7 @@ module.exports = {
       .waitForElementVisible('.play', 5000)
       .end()
   },
-  'Using slider to scrub to 00:13': (browser) => {
+  'Using slider to scrub video': (browser) => {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
       .waitForElementVisible('.ui-corner-all', 5000)
@@ -48,11 +48,12 @@ module.exports = {
     browser
       .url('http://127.0.0.1:8081/spec/fixture-data/index.html')
       .waitForElementVisible('.volume-slider', 5000)
-      .moveToElement('.volume-slider', 0, 5)
-      .mouseButtonDown(0)
-      .moveToElement('.volume-slider', 0, 5)
-      .mouseButtonUp(0)
+      .moveToElement('.volume-slider', 0, 4)
+      .mouseButtonClick(0)
       .assert.attributeEquals('.volume-mute', 'title','Unmute')
+      .moveToElement('.volume-slider', 40, 4)
+      .mouseButtonClick(0)
+      .assert.attributeEquals('.volume-mute', 'title','Mute')
       .end()
   },
   after: (browser)=> {
