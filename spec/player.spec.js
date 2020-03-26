@@ -228,5 +228,19 @@ describe('Player functions', () => {
       expect($('.subtitlemenu-option').length).toEqual(1);
       expect($('.subtitlemenu-option').attr('data-language')).toEqual("pl-PL");
     });
+
+    it('should show and hide the subtitle list on clicks of the menu', () => {
+      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'))
+      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'))
+      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+    });
+    
+    it('should show the Polish subtitles in the video on click of the menu item', () => {
+      expect($('video')[0].textTracks[0].mode).toEqual('hidden');
+      $('.subtitlemenu-option[data-language=pl-PL')[0].dispatchEvent(new Event('click'));
+      expect($('video')[0].textTracks[0].mode).toEqual('showing');
+    });
   });
 });
