@@ -3,15 +3,15 @@ module.exports = {
   'Clicking play': (browser) => {
     browser
       .url(target_url)
-      .waitForElementVisible('.button-play', 5000)
-      .waitForElementVisible('.canvas-time', 5000)
+      .waitForElementVisible('.button-play')
+      .waitForElementVisible('.canvas-time')
       .getText('.canvas-time', function(result) {
         console.log('.canvas-time: actual = ' + JSON.stringify(result));
       })
       .assert.containsText('.canvas-time', '00:01')
       .assert.attributeContains('.button-play', 'title', 'Play')
       .click('.button-play')
-      .waitForElementVisible('.pause', 5000)
+      .waitForElementVisible('.pause')
       .assert.attributeContains('.button-play', 'title', 'Pause')
       .getText('.canvas-time', function(result) {
         console.log('.canvas-time: actual = ' + JSON.stringify(result));
@@ -22,7 +22,7 @@ module.exports = {
   'Clicking play and then pause': (browser) => {
     browser
       .url(target_url)
-      .waitForElementVisible('.button-play', 5000)
+      .waitForElementVisible('.button-play')
       .click('.button-play')
       .pause(2000)
       .assert.not.containsText('.canvas-time', '00:01')
@@ -34,7 +34,7 @@ module.exports = {
   'Using slider to scrub video': (browser) => {
     browser
       .url(target_url)
-      .waitForElementVisible('.ui-corner-all', 5000)
+      .waitForElementVisible('.ui-corner-all')
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement('.ui-corner-all', 0, 0)
       .mouseButtonDown(0)
@@ -54,7 +54,7 @@ module.exports = {
   'Maximising & minimising the player': (browser) => {
     browser
       .url(target_url)
-      .waitForElementVisible('.av-icon-fullscreen', 5000)
+      .waitForElementVisible('.av-icon-fullscreen')
       .getElementSize('.canvas-container', function (result) {
         this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px before clicking fullscreen.')
       })
@@ -63,19 +63,19 @@ module.exports = {
         this.assert.ok(result.value.width > '1000', 'Checking to see if the width of the element is greater than 1000px after clicking fullscreen.');
         this.assert.ok(result.value.height > '500', 'Checking to see if the height of the element is greater than 500px after clicking fullscreen.');
       })
-      .waitForElementVisible('.play', 5000)
+      .waitForElementVisible('.play')
       .click('.av-icon-fullscreen')
       .getElementSize('.canvas-container', function (result) {
         this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px after leaving fullscreen.')
       })
-      .waitForElementVisible('.play', 5000)
+      .waitForElementVisible('.play')
       .end()
 
     },
   'Volume controls': (browser) => {
     browser
       .url(target_url)
-      .waitForElementVisible('.volume-slider', 5000)
+      .waitForElementVisible('.volume-slider')
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .moveToElement('.volume-slider', 0, 4)
       .mouseButtonClick(0)
