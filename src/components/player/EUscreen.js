@@ -17,6 +17,7 @@ function handleEUscreenItem(player, helper) {
 
       canvas.items[0].items[0].body.id = response.location;
       canvas.items[0].items[0].body.format = response.format;
+      canvas.items[0].items[0].body.type = response.type;
 
       resolve(helper);
     })
