@@ -1,0 +1,111 @@
+{
+    "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+    "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/manifest",
+    "type" : "Manifest",
+    "label" : {
+      "en" : [ "Chopin's Places" ],
+      "pl" : [ "Miejsca Chopina" ]
+    },
+    "summary" : {
+      "en" : [ "A promotional film for the Fryderyk Chopin Museum that presents places Chopin lived in and visited." ],
+      "pl" : [ "Original language summary: \nFilm promujący Muzeum Fryderyka Chopina poświęcony miejscom, w których przebywał w trakcie swojego życia F. Chopin." ]
+    },
+    "metaData" : [ {
+      "label" : {
+        "en" : [ "format" ]
+      },
+      "value" : {
+        "@none" : [ "ASPECT RATIO:", "VIDEO" ]
+      }
+    }, {
+      "label" : {
+        "en" : [ "type" ]
+      },
+      "value" : {
+        "@none" : [ "ITEM", "Factual" ]
+      }
+    } ],
+    "thumbnail" : [ {
+      "id" : "https://search-api-acceptance.eanadev.org/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fimages3.noterik.com%2Fdomain%2Feuscreenxl%2Fuser%2Feu_nina%2Fvideo%2FEUS_3C083B8925D2E14C954507769E47992A%2Fimage.jpg&type=VIDEO",
+      "type" : "Image"
+    } ],
+    "homepage" : [ {
+      "id" : "https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html",
+      "type" : "Text",
+      "label" : {
+        "en" : [ "Europeana" ]
+      },
+      "format" : "text/html"
+    } ],
+    "requiredStatement" : {
+      "en" : [ "<span about='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A'><a href='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html'><span property='dc:title' xml:lang='en'>Chopin's Places</span><span property='dc:title' xml:lang='pl'>Miejsca Chopina</span></a>. <a href='http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A'>Narodowy Instytut Audiowizualny</a>. <a href='http://rightsstatements.org/vocab/InC/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>In Copyright</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>" ]
+    },
+    "rights" : {
+      "id" : "http://rightsstatements.org/vocab/InC/1.0/",
+      "type" : "Text",
+      "format" : "text/html"
+    },
+    "seeAlso" : [ {
+      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.json-ld",
+      "type" : "Dataset",
+      "format" : "application/ld+json",
+      "profile" : "http://www.europeana.eu/schemas/edm/"
+    }, {
+      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.json",
+      "type" : "Dataset",
+      "format" : "application/json",
+      "profile" : "http://www.europeana.eu/schemas/edm/"
+    }, {
+      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.rdf",
+      "type" : "Dataset",
+      "format" : "application/rdf+xml",
+      "profile" : "http://www.europeana.eu/schemas/edm/"
+    } ],
+    "start" : {
+      "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1",
+      "type" : "Canvas"
+    },
+    "items" : [ {
+      "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1",
+      "type" : "Canvas",
+      "label" : {
+        "@none" : [ "p. 1" ]
+      },
+      "requiredStatement" : {
+        "en" : [ "<span about='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A'><a href='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html'><span property='dc:title' xml:lang='en'>Chopin's Places</span><span property='dc:title' xml:lang='pl'>Miejsca Chopina</span></a>. <a href='http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A'>Narodowy Instytut Audiowizualny</a>. <a href='http://rightsstatements.org/vocab/InC/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>In Copyright</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>" ]
+      },
+      "items" : [ {
+        "type" : "AnnotationPage",
+        "items" : [ {
+          "type" : "Annotation",
+          "motivation" : "painting",
+          "body" : {
+            "id" : "http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A",
+            "type" : "Text",
+            "format" : "text/html;charset=UTF-8"
+          },
+          "target" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1"
+        } ]
+      } ],
+      "annotations" : [ {
+        "id" : "https://fulltext.eanadev.org/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/annopage/1",
+        "type" : "AnnotationPage"
+      } ]
+    } ],
+    "provider" : [ {
+      "id" : "https://www.europeana.eu/en/about-us",
+      "type" : "Agent",
+      "homepage" : [ {
+        "id" : "https://www.europeana.eu",
+        "type" : "Text",
+        "label" : {
+          "en" : [ "Europeana" ]
+        },
+        "format" : "text/html"
+      } ],
+      "logo" : [ {
+        "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+        "type" : "Image"
+      } ]
+    } ]
+  }
