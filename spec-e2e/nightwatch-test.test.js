@@ -1,9 +1,11 @@
 const target_url = 'http://127.0.0.1:8081/spec/fixture-data/index.html';
+const waitTime = 10000;
+
 module.exports = {
    beforeEach: (browser) => {
      browser.url(target_url)
-     .waitForElementVisible('.button-play')
-     .waitForElementVisible('.canvas-time');
+     .waitForElementVisible('.button-play', waitTime)
+     .waitForElementVisible('.canvas-time', waitTime);
    },
   'Clicking play': (browser) => {
     browser
@@ -13,7 +15,7 @@ module.exports = {
       .assert.containsText('.canvas-time', '00:01')
       .assert.attributeContains('.button-play', 'title', 'Play')
       .click('.button-play')
-      .waitForElementVisible('.pause')
+      .waitForElementVisible('.pause', waitTime)
       .assert.attributeContains('.button-play', 'title', 'Pause')
       .getText('.canvas-time', function(result) {
         console.log('.canvas-time: actual (2) = ' + JSON.stringify(result));
@@ -59,7 +61,7 @@ module.exports = {
         this.assert.ok(result.value.width > '1000', 'Checking to see if the width of the element is greater than 1000px after clicking fullscreen.');
         this.assert.ok(result.value.height > '500', 'Checking to see if the height of the element is greater than 500px after clicking fullscreen.');
       })
-      .waitForElementVisible('.play')
+      .waitForElementVisible('.play', waitTime)
       .click('.av-icon-fullscreen')
       .getElementSize('.canvas-container', function (result) {
         this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px after leaving fullscreen.')
