@@ -38,7 +38,7 @@ const config = function(mode) {
 const rules = function() {
   let rules =
     [
-      jsRule(), htmlRule(), cssRule(), pngRule()
+      jsRule(), htmlRule(), cssRule(), fontRule(), pngRule()
     ];
 
   return rules;
@@ -73,13 +73,27 @@ const htmlRule = function() {
 };
 
 const cssRule = function() {
-  let cssRule = {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader']
+  return {
+    test: /\.[s]?css$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+        }
+      },
+      { loader: 'sass-loader', options: { sourceMap: true } }
+    ]
   };
-
-  return cssRule;
 };
+
+const fontRule = () => {
+  return {
+    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    use: ['url-loader?limit=100000&mimetype=application/font-woff']
+  }
+}
 
 const pngRule = function() {
   let pngRule = {
