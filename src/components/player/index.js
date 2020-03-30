@@ -40,6 +40,7 @@ export default class Player {
   }
 
   init(videoObj, editorurl, language) {
+    this.appendInlineFontStyle();
     this.createAVComponent();
     this.createManifest(videoObj);
     this.editorurl = editorurl;
@@ -59,6 +60,29 @@ export default class Player {
     const banana = new Banana(language);
     banana.load(i18n[language], language);
     this.banana = banana;
+  }
+
+  appendInlineFontStyle() {
+    $('.eups-player').prepend(`<style>
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        src: url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+      }
+      </style>`);
   }
 
   createAVComponent() {
