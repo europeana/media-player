@@ -73,12 +73,19 @@ const htmlRule = function() {
 };
 
 const cssRule = function() {
-  let cssRule = {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader']
+  return {
+    test: /\.[s]?css$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+        }
+      },
+      { loader: 'sass-loader', options: { sourceMap: true } }
+    ]
   };
-
-  return cssRule;
 };
 
 const pngRule = function() {
