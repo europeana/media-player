@@ -91,7 +91,7 @@ const cssRule = function() {
 const fontRule = () => {
   return {
     test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-    use: ['url-loader?limit=100000']
+    use: ['url-loader?limit=100000&mimetype=application/font-woff']
   }
 }
 
