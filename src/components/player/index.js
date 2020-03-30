@@ -1,6 +1,6 @@
 /* global $ initCanvasNavigation */
 
-import './index.css';
+import './index.scss';
 
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
@@ -40,6 +40,7 @@ export default class Player {
   }
 
   init(videoObj, editorurl, language) {
+    this.appendInlineFontStyle();
     this.createAVComponent();
     this.createManifest(videoObj);
     this.editorurl = editorurl;
@@ -59,6 +60,22 @@ export default class Player {
     const banana = new Banana(language);
     banana.load(i18n[language], language);
     this.banana = banana;
+  }
+
+  appendInlineFontStyle() {
+    const prependStyle = (fw, url) => {
+      $('.eups-player').prepend(`<style>
+        @font-face {
+          font-family: 'Open Sans';
+          font-style: normal;
+          font-weight: ${fw};
+          src: url(${url}) format('woff');
+        }
+        </style>`);
+    };
+    prependStyle(300, 'https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff');
+    prependStyle(400, 'https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff');
+    prependStyle(600, 'https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff');
   }
 
   createAVComponent() {
@@ -219,14 +236,10 @@ export default class Player {
   }
 
   handleMediaReady(player) {
-    if (player.avcomponent.canvasInstances[0]._canvasWidth < 400) {
-      this.optimizeForSmallerScreens();
-    }
-
     this.updateAVComponentLanguage(player);
 
     let subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
-    $('#'+player.elem.id+' .controls-container').append(subtitles);
+    $('#'+player.elem.id+' .button-fullscreen').before(subtitles);
 
     if (player.editorurl && player.editorurl.length > 0) {
       let showMenu = player.needToShowMenu(player);
@@ -244,11 +257,6 @@ export default class Player {
     $('#'+player.elem.id+' .canvas-container').on('click', () => {
       playPauseEventHandler(player);
     });
-  }
-
-  optimizeForSmallerScreens() {
-    $('.iiif-av-component .controls-container .volume').css({ 'width': 80 });
-    $('.iiif-av-component .controls-container .volume .volume-slider').css({ 'width': 42 });
   }
 
   addEditorOption(player) {
