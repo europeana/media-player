@@ -1,5 +1,5 @@
 /* global $ */
-import './index.css';
+import './index.scss';
 
 import Player from './components/player';
 
