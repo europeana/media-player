@@ -38,7 +38,7 @@ const config = function(mode) {
 const rules = function() {
   let rules =
     [
-      jsRule(), htmlRule(), cssRule(), pngRule()
+      jsRule(), htmlRule(), cssRule(), fontRule(), pngRule()
     ];
 
   return rules;
@@ -87,6 +87,13 @@ const cssRule = function() {
     ]
   };
 };
+
+const fontRule = () => {
+  return {
+    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    use: ['url-loader?limit=100000']
+  }
+}
 
 const pngRule = function() {
   let pngRule = {
