@@ -7,7 +7,7 @@ const files = function() {
     //'http://localhost:9876/base/spec/fixture-data/jquery-ui.min.js'
   ]
   .concat(
-    ['jpg', 'js', 'json', 'mp3', 'mp4'].map((ext) => {
+    ['jpg', 'json', 'mp3', 'mp4'].map((ext) => {
       return {
         pattern:  `./spec/fixture-data/*.${ext}`,
         included: false,
@@ -69,8 +69,8 @@ const rules = () => {
     use: [{ loader: 'babel-loader' }]
   },
   {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader']
+    test: /\.[s]?css$/,
+    loader: 'style-loader!css-loader!sass-loader'    
   }]
 };
 

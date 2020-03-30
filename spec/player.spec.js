@@ -163,21 +163,6 @@ describe('Player functions', () => {
       expect($('.canvas-container').attr('style')).toContain(imgUrl);
     });
 
-    it('should optimize for smaller screens', () => {
-      let w1 = $('.volume').width();
-      expect(w1).toBeGreaterThan(0);
-      player.optimizeForSmallerScreens();
-      let w2 = $('.volume').width();
-      expect(w1).toBeGreaterThan(w2);
-    });
-
-    it('should optimize for smaller screens automatially', () => {
-      spyOn(player, 'optimizeForSmallerScreens');
-      player.avcomponent.canvasInstances[0]._canvasWidth = 300;
-      player.handleMediaReady(player);
-      expect(player.optimizeForSmallerScreens).toHaveBeenCalled();
-    });
-
     it('should create a manifest', () => {
       const src  = 'EUS_'
       const prefix = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id=';
@@ -236,7 +221,7 @@ describe('Player functions', () => {
       $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'))
       expect($('.subtitlemenu').is(':visible')).toBeFalsy();
     });
-    
+
     it('should show the Polish subtitles in the video on click of the menu item', () => {
       expect($('video')[0].textTracks[0].mode).toEqual('hidden');
       $('.subtitlemenu-option[data-language=pl-PL')[0].dispatchEvent(new Event('click'));
