@@ -106,8 +106,8 @@ export default class Player {
       this.handleMediaReady(player);
     });
 
-    this.avcomponent.on('fullscreen', () => {
-      fullScreenEventHandler(player);
+    this.avcomponent.on('fullscreen', (value) => {
+      fullScreenEventHandler(player, value);
     });
 
     this.avcomponent.on('volumechanged', (value) => {
