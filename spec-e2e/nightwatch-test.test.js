@@ -77,6 +77,16 @@ module.exports = {
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .end()
   },
+  'Subtitles are displayed.': (browser) => {
+    browser
+      .assert.valueContains('.av-icon-subtitles', 'Subtitles')
+      .click('.av-icon-subtitles')
+      .assert.valueContains('.subtitlemenu-option', 'Polski')
+      .click('.subtitlemenu-option')
+      .click('.button-play')
+      .pause(2000)
+      .end()
+  },
   after: (browser) => {
     browser.end();
   }
