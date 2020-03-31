@@ -9,7 +9,8 @@ module.exports = {
   page_objects_path: '',
   //globals_path: 'nightwatch-globals.js',
   selenium: {
-    start_process: false
+    start_process: true,
+    "server_path": "./node_modules/selenium-server/lib/runner/selenium-server-standalone-3.141.59.jar"
   },
   test_settings: {
     silent: false,
@@ -52,6 +53,9 @@ module.exports = {
       },
       desiredCapabilities: {
         browserName: 'firefox',
+        "marionette": true,
+        "acceptSslCerts": true,
+        "javascriptEnabled": true
       },
       globals:{
         before: function(done) {
