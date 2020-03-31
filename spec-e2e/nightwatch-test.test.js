@@ -1,10 +1,10 @@
 const target_url = 'http://127.0.0.1:8081/spec/fixture-data/index.html';
-module.exports = {
+module.exports = { 
    beforeEach: (browser) => {
      browser.url(target_url)
      .waitForElementVisible('.button-play')
      .waitForElementVisible('.canvas-time');
-   },
+   }, 
   'Clicking play': (browser) => {
     browser
       .getText('.canvas-time', function(result) {
@@ -52,7 +52,7 @@ module.exports = {
   'Maximising & minimising the player': (browser) => {
     browser
       .getElementSize('.canvas-container', function (result) {
-        this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px before clicking fullscreen.')
+        this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px before clicking fullscreen.');
       })
       .click('.av-icon-fullscreen')
       .getElementSize('.canvas-container', function (result) {
@@ -62,7 +62,7 @@ module.exports = {
       .waitForElementVisible('.play')
       .click('.av-icon-fullscreen')
       .getElementSize('.canvas-container', function (result) {
-        this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px after leaving fullscreen.')
+        this.assert.ok(result.value.height < '500', 'Checking to see if the height of the element is smaller than 500px after leaving fullscreen.');
       })
       .end()
     },
@@ -79,9 +79,13 @@ module.exports = {
   },
   'Subtitles are displayed.': (browser) => {
     browser
-      .assert.valueContains('.av-icon-subtitles', 'Subtitles')
       .click('.av-icon-subtitles')
-      .assert.valueContains('.subtitlemenu-option', 'Polski')
+      .assert.attributeEquals('.subtitlemenu-option', 'data-language', 'pl-PL')
+      .getText('.subtitlemenu-option', function (result) {
+        console.log('Value of .subtitlemenu-option:');
+        console.log(result);
+      })
+      .assert.containsText('.subtitlemenu-option', 'Polski')
       .click('.subtitlemenu-option')
       .click('.button-play')
       .pause(2000)
