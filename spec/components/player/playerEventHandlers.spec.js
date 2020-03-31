@@ -42,8 +42,12 @@ describe('Event Handling', () => {
     const spy = { cb: () => {}};
     spyOn(spy, 'cb');
     $(sel)[0].addEventListener('click', spy.cb);
+    expect($('.av-icon-fullscreen')[0]).not.toHaveClass('exit');
     pEvents.keyEventHandler(player, { keyCode: 70 });
+    expect($('.av-icon-fullscreen')[0]).toHaveClass('exit');
     expect(spy.cb).toHaveBeenCalled();
+    pEvents.fullScreenEventHandler(player, 'off');
+    expect($('.av-icon-fullscreen')[0]).not.toHaveClass('exit');
   });
 
   it('should show an error message', () => {
@@ -136,4 +140,3 @@ describe('Event Handling', () => {
     expect(window.open).toHaveBeenCalled();
   });
 });
-
