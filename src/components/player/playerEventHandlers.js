@@ -42,9 +42,15 @@ function playPauseEventHandler(player) {
   }
 }
 
-function fullScreenEventHandler(player) {
+function fullScreenEventHandler(player, value) {
   $('#'+player.elem.id+' .moremenu').hide();
   $('#'+player.elem.id+' .subtitlemenu').hide();
+  if(value === 'on'){
+    $('.button-fullscreen i').addClass('exit');
+  }
+  else if(value === 'off'){
+    $('.av-icon-fullscreen').removeClass('exit');
+  }
 }
 
 function handleVolumeChange(player, rate) {
