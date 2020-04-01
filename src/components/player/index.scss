@@ -110,7 +110,7 @@
       background: rgba(66, 66, 66, 0.85);
       color: #fff;
       height: 18px;
-      line-height: 8px;
+      line-height: 18px;
       padding: 5px;
     }
 
@@ -254,11 +254,6 @@ button:focus {
   overflow: hidden;
   width: 140px;
 
-  .volume-mute {
-    padding-left: 0px;
-    padding-right: 2px;
-  }
-
   .volume-slider {
     background-color: rgba(255, 255,255, 0.6);
     border: none;
@@ -311,9 +306,9 @@ button:focus {
     cursor: pointer;
     display: inline-block;
     font-size: 0;
-    height: 20px;
+    height: 24px;
     vertical-align: middle;
-    width: 20px;
+    width: 24px;
 
     &.av-icon-play{
       background-size: 100%;
@@ -346,9 +341,9 @@ button:focus {
     }
   }
   &.off {
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath fill='%23D6D9DD' d='M7 9v6h4l5 5V4l-5 5H7z'%3E%3C/path%3E%3Cpath d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D6D9DD'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5'%3E%3C/path%3E%3Cpath d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3C/svg%3E");
     &:hover {
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath fill='%23fff' d='M7 9v6h4l5 5V4l-5 5H7z'%3E%3C/path%3E%3Cpath d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3C/svg%3E");
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5'%3E%3C/path%3E%3Cpath d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3C/svg%3E");
     }
   }
 }
@@ -452,7 +447,6 @@ button:focus {
 .btn[data-name=More],
 .btn[data-name=Subtitles]{
   order: 1;
-  padding-left: 6px;
 }
 
 .time-display + .btn{
