@@ -4,7 +4,7 @@ module.exports = {
      browser.url(target_url)
      .waitForElementVisible('.button-play')
      .waitForElementVisible('.canvas-time');
-   }, 
+   },
   'Clicking play': (browser) => {
     browser
       .getText('.canvas-time', function(result) {
@@ -79,16 +79,15 @@ module.exports = {
   },
   'Subtitles are displayed.': (browser) => {
     browser
+      .pause(1000)
+      .waitForElementVisible('.av-icon-subtitles')
       .click('.av-icon-subtitles')
+      .waitForElementVisible('.subtitlemenu-option')
       .assert.attributeEquals('.subtitlemenu-option', 'data-language', 'pl-PL')
-      .getText('.subtitlemenu-option', function (result) {
-        console.log('Value of .subtitlemenu-option:');
-        console.log(result);
-      })
       .assert.containsText('.subtitlemenu-option', 'Polski')
       .click('.subtitlemenu-option')
       .click('.button-play')
-      .pause(2000)
+      .assert.not.visible('.subtitlemenu-option')
       .end()
   },
   after: (browser) => {
