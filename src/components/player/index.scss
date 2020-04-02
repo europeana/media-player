@@ -102,6 +102,7 @@
   }
 
   .hover-preview {
+    overflow: hidden; /* prevent pointer arrow splitting from label at ends of timeline */
     position: absolute;
     padding-bottom: 7px;
     z-index: 1;
