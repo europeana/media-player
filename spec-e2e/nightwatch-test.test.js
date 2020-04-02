@@ -75,7 +75,6 @@ module.exports = {
       .moveToElement('.volume-slider', 70, 2)
       .mouseButtonClick(0)
       .assert.attributeEquals('.volume-mute', 'title','Mute')
-      .pause(10000)
       .end()
   },
   'Subtitles are displayed.': (browser) => {
