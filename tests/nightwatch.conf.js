@@ -2,8 +2,8 @@ const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
 module.exports = {
-  src_folders: ['spec-e2e'],
-  output_folder: 'reports',
+  src_folders: ['tests/spec-e2e'],
+  output_folder: '../reports',
   custom_commands_path: '',
   custom_assertions_path: '',
   page_objects_path: '',

@@ -1,6 +1,6 @@
 const files = function() {
   return [
-    { pattern: './spec/**/*.spec.js', watched: true, type: 'module' },
+    { pattern: './tests/spec/**/*.spec.js', watched: true, type: 'module' },
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
     //'http://localhost:9876/base/spec/fixture-data/jquery-3.4.1.min.js',
@@ -9,7 +9,7 @@ const files = function() {
   .concat(
     ['jpg', 'json', 'mp3', 'mp4'].map((ext) => {
       return {
-        pattern:  `./spec/fixture-data/*.${ext}`,
+        pattern:  `./tests/fixture-data/*.${ext}`,
         included: false,
         watched:  true,
         served:   true
@@ -51,7 +51,7 @@ const rules = () => {
   return [{
     enforce: 'pre',
     test: /.spec\.js$/,
-    include: /spec/,
+    include: /tests\/spec/,
     exclude: /node_modules/,
     use: [{ loader: 'babel-loader' }]
   },
@@ -65,12 +65,12 @@ const rules = () => {
   {
     test: /\.js$/,
     include: /src/,
-    exclude: /node_modules|spec/,
+    exclude: /node_modules|test/,
     use: [{ loader: 'babel-loader' }]
   },
   {
     test: /\.[s]?css$/,
-    loader: 'style-loader!css-loader!sass-loader'    
+    loader: 'style-loader!css-loader!sass-loader'
   }]
 };
 
@@ -111,7 +111,7 @@ const configuration = {
   webpack: webpack(),
   preprocessors: {
     //add webpack as preprocessor to support require() in test-suits .js files
-    './spec/**/*.js': ['webpack', 'sourcemap'],
+    './tests/spec/**/*.js': ['webpack', 'sourcemap'],
     './src/**/*.js': ['webpack', 'sourcemap', 'coverage'],
   },
   coverageIstanbulReporter: {
