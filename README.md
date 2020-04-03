@@ -11,7 +11,15 @@ Install deps from project root with `yarn` or `npm i`
 
 ### Testing
 
-Run tests with `yarn test` or `npm run test`
+Run unit tests with either of:
+* `npm run test`
+* `npm test`
+
+Run end-to-end tests with:
+* `npm run test:e2e`
+(defaults to chrome) or with the browser-specific commands:
+* `npm run test:e2e:chrome`
+* `npm test:e2e:firefox`
 
 ### Build for production
 
@@ -29,7 +37,7 @@ To embed the player please firstyourself first make sure to include the European
 import EuropeanaMediaPlayer from 'europeanamediaplayer';
 ```
 
-or 
+or
 
 ```
 const EuropeanaMediaPlayer = require("europeanamediaplayer").default;
