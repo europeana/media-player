@@ -3,6 +3,7 @@ services:
   - xvfb
 addons:
   chrome: stable
+  firefox: stable
 
 language: node_js
 node_js:
@@ -12,6 +13,6 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
 
 script:
-  - npm run test
-  - npm run test:e2e
+  - npm test
+  - npm run test:e2e:chrome
   - npm run test:e2e:firefox
