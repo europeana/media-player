@@ -11,4 +11,8 @@ node_js:
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
 
-script: xvfb-run -a yarn test
+script:
+  - npm run test
+  - npm run test:e2e
+  - npm run test:firefox
+  
