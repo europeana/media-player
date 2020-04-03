@@ -1,36 +1,40 @@
 const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html';
 const waitTime = 10000;
+const selTime = '.canvas-time';
+const selPlay = '.button-play';
 
 module.exports = {
    beforeEach: (browser) => {
      browser.url(target_url)
-     .waitForElementVisible('.button-play', waitTime)
-     .waitForElementVisible('.canvas-time', waitTime);
+     .waitForElementVisible(selPlay, waitTime)
+     .waitForElementVisible(selTime, waitTime);
    },
    'Clicking play': (browser) => {
+     const extraWaitTime = 2000;
      browser
-       .getText('.canvas-time', function(result) {
-         console.log('.canvas-time: actual (1) = ' + JSON.stringify(result));
-       })
-       .assert.containsText('.canvas-time', '00:01')
-       .assert.attributeContains('.button-play', 'title', 'Play')
-       .click('.button-play')
+       .getText(selTime, function(result) {
+         let initialValue = parseInt(result.value.split(':').pop());
+         console.log(`${selTime} actual value = ${initialValue}`);
+          browser.assert.ok(initialValue < 2);
+      })
+       .assert.attributeContains(selPlay, 'title', 'Play')
+       .click(selPlay)
        .waitForElementVisible('.pause')
-       .assert.attributeContains('.button-play', 'title', 'Pause')
-       .getText('.canvas-time', function(result) {
-         console.log('.canvas-time: actual (2) = ' + JSON.stringify(result));
-       })
-       .assert.not.containsText('.canvas-time', '00:01')
+       .pause(extraWaitTime)
+       .assert.attributeContains(selPlay, 'title', 'Pause')
+       .getText(selTime, function(result) {
+         let updatedValue = parseInt(result.value.split(':').pop());
+         console.log(`${selTime} actual value = ${updatedValue}`);
+          browser.assert.ok(updatedValue > 2);
+        })
        .end()
    },
    'Clicking play and then pause': (browser) => {
      browser
-       .click('.button-play')
-       .pause(2000)
-       .assert.not.containsText('.canvas-time', '00:01')
-       .assert.attributeContains('.button-play', 'title', 'Pause')
-       .click('.button-play')
-       .assert.attributeContains('.button-play', 'title', 'Play')
+       .click(selPlay)
+       .assert.attributeContains(selPlay, 'title', 'Pause')
+       .click(selPlay)
+       .assert.attributeContains(selPlay, 'title', 'Play')
        .end()
    },
    'Maximising & minimising the player': (browser) => {
@@ -50,21 +54,22 @@ module.exports = {
        })
        .end()
      },
-     /*
      'Subtitles are displayed.': (browser) => {
+       const extraWaitTime = 1000;
+       const selBtn = '.btn[data-name=Subtitles]';
+       const selMenu = '.subtitlemenu-option';
        browser
-         .pause(1000)
-         .waitForElementVisible('.av-icon-subtitles')
-         .click('.av-icon-subtitles')
-         .waitForElementVisible('.subtitlemenu-option')
-         .assert.attributeEquals('.subtitlemenu-option', 'data-language', 'pl-PL')
-         .assert.containsText('.subtitlemenu-option', 'Polski')
-         .click('.subtitlemenu-option')
-         .click('.button-play')
-         .assert.not.visible('.subtitlemenu-option')
+         .waitForElementVisible(selBtn, waitTime)
+         .assert.not.visible(selMenu)
+         .pause(extraWaitTime)
+         .click(selBtn)
+         .waitForElementVisible(selMenu, waitTime)
+         .assert.attributeEquals(selMenu, 'data-language', 'pl-PL')
+         .assert.containsText(selMenu, 'Polski')
+         .click(selMenu)
+         .assert.not.visible(selMenu)
          .end()
      },
-     */
   after: (browser) => {
     browser.end();
   }
