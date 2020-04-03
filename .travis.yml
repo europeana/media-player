@@ -14,5 +14,4 @@ before_install:
 script:
   - npm run test
   - npm run test:e2e
-  - npm run test:firefox
-  
+  - npm run test:e2e:firefox
