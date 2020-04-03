@@ -13,7 +13,9 @@
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
     "test": "karma start",
-    "test:e2e": "node runner.js",
+    "test:e2e": "npm run test:e2e:chrome",
+    "test:e2e:chrome": "node runner.js --env=chrome",
+    "test:e2e:firefox": "node runner.js --env=gecko --skiptags skip-firefox",
     "stats": "webpack-cli --profile --json > lib/stats.json && webpack-bundle-analyzer lib/stats.json"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
     "banana-i18n": "^1.2.1",
     "dashjs": "^2.9.3",
     "dotenv": "^8.0.0",
+    "geckodriver": "^1.19.1",
     "jquery": "^3.3.1",
     "manifesto.js": "^4.0.1",
     "source-map-support": "^0.5.12",
