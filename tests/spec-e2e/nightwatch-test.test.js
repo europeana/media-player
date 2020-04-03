@@ -1,4 +1,4 @@
-const target_url = 'http://127.0.0.1:8081/spec/fixture-data/index.html';
+const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html';
 module.exports = {
    tags: ['skip-firefox'],
    beforeEach: (browser) => {
