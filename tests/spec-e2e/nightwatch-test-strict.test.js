@@ -31,10 +31,12 @@ module.exports = {
   },
   'Clicking play and then pause': (browser) => {
     browser
+      .assert.visible('.playcircle')
       .click(selPlay)
       .assert.attributeContains(selPlay, 'title', 'Pause')
       .click(selPlay)
       .assert.attributeContains(selPlay, 'title', 'Play')
+      .assert.not.visible('.playcircle')
       .end()
   },
   'Subtitles are displayed.': (browser) => {
@@ -52,5 +54,5 @@ module.exports = {
       .click(selMenu)
       .assert.not.visible(selMenu)
       .end()
-  },
+  }
 };
