@@ -15,4 +15,4 @@ before_install:
 script:
   - npm test
   - npm run test:e2e:chrome:headless
-#  - npm run test:e2e:firefox:headless
+  - npm run test:e2e:firefox:headless
