@@ -1,4 +1,3 @@
-
 import * as empIndex  from '../../src/index';
 
 const $ = require("jquery");
