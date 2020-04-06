@@ -203,9 +203,6 @@ export default class Player {
       return;
     }
 
-    //show button only if we have at least one language set
-    $('.btn[data-name=Subtitles]').show();
-
     let menu = '<div class=\'anno subtitlemenu\'>';
     for (let i = 0; i < textTracks.length; i++) {
       menu += '<div class=\'subtitlemenu-option\' data-language=\''+textTracks[i].language+'\'>'+languages.find(lang => lang.iso === textTracks[i].language).name+'</div>';
@@ -223,6 +220,10 @@ export default class Player {
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
     });
+
+    //show button only if we have at least one language set
+    $('.btn[data-name=Subtitles]').show();
+
     this.avcomponent.fire('languagesinitialized');
   }
 

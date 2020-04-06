@@ -1,6 +1,6 @@
 {
   "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
-  "id" : "http://localhost:9876/base/spec/fixture-data/manifest.json",
+  "id" : "http://localhost:9876/base/tests/fixture-data/manifest.json",
   "type" : "Manifest",
   "label" : {
     "pl" : [ "Astronomowie Uniwersytetu Warszawskiego" ]
@@ -59,7 +59,7 @@
     }
   } ],
   "thumbnail" : [ {
-    "id": "http://localhost:9876/base/spec/fixture-data/manifest-thumb.jpg",
+    "id": "http://localhost:9876/base/fixture-data/manifest-thumb.jpg",
     "type" : "Image"
   } ],
   "attribution" : {
@@ -114,7 +114,7 @@
         "motivation" : "painting",
         "timeMode" : "trim",
         "body" : {
-          "id" : "http://localhost:9876/base/spec/fixture-data/manifest.mp4",
+          "id" : "http://localhost:9876/base/tests/fixture-data/manifest.mp4",
           "type" : "Video",
           "format" : "video/mp4"
         },
