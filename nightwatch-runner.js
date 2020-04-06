@@ -5,7 +5,7 @@ server.ready.then(() => {
 
   var opts = process.argv.slice(2);
   if (opts.indexOf('--config') === -1) {
-    opts = opts.concat(['--config', 'nightwatch.conf.js']);
+    opts = opts.concat(['--config', 'tests/nightwatch.conf.js']);
   }
 
   var spawn = require('cross-spawn');
