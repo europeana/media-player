@@ -1,13 +1,12 @@
-
-import * as empIndex  from '../src/index';
+import * as empIndex  from '../../src/index';
 
 const $ = require("jquery");
-import * as pEvents  from '../src/components/player/playerEventHandlers';
-import Player from '../src/components/player/index';
+import * as pEvents  from '../../src/components/player/playerEventHandlers';
+import Player from '../../src/components/player/index';
 
-const manifestEditable = 'http://localhost:9876/base/spec/fixture-data/manifest.json';
-const manifestAudio = 'http://localhost:9876/base/spec/fixture-data/manifest-audio.json';
-const manifestEUscreen = 'http://localhost:9876/base/spec/fixture-data/manifest-euscreen.json';
+const manifestEditable = 'http://localhost:9876/base/tests/fixture-data/manifest.json';
+const manifestAudio = 'http://localhost:9876/base/tests/fixture-data/manifest-audio.json';
+const manifestEUscreen = 'http://localhost:9876/base/tests/fixture-data/manifest-euscreen.json';
 
 describe('Player functions', () => {
 

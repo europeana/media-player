@@ -1,6 +1,6 @@
 {
   "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
-  "id" : "http://localhost:9876/base/spec/fixture-data/manifest-audio",
+  "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio",
   "type" : "Manifest",
   "label" : {
     "en" : [ "Егда славни ученици, mode 8" ]
@@ -31,7 +31,7 @@
     }
   } ],
   "thumbnail" : [ {
-    "id" : "http://localhost:9876/base/spec/fixture-data/manifest-audio-thumb.jpg",
+    "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio-thumb.jpg",
     "type" : "Image"
   } ],
   "attribution" : {
@@ -79,7 +79,7 @@
         "motivation" : "painting",
         "timeMode" : "trim",
         "body" : {
-          "id" : "http://localhost:9876/base/spec/fixture-data/manifest-audio.mp3",
+          "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio.mp3",
           "type" : "Audio",
           "format" : "audio/mpeg"
         },

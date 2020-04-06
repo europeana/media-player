@@ -3,6 +3,7 @@ services:
   - xvfb
 addons:
   chrome: stable
+  firefox: latest
 
 language: node_js
 node_js:
@@ -11,4 +12,7 @@ node_js:
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
 
-script: xvfb-run -a yarn test
+script:
+  - npm test
+  - npm run test:e2e:chrome:headless
+#  - npm run test:e2e:firefox:headless
