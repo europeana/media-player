@@ -5,6 +5,11 @@
     <script src="../../europeanamediaplayer.js" type="text/javascript"></script>
     <script>
       $(document).ready(function() {
+        let formatParam = window.location.toString().match(/[\?&]format=([\w-]*)/);
+        if(formatParam){
+          console.log('TODO: load manifest referencing media type ' + formatParam[1]);
+        }
+
         var container = document.body;
         var videoObj = { manifest : "manifest-euscreen.json" };
         var options = { editor: "https://video-editor.eu" };

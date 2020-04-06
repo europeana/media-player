@@ -22,14 +22,15 @@ module.exports = {
         browserName: 'chrome',
         chromeOptions : {
           args: [
+            'disable-gpu',
             '--no-sandbox',
-            'start-fullscreen',
             'window-size=1280,800'
-          ]}
-        },
-        globals:{
-          before: function(done) {
-          chromedriver.start();
+          ]
+        }
+      },
+      globals:{
+        before: function(done) {
+          chromedriver.start()
           done();
         },
         after: function(done) {
