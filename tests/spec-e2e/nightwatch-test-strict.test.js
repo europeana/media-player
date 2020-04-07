@@ -42,17 +42,22 @@ module.exports = {
   'Subtitles are displayed.': (browser) => {
     const extraWaitTime = 1000;
     const selBtn = '.btn[data-name=Subtitles]';
+    const selIcon = selBtn + ' .av-icon';
     const selMenu = '.subtitlemenu-option';
     browser
       .waitForElementVisible(selBtn, waitTime)
       .assert.not.visible(selMenu)
+      .assert.not.cssClassPresent(selIcon, 'open')
       .pause(extraWaitTime)
       .click(selBtn)
       .waitForElementVisible(selMenu, waitTime)
       .assert.attributeEquals(selMenu, 'data-language', 'pl-PL')
       .assert.containsText(selMenu, 'Polski')
+      .assert.cssClassPresent(selIcon, 'open')
       .click(selMenu)
       .assert.not.visible(selMenu)
+      .click(selBtn)
+      .assert.not.cssClassPresent(selIcon, 'open')
       .end()
   }
 };

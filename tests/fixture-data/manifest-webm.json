@@ -1,6 +1,6 @@
 {
   "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
-  "id" : "http://localhost:9876/base/tests/fixture-data/manifest.json",
+  "id" : "http://localhost:9876/base/tests/fixture-data/manifest-webm.json",
   "type" : "Manifest",
   "label" : {
     "pl" : [ "Astronomowie Uniwersytetu Warszawskiego" ]
