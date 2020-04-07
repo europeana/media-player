@@ -14,7 +14,7 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler } = require('./playerEventHandlers');
+const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
 
 const { handleEUscreenItem } = require('./EUscreen');
 
@@ -198,27 +198,37 @@ export default class Player {
   initLanguages() {
     let textTracks = $('#'+this.elem.id+' video')[0].textTracks;
 
-    //check if we have any texttracks
+    // check if we have any texttracks
     if (textTracks.length === 0) {
       return;
     }
 
-    let menu = '<div class=\'anno subtitlemenu\'>';
+    const subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
+    const player = this;
+
+    $('#'+player.elem.id+' .button-fullscreen').before(subtitles);
+
+    let menu = '<div class="anno subtitlemenu">';
     for (let i = 0; i < textTracks.length; i++) {
-      menu += '<div class=\'subtitlemenu-option\' data-language=\''+textTracks[i].language+'\'>'+languages.find(lang => lang.iso === textTracks[i].language).name+'</div>';
+      menu += '<div class="subtitlemenu-option" data-language="' +textTracks[i].language + '">'
+       + languages.find(lang => lang.iso === textTracks[i].language).name
+       + '</div>';
     }
     menu += '</div>';
 
-    $('#'+this.elem.id+' .canvas-container').append(menu);
+    $('#' + this.elem.id + ' .canvas-container').append(menu);
 
     $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
+      $('.av-icon-subtitles').toggleClass('open');
       toggleSubtitlesEventHandler(this, e);
     });
 
-    let player = this;
-
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
+    });
+
+    $(window).on('resize', () => {
+      resizeEventHandler(player);
     });
 
     //show button only if we have at least one language set
@@ -238,9 +248,6 @@ export default class Player {
 
   handleMediaReady(player) {
     this.updateAVComponentLanguage(player);
-
-    let subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
-    $('#'+player.elem.id+' .button-fullscreen').before(subtitles);
 
     if (player.editorurl && player.editorurl.length > 0) {
       let showMenu = player.needToShowMenu(player);
