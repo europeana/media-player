@@ -9,7 +9,7 @@ const files = function() {
     //'http://localhost:9876/base/spec/fixture-data/jquery-ui.min.js'
   ]
   .concat(
-    ['jpg', 'json', 'mp3', 'mp4'].map((ext) => {
+    ['jpg', 'json', 'mp3', 'mp4', 'mov', 'webm', 'm4v', 'wmv'].map((ext) => {
       return {
         pattern:  `./tests/fixture-data/*.${ext}`,
         included: false,
