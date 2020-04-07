@@ -1,4 +1,3 @@
-
 import * as pEvents  from '../../../../src/components/player/playerEventHandlers';
 import Player from '../../../../src/components/player/index';
 const $ = require("jquery");
@@ -9,13 +8,20 @@ const manifestEditable = 'http://localhost:9876/base/tests/fixture-data/manifest
 
 describe('Event Handling', () => {
 
+  let player;
+  const emptyEvent = {stopPropagation: () => {}, preventDefault: () => {}};
+
   const appendFixture = (className, id) => {
     $(`.${className}`).remove();
     let markup = `<div class="${className}" ${id ? 'id="' + id + '"' : ''}></div>`;
     return $(markup).appendTo('body');
   };
 
-  let player;
+  const addSubtitleElement = () => {
+    if($('.subtitlemenu').length === 0){
+      $('.btn.button-fullscreen').before('<span class="subtitlemenu">Dummy menu</span>');
+    }
+  };
 
   beforeEach((done) => {
     player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
@@ -26,16 +32,20 @@ describe('Event Handling', () => {
   });
 
   it('should close the subtitle menu', () => {
-    if($('.subtitlemenu').length > 0){
-      $('.subtitlemenu').show();
-      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-      pEvents.subtitleMenuEventHandler(player, {stopPropagation: () => {}});
-      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-    }
-    else{
-      expect('skip').toBeTruthy();
-    }
-  })
+    addSubtitleElement();
+    $('.subtitlemenu').show();
+    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+    pEvents.subtitleMenuEventHandler(player, emptyEvent);
+    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+  });
+
+  it('should close the subtitle menu on resize', () => {
+    addSubtitleElement();
+    $('.subtitlemenu').show();
+    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+    pEvents.resizeEventHandler(player);
+    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+  });
 
   it('has a key shortcut for fullscreen', () => {
     let sel = '.button-fullscreen';
@@ -129,14 +139,11 @@ describe('Event Handling', () => {
 
   it('should open types', () => {
     spyOn(window, 'open').and.callFake(() => {});
-    const e = {
-      stopPropagation: () => {}
-    };
     expect(window.open).not.toHaveBeenCalled();
     pEvents.openEditorTypeEventHandler({
       editorurl: manifestEditable,
       manifesturl: manifestEditable
-    }, e, 'type')
+    }, emptyEvent, 'type')
     expect(window.open).toHaveBeenCalled();
   });
 });

@@ -42,15 +42,26 @@ function playPauseEventHandler(player) {
   }
 }
 
+const hideSubtitlesMenu = (player) => {
+  const iconSubtitles = $('.av-icon-subtitles');
+  iconSubtitles.removeClass('open');
+  $('#' + player.elem.id +' .subtitlemenu').hide();
+}
+
 function fullScreenEventHandler(player, value) {
   $('#'+player.elem.id+' .moremenu').hide();
-  $('#'+player.elem.id+' .subtitlemenu').hide();
-  if (value === 'on') {
+  hideSubtitlesMenu(player);
+  if(value === 'on'){
     $('.button-fullscreen i').addClass('exit');
-  } else if (value === 'off') {
+  }
+  else if(value === 'off'){
     $('.av-icon-fullscreen').removeClass('exit');
   }
 }
+
+const resizeEventHandler = (player) => {
+  hideSubtitlesMenu(player);
+};
 
 function handleVolumeChange(player, rate) {
   let val = $('#'+player.elem.id+' .volume-slider').slider('option', 'value');
@@ -85,27 +96,45 @@ function toggleSubtitlesEventHandler(player, e) {
 function toggleMenuOption(player, e, cls, name) {
   e.preventDefault();
 
-  if ($('#'+player.elem.id+' .'+cls).is(':visible')) {
-    $('#'+player.elem.id+' .'+cls).hide();
-  } else {
-    $('#'+player.elem.id+' .'+cls).css({ bottom: $('#'+player.elem.id+' .options-container').height(), left: (($('#'+player.elem.id+' .btn[data-name="'+name+'"]').offset().left - $('#'+player.elem.id+' .player').offset().left) - ($('#'+player.elem.id+' .'+cls).width() / 2)) });
-    $('#'+player.elem.id+' .'+cls).show();
+  let elPlayer = $('#' + player.elem.id);
+  let elMenu = elPlayer.find('.' + cls);
+
+  if(elPlayer.find('.' + cls).is(':visible')) {
+    elMenu.hide();
+  }
+  else {
+    const marginBottom = 8;
+    const bottom = elPlayer.find('.options-container').height() + marginBottom;
+    elMenu.css({ bottom: bottom, right: 16 });
+    elMenu.show();
   }
 }
 
-function subtitleMenuEventHandler(player,  e) {
-  $('#'+player.elem.id+' .subtitlemenu').hide();
-  let textTracks = $('#'+player.elem.id+' video')[0].textTracks;
 
-  for (let i = 0; i < textTracks.length; i++) {
-    if ($(e.target).data('language') === textTracks[i].language) {
-      textTracks[i].mode = 'showing';
-    } else {
-      textTracks[i].mode = 'hidden';
-    }
+// clicks on a subtitle menu item
+
+function subtitleMenuEventHandler(player,  e) {
+  const elPlayer = $('#' + player.elem.id);
+  const selClass = 'selected';
+  const textTracks = elPlayer.find('video')[0].textTracks;
+  const tgt = $(e.target);
+  const optionAlreadySelected = tgt.hasClass(selClass);
+  const selLang = optionAlreadySelected ? '(clear)' : tgt.data('language');
+
+  Array.from(textTracks).forEach((track) => {
+    track.mode = selLang === track.language ? 'showing' : 'hidden';
+  });
+
+  //elPlayer.find('.subtitlemenu').hide();
+  toggleMenuOption(player, e, 'subtitlemenu', 'Subtitles');
+
+  elPlayer.find('.subtitlemenu-option').removeClass(selClass);
+  if(!optionAlreadySelected){
+    tgt.addClass(selClass);
   }
-  //prevent the play/pause handler to react
+
   e.stopPropagation();
+  e.preventDefault();
 }
 
 function openEditorTypeEventHandler(player, e, type) {
@@ -142,5 +171,5 @@ function mediaErrorHandler(player, error) {
 }
 
 module.exports = {
-  playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler
+  playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler
 };
