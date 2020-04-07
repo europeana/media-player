@@ -1,0 +1,125 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "http://localhost:9876/base/tests/fixture-data/manifest.json",
+  "type" : "Manifest",
+  "label" : {
+    "pl" : [ "Astronomowie Uniwersytetu Warszawskiego" ]
+  },
+  "description" : {
+    "pl" : [ "Astronomowie całego świata obserwowali zbliżenie Marsa do Ziemi, które następuje co 15 lat. Obserwatorium astronomiczne Uniwersytetu Józefa Piłsudskiego w Warszawie wykonało szereg pomiarów i obserwacji tej ciekawej planety.", "Pracownicy obserwatorium astronomicznego podczas pracy." ]
+  },
+  "metaData" : [ {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "@none" : [ "<a href='http://data.europeana.eu/concept/base/61'>http://data.europeana.eu/concept/base/61</a>" ],
+      "de" : [ "Wochenschau" ],
+      "sv" : [ "Journalfilm" ],
+      "uk" : [ "Кінохроніка" ],
+      "ja" : [ "ニュース映画" ],
+      "en" : [ "Newsreel" ],
+      "it" : [ "Cinegiornale" ],
+      "pl" : [ "Kronika filmowa" ],
+      "ro" : [ "Jurnal de actualități" ],
+      "hu" : [ "Filmhíradó" ],
+      "he" : [ "יומן קולנוע" ],
+      "nl" : [ "Filmjournaal" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "@none" : [ "<a href='http://vocab.getty.edu/aat/300263837'>http://vocab.getty.edu/aat/300263837</a>", "<a href='http://vocab.getty.edu/aat/300136900'>http://vocab.getty.edu/aat/300136900</a>" ],
+      "en" : [ "Newsreel", "motion pictures (visual works)" ],
+      "de" : [ "Wochenschau", "Film" ],
+      "en-us" : [ "newsreels" ],
+      "zh-hant" : [ "新聞片", "電影 (視覺作品)" ],
+      "zh-latn-wadegile" : [ "hsin wen p'ien", "tien ying" ],
+      "zh-latn-pinyin-x-hanyu" : [ "xīn wén piàn", "diàn yǐng" ],
+      "zh-latn-pinyin-x-notone" : [ "xin wen pian", "dian ying" ],
+      "nl" : [ "bioscoopjournaals", "films (visuele werken)" ],
+      "es" : [ "noticiarios", "películas cinematográficas (obra visual)" ],
+      "fr" : [ "film" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "pol" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "pl" ]
+    }
+  } ],
+  "thumbnail" : [ {
+    "id": "http://localhost:9876/base/fixture-data/manifest-thumb.jpg",
+    "type" : "Image"
+  } ],
+  "attribution" : {
+    "en" : [ "(pl) Astronomowie Uniwersytetu Warszawskiego - https://www.europeana.eu/portal/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.html. Filmoteka Narodowa - http://repozytorium.fn.org.pl/?q=node/7929. In Copyright - http://rightsstatements.org/vocab/InC/1.0/" ]
+  },
+  "rights" : {
+    "id" : "http://rightsstatements.org/vocab/InC/1.0/",
+    "type" : "Text",
+    "format" : "text/html"
+  },
+  "logo" : [ {
+    "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+    "type" : "Image"
+  } ],
+  "seeAlso" : [ {
+    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.json-ld",
+    "type" : "Dataset",
+    "format" : "application/ld+json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.json",
+    "type" : "Dataset",
+    "format" : "application/json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.rdf",
+    "type" : "Dataset",
+    "format" : "application/rdf+xml",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  } ],
+  "items" : [ {
+    "id" : "https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/canvas/p1",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 1" ]
+    },
+    "height" : 720,
+    "width" : 960,
+    "duration" : 59.583,
+    "attribution" : {
+      "en" : [ "(pl) Astronomowie Uniwersytetu Warszawskiego - https://www.europeana.eu/portal/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.html. Filmoteka Narodowa - http://repozytorium.fn.org.pl/?q=node/7929. In Copyright - http://rightsstatements.org/vocab/InC/1.0/" ]
+    },
+    "rights" : {
+      "id" : "http://rightsstatements.org/vocab/InC/1.0/",
+      "type" : "Text",
+      "format" : "text/html"
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "http://localhost:9876/base/tests/fixture-data/manifest.webm",
+          "type" : "Video",
+          "format" : "video/webm"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/canvas/p1"
+      } ]
+    } ]
+  } ]
+}

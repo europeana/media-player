@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const files = function() {
   return [
     { pattern: './tests/spec/**/*.spec.js', watched: true, type: 'module' },
@@ -7,9 +9,19 @@ const files = function() {
     //'http://localhost:9876/base/spec/fixture-data/jquery-ui.min.js'
   ]
   .concat(
-    ['jpg', 'json', 'mp3', 'mp4'].map((ext) => {
+    ['jpg', 'json', 'mp3', 'mp4', 'mov', 'webm', 'm4v', 'wmv'].map((ext) => {
       return {
         pattern:  `./tests/fixture-data/*.${ext}`,
+        included: false,
+        watched:  true,
+        served:   true
+      }
+    })
+  )
+  .concat(
+    ['json', 'mp4'].map((ext) => {
+      return {
+        pattern:  `./tests/fixture-data/EUscreen/*.${ext}`,
         included: false,
         watched:  true,
         served:   true
@@ -37,14 +49,24 @@ const customLaunchers = function() {
   };
 };
 
-const webpack = () => {
+const webpackInit = () => {
   return {
     cache: true,
     devtool: 'inline-source-map',
     module: {
       rules: rules(),
-    }
+    },
+    plugins:
+      plugins()
   }
+};
+
+const plugins = () => {
+  return [ new webpack.DefinePlugin({
+    'process.env': {
+      EUSCREEN_INFO_URL: JSON.stringify(process.env.EUSCREEN_INFO_URL)
+    }
+  })]
 };
 
 const rules = () => {
@@ -108,7 +130,7 @@ const configuration = {
   //timeout for capturing a browser, 60000 is default
   captureTimeout: 60000,
   client: client(),
-  webpack: webpack(),
+  webpack: webpackInit(),
   preprocessors: {
     //add webpack as preprocessor to support require() in test-suits .js files
     './tests/spec/**/*.js': ['webpack', 'sourcemap'],
