@@ -1,6 +1,6 @@
 {
   "name": "europeanamediaplayer",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "license": "EUPL-1.2",
   "main": "lib/europeanamediaplayer.js",
   "author": {
@@ -12,7 +12,7 @@
     "build": "webpack-cli",
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
-    "test": "karma start",
+    "test": "env EUSCREEN_INFO_URL=http://localhost:9876/base/tests/fixture-data/EUscreen/ karma start",
     "test:e2e": "npm run test:e2e:chrome",
     "test:e2e:chrome": "node nightwatch-runner.js --env=chrome",
     "test:e2e:firefox": "node nightwatch-runner.js --env=gecko --skiptags skip-firefox",
