@@ -6,13 +6,14 @@ const selCanvas = '.canvas-container';
 module.exports = {
   beforeEach: (browser) => {
      browser.url(target_url)
-     .waitForElementVisible(selCanvas, waitTime)
+     .waitForElementVisible(selCanvas, waitTime);
   },
-  'Should update icon on fullscreent': (browser) => {
+  'Should update icon on fullscreen': (browser) => {
+    const selFS = '.av-icon-fullscreen';
     browser
-      .assert.not.cssClassPresent('.av-icon-fullscreen', 'exit')
+      .assert.not.cssClassPresent(selFS, 'exit')
       .click(selBtnFS)
-      .assert.cssClassPresent('.av-icon-fullscreen', 'exit')
-      .end()
+      .assert.cssClassPresent(selFS, 'exit')
+      .end();
   }
 };
