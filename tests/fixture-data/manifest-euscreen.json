@@ -88,7 +88,7 @@
         } ]
       } ],
       "annotations" : [ {
-        "id" : "https://fulltext.eanadev.org/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/annopage/1",
+        "id" : "http://localhost:9876/base/tests/fixture-data/EUscreen/presentation_2051926_data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A_annopage_1.json",
         "type" : "AnnotationPage"
       } ]
     } ],
