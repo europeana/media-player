@@ -19,7 +19,7 @@ describe('Event Handling', () => {
 
   const addSubtitleElement = () => {
     if($('.subtitlemenu').length === 0){
-      $('.btn.button-fullscreen').before('<span class="subtitlemenu">Dummy menu</span>');
+      $('.canvas-container').append('<span class="subtitlemenu" data-opener="Subtitles">Dummy menu</span>');
     }
   };
 
@@ -33,17 +33,20 @@ describe('Event Handling', () => {
 
   it('should close the subtitle menu', () => {
     addSubtitleElement();
-    $('.subtitlemenu').show();
+    $('.subtitlemenu').addClass('showing');
     expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-    pEvents.subtitleMenuEventHandler(player, emptyEvent);
+    const testEvent = Object.assign(emptyEvent, { target: { hasClass: ()=> { return false; } } });
+    pEvents.subtitleMenuEventHandler(player, testEvent);
+    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
     expect($('.subtitlemenu').is(':visible')).toBeFalsy();
   });
 
   it('should close the subtitle menu on resize', () => {
     addSubtitleElement();
-    $('.subtitlemenu').show();
+    $('.subtitlemenu').addClass('showing');
     expect($('.subtitlemenu').is(':visible')).toBeTruthy();
     pEvents.resizeEventHandler(player);
+    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
     expect($('.subtitlemenu').is(':visible')).toBeFalsy();
   });
 
