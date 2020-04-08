@@ -180,13 +180,13 @@ describe('Player functions', () => {
       let error = false;
       try{
         player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
-        player.init({ manifest: manifestEditable }, manifestEditable, 'fr');
+        player.init({ manifest: manifestEditable }, manifestEditable, 'nl');
       }
       catch(e){
         error = true;
       }
-      expect(error).toBeTruthy();
-      // TODO: investigate why this reinitialisation is necessary to sto pother tests failing
+      expect(error).toBeFalsy();
+      // TODO: investigate why this reinitialisation is necessary to stop other tests failing
       player.init({ manifest: manifestEditable }, manifestEditable, '');
     });
 
