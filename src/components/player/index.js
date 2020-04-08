@@ -14,7 +14,7 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { hideMenus, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
+const { hidePopups, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
 
 const { handleEUscreenItem } = require('./EUscreen');
 
@@ -363,6 +363,6 @@ export default class Player {
   }
 
   hidePlayerMenus(player){
-    hideMenus(player)
+    hidePopups(player);
   }
 }
