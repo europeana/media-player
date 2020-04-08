@@ -46,5 +46,16 @@ module.exports = {
       .mouseButtonClick(0)
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .end()
+  },
+  'Resize the browser and check if the controls are visible': (browser) => {
+    browser
+      .resizeWindow(400, 800)
+      .assert.visible('.playcircle')
+      .assert.attributeContains(selPlay, 'title', 'Play')
+      .assert.visible('.btn[data-name=Subtitles]')
+      .assert.visible('.volume-mute')
+      .assert.visible('.ui-slider-handle')
+      .pause(10000)
+      .end()
   }
 };
