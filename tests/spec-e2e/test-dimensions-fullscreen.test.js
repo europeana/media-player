@@ -19,7 +19,7 @@ module.exports = {
        console.log(JSON.stringify(result.value.height))
      })
   },
-  'Should fill available width on fullscreent': (browser) => {
+  'Should fill available width on fullscreen': (browser) => {
     browser
       .getElementSize(selCanvas, function (result) {
         this.assert.ok(result.value.width < outerWidth, `Check width (${result.value.width}) < ${outerWidth} before clicking fullscreen.`);
@@ -34,7 +34,7 @@ module.exports = {
       })
       .end()
   },
-  'Should fill available height on fullscreent': (browser) => {
+  'Should fill available height on fullscreen': (browser) => {
     browser
       .getElementSize(selCanvas, function (result) {
         this.assert.ok(result.value.height < outerHeight, `Check height (${result.value.height}) < ${outerHeight} before clicking fullscreen.`);
