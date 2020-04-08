@@ -35,32 +35,36 @@ function playPauseEventHandler(player) {
     player.avcomponent.canvasInstances[0].pause();
   } else {
     //hide playcircle if showing
-    if ($('#'+player.elem.id+' .playwrapper').is(':visible')) {
-      $('#'+player.elem.id+' .playwrapper').hide();
+    const playerWrapper = $('#' + player.elem.id + ' .playwrapper');
+    if(playerWrapper.is(':visible')) {
+      playerWrapper.hide();
     }
     player.avcomponent.canvasInstances[0].play();
   }
 }
 
-const hideSubtitlesMenu = (player) => {
-  const iconSubtitles = $('.av-icon-subtitles');
-  iconSubtitles.removeClass('open');
-  $('#' + player.elem.id +' .subtitlemenu').hide();
-}
+const hidePopups = (player, dataOpenerSelector = '[data-opener]') => {
+  const openerNames = $(dataOpenerSelector);
+  openerNames.each((i, el)=> {
+    const elMenu = $(el);
+    elMenu.removeClass('showing');
+    messagePopupOpener(elMenu, 'open-close', false);
+  });
+};
 
 function fullScreenEventHandler(player, value) {
-  $('#'+player.elem.id+' .moremenu').hide();
-  hideSubtitlesMenu(player);
+  hidePopups(player);
+  const btnFullscreen = $('.av-icon-fullscreen');
   if(value === 'on'){
-    $('.button-fullscreen i').addClass('exit');
+    btnFullscreen.addClass('exit');
   }
   else if(value === 'off'){
-    $('.av-icon-fullscreen').removeClass('exit');
+    btnFullscreen.removeClass('exit');
   }
 }
 
 const resizeEventHandler = (player) => {
-  hideSubtitlesMenu(player);
+  hidePopups(player);
 };
 
 function handleVolumeChange(player, rate) {
@@ -96,20 +100,31 @@ function toggleSubtitlesEventHandler(player, e) {
 function toggleMenuOption(player, e, cls, name) {
   e.preventDefault();
 
-  let elPlayer = $('#' + player.elem.id);
-  let elMenu = elPlayer.find('.' + cls);
+  const elPlayer = $('#' + player.elem.id);
+  const elMenu = elPlayer.find('.' + cls);
 
-  if(elPlayer.find('.' + cls).is(':visible')) {
-    elMenu.hide();
+  if(elMenu.is(':visible')) {
+    hidePopups(player, '[data-opener=' + elMenu.data('opener') + ']')
   }
   else {
     const marginBottom = 8;
     const bottom = elPlayer.find('.options-container').height() + marginBottom;
+    hidePopups(player);
     elMenu.css({ bottom: bottom, right: 16 });
-    elMenu.show();
+    elMenu.addClass('showing');
+    messagePopupOpener(elMenu, 'open-close', true);
   }
 }
 
+const messagePopupOpener = (elMenu, eventType, value) => {
+  let openerName = elMenu.data('opener');
+  if(openerName){
+    let opener = $('[data-name=' + openerName + ']');
+    if(opener){
+      opener.trigger(eventType, [value]);
+    }
+  }
+};
 
 // clicks on a subtitle menu item
 
@@ -124,9 +139,8 @@ function subtitleMenuEventHandler(player,  e) {
   Array.from(textTracks).forEach((track) => {
     track.mode = selLang === track.language ? 'showing' : 'hidden';
   });
-
-  //elPlayer.find('.subtitlemenu').hide();
   toggleMenuOption(player, e, 'subtitlemenu', 'Subtitles');
+  messagePopupOpener(elPlayer.find('.subtitlemenu-option').parent(), 'optionSet', !optionAlreadySelected);
 
   elPlayer.find('.subtitlemenu-option').removeClass(selClass);
   if(!optionAlreadySelected){
@@ -140,7 +154,6 @@ function subtitleMenuEventHandler(player,  e) {
 function openEditorTypeEventHandler(player, e, type) {
   //prevent the play/pause handler to react
   e.stopPropagation();
-
   window.open(player.editorurl+'?manifest='+encodeURIComponent(player.manifesturl)+'#'+type, '_blank');
 }
 
@@ -171,5 +184,6 @@ function mediaErrorHandler(player, error) {
 }
 
 module.exports = {
+  hidePopups,
   playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler
 };

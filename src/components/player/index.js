@@ -14,7 +14,7 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
+const { hideMenus, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
 
 const { handleEUscreenItem } = require('./EUscreen');
 
@@ -203,12 +203,12 @@ export default class Player {
       return;
     }
 
-    const subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
+    const btnSubtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles', true);
     const player = this;
 
-    $('#'+player.elem.id+' .button-fullscreen').before(subtitles);
+    $('#' + player.elem.id + ' .button-fullscreen').before(btnSubtitles);
 
-    let menu = '<div class="anno subtitlemenu">';
+    let menu = '<div class="anno subtitlemenu" data-opener="Subtitles">';
     for (let i = 0; i < textTracks.length; i++) {
       menu += '<div class="subtitlemenu-option" data-language="' +textTracks[i].language + '">'
        + languages.find(lang => lang.iso === textTracks[i].language).name
@@ -218,8 +218,14 @@ export default class Player {
 
     $('#' + this.elem.id + ' .canvas-container').append(menu);
 
-    $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
-      $('.av-icon-subtitles').toggleClass('open');
+    btnSubtitles.on('optionSet', (e, value) => {
+      if(value){
+        btnSubtitles.addClass('option-set');
+      }
+      else{
+        btnSubtitles.removeClass('option-set');
+      }
+    })[0].addEventListener('click', (e) => {
       toggleSubtitlesEventHandler(this, e);
     });
 
@@ -232,8 +238,7 @@ export default class Player {
     });
 
     //show button only if we have at least one language set
-    $('.btn[data-name=Subtitles]').show();
-
+    btnSubtitles.show();
     this.avcomponent.fire('languagesinitialized');
   }
 
@@ -257,23 +262,23 @@ export default class Player {
       }
     }
 
-    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
+    const cContainer = $('#' + player.elem.id + ' .canvas-container');
+    cContainer.append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
     this.handleMediaType(player);
     handleTranscriptionAnnotations(player);
 
-    $('#'+player.elem.id+' .canvas-container').on('click', () => {
+    cContainer.on('click', () => {
       playPauseEventHandler(player);
     });
   }
 
   addEditorOption(player) {
-    let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more');
+    let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more', true);
     more[0].addEventListener('click', (e) => {
       editorButtonEventHandler(player, e);
     });
-    $('#'+player.elem.id+' .controls-container').append(more);
-
+    $('#' + player.elem.id + ' .button-fullscreen').before(more);
     this.handleMenuOptions(player);
   }
 
@@ -283,13 +288,24 @@ export default class Player {
     $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
   }
 
-  createButton(name, text, classname) {
+  createButton(name, text, classname, openCloseHandler) {
     let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
+
+    if(openCloseHandler){
+      button.on('open-close', (e, value) => {
+        if(value){
+          button.addClass('open');
+        }
+        else{
+          button.removeClass('open');
+        }
+      })
+    }
     return button;
   }
 
   handleMenuOptions(player) {
-    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
+    $('#' + player.elem.id + ' .canvas-container').append('<div class="anno moremenu" data-opener="More"></div>');
 
     let options = { embed: true, annotation: false, playlist: false, subtitles: false };
     options = player.determineOptionDisplay(player, options);
@@ -344,5 +360,9 @@ export default class Player {
   setImage(player, image) {
     $('#'+player.elem.id+' .canvas-container').css({ 'background-image' : 'url(' + image +')' });
     $('#'+player.elem.id+' .canvas-container').addClass('audio-background');
+  }
+
+  hidePlayerMenus(player){
+    hideMenus(player)
   }
 }
