@@ -26,7 +26,7 @@ function fetchTextResource(player, annotationResource, textResource) {
     contentType: 'application/x-www-form-urlencoded;charset=utf-8',
     dataType: 'json',
     success: ((fullText) => {
-      let track = $('#'+player.elem.id+' video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === fullText.language).iso);
+      let track = player.elem.find('video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === fullText.language).iso);
 
       annotationResource.resources.forEach(element => {
         if (element.dcType === 'Caption') {
