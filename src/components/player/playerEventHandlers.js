@@ -1,18 +1,18 @@
 /* global $ */
 
 function playEventHandler(player) {
-  $('#'+player.elem.id+' .playwrapper').hide();
-  $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-pause'));
+  player.elem.find('.playwrapper').hide();
+  player.elem.find('.button-play').attr('title', player.banana.i18n('player-pause'));
 }
 
 function pauseEventHandler(player) {
   clearInterval(player.timeupdate);
-  $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
+  player.elem.find('.button-play').attr('title', player.banana.i18n('player-play'));
 }
 
 function volumeChangedEventHandler(player, value) {
   let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
-  $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n(muteType));
+  player.elem.find('.volume-mute').attr('title', player.banana.i18n(muteType));
 }
 
 function keyEventHandler(player, e) {
@@ -20,7 +20,7 @@ function keyEventHandler(player, e) {
     playPauseEventHandler(player);
   }
   if (e.keyCode === 70) { //f button
-    $('#'+player.elem.id+' .button-fullscreen').click();
+    player.elem.find('.button-fullscreen').click();
   }
   if (e.keyCode === 38) { //volume up by 10%
     handleVolumeChange(player, 0.1);
@@ -35,7 +35,7 @@ function playPauseEventHandler(player) {
     player.avcomponent.canvasInstances[0].pause();
   } else {
     //hide playcircle if showing
-    const playerWrapper = $('#' + player.elem.id + ' .playwrapper');
+    const playerWrapper = player.elem.find('.playwrapper');
     if(playerWrapper.is(':visible')) {
       playerWrapper.hide();
     }
@@ -68,9 +68,9 @@ const resizeEventHandler = (player) => {
 };
 
 function handleVolumeChange(player, rate) {
-  let val = $('#'+player.elem.id+' .volume-slider').slider('option', 'value');
+  let val = player.elem.find('.volume-slider').slider('option', 'value');
   val = determineNewVolume(val, rate);
-  $('#'+player.elem.id+' .volume-slider').slider('value', val);
+  player.elem.find('.volume-slider').slider('value', val);
 }
 
 function determineNewVolume(val, rate) {
@@ -100,7 +100,7 @@ function toggleSubtitlesEventHandler(player, e) {
 function toggleMenuOption(player, e, cls, name) {
   e.preventDefault();
 
-  const elPlayer = $('#' + player.elem.id);
+  const elPlayer = player.elem;
   const elMenu = elPlayer.find('.' + cls);
 
   if(elMenu.is(':visible')) {
@@ -129,7 +129,7 @@ const messagePopupOpener = (elMenu, eventType, value) => {
 // clicks on a subtitle menu item
 
 function subtitleMenuEventHandler(player,  e) {
-  const elPlayer = $('#' + player.elem.id);
+  const elPlayer = player.elem;
   const selClass = 'selected';
   const textTracks = elPlayer.find('video')[0].textTracks;
   const tgt = $(e.target);
@@ -160,7 +160,7 @@ function openEditorTypeEventHandler(player, e, type) {
 function mediaErrorHandler(player, error) {
   console.error('media error', error);
 
-  $('#'+player.elem.id+' .player').removeClass('player--loading');
+  player.elem.find('.player').removeClass('player--loading');
   let errormessage = player.banana.i18n('player-error')+': ';
   switch (error.code) {
     case 1:
@@ -180,7 +180,7 @@ function mediaErrorHandler(player, error) {
       break;
   }
 
-  $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno errormessage\'>'+errormessage+'</div>');
+  player.elem.find('.canvas-container').append('<div class=\'anno errormessage\'>'+errormessage+'</div>');
 }
 
 module.exports = {

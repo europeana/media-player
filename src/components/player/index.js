@@ -27,9 +27,10 @@ let helper;
 
 export default class Player {
   constructor(elem) {
-    if (!elem) return;
-    this.elem = elem;
-
+    if (!elem){
+      return;
+    }
+    this.elem = $(elem);
     this.videoId = '';
     this.avcomponent;
     this.timeupdate;
@@ -80,7 +81,7 @@ export default class Player {
 
   createAVComponent() {
     this.$avcomponent = $('<div class="iiif-av-component" tabindex="0"></div>');
-    $(this.elem).append(this.$avcomponent);
+    this.elem.append(this.$avcomponent);
 
     let player = this;
 
@@ -180,11 +181,12 @@ export default class Player {
     player.resize();
   }
 
-  resize() {
-    let $playerContainer = $('#'+this.elem.id+' .playerContainer');
-    $playerContainer.height($playerContainer.width() * 0.75);
-    this.avcomponent.resize();
-  }
+  //resize() {
+    //console.log('redundant function?');
+    //let $playerContainer = $('#' + this.elem.id + ' .playerContainer');
+    //$playerContainer.height($playerContainer.width() * 0.75);
+    //this.avcomponent.resize();
+  //}
 
   createManifest(vObj) {
     if (!vObj.manifest && vObj.source.startsWith('EUS_')) {
@@ -196,7 +198,7 @@ export default class Player {
   }
 
   initLanguages() {
-    let textTracks = $('#'+this.elem.id+' video')[0].textTracks;
+    let textTracks = this.elem.find('video')[0].textTracks;
 
     // check if we have any texttracks
     if (textTracks.length === 0) {
@@ -206,7 +208,7 @@ export default class Player {
     const btnSubtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles', true);
     const player = this;
 
-    $('#' + player.elem.id + ' .button-fullscreen').before(btnSubtitles);
+    this.elem.find('.button-fullscreen').before(btnSubtitles);
 
     let menu = '<div class="anno subtitlemenu" data-opener="Subtitles">';
     for (let i = 0; i < textTracks.length; i++) {
@@ -216,7 +218,7 @@ export default class Player {
     }
     menu += '</div>';
 
-    $('#' + this.elem.id + ' .canvas-container').append(menu);
+    this.elem.find('.canvas-container').append(menu);
 
     btnSubtitles.on('optionSet', (e, value) => {
       if(value){
@@ -244,11 +246,8 @@ export default class Player {
 
   //todo: address audio as well
   hasEnded() {
-    if ($('#'+this.elem.id+' video').length) {
-      return $('#'+this.elem.id+' video')[0].ended;
-    } else {
-      return false;
-    }
+    const vid = this.elem.find('video');
+    return vid.length ? vid[0].ended : false;
   }
 
   handleMediaReady(player) {
@@ -262,7 +261,7 @@ export default class Player {
       }
     }
 
-    const cContainer = $('#' + player.elem.id + ' .canvas-container');
+    const cContainer = this.elem.find('.canvas-container');
     cContainer.append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
     this.handleMediaType(player);
@@ -278,14 +277,14 @@ export default class Player {
     more[0].addEventListener('click', (e) => {
       editorButtonEventHandler(player, e);
     });
-    $('#' + player.elem.id + ' .button-fullscreen').before(more);
+    this.elem.find('.button-fullscreen').before(more);
     this.handleMenuOptions(player);
   }
 
   updateAVComponentLanguage(player) {
-    $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n('player-mute'));
-    $('#'+player.elem.id+' .button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
-    $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
+    this.elem.find('.volume-mute').attr('title', player.banana.i18n('player-mute'));
+    this.elem.find('.button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
+    this.elem.find('.button-play').attr('title', player.banana.i18n('player-play'));
   }
 
   createButton(name, text, classname, openCloseHandler) {
@@ -305,16 +304,15 @@ export default class Player {
   }
 
   handleMenuOptions(player) {
-    $('#' + player.elem.id + ' .canvas-container').append('<div class="anno moremenu" data-opener="More"></div>');
+    this.elem.find('.canvas-container').append('<div class="anno moremenu" data-opener="More"></div>');
 
     let options = { embed: true, annotation: false, playlist: false, subtitles: false };
     options = player.determineOptionDisplay(player, options);
 
     for (let [key, value] of Object.entries(options)) {
       if (value) {
-        $('#'+player.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
-
-        $('#'+player.elem.id+' #create-'+key+'-link').on('click', (e) => {
+        this.elem.find('.moremenu').append('<div id=\'create-' + key + '-link\' class=\'moremenu-option\'>' + this.banana.i18n('player-create-' + key) + '</div>');
+        this.elem.find('#create-' + key + '-link').on('click', (e) => {
           openEditorTypeEventHandler(player, e, key);
         });
       }
@@ -350,7 +348,7 @@ export default class Player {
         w = player.avcomponent.canvasInstances[0]._canvasWidth;
         h = player.avcomponent.canvasInstances[0]._canvasHeight;
     }
-    $('#'+player.elem.id).css({ width : w, height : h });
+    player.elem.css({ width : w, height : h });
   }
 
   getMediaType(player) {
@@ -358,8 +356,9 @@ export default class Player {
   }
 
   setImage(player, image) {
-    $('#'+player.elem.id+' .canvas-container').css({ 'background-image' : 'url(' + image +')' });
-    $('#'+player.elem.id+' .canvas-container').addClass('audio-background');
+    const playerEl = player.elem;
+    playerEl.find('.canvas-container').css({ 'background-image' : 'url(' + image +')' });
+    playerEl.find('.canvas-container').addClass('audio-background');
   }
 
   hidePlayerMenus(player){
