@@ -41,9 +41,10 @@ module.exports = {
   'Volume controls': (browser) => {
     browser
       .assert.attributeEquals('.volume-mute', 'title','Mute')
+      .moveToElement('.volume-slider', 2, 2)
+      .mouseButtonDown(0)
       .moveToElement('.volume-slider', 0, 2)
-      .mouseButtonClick(0)
-      .pause(2000)
+      .mouseButtonUp(0)
       .assert.attributeEquals('.volume-mute', 'title','Unmute')
       .moveToElement('.volume-slider', 70, 2)
       .mouseButtonClick(0)
