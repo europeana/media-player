@@ -181,12 +181,11 @@ export default class Player {
     player.resize();
   }
 
-  //resize() {
-    //console.log('redundant function?');
-    //let $playerContainer = $('#' + this.elem.id + ' .playerContainer');
-    //$playerContainer.height($playerContainer.width() * 0.75);
-    //this.avcomponent.resize();
-  //}
+  resize() {
+    let $playerContainer = $('#' + this.elem.id + ' .playerContainer');
+    $playerContainer.height($playerContainer.width() * 0.75);
+    this.avcomponent.resize();
+  }
 
   createManifest(vObj) {
     if (!vObj.manifest && vObj.source.startsWith('EUS_')) {
@@ -338,17 +337,13 @@ export default class Player {
   }
 
   handleMediaType(player) {
-    let w, h;
-    w = h = 400;
     switch (this.getMediaType(player)) {
       case 'Audio':
         this.setImage(player, player.manifest.__jsonld.thumbnail[0].id);
         break;
-      case 'Video':
-        w = player.avcomponent.canvasInstances[0]._canvasWidth;
-        h = player.avcomponent.canvasInstances[0]._canvasHeight;
     }
-    player.elem.css({ width : w, height : h });
+    player.elem.css({ width : '100%', height : '100%' });
+
   }
 
   getMediaType(player) {
