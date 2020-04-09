@@ -22,7 +22,9 @@ module.exports = {
       })
       .mouseButtonUp(0)
       .pause(extraWaitTime)
-      .assert.containsText(selTime, videoEndTime)
+      .getText(selTime, function(result) {
+        browser.assert.ok(result.value === videoEndTime, `Expect time ${result.value} to be at ${videoEndTime}`);
+      })
       .mouseButtonDown(0)
       .getElementSize(selTimeline, function (result) {
         this.moveToElement(selTimeline, (result.value.width / 2) -1, result.value.height / 2);
@@ -41,6 +43,7 @@ module.exports = {
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .moveToElement('.volume-slider', 0, 2)
       .mouseButtonClick(0)
+      .pause(2000)
       .assert.attributeEquals('.volume-mute', 'title','Unmute')
       .moveToElement('.volume-slider', 70, 2)
       .mouseButtonClick(0)
