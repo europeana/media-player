@@ -4,4 +4,3 @@ reports
 .env
 chromedriver.log
 geckodriver.log
-lib/europeanamediaplayer.js
