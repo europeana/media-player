@@ -1,6 +1,6 @@
 {
   "name": "europeanamediaplayer",
-  "version": "0.5.17",
+  "version": "0.5.18",
   "license": "EUPL-1.2",
   "main": "lib/europeanamediaplayer.js",
   "author": {
