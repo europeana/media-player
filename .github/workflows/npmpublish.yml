@@ -7,7 +7,7 @@ on:
 #  release:
 #    types: [created]
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
 #  build:
@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - run: npm install
       - run: npm run build
       - run: npm publish
         env:
