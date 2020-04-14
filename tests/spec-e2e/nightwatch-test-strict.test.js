@@ -2,6 +2,7 @@ const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html';
 const waitTime = 10000;
 const selTime = '.canvas-time';
 const selPlay = '.button-play';
+const selPlayIcon = selPlay + ' .av-icon';
 
 module.exports = {
   beforeEach: (browser) => {
@@ -15,17 +16,17 @@ module.exports = {
       .getText(selTime, function(result) {
         let initialValue = parseInt(result.value.split(':').pop());
         console.log(`${selTime} actual value = ${initialValue}`);
-        browser.assert.ok(initialValue < 2, `Expect initial time ${initialValue} to be 0 or 1 second`);
+        browser.assert.ok(initialValue <= 1, `Expect initial time ${initialValue} to be 0 or 1 second`);
       })
       .assert.attributeContains(selPlay, 'title', 'Play')
+      .assert.not.cssClassPresent(selPlayIcon, 'pause')
       .click(selPlay)
-      .waitForElementVisible('.pause')
+      .assert.cssClassPresent(selPlayIcon, 'pause')
       .pause(extraWaitTime)
-      .assert.attributeContains(selPlay, 'title', 'Pause')
       .getText(selTime, function(result) {
         let updatedValue = parseInt(result.value.split(':').pop());
         console.log(`${selTime} actual value = ${updatedValue}`);
-        browser.assert.ok(updatedValue > 2, `Expect time ${updatedValue} to have elapsed`);
+        browser.assert.ok(updatedValue >= 1, `Expect time ${updatedValue} to have elapsed`);
       })
       .end()
   },
@@ -42,22 +43,20 @@ module.exports = {
   'Subtitles are displayed.': (browser) => {
     const extraWaitTime = 1000;
     const selBtn = '.btn[data-name=Subtitles]';
-    const selIcon = selBtn + ' .av-icon';
     const selMenu = '.subtitlemenu-option';
     browser
       .waitForElementVisible(selBtn, waitTime)
       .assert.not.visible(selMenu)
-      .assert.not.cssClassPresent(selIcon, 'open')
+      .assert.not.cssClassPresent(selBtn, 'open')
       .pause(extraWaitTime)
       .click(selBtn)
       .waitForElementVisible(selMenu, waitTime)
       .assert.attributeEquals(selMenu, 'data-language', 'pl-PL')
       .assert.containsText(selMenu, 'Polski')
-      .assert.cssClassPresent(selIcon, 'open')
+      .assert.cssClassPresent(selBtn, 'open')
       .click(selMenu)
       .assert.not.visible(selMenu)
-      .click(selBtn)
-      .assert.not.cssClassPresent(selIcon, 'open')
+      .assert.not.cssClassPresent(selBtn, 'open')
       .end()
   }
 };

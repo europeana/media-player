@@ -12,14 +12,14 @@ export const init = (container, videoObj, options) => {
   let playerId = uuidv4();
 
   //Append player to container with the unique id
-  $(container).append('<div id="eups-player-'+playerId+'" class="eups-player"></div>');
+  $(container).append('<div id="eups-player-' + playerId + '" class="eups-player"></div>');
 
   //Set options
   editorurl = options.editor || editorurl;
   language = options.language || language;
 
   //Create player
-  player = new Player(document.getElementById('eups-player-'+playerId));
+  player = new Player(document.getElementById('eups-player-' + playerId));
 
   //Initialize player
   player.init(videoObj, editorurl, language);
