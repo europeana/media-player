@@ -14,7 +14,7 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
+const { hidePopups, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
 
 const { handleEUscreenItem } = require('./EUscreen');
 
@@ -27,9 +27,10 @@ let helper;
 
 export default class Player {
   constructor(elem) {
-    if (!elem) return;
-    this.elem = elem;
-
+    if (!elem){
+      return;
+    }
+    this.elem = $(elem);
     this.videoId = '';
     this.avcomponent;
     this.timeupdate;
@@ -80,7 +81,7 @@ export default class Player {
 
   createAVComponent() {
     this.$avcomponent = $('<div class="iiif-av-component" tabindex="0"></div>');
-    $(this.elem).append(this.$avcomponent);
+    this.elem.append(this.$avcomponent);
 
     let player = this;
 
@@ -181,7 +182,7 @@ export default class Player {
   }
 
   resize() {
-    let $playerContainer = $('#'+this.elem.id+' .playerContainer');
+    let $playerContainer = $('#' + this.elem.id + ' .playerContainer');
     $playerContainer.height($playerContainer.width() * 0.75);
     this.avcomponent.resize();
   }
@@ -196,19 +197,19 @@ export default class Player {
   }
 
   initLanguages() {
-    let textTracks = $('#'+this.elem.id+' video')[0].textTracks;
+    let textTracks = this.elem.find('video')[0].textTracks;
 
     // check if we have any texttracks
     if (textTracks.length === 0) {
       return;
     }
 
-    const subtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles');
+    const btnSubtitles = this.createButton('Subtitles', this.banana.i18n('player-subtitles'), 'av-icon-subtitles', true);
     const player = this;
 
-    $('#'+player.elem.id+' .button-fullscreen').before(subtitles);
+    this.elem.find('.button-fullscreen').before(btnSubtitles);
 
-    let menu = '<div class="anno subtitlemenu">';
+    let menu = '<div class="anno subtitlemenu" data-opener="Subtitles">';
     for (let i = 0; i < textTracks.length; i++) {
       menu += '<div class="subtitlemenu-option" data-language="' +textTracks[i].language + '">'
        + languages.find(lang => lang.iso === textTracks[i].language).name
@@ -216,10 +217,16 @@ export default class Player {
     }
     menu += '</div>';
 
-    $('#' + this.elem.id + ' .canvas-container').append(menu);
+    this.elem.find('.canvas-container').append(menu);
 
-    $('button[data-name="Subtitles"]')[0].addEventListener('click', (e) => {
-      $('.av-icon-subtitles').toggleClass('open');
+    btnSubtitles.on('optionSet', (e, value) => {
+      if(value){
+        btnSubtitles.addClass('option-set');
+      }
+      else{
+        btnSubtitles.removeClass('option-set');
+      }
+    })[0].addEventListener('click', (e) => {
       toggleSubtitlesEventHandler(this, e);
     });
 
@@ -232,18 +239,14 @@ export default class Player {
     });
 
     //show button only if we have at least one language set
-    $('.btn[data-name=Subtitles]').show();
-
+    btnSubtitles.show();
     this.avcomponent.fire('languagesinitialized');
   }
 
   //todo: address audio as well
   hasEnded() {
-    if ($('#'+this.elem.id+' video').length) {
-      return $('#'+this.elem.id+' video')[0].ended;
-    } else {
-      return false;
-    }
+    const vid = this.elem.find('video');
+    return vid.length ? vid[0].ended : false;
   }
 
   handleMediaReady(player) {
@@ -257,48 +260,58 @@ export default class Player {
       }
     }
 
-    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
+    const cContainer = this.elem.find('.canvas-container');
+    cContainer.append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
     this.handleMediaType(player);
     handleTranscriptionAnnotations(player);
 
-    $('#'+player.elem.id+' .canvas-container').on('click', () => {
+    cContainer.on('click', () => {
       playPauseEventHandler(player);
     });
   }
 
   addEditorOption(player) {
-    let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more');
+    let more = this.createButton('More', this.banana.i18n('player-more'), 'av-icon-more', true);
     more[0].addEventListener('click', (e) => {
       editorButtonEventHandler(player, e);
     });
-    $('#'+player.elem.id+' .controls-container').append(more);
-
+    this.elem.find('.button-fullscreen').before(more);
     this.handleMenuOptions(player);
   }
 
   updateAVComponentLanguage(player) {
-    $('#'+player.elem.id+' .volume-mute').attr('title', player.banana.i18n('player-mute'));
-    $('#'+player.elem.id+' .button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
-    $('#'+player.elem.id+' .button-play').attr('title', player.banana.i18n('player-play'));
+    this.elem.find('.volume-mute').attr('title', player.banana.i18n('player-mute'));
+    this.elem.find('.button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
+    this.elem.find('.button-play').attr('title', player.banana.i18n('player-play'));
   }
 
-  createButton(name, text, classname) {
+  createButton(name, text, classname, openCloseHandler) {
     let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
+
+    if(openCloseHandler){
+      button.on('open-close', (e, value) => {
+        if(value){
+          button.addClass('open');
+        }
+        else{
+          button.removeClass('open');
+        }
+      })
+    }
     return button;
   }
 
   handleMenuOptions(player) {
-    $('#'+player.elem.id+' .canvas-container').append('<div class=\'anno moremenu\'></div>');
+    this.elem.find('.canvas-container').append('<div class="anno moremenu" data-opener="More"></div>');
 
     let options = { embed: true, annotation: false, playlist: false, subtitles: false };
     options = player.determineOptionDisplay(player, options);
 
     for (let [key, value] of Object.entries(options)) {
       if (value) {
-        $('#'+player.elem.id+' .moremenu').append('<div id=\'create-'+key+'-link\' class=\'moremenu-option\'>'+this.banana.i18n('player-create-'+key)+'</div>');
-
-        $('#'+player.elem.id+' #create-'+key+'-link').on('click', (e) => {
+        this.elem.find('.moremenu').append('<div id=\'create-' + key + '-link\' class=\'moremenu-option\'>' + this.banana.i18n('player-create-' + key) + '</div>');
+        this.elem.find('#create-' + key + '-link').on('click', (e) => {
           openEditorTypeEventHandler(player, e, key);
         });
       }
@@ -324,17 +337,13 @@ export default class Player {
   }
 
   handleMediaType(player) {
-    let w, h;
-    w = h = 400;
     switch (this.getMediaType(player)) {
       case 'Audio':
         this.setImage(player, player.manifest.__jsonld.thumbnail[0].id);
         break;
-      case 'Video':
-        w = player.avcomponent.canvasInstances[0]._canvasWidth;
-        h = player.avcomponent.canvasInstances[0]._canvasHeight;
     }
-    $('#'+player.elem.id).css({ width : w, height : h });
+    player.elem.css({ width : '100%', height : '100%' });
+
   }
 
   getMediaType(player) {
@@ -342,7 +351,12 @@ export default class Player {
   }
 
   setImage(player, image) {
-    $('#'+player.elem.id+' .canvas-container').css({ 'background-image' : 'url(' + image +')' });
-    $('#'+player.elem.id+' .canvas-container').addClass('audio-background');
+    const playerEl = player.elem;
+    playerEl.find('.canvas-container').css({ 'background-image' : 'url(' + image +')' });
+    playerEl.find('.canvas-container').addClass('audio-background');
+  }
+
+  hidePlayerMenus(player){
+    hidePopups(player);
   }
 }

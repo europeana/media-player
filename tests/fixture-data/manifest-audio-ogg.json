@@ -1,0 +1,90 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio",
+  "type" : "Manifest",
+  "label" : {
+    "en" : [ "Егда славни ученици, mode 8" ]
+  },
+  "description" : {
+    "en" : [ "Fieldwork recording of orally transmitted Orthodox chant, Church of Saint Michael the Archangel, Simeonovo, Sofia, August 1973, Informant/s: Priest Voin Iliev" ]
+  },
+  "metaData" : [ {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "@none" : [ "<a href='https://www.wikidata.org/wiki/Q1065742'>https://www.wikidata.org/wiki/Q1065742</a>" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "cu" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "chu" ]
+    }
+  } ],
+  "thumbnail" : [ {
+    "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio-thumb.jpg",
+    "type" : "Image"
+  } ],
+  "attribution" : {
+    "en" : [ "(en) Егда славни ученици, mode 8 - https://www.europeana.eu/portal/record/22/_72315.html. (en) Bulgarian Academy of Sciences, Institute of Art Studies. (en) Bulgarian Academy of Sciences, Institute of Art Studies - https://cmc.byzart.eu/items/show/72315/. CC BY-NC-ND - http://creativecommons.org/licenses/by-nc-nd/4.0/" ]
+  },
+  "rights" : {
+    "id" : "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "type" : "Text",
+    "format" : "text/html"
+  },
+  "logo" : [ {
+    "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+    "type" : "Image"
+  } ],
+  "seeAlso" : [ {
+    "id" : "https://www.europeana.eu/api/v2/record/22/_72315.json-ld",
+    "type" : "Dataset",
+    "format" : "application/ld+json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/22/_72315.json",
+    "type" : "Dataset",
+    "format" : "application/json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/22/_72315.rdf",
+    "type" : "Dataset",
+    "format" : "application/rdf+xml",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  } ],
+  "items" : [ {
+    "id" : "https://iiif.europeana.eu/presentation/22/_72315/canvas/p1",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 1" ]
+    },
+    "duration" : 17.662,
+    "attribution" : {
+      "en" : [ "(en) Егда славни ученици, mode 8 - https://www.europeana.eu/portal/record/22/_72315.html. (en) Bulgarian Academy of Sciences, Institute of Art Studies. (en) Bulgarian Academy of Sciences, Institute of Art Studies - https://cmc.byzart.eu/items/show/72315/. CC BY-NC-ND - http://creativecommons.org/licenses/by-nc-nd/4.0/" ]
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "http://localhost:9876/base/tests/fixture-data/manifest-audio.ogg",
+          "type" : "Audio",
+          "format" : "audio/mpeg"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/22/_72315/canvas/p1"
+      } ]
+    } ]
+  } ]
+}
