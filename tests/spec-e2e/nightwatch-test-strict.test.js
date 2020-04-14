@@ -35,9 +35,9 @@ module.exports = {
       .assert.visible('.playcircle')
       .click(selPlay)
       .assert.attributeContains(selPlay, 'title', 'Pause')
+      .assert.not.visible('.playcircle')
       .click(selPlay)
       .assert.attributeContains(selPlay, 'title', 'Play')
-      .assert.not.visible('.playcircle')
       .end()
   },
   'Subtitles are displayed.': (browser) => {
