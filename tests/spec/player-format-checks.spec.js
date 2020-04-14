@@ -176,4 +176,43 @@ describe('Player functions', () => {
     });
     */
   });
+
+  describe('Audio format checks', () => {
+
+    let player;
+
+    describe('should support mp3', () => {
+      beforeEach((done) => {
+        getPlayer(manifestAudio, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        });
+      });
+
+      it('should show no error message for mp3', () => {
+        expect($('.errormessage').length).toBeFalsy();
+      });
+
+      it('should have a audio object duration greater then 0', () => {
+        expect($('audio')[0].duration).toBeGreaterThan(0);
+      });
+    });
+
+    describe('should support ogg', () => {
+      beforeEach((done) => {
+        getPlayer(manifestAudio, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        });
+      });
+
+      it('should show no error message for ogg', () => {
+        expect($('.errormessage').length).toBeFalsy();
+      });
+
+      it('should have a audio object duration greater then 0', () => {
+        expect($('audio')[0].duration).toBeGreaterThan(0);
+      });
+    });
+  });
 });
