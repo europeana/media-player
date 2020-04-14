@@ -26,7 +26,7 @@ module.exports = {
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.width > outerWidth, `Check width (${result.value.width}) > ${outerWidth} after clicking fullscreen.`);
+        this.assert.ok(result.value.width > outerWidth, `Check width (${result.value.width}) >= ${outerWidth} after clicking fullscreen.`);
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {

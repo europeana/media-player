@@ -51,11 +51,10 @@ module.exports = {
     browser
       .resizeWindow(400, 800)
       .assert.visible('.playcircle')
-      .assert.attributeContains(selPlay, 'title', 'Play')
+      .assert.attributeContains('.button-play', 'title', 'Play')
       .assert.visible('.btn[data-name=Subtitles]')
       .assert.visible('.volume-mute')
       .assert.visible('.ui-slider-handle')
-      .pause(10000)
       .end()
   }
 };
