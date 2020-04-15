@@ -5,3 +5,4 @@ reports
 chromedriver.log
 geckodriver.log
 lib/europeanamediaplayer.js
+lib/stats.json
