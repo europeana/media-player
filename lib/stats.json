@@ -7,8 +7,8 @@
   ],
   "version": "4.42.1",
   "hash": "3a55b7189922fc0c6d09",
-  "time": 2430,
-  "builtAt": 1586935734255,
+  "time": 4077,
+  "builtAt": 1586940822330,
   "publicPath": "/",
   "outputPath": "/Users/pieter/Documents/workspace/europeana-media-player/lib",
   "assetsByChunkName": {
@@ -98,8 +98,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -107,8 +107,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -116,15 +116,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -514,8 +514,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -523,14 +523,14 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             }
           ],
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           },
           "failed": false,
@@ -641,8 +641,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -650,8 +650,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -659,8 +659,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -669,8 +669,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             },
@@ -679,15 +679,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/ExternalResource.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/ExternalResource.js",
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               }
             }
           ],
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 32,
+            "building": 11
           },
           "failed": false,
           "errors": 0,
@@ -792,8 +792,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -801,8 +801,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -810,15 +810,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
               "name": "./src/index.scss",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 146,
-            "building": 378
+            "factory": 212,
+            "building": 337
           },
           "failed": false,
           "errors": 0,
@@ -875,8 +875,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -884,8 +884,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -893,8 +893,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
               "name": "./src/index.scss",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -903,14 +903,14 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
               "name": "./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/sass-loader/dist/cjs.js??ref--6-2!./src/index.scss",
               "profile": {
-                "factory": 146,
-                "building": 378
+                "factory": 212,
+                "building": 337
               }
             }
           ],
           "profile": {
-            "factory": 25,
-            "building": 34
+            "factory": 460,
+            "building": 21
           },
           "failed": false,
           "errors": 0,
@@ -967,8 +967,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -976,8 +976,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -985,15 +985,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1046,8 +1046,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           },
           "failed": false,
           "errors": 0,
@@ -1092,14 +1092,14 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           },
           "failed": false,
           "errors": 0,
@@ -1147,8 +1147,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1156,14 +1156,14 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             }
           ],
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           },
           "failed": false,
@@ -1212,8 +1212,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1221,8 +1221,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1230,15 +1230,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
               "name": "./src/index.scss",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 146,
-            "building": 378
+            "factory": 212,
+            "building": 337
           },
           "failed": false,
           "errors": 0,
@@ -1286,8 +1286,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1295,14 +1295,14 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             }
           ],
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           },
           "failed": false,
@@ -1351,8 +1351,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1360,8 +1360,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1369,15 +1369,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1426,8 +1426,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1435,8 +1435,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1444,8 +1444,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -1454,15 +1454,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.scss",
               "name": "./src/components/player/index.scss",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
             "factory": 1,
-            "building": 176,
+            "building": 403,
             "dependencies": 1
           },
           "failed": false,
@@ -1511,8 +1511,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1520,8 +1520,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1529,15 +1529,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1586,8 +1586,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1595,8 +1595,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1604,15 +1604,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1661,8 +1661,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1670,8 +1670,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1679,15 +1679,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1738,8 +1738,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1747,8 +1747,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1756,15 +1756,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1812,8 +1812,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1821,8 +1821,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1830,15 +1830,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1885,8 +1885,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1894,8 +1894,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1903,15 +1903,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -1958,8 +1958,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -1967,8 +1967,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -1976,15 +1976,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -2032,8 +2032,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -2041,8 +2041,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -2050,15 +2050,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -2107,8 +2107,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -2116,8 +2116,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -2125,15 +2125,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -2182,8 +2182,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -2191,8 +2191,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -2200,8 +2200,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -2210,15 +2210,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/EUscreen.js",
               "name": "./src/components/player/EUscreen.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 51,
-            "building": 57
+            "factory": 107,
+            "building": 85
           },
           "failed": false,
           "errors": 0,
@@ -2266,8 +2266,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -2275,8 +2275,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -2284,15 +2284,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -2341,8 +2341,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -2350,8 +2350,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -2359,15 +2359,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -2473,8 +2473,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -2482,8 +2482,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -2491,15 +2491,15 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 }
               ],
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               },
               "failed": false,
@@ -2560,8 +2560,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -2569,8 +2569,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -2578,8 +2578,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -2588,16 +2588,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -2672,8 +2672,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -2681,8 +2681,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -2690,8 +2690,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -2700,16 +2700,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -2766,8 +2766,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -2775,8 +2775,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -2784,8 +2784,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -2794,16 +2794,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -2878,8 +2878,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -2887,8 +2887,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -2896,8 +2896,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -2906,16 +2906,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3026,8 +3026,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3035,8 +3035,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3044,8 +3044,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3054,16 +3054,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3147,8 +3147,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3156,8 +3156,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3165,8 +3165,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3175,16 +3175,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3277,8 +3277,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3286,8 +3286,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3295,8 +3295,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3305,16 +3305,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3389,8 +3389,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3398,8 +3398,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3407,8 +3407,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3417,16 +3417,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3483,8 +3483,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3492,8 +3492,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3501,8 +3501,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3511,16 +3511,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3577,8 +3577,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3586,8 +3586,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3595,8 +3595,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3605,16 +3605,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3671,8 +3671,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3680,8 +3680,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3689,8 +3689,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3699,16 +3699,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3765,8 +3765,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3774,8 +3774,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3783,8 +3783,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3793,16 +3793,16 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 }
               ],
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               },
               "failed": false,
               "errors": 0,
@@ -3859,8 +3859,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -3868,8 +3868,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -3877,8 +3877,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -3887,8 +3887,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 },
@@ -3897,15 +3897,15 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/Bootstrapper.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/Bootstrapper.js",
                   "profile": {
-                    "factory": 176,
-                    "building": 199,
-                    "dependencies": 95
+                    "factory": 301,
+                    "building": 298,
+                    "dependencies": 136
                   }
                 }
               ],
               "profile": {
-                "factory": 121,
-                "building": 4
+                "factory": 177,
+                "building": 8
               },
               "failed": false,
               "errors": 0,
@@ -4333,8 +4333,8 @@
                   "identifier": "multi ./src/index.js",
                   "name": "multi ./src/index.js",
                   "profile": {
-                    "factory": 1,
-                    "building": 6
+                    "factory": 0,
+                    "building": 5
                   }
                 },
                 {
@@ -4342,8 +4342,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
                   "name": "./src/index.js",
                   "profile": {
-                    "factory": 51,
-                    "building": 751
+                    "factory": 49,
+                    "building": 791
                   }
                 },
                 {
@@ -4351,8 +4351,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
                   "name": "./src/components/player/index.js",
                   "profile": {
-                    "factory": 206,
-                    "building": 330,
+                    "factory": 266,
+                    "building": 570,
                     "dependencies": 0
                   }
                 },
@@ -4361,8 +4361,8 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
                   "profile": {
-                    "factory": 234,
-                    "building": 361,
+                    "factory": 426,
+                    "building": 580,
                     "dependencies": 1
                   }
                 },
@@ -4371,15 +4371,15 @@
                   "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/Helper.js",
                   "name": "./node_modules/@iiif/manifold/dist-esmodule/Helper.js",
                   "profile": {
-                    "factory": 176,
-                    "building": 199,
-                    "dependencies": 95
+                    "factory": 301,
+                    "building": 298,
+                    "dependencies": 136
                   }
                 }
               ],
               "profile": {
-                "factory": 6,
-                "building": 2
+                "factory": 13,
+                "building": 5
               },
               "failed": false,
               "errors": 0,
@@ -4681,8 +4681,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -4690,8 +4690,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -4699,15 +4699,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -5097,8 +5097,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5106,14 +5106,14 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         }
       ],
       "profile": {
-        "factory": 206,
-        "building": 330,
+        "factory": 266,
+        "building": 570,
         "dependencies": 0
       },
       "failed": false,
@@ -5224,8 +5224,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5233,8 +5233,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5242,8 +5242,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         },
@@ -5252,8 +5252,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
           "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           }
         },
@@ -5262,15 +5262,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/ExternalResource.js",
           "name": "./node_modules/@iiif/manifold/dist-esmodule/ExternalResource.js",
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           }
         }
       ],
       "profile": {
-        "factory": 19,
-        "building": 2
+        "factory": 32,
+        "building": 11
       },
       "failed": false,
       "errors": 0,
@@ -5375,8 +5375,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5384,8 +5384,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5393,15 +5393,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
           "name": "./src/index.scss",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 146,
-        "building": 378
+        "factory": 212,
+        "building": 337
       },
       "failed": false,
       "errors": 0,
@@ -5458,8 +5458,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5467,8 +5467,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5476,8 +5476,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
           "name": "./src/index.scss",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         },
@@ -5486,14 +5486,14 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
           "name": "./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/sass-loader/dist/cjs.js??ref--6-2!./src/index.scss",
           "profile": {
-            "factory": 146,
-            "building": 378
+            "factory": 212,
+            "building": 337
           }
         }
       ],
       "profile": {
-        "factory": 25,
-        "building": 34
+        "factory": 460,
+        "building": 21
       },
       "failed": false,
       "errors": 0,
@@ -5550,8 +5550,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5559,8 +5559,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5568,15 +5568,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -5629,8 +5629,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 1,
-        "building": 6
+        "factory": 0,
+        "building": 5
       },
       "failed": false,
       "errors": 0,
@@ -5675,14 +5675,14 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 51,
-        "building": 751
+        "factory": 49,
+        "building": 791
       },
       "failed": false,
       "errors": 0,
@@ -5730,8 +5730,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5739,14 +5739,14 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         }
       ],
       "profile": {
-        "factory": 206,
-        "building": 330,
+        "factory": 266,
+        "building": 570,
         "dependencies": 0
       },
       "failed": false,
@@ -5795,8 +5795,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5804,8 +5804,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5813,15 +5813,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/index.scss",
           "name": "./src/index.scss",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 146,
-        "building": 378
+        "factory": 212,
+        "building": 337
       },
       "failed": false,
       "errors": 0,
@@ -5869,8 +5869,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5878,14 +5878,14 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         }
       ],
       "profile": {
-        "factory": 206,
-        "building": 330,
+        "factory": 266,
+        "building": 570,
         "dependencies": 0
       },
       "failed": false,
@@ -5934,8 +5934,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -5943,8 +5943,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -5952,15 +5952,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6009,8 +6009,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6018,8 +6018,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6027,8 +6027,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         },
@@ -6037,15 +6037,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/style-loader/dist/cjs.js!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/css-loader/dist/cjs.js??ref--6-1!/Users/pieter/Documents/workspace/europeana-media-player/node_modules/sass-loader/dist/cjs.js??ref--6-2!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.scss",
           "name": "./src/components/player/index.scss",
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           }
         }
       ],
       "profile": {
         "factory": 1,
-        "building": 176,
+        "building": 403,
         "dependencies": 1
       },
       "failed": false,
@@ -6094,8 +6094,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6103,8 +6103,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6112,15 +6112,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6169,8 +6169,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6178,8 +6178,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6187,15 +6187,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6244,8 +6244,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6253,8 +6253,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6262,15 +6262,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6321,8 +6321,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6330,8 +6330,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6339,15 +6339,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6395,8 +6395,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6404,8 +6404,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6413,15 +6413,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6468,8 +6468,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6477,8 +6477,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6486,15 +6486,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6541,8 +6541,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6550,8 +6550,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6559,15 +6559,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6615,8 +6615,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6624,8 +6624,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6633,15 +6633,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6690,8 +6690,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6699,8 +6699,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6708,15 +6708,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6765,8 +6765,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6774,8 +6774,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6783,8 +6783,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         },
@@ -6793,15 +6793,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/EUscreen.js",
           "name": "./src/components/player/EUscreen.js",
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           }
         }
       ],
       "profile": {
-        "factory": 51,
-        "building": 57
+        "factory": 107,
+        "building": 85
       },
       "failed": false,
       "errors": 0,
@@ -6849,8 +6849,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6858,8 +6858,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6867,15 +6867,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -6924,8 +6924,8 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "profile": {
-            "factory": 1,
-            "building": 6
+            "factory": 0,
+            "building": 5
           }
         },
         {
@@ -6933,8 +6933,8 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 751
+            "factory": 49,
+            "building": 791
           }
         },
         {
@@ -6942,15 +6942,15 @@
           "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
           "name": "./src/components/player/index.js",
           "profile": {
-            "factory": 206,
-            "building": 330,
+            "factory": 266,
+            "building": 570,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 234,
-        "building": 361,
+        "factory": 426,
+        "building": 580,
         "dependencies": 1
       },
       "failed": false,
@@ -7056,8 +7056,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7065,8 +7065,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7074,15 +7074,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 234,
-            "building": 361,
+            "factory": 426,
+            "building": 580,
             "dependencies": 1
           },
           "failed": false,
@@ -7143,8 +7143,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7152,8 +7152,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7161,8 +7161,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7171,16 +7171,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7255,8 +7255,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7264,8 +7264,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7273,8 +7273,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7283,16 +7283,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7349,8 +7349,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7358,8 +7358,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7367,8 +7367,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7377,16 +7377,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7461,8 +7461,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7470,8 +7470,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7479,8 +7479,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7489,16 +7489,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7609,8 +7609,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7618,8 +7618,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7627,8 +7627,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7637,16 +7637,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7730,8 +7730,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7739,8 +7739,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7748,8 +7748,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7758,16 +7758,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7860,8 +7860,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7869,8 +7869,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7878,8 +7878,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -7888,16 +7888,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -7972,8 +7972,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -7981,8 +7981,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -7990,8 +7990,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8000,16 +8000,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -8066,8 +8066,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8075,8 +8075,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8084,8 +8084,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8094,16 +8094,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -8160,8 +8160,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8169,8 +8169,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8178,8 +8178,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8188,16 +8188,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -8254,8 +8254,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8263,8 +8263,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8272,8 +8272,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8282,16 +8282,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -8348,8 +8348,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8357,8 +8357,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8366,8 +8366,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8376,16 +8376,16 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 176,
-            "building": 199,
-            "dependencies": 95
+            "factory": 301,
+            "building": 298,
+            "dependencies": 136
           },
           "failed": false,
           "errors": 0,
@@ -8442,8 +8442,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8451,8 +8451,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8460,8 +8460,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8470,8 +8470,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             },
@@ -8480,15 +8480,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/Bootstrapper.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/Bootstrapper.js",
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               }
             }
           ],
           "profile": {
-            "factory": 121,
-            "building": 4
+            "factory": 177,
+            "building": 8
           },
           "failed": false,
           "errors": 0,
@@ -8916,8 +8916,8 @@
               "identifier": "multi ./src/index.js",
               "name": "multi ./src/index.js",
               "profile": {
-                "factory": 1,
-                "building": 6
+                "factory": 0,
+                "building": 5
               }
             },
             {
@@ -8925,8 +8925,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 751
+                "factory": 49,
+                "building": 791
               }
             },
             {
@@ -8934,8 +8934,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/babel-loader/lib/index.js??ref--4!/Users/pieter/Documents/workspace/europeana-media-player/src/components/player/index.js",
               "name": "./src/components/player/index.js",
               "profile": {
-                "factory": 206,
-                "building": 330,
+                "factory": 266,
+                "building": 570,
                 "dependencies": 0
               }
             },
@@ -8944,8 +8944,8 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/index.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/index.js",
               "profile": {
-                "factory": 234,
-                "building": 361,
+                "factory": 426,
+                "building": 580,
                 "dependencies": 1
               }
             },
@@ -8954,15 +8954,15 @@
               "identifier": "/Users/pieter/Documents/workspace/europeana-media-player/node_modules/@iiif/manifold/dist-esmodule/Helper.js",
               "name": "./node_modules/@iiif/manifold/dist-esmodule/Helper.js",
               "profile": {
-                "factory": 176,
-                "building": 199,
-                "dependencies": 95
+                "factory": 301,
+                "building": 298,
+                "dependencies": 136
               }
             }
           ],
           "profile": {
-            "factory": 6,
-            "building": 2
+            "factory": 13,
+            "building": 5
           },
           "failed": false,
           "errors": 0,
