@@ -22,22 +22,22 @@ module.exports = {
   'Should fill available width on fullscreen': (browser) => {
     browser
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.width < outerWidth, `Check width (${result.value.width}) < ${outerWidth} before clicking fullscreen.`);
+        this.assert.ok(result.value.width <= outerWidth, `Check width (${result.value.width}) <= ${outerWidth} before clicking fullscreen`);
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.width > outerWidth, `Check width (${result.value.width}) >= ${outerWidth} after clicking fullscreen.`);
+        this.assert.ok(result.value.width > outerWidth, `Check width (${result.value.width}) > ${outerWidth} after clicking fullscreen`);
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.width < outerWidth, `Check width (${result.value.width}) < ${outerWidth} after clicking fullscreen twice.`);
+        this.assert.ok(result.value.width <= outerWidth, `Check width (${result.value.width}) <= ${outerWidth} after clicking fullscreen twice`);
       })
       .end()
   },
   'Should fill available height on fullscreen': (browser) => {
     browser
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.height < outerHeight, `Check height (${result.value.height}) < ${outerHeight} before clicking fullscreen.`);
+        this.assert.ok(result.value.height <= outerHeight, `Check height (${result.value.height}) <= ${outerHeight} before clicking fullscreen.`);
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {
@@ -45,7 +45,7 @@ module.exports = {
       })
       .click(selBtnFS)
       .getElementSize(selCanvas, function (result) {
-        this.assert.ok(result.value.height < outerHeight, `Check height (${result.value.height}) < ${outerHeight} after clicking fullscreen twice.`);
+        this.assert.ok(result.value.height <= outerHeight, `Check height (${result.value.height}) <= ${outerHeight} after clicking fullscreen twice.`);
       })
       .end()
   },
