@@ -501,3 +501,9 @@ button:focus {
 .btn[title=Next] {
   display: none;
 }
+
+video::cue {
+  font-family: "Open Sans";
+  background-color: rgba(0,0,0,0.8) !important;
+  padding: 4px !important;
+}
