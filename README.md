@@ -5,9 +5,20 @@
 
 Created as part of the [Europeana Media Project](https://pro.europeana.eu/project/europeana-media)
 
-### First
+### Build Setup
 
-Install deps from project root with `yarn` or `npm i`
+Install package dependencies:
+* `npm install`
+
+### Linting
+To lint-check the `.js` run:
+* `npm run lint`
+* `npm run lint:fix`
+
+To lint-check the `.scss` run:
+
+* `npm run lint:style`
+* `npm run lint:style:fix`
 
 ### Testing
 
@@ -27,7 +38,12 @@ Run end-to-end tests with:
 
 ### Build for production
 
-`yarn build` or `npm run build`
+Run:
+* `npm run build`
+
+### Publication
+
+* publishes to [npm](https://www.npmjs.com/package/europeanamediaplayer) using a [web-action](actions?query=workflow%3A%22Node.js+Package%22)
 
 ### Dependencies
 
