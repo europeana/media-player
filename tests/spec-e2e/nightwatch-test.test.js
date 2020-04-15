@@ -15,12 +15,12 @@ module.exports = {
     const extraWaitTime = 1;
     browser
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
-      .moveToElement(selTimeline, 0, 2)
+      .moveToElement(selTimeline, 0, 0)
       .mouseButtonDown(0)
       .getElementSize(selTimeline, function (result) {
-        this.moveToElement(selTimeline, result.value.width, result.value.height / 2);
-        this..mouseButtonUp(0);
+        this.moveToElement(selTimeline, result.value.width, 0);
       })
+      .mouseButtonUp(0)
       .pause(extraWaitTime)
       .getText(selTime, function(result) {
         browser.assert.ok(result.value === videoEndTime, `Expect time ${result.value} to be at ${videoEndTime}`);
