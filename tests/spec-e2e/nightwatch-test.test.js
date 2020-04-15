@@ -19,8 +19,8 @@ module.exports = {
       .mouseButtonDown(0)
       .getElementSize(selTimeline, function (result) {
         this.moveToElement(selTimeline, result.value.width, result.value.height / 2);
+        this..mouseButtonUp(0);
       })
-      .mouseButtonUp(0)
       .pause(extraWaitTime)
       .getText(selTime, function(result) {
         browser.assert.ok(result.value === videoEndTime, `Expect time ${result.value} to be at ${videoEndTime}`);
@@ -53,6 +53,10 @@ module.exports = {
   },
   'Resize the browser and check if the controls are visible': (browser) => {
     browser
+      .assert.attributeContains('.button-play', 'title', 'Play')
+      .assert.visible('.btn[data-name=Subtitles]')
+      .assert.visible('.volume-mute')
+      .assert.visible('.ui-slider-handle')
       .resizeWindow(400, 800)
       .assert.visible('.playcircle')
       .assert.attributeContains('.button-play', 'title', 'Play')
