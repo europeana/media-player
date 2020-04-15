@@ -31,7 +31,7 @@ Run end-to-end tests with:
 
 ### Dependencies
 
-The player has an unbundled dependency on [jQuery](https://www.npmjs.com/package/jquery) that has not been packed into this library. Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
+The player has unbundled dependencies on [jQuery](https://www.npmjs.com/package/jquery) and [jQuery-UI](https://www.npmjs.com/package/webpack-jquery-ui) that have not been packed into this library. Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
 
 ### Embed player
 

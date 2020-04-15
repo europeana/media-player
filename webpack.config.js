@@ -1,5 +1,8 @@
 require('dotenv').config();
 
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const path = require('path');
 const webpack = require('webpack');
 const libraryName = 'europeanamediaplayer';
@@ -24,7 +27,19 @@ const config = function(mode) {
     node: {
       fs: 'empty'
     },
-    devtool: (mode === 'development') ? 'inline-source-map': false
+    devtool: (mode === 'development') ? 'inline-source-map': false,
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin(),
+        new OptimizeCssAssetsPlugin({
+          cssProcessorPluginOptions: {
+             discardComments: { removeAll: true },
+          },
+          canPrint: false
+        })
+      ]
+    }
   };
 
   if (mode === 'development') {
@@ -77,12 +92,7 @@ const cssRule = function() {
     test: /\.[s]?css$/,
     use: [
       'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-        }
-      },
+      { loader: 'css-loader', options: { sourceMap: true} },
       { loader: 'sass-loader', options: { sourceMap: true } }
     ]
   };
@@ -132,7 +142,9 @@ const externals = function() {
   if (process.env.NODE_ENV !== "development") {
     externals = {
       jquery: 'jquery',
-      dashjs: 'dashjs'
+      dashjs: 'dashjs',
+      'webpack-jquery-ui/slider': 'webpack-jquery-ui/slider',
+      'webpack-jquery-ui/effects': 'webpack-jquery-ui/effects',
     };
   }
   return externals;
