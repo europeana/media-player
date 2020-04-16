@@ -34,9 +34,9 @@ function playPauseEventHandler(player) {
   if (player.avcomponent.canvasInstances[0]._isPlaying) {
     player.avcomponent.canvasInstances[0].pause();
   } else {
-    //hide playcircle if showing
+    // hide playcircle if showing
     const playerWrapper = player.elem.find('.playwrapper');
-    if(playerWrapper.is(':visible')) {
+    if (playerWrapper.is(':visible')) {
       playerWrapper.hide();
     }
     player.avcomponent.canvasInstances[0].play();
@@ -45,7 +45,7 @@ function playPauseEventHandler(player) {
 
 const hidePopups = (player, dataOpenerSelector = '[data-opener]') => {
   const openerNames = $(dataOpenerSelector);
-  openerNames.each((i, el)=> {
+  openerNames.each((i, el) => {
     const elMenu = $(el);
     elMenu.removeClass('showing');
     messagePopupOpener(elMenu, 'open-close', false);
@@ -55,10 +55,9 @@ const hidePopups = (player, dataOpenerSelector = '[data-opener]') => {
 function fullScreenEventHandler(player, value) {
   hidePopups(player);
   const btnFullscreen = $('.av-icon-fullscreen');
-  if(value === 'on'){
+  if (value === 'on') {
     btnFullscreen.addClass('exit');
-  }
-  else if(value === 'off'){
+  } else if (value === 'off') {
     btnFullscreen.removeClass('exit');
   }
 }
@@ -90,27 +89,26 @@ function increaseVolume(val, rate) {
 }
 
 function editorButtonEventHandler(player, e) {
-  toggleMenuOption(player, e, 'moremenu', 'More');
+  toggleMenuOption(player, e, 'moremenu');
 }
 
 function toggleSubtitlesEventHandler(player, e) {
-  toggleMenuOption(player, e, 'subtitlemenu', 'Subtitles');
+  toggleMenuOption(player, e, 'subtitlemenu');
 }
 
-function toggleMenuOption(player, e, cls, name) {
+function toggleMenuOption(player, e, cls) {
   e.preventDefault();
 
   const elPlayer = player.elem;
   const elMenu = elPlayer.find('.' + cls);
 
-  if(elMenu.is(':visible')) {
-    hidePopups(player, '[data-opener=' + elMenu.data('opener') + ']')
-  }
-  else {
+  if (elMenu.is(':visible')) {
+    hidePopups(player, '[data-opener=' + elMenu.data('opener') + ']');
+  } else {
     const marginBottom = 8;
-    const bottom = elPlayer.find('.options-container').height() + marginBottom;
+    const bottomVal = elPlayer.find('.options-container').height() + marginBottom;
     hidePopups(player);
-    elMenu.css({ bottom: bottom, right: 16 });
+    elMenu.css({ bottom: bottomVal, right: 16 });
     elMenu.addClass('showing');
     messagePopupOpener(elMenu, 'open-close', true);
   }
@@ -118,9 +116,9 @@ function toggleMenuOption(player, e, cls, name) {
 
 const messagePopupOpener = (elMenu, eventType, value) => {
   let openerName = elMenu.data('opener');
-  if(openerName){
+  if (openerName) {
     let opener = $('[data-name=' + openerName + ']');
-    if(opener){
+    if (opener) {
       opener.trigger(eventType, [value]);
     }
   }
@@ -139,11 +137,11 @@ function subtitleMenuEventHandler(player,  e) {
   Array.from(textTracks).forEach((track) => {
     track.mode = selLang === track.language ? 'showing' : 'hidden';
   });
-  toggleMenuOption(player, e, 'subtitlemenu', 'Subtitles');
+  toggleMenuOption(player, e, 'subtitlemenu');
   messagePopupOpener(elPlayer.find('.subtitlemenu-option').parent(), 'optionSet', !optionAlreadySelected);
 
   elPlayer.find('.subtitlemenu-option').removeClass(selClass);
-  if(!optionAlreadySelected){
+  if (!optionAlreadySelected) {
     tgt.addClass(selClass);
   }
 

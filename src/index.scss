@@ -1,29 +1,15 @@
-#eups-content-wrapper {
-    float: left;
-    max-height: inherit;
-    max-width: inherit;
-}
-
 .eups-player {
-    height: 100%;
-    width: 100% !important;
-    max-width: 100%;
-    max-height: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100% !important;
 }
 
 .editor {
-    width: 60%;
+  width: 60%;
 }
 
 .no-editor {
-    width: 100%;
-    float: left;
-}
-
-#eups-editor-wrapper {
-    float: left;
-}
-
-#eups-annotationeditor {
-    padding-left: 5%;
+  float: left;
+  width: 100%;
 }
