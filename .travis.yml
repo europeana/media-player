@@ -13,6 +13,8 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
 
 script:
+  - npm run lint
+  - npm run lint:style
   - npm test
   - npm run test:e2e:chrome:headless
 #  - npm run test:e2e:firefox:headless

@@ -1,3 +1,4 @@
+const includeCoverage = process.argv[3];
 const webpack = require('webpack');
 
 const files = function() {
@@ -70,30 +71,34 @@ const plugins = () => {
 };
 
 const rules = () => {
-  return [{
-    enforce: 'pre',
-    test: /.spec\.js$/,
-    include: /tests\/spec/,
-    exclude: /node_modules/,
-    use: [{ loader: 'babel-loader' }]
-  },
-  {
-    enforce: 'pre',
-    test: /\.js$/,
-    include: /src/,
-    exclude: /node_modules/,
-    use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
-  },
-  {
-    test: /\.js$/,
-    include: /src/,
-    exclude: /node_modules|test/,
-    use: [{ loader: 'babel-loader' }]
-  },
-  {
-    test: /\.[s]?css$/,
-    loader: 'style-loader!css-loader!sass-loader'
-  }]
+  return [
+    {
+      test: /\.js$/,
+      include: /src/,
+      exclude: /node_modules|test/,
+      loader: 'babel-loader'
+    },
+    {
+      test: /\.[s]?css$/,
+      loader: 'style-loader!css-loader!sass-loader'
+    },
+    ... includeCoverage ? [
+      {
+        enforce: 'pre',
+        test: /.spec\.js$/,
+        include: /tests\/spec/,
+        exclude: /node_modules/,
+        use: [{ loader: 'babel-loader' }]
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        include: /src/,
+        exclude: /node_modules/,
+        use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
+      }
+    ] : []
+  ];
 };
 
 const webpackMiddleware = function() {
@@ -104,7 +109,7 @@ const webpackMiddleware = function() {
   };
 }
 
-const configuration = {
+let configuration = {
   //logLevel: 'DEBUG',
   basePath: '',
   exclude: [],
@@ -114,7 +119,7 @@ const configuration = {
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
-  reporters: ['progress', 'spec', 'coverage'],//, 'kjhtml', 'dots', ],
+  reporters: ['progress', 'kjhtml', 'spec', ... includeCoverage ? ['coverage'] : []],
   //address that the server will listen on, '0.0.0.0' is default
   listenAddress: '0.0.0.0',
   //hostname to be used when capturing browsers, 'localhost' is default
@@ -132,19 +137,20 @@ const configuration = {
   client: client(),
   webpack: webpackInit(),
   preprocessors: {
-    //add webpack as preprocessor to support require() in test-suits .js files
     './tests/spec/**/*.js': ['webpack', 'sourcemap'],
-    './src/**/*.js': ['webpack', 'sourcemap', 'coverage'],
+    './src/**/*.js': ['webpack', 'sourcemap', ... includeCoverage ? ['coverage'] : []],
   },
-  coverageIstanbulReporter: {
-    dir : 'coverage/',
-    reports: [ 'html' ],
-    fixWebpackSourcePaths: true
-  },
-
   webpackMiddleware: webpackMiddleware(),
   customLaunchers: customLaunchers()
 };
+
+if(includeCoverage){
+  configuration.coverageIstanbulReporter = {
+    dir : 'coverage/',
+    reports: [ 'html' ],
+    fixWebpackSourcePaths: true
+  };
+}
 
 if (process.env.TRAVIS) {
   configuration.browsers = ['chromeTravisCi'];

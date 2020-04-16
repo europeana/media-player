@@ -4,7 +4,7 @@ import './index.scss';
 
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
-require('manifesto.js');
+
 const Manifold = require('@iiif/manifold');
 const IIIFAVComponent = require('@iiif/iiif-av-component');
 require('dashjs');
@@ -27,7 +27,7 @@ let helper;
 
 export default class Player {
   constructor(elem) {
-    if (!elem){
+    if (!elem) {
       return;
     }
     this.elem = $(elem);
@@ -220,10 +220,9 @@ export default class Player {
     this.elem.find('.canvas-container').append(menu);
 
     btnSubtitles.on('optionSet', (e, value) => {
-      if(value){
+      if (value) {
         btnSubtitles.addClass('option-set');
-      }
-      else{
+      } else {
         btnSubtitles.removeClass('option-set');
       }
     })[0].addEventListener('click', (e) => {
@@ -289,15 +288,14 @@ export default class Player {
   createButton(name, text, classname, openCloseHandler) {
     let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
 
-    if(openCloseHandler){
+    if (openCloseHandler) {
       button.on('open-close', (e, value) => {
-        if(value){
+        if (value) {
           button.addClass('open');
-        }
-        else{
+        } else {
           button.removeClass('open');
         }
-      })
+      });
     }
     return button;
   }
@@ -356,7 +354,7 @@ export default class Player {
     playerEl.find('.canvas-container').addClass('audio-background');
   }
 
-  hidePlayerMenus(player){
+  hidePlayerMenus(player) {
     hidePopups(player);
   }
 }
