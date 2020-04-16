@@ -39,7 +39,7 @@ Run end-to-end tests with:
 ### Build for production
 
 Run:
-* `npm run build`
+* `npm run build:production`
 
 ### Publication
 
