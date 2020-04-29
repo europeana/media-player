@@ -71,13 +71,24 @@ var player = new EuropeanaMediaPlayer(container, videoObject[, options]);
 
 The constructor accepts the following parameters
 
-- _@param {DOM Element}_ container - the DOM element in which to create the player.
-- _@param {JSON Object}_ videoObject - the object containing the video properties.
-    - _@param {String}_ manifest - the url of the IIIF manifest for the media item.
-- _@param {JSON Object}_ options - an optional object containing the player options.
-    - _@param {String}_ editor - allows to configure an external editor so that embedding and other editorial options can be done on that page.
-    - _@param {String}_ language - 2 character iso 639-1 language code, all official languages of the European Union are supported. The default language is English.
+Name | Type | Description
+---- | ---- | -----------
+container| _DOM Element_ | the DOM element in which to create the player
+videoObject | _JSON Object_ | the object containing the video properties
+options | _JSON Object_ | an optional object containing the player options
 
+The _videoObject_ requires the following property
+
+Name | Type | Description
+---- | ---- | -----------
+manifest | _String_ | the url of the IIIF manifest for the media item
+
+The _options_ accepts the following properties
+
+Name | Type | Description
+---- | ---- | -----------
+editor | _String_ | url, allows to configure an external editor so that embedding and other editorial options can be done on that page
+language | _String_ | 2 character [iso 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), all official languages of the European Union are supported. The default language is English
 
 ### Examples
 
