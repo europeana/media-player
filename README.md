@@ -53,43 +53,63 @@ The player has unbundled dependencies on [jQuery](https://www.npmjs.com/package/
 
 To embed the player please firstyourself first make sure to include the Europeana Media Player Library
 
-```
+```javascript
 import EuropeanaMediaPlayer from 'europeanamediaplayer';
 ```
 
 or
 
-```
+```javascript
 const EuropeanaMediaPlayer = require("europeanamediaplayer").default;
 ```
 
 The constructor of the Europeana Media Player is
 
+```javascript
+var player = new EuropeanaMediaPlayer(container, videoObject[, options]);
 ```
-var player = new EuropeanaMediaPlayer(container, videoObject, options);
+
+The constructor accepts the following parameters
+
+- _@param {DOM Element}_ container - the DOM element in which to create the player.
+- _@param {JSON Object}_ videoObject - the object containing the video properties.
+    - _@param {String}_ manifest - the url of the IIIF manifest for the media item.
+- _@param {JSON Object}_ options - an optional object containing the player options.
+    - _@param {String}_ editor - allows to configure an external editor so that embedding and other editorial options can be done on that page.
+    - _@param {String}_ language - 2 character iso 639-1 language code, all official languages of the European Union are supported. The default language is English.
+
+
+### Examples
+
+#### Basic example
+
+This basic example contains only the required parameters.
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_9972/manifest?format=3" };
+new EuropeanaMediaPlayer(container, videoObj);
 ```
 
-The constructor accepts three parameters
+#### Editor example
 
-- **container** is the DOM element in which to create the player.
-- **videoObject** is an object containing the video properties.
-- **options** is an optional object containing the player options.
+This example sets the editor to show the editorial option menu in the player.
 
-The videoObject has the following required properties
-
-- **manifest** the url of the IIIF manifest for the media item
-
- It's possible to set the following options to extend / change the default player
-
-- **editor** url, allows to configure an external editor so that editing is not done on the page itself.
-- **language** 2 character iso 639-1 language code, all official languages of the European Union are supported. The default language is English.
-
-### Example
-
-```
+```javascript
 var container = document.body;
 var videoObj = { manifest : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_9972/manifest?format=3" };
 var options = { editor: "https://video-editor.eu" };
+new EuropeanaMediaPlayer(container, videoObj, options);
+```
+
+#### Editor and language example
+
+This example sets besides the editor the player interface language to Dutch
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_9972/manifest?format=3" };
+var options = { editor: "https://video-editor.eu", language: "nl" };
 new EuropeanaMediaPlayer(container, videoObj, options);
 ```
 
