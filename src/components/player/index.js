@@ -225,10 +225,13 @@ export default class Player {
     this.avcomponent.fire('languagesinitialized');
   }
 
-  //todo: address audio as well
   hasEnded() {
-    const vid = this.elem.find('video');
-    return vid.length ? vid[0].ended : false;
+    let durationTypes = ['Audio', 'Video'];
+    if (durationTypes.includes(this.getMediaType(this))) {
+      let durationElement = this.elem.find(this.getMediaType(this).toLowerCase());
+      return durationElement.length ? durationElement[0].ended : false;
+    }
+    return false;
   }
 
   handleMediaReady(player) {
