@@ -53,7 +53,7 @@ const config = function(mode) {
 const rules = function() {
   let rules =
     [
-      jsRule(), htmlRule(), cssRule(), fontRule(), pngRule()
+      jsRule(), htmlRule(), cssRule(), fontRule(), pngRule(), icoRule()
     ];
 
   return rules;
@@ -106,7 +106,7 @@ const fontRule = () => {
 }
 
 const pngRule = function() {
-  let pngRule = {
+  return {
     test: /.*\.png$/i,
     loaders: [ 'file-loader', {
       loader: 'image-webpack-loader',
@@ -120,8 +120,17 @@ const pngRule = function() {
     }
     ]
   };
+};
 
-  return pngRule;
+const icoRule = function() {
+  return {
+    test: /favicon\.ico$/,
+    loader: 'url-loader',
+    query: {
+      limit: 1,
+      name: '[name].[ext]',
+    }
+  }
 };
 
 const output = function() {
