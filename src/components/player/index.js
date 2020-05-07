@@ -221,7 +221,7 @@ export default class Player {
 
     $('.subtitlemenu-option').each((i, option) => {
       const op = $(option);
-      if(op.data('language').indexOf(configuredLanguage + '-') === 0){
+      if (op.data('language').indexOf(configuredLanguage + '-') === 0) {
         op.click();
         hidePopups(this);
       }
