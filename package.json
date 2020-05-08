@@ -22,6 +22,7 @@
     "lint:style:fix": "npm run lint:style -- --fix",
     "test": "env EUSCREEN_INFO_URL=http://localhost:9876/base/tests/fixture-data/EUscreen/ karma start",
     "test:coverage": "npm run test -- --coverage",
+    "test:accessibility": "npm run test -- --accessibility",
     "test:e2e": "npm run test:e2e:chrome",
     "test:e2e:chrome": "node nightwatch-runner.js --env=chrome",
     "test:e2e:firefox": "node nightwatch-runner.js --env=gecko --skiptags skip-firefox",
@@ -44,6 +45,7 @@
     "webpack-jquery-ui": "^2.0.1"
   },
   "devDependencies": {
+    "axe-core": "^3.5.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.0",
