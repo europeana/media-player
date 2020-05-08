@@ -36,5 +36,24 @@
         "player-error-decoding": "media decoderen mislukt",
         "player-error-format": "media formaat wordt niet ondersteund door deze browser",
         "player-error-unknown": "onbekend"
+    },
+    "pl": {
+        "player-play": "Graj",
+        "player-pause": "Pauza",
+        "player-fullscreen": "Pełny ekran",
+        "player-mute": "Wycisz",
+        "player-unmute": "Anuluj wyciszenie",
+        "player-subtitles": "napisy na filmie obcojęzycznym",
+        "player-more": "więcej",
+        "player-create-annotation": "Rób adnotacje",
+        "player-create-embed": "Zrób osadzenie",
+        "player-create-playlist": "Utwórz listę odtwarzania",
+        "player-create-subtitles": "Twórz napisy",
+        "player-error": "Błąd",
+        "player-error-loading": "ładowanie przerwane",
+        "player-error-network": "błąd siecir",
+        "player-error-decoding": "Dekodowanie mediów nie powiodło się",
+        "player-error-format": "format multimediów nie jest obsługiwany przez tę przeglądarkę",
+        "player-error-unknown": "Nieznany"
     }
 }
