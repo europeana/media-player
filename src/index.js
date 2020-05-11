@@ -1,5 +1,6 @@
 /* global $ */
 import './index.scss';
+import './favicon.ico';
 
 import Player from './components/player';
 

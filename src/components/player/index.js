@@ -24,6 +24,7 @@ const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
 
 let helper;
+let configuredLanguage;
 
 export default class Player {
   constructor(elem) {
@@ -55,6 +56,8 @@ export default class Player {
     //Check if the language is set, and if we have this present, otherwise default to English
     if (language.length === 0 || languages.find(lang => lang.code === language) === undefined) {
       language = 'en';
+    } else {
+      configuredLanguage = language;
     }
 
     const banana = new Banana(language);
@@ -214,6 +217,14 @@ export default class Player {
 
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
+    });
+
+    $('.subtitlemenu-option').each((i, option) => {
+      const op = $(option);
+      if (op.data('language').indexOf(configuredLanguage + '-') === 0) {
+        op.click();
+        hidePopups(this);
+      }
     });
 
     $(window).on('resize', () => {
