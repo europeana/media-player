@@ -2,17 +2,12 @@
   "name": "europeanamediaplayer",
   "version": "0.6.0",
   "license": "EUPL-1.2",
-  "main": "lib/europeanamediaplayer.js",
+  "main": "dist/europeana-media-player.min.js",
   "author": {
     "name": "Pieter van Leeuwen",
     "email": "pieter@noterik.nl",
     "url": "https://github.com/pietervanleeuwen"
   },
-  "files": [
-    "lib",
-    "src",
-    "tests"
-  ],
   "scripts": {
     "build": "webpack-cli",
     "build:production": "env NODE_ENV=production webpack-cli",
