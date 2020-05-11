@@ -3,4 +3,4 @@ coverage
 reports
 .env
 *.log
-dist/
+dist/*
