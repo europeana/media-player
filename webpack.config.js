@@ -5,8 +5,6 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const path = require('path');
 const webpack = require('webpack');
-const libraryName = 'europeanamediaplayer';
-const outputFile = libraryName + '.js';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
@@ -34,7 +32,7 @@ const config = function(mode) {
         new TerserPlugin(),
         new OptimizeCssAssetsPlugin({
           cssProcessorPluginOptions: {
-             discardComments: { removeAll: true },
+            discardComments: { removeAll: true }
           },
           canPrint: false
         })
@@ -92,7 +90,7 @@ const cssRule = function() {
     test: /\.[s]?css$/,
     use: [
       'style-loader',
-      { loader: 'css-loader', options: { sourceMap: true} },
+      { loader: 'css-loader', options: { sourceMap: true } },
       { loader: 'sass-loader', options: { sourceMap: true } }
     ]
   };
@@ -102,8 +100,8 @@ const fontRule = () => {
   return {
     test: /\.(png|woff|woff2|eot|ttf|svg)$/,
     use: ['url-loader?limit=100000&mimetype=application/font-woff']
-  }
-}
+  };
+};
 
 const pngRule = function() {
   let pngRule = {
@@ -125,26 +123,24 @@ const pngRule = function() {
 };
 
 const output = function() {
-  let output = {
-    publicPath: '/',
-    path: path.resolve(__dirname, './lib'),
-    filename: outputFile,
-    library: libraryName,
+  return {
+    filename: 'europeana-media-player.min.js',
+    library: 'EuropeanaMediaPlayer',
+    libraryExport: 'default',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/'
   };
-
-  return output;
 };
 
 const externals = function() {
   let externals = {};
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== 'development') {
     externals = {
       jquery: 'jquery',
       dashjs: 'dashjs',
       'webpack-jquery-ui/slider': 'webpack-jquery-ui/slider',
-      'webpack-jquery-ui/effects': 'webpack-jquery-ui/effects',
+      'webpack-jquery-ui/effects': 'webpack-jquery-ui/effects'
     };
   }
   return externals;
