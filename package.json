@@ -2,7 +2,7 @@
   "name": "europeanamediaplayer",
   "version": "0.6.0",
   "license": "EUPL-1.2",
-  "main": "lib/europeanamediaplayer.js",
+  "main": "dist/europeana-media-player.min.js",
   "author": {
     "name": "Pieter van Leeuwen",
     "email": "pieter@noterik.nl",
