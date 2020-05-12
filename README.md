@@ -29,9 +29,6 @@ Run unit tests with either of:
 Generate a coverage report with:
 * `npm run test:coverage`
 
-Run an accessibility test with:
-* `npm run test:accessibility`
-
 Run end-to-end tests with:
 * `npm run test:e2e`
 (defaults to chrome) or with the browser-specific commands:
