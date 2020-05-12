@@ -156,14 +156,16 @@ const externals = function() {
 };
 
 const plugins = function() {
-  let plugins = [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'window.$': 'jquery'
-    })
-  ];
+  let plugins = [];
+  if (process.env.NODE_ENV === 'development') {
+    plugins = [ new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        'window.$': 'jquery'
+      })
+    ];
+  }
 
   return plugins;
 };
