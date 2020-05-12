@@ -66,7 +66,7 @@ import EuropeanaMediaPlayer from 'europeanamediaplayer';
 or
 
 ```javascript
-const EuropeanaMediaPlayer = require("europeanamediaplayer").default;
+const EuropeanaMediaPlayer = require("europeanamediaplayer");
 ```
 
 The constructor of the Europeana Media Player is
