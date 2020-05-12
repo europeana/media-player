@@ -1,11 +1,10 @@
 const includeCoverage = process.argv[3] && process.argv[3].match('coverage');
-const accessibility = process.argv[3] && process.argv[3].match('accessibility');
 const webpack = require('webpack');
 
 const files = function() {
   return [
   {
-    pattern: `./tests/spec/**/${accessibility ? 'accessibility' : '!(accessibility)'}.spec.js`, watched: true, type: 'module' },
+    pattern: `./tests/spec/**/*.spec.js`, watched: true, type: 'module' },
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
     //'http://localhost:9876/base/spec/fixture-data/jquery-3.4.1.min.js',
