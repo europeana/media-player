@@ -13,7 +13,7 @@ export const init = (container, videoObj, options) => {
   let playerId = uuidv4();
 
   //Append player to container with the unique id
-  $(container).append('<div id="eups-player-' + playerId + '" class="eups-player"></div>');
+  $(container).append('<section id="eups-player-' + playerId + '" class="eups-player"></section>');
 
   //Set options
   editorurl = options.editor || editorurl;
