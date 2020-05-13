@@ -1,8 +1,8 @@
 const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html';
 const selTime = '.canvas-time';
 const selTimeline = '.canvas-timeline-container';
-const videoEndTime = '02:42';
-const videoMidTime = '01:21';
+const videoEndTime = '01:49';
+const videoMidTime = '00:55';
 
 module.exports = {
    tags: ['skip-firefox'],

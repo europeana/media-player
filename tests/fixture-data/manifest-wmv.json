@@ -1,111 +1,96 @@
 {
   "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
-  "id" : "http://localhost:9876/base/tests/fixture-data/manifest-wmv.json",
+  "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/manifest",
   "type" : "Manifest",
   "label" : {
-    "pl" : [ "Astronomowie Uniwersytetu Warszawskiego" ]
+    "en" : [ "Six cities competition weightlifting" ],
+    "nl" : [ "Zesstedenwedstrijd gewichtheffen" ]
   },
-  "description" : {
-    "pl" : [ "Astronomowie całego świata obserwowali zbliżenie Marsa do Ziemi, które następuje co 15 lat. Obserwatorium astronomiczne Uniwersytetu Józefa Piłsudskiego w Warszawie wykonało szereg pomiarów i obserwacji tej ciekawej planety.", "Pracownicy obserwatorium astronomicznego podczas pracy." ]
+  "summary" : {
+    "en" : [ "Newsreels in which Dutch subjects of a certain week are presented.", "A weightlifting competition takes place in an audience filled hall in Breda. The participants are from Beverwijk, Delft, Den Haag, Venlo, Eindhoven and Breda. During World War II the newsreels by film producers Polygoon and Profilti were controlled by the German occupiers. Polygoon and Profilti had to work together with the German film rental office Tobis. From January 1, 1941 the newsreels were therefore called Tobis News. Until the fall of 1944 newsreels under this name were produced alternately by Polygoon and Profilti." ],
+    "nl" : [ "Bioscoopjournaals waarin Nederlandse onderwerpen van een bepaalde week worden gepresenteerd.", "In Breda vinden, in een zaal met publiek, wedstrijden gewichtheffen plaats met deelnemers uit Beverwijk, Delft, Den Haag, Venlo, Eindhoven en Breda. Tijdens de Tweede Wereldoorlog stonden de bioscoopjournaals van de filmfabrieken Polygoon en Profilti onder toezicht van de Duitse bezetter. Polygoon en Profilti moesten samenwerken met het Duitse filmverhuurkantoor Tobis. Vanaf 1 januari 1941 kreeg het bioscoopjournaal daarom de naam Tobis Nieuws. Tot in het najaar van 1944 werden onder deze naam door Polygoon en Profilti om de beurt journaals geproduceerd." ]
   },
   "metaData" : [ {
     "label" : {
-      "en" : [ "type" ]
+      "en" : [ "date" ]
     },
     "value" : {
-      "@none" : [ "<a href='http://data.europeana.eu/concept/base/61'>http://data.europeana.eu/concept/base/61</a>" ],
-      "de" : [ "Wochenschau" ],
-      "sv" : [ "Journalfilm" ],
-      "uk" : [ "Кінохроніка" ],
-      "ja" : [ "ニュース映画" ],
-      "en" : [ "Newsreel" ],
-      "it" : [ "Cinegiornale" ],
-      "pl" : [ "Kronika filmowa" ],
-      "ro" : [ "Jurnal de actualități" ],
-      "hu" : [ "Filmhíradó" ],
-      "he" : [ "יומן קולנוע" ],
-      "nl" : [ "Filmjournaal" ]
+      "@none" : [ "1944-02-01" ]
     }
   }, {
     "label" : {
       "en" : [ "type" ]
     },
     "value" : {
-      "@none" : [ "<a href='http://vocab.getty.edu/aat/300263837'>http://vocab.getty.edu/aat/300263837</a>", "<a href='http://vocab.getty.edu/aat/300136900'>http://vocab.getty.edu/aat/300136900</a>" ],
-      "en" : [ "Newsreel", "motion pictures (visual works)" ],
-      "de" : [ "Wochenschau", "Film" ],
-      "en-us" : [ "newsreels" ],
-      "zh-hant" : [ "新聞片", "電影 (視覺作品)" ],
-      "zh-latn-wadegile" : [ "hsin wen p'ien", "tien ying" ],
-      "zh-latn-pinyin-x-hanyu" : [ "xīn wén piàn", "diàn yǐng" ],
-      "zh-latn-pinyin-x-notone" : [ "xin wen pian", "dian ying" ],
-      "nl" : [ "bioscoopjournaals", "films (visuele werken)" ],
-      "es" : [ "noticiarios", "películas cinematográficas (obra visual)" ],
-      "fr" : [ "film" ]
+      "@none" : [ "Moving Image" ]
     }
   }, {
     "label" : {
       "en" : [ "language" ]
     },
     "value" : {
-      "@none" : [ "pol" ]
+      "@none" : [ "nld" ]
     }
   }, {
     "label" : {
-      "en" : [ "language" ]
+      "en" : [ "source" ]
     },
     "value" : {
-      "@none" : [ "pl" ]
+      "en" : [ "Open Images" ],
+      "nl" : [ "Open Beelden" ]
     }
   } ],
   "thumbnail" : [ {
-    "id": "http://localhost:9876/base/fixture-data/manifest-thumb.jpg",
+    "id" : "https://api.europeana.eu/thumbnail/v2/url.json?uri=http%3A%2F%2Fopenbeelden.nl%2Fimages%2F603382%2FZesstedenwedstrijd_gewichtheffen_%25280_30%2529.png&type=VIDEO",
     "type" : "Image"
   } ],
-  "attribution" : {
-    "en" : [ "(pl) Astronomowie Uniwersytetu Warszawskiego - https://www.europeana.eu/portal/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.html. Filmoteka Narodowa - http://repozytorium.fn.org.pl/?q=node/7929. In Copyright - http://rightsstatements.org/vocab/InC/1.0/" ]
+  "homepage" : [ {
+    "id" : "https://www.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067",
+    "type" : "Text",
+    "label" : {
+      "en" : [ "Europeana" ]
+    },
+    "format" : "text/html"
+  } ],
+  "requiredStatement" : {
+    "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Six cities competition weightlifting</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Zesstedenwedstrijd gewichtheffen</a></span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://openbeelden.nl/media/10067' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel='noopener'>CC BY-SA</a></span></span></div>" ]
   },
   "rights" : {
-    "id" : "http://rightsstatements.org/vocab/InC/1.0/",
+    "id" : "http://creativecommons.org/licenses/by-sa/4.0/",
     "type" : "Text",
     "format" : "text/html"
   },
-  "logo" : [ {
-    "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
-    "type" : "Image"
-  } ],
   "seeAlso" : [ {
-    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.json-ld",
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.json-ld",
     "type" : "Dataset",
     "format" : "application/ld+json",
     "profile" : "http://www.europeana.eu/schemas/edm/"
   }, {
-    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.json",
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.json",
     "type" : "Dataset",
     "format" : "application/json",
     "profile" : "http://www.europeana.eu/schemas/edm/"
   }, {
-    "id" : "https://www.europeana.eu/api/v2/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.rdf",
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.rdf",
     "type" : "Dataset",
     "format" : "application/rdf+xml",
     "profile" : "http://www.europeana.eu/schemas/edm/"
   } ],
+  "start" : {
+    "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1",
+    "type" : "Canvas"
+  },
   "items" : [ {
-    "id" : "https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/canvas/p1",
+    "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1",
     "type" : "Canvas",
     "label" : {
       "@none" : [ "p. 1" ]
     },
-    "height" : 720,
-    "width" : 960,
-    "duration" : 59.583,
-    "attribution" : {
-      "en" : [ "(pl) Astronomowie Uniwersytetu Warszawskiego - https://www.europeana.eu/portal/record/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9.html. Filmoteka Narodowa - http://repozytorium.fn.org.pl/?q=node/7929. In Copyright - http://rightsstatements.org/vocab/InC/1.0/" ]
-    },
-    "rights" : {
-      "id" : "http://rightsstatements.org/vocab/InC/1.0/",
-      "type" : "Text",
-      "format" : "text/html"
+    "height" : 240,
+    "width" : 320,
+    "duration" : 60.4,
+    "requiredStatement" : {
+      "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Six cities competition weightlifting</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Zesstedenwedstrijd gewichtheffen</a></span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://openbeelden.nl/media/10067' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel='noopener'>CC BY-SA</a></span></span></div>" ]
     },
     "items" : [ {
       "type" : "AnnotationPage",
@@ -116,10 +101,26 @@
         "body" : {
           "id" : "http://localhost:9876/base/tests/fixture-data/manifest.wmv",
           "type" : "Video",
-          "format" : "video/x-ms-wmv"
+          "format" : "video/quicktime"
         },
-        "target" : "https://iiif.europeana.eu/presentation/08609/fe9c5449_9522_4a70_951b_ef0b27893ae9/canvas/p1"
+        "target" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"
       } ]
+    } ]
+  } ],
+  "provider" : [ {
+    "id" : "https://www.europeana.eu/en/about-us",
+    "type" : "Agent",
+    "homepage" : [ {
+      "id" : "https://www.europeana.eu",
+      "type" : "Text",
+      "label" : {
+        "en" : [ "Europeana" ]
+      },
+      "format" : "text/html"
+    } ],
+    "logo" : [ {
+      "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+      "type" : "Image"
     } ]
   } ]
 }
