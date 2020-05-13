@@ -180,7 +180,7 @@ describe('Player functions', () => {
       let error = false;
       try{
         player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
-        player.init({ manifest: manifestEditable }, manifestEditable, 'nl');
+        player.init({ manifest: manifestEditable }, manifestEditable, 'pl');
       }
       catch(e){
         error = true;
@@ -211,9 +211,9 @@ describe('Player functions', () => {
       expect($('.btn[data-name=Subtitles').length).toBeTruthy();
     });
 
-    it('should hold only the Polish subtitles', () => {
+    it('should hold only the Dutch subtitles', () => {
       expect($('.subtitlemenu-option').length).toEqual(1);
-      expect($('.subtitlemenu-option').attr('data-language')).toEqual("pl-PL");
+      expect($('.subtitlemenu-option').attr('data-language')).toEqual("nl-NL");
     });
 
     it('should show and hide the subtitle list on clicks of the menu', () => {
@@ -224,9 +224,9 @@ describe('Player functions', () => {
       expect($('.subtitlemenu').is(':visible')).toBeFalsy();
     });
 
-    it('should show the Polish subtitles in the video on click of the menu item', () => {
+    it('should show the Dutch subtitles in the video on click of the menu item', () => {
       expect($('video')[0].textTracks[0].mode).toEqual('hidden');
-      $('.subtitlemenu-option[data-language=pl-PL')[0].dispatchEvent(new Event('click'));
+      $('.subtitlemenu-option[data-language=nl-NL')[0].dispatchEvent(new Event('click'));
       expect($('video')[0].textTracks[0].mode).toEqual('showing');
     });
   });
