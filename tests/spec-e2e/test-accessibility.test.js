@@ -1,4 +1,4 @@
-const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html?language=pl';
+const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html?language=nl';
 const waitTime = 10000;
 const selBtnFS = '.button-fullscreen';
 

@@ -1,0 +1,8 @@
+{
+		"duration": 110,
+        	"width": 320,
+		"height": 240,
+        	"location": "http://localhost:9876/base/tests/fixture-data/EUscreen/EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.mp4",
+        	"type": "Video",
+        	"format": "video/mp4"
+	}

@@ -1,111 +1,119 @@
 {
-    "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
-    "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/manifest",
-    "type" : "Manifest",
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "https://iiif.europeana.eu/presentation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/manifest",
+  "type" : "Manifest",
+  "label" : {
+    "en" : [ "Youth summer fashion" ],
+    "nl" : [ "Jeugd zomermode" ]
+  },
+  "summary" : {
+    "@none" : [ "Extended description:\nBioscoopjournaals waarin Nederlandse onderwerpen van een bepaalde week worden gepresenteerd./ Newsreels in which Dutch subjects of a certain week are presented." ],
+    "en" : [ "Summer fashion show for children in Drachten, with a.o. bathing suits, summer dresses, beach wear and a sailor suit. Also footage of the dressing room." ],
+    "nl" : [ "Original language summary: \nModeshow van zomermode voor kinderen in Drachten, met oa badpakken, zomerjurkjes, strandpakjes en een matrozenpakje. Verder beelden van de kleedkamer." ]
+  },
+  "metaData" : [ {
     "label" : {
-      "en" : [ "Chopin's Places" ],
-      "pl" : [ "Miejsca Chopina" ]
+      "en" : [ "format" ]
     },
-    "summary" : {
-      "en" : [ "A promotional film for the Fryderyk Chopin Museum that presents places Chopin lived in and visited." ],
-      "pl" : [ "Original language summary: \nFilm promujący Muzeum Fryderyka Chopina poświęcony miejscom, w których przebywał w trakcie swojego życia F. Chopin." ]
+    "value" : {
+      "@none" : [ "ASPECT RATIO:", "Black & White", "VIDEO" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "type" ]
     },
-    "metaData" : [ {
-      "label" : {
-        "en" : [ "format" ]
-      },
-      "value" : {
-        "@none" : [ "ASPECT RATIO:", "VIDEO" ]
-      }
-    }, {
-      "label" : {
-        "en" : [ "type" ]
-      },
-      "value" : {
-        "@none" : [ "ITEM", "Factual" ]
-      }
+    "value" : {
+      "@none" : [ "ITEM", "News" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "source" ]
+    },
+    "value" : {
+      "@none" : [ "EUscreenXL-Curated Collection" ]
+    }
+  } ],
+  "thumbnail" : [ {
+    "id" : "https://api.europeana.eu/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fimages3.noterik.com%2Fdomain%2Feuscreenxl%2Fuser%2Feu_nisv%2Fvideo%2FEUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2%2Fimage.jpg&type=VIDEO",
+    "type" : "Image"
+  } ],
+  "homepage" : [ {
+    "id" : "https://www.europeana.eu/item/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2",
+    "type" : "Text",
+    "label" : {
+      "en" : [ "Europeana" ]
+    },
+    "format" : "text/html"
+  } ],
+  "requiredStatement" : {
+    "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Youth summer fashion</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Jeugd zomermode</a></span></span><span class='field'><span class='fname'>Date:</span><span class='fvalue'>1962</span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://www.euscreen.eu/item.html?id=EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-nc'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener'>CC BY-NC-SA</a></span></span></div>" ]
+  },
+  "rights" : {
+    "id" : "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "type" : "Text",
+    "format" : "text/html"
+  },
+  "seeAlso" : [ {
+    "id" : "https://www.europeana.eu/api/v2/record/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.json-ld",
+    "type" : "Dataset",
+    "format" : "application/ld+json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.json",
+    "type" : "Dataset",
+    "format" : "application/json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.rdf",
+    "type" : "Dataset",
+    "format" : "application/rdf+xml",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  } ],
+  "start" : {
+    "id" : "https://iiif.europeana.eu/presentation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/canvas/p1",
+    "type" : "Canvas"
+  },
+  "items" : [ {
+    "id" : "https://iiif.europeana.eu/presentation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/canvas/p1",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 1" ]
+    },
+    "requiredStatement" : {
+      "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Youth summer fashion</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Jeugd zomermode</a></span></span><span class='field'><span class='fname'>Date:</span><span class='fvalue'>1962</span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://www.euscreen.eu/item.html?id=EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-nc'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener'>CC BY-NC-SA</a></span></span></div>" ]
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "http://www.euscreen.eu/item.html?id=EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2",
+          "type" : "Video"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/canvas/p1"
+      } ]
     } ],
-    "thumbnail" : [ {
-      "id" : "https://search-api-acceptance.eanadev.org/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fimages3.noterik.com%2Fdomain%2Feuscreenxl%2Fuser%2Feu_nina%2Fvideo%2FEUS_3C083B8925D2E14C954507769E47992A%2Fimage.jpg&type=VIDEO",
-      "type" : "Image"
-    } ],
+    "annotations" : [ {
+      "id" : "http://127.0.0.1:8081/tests/fixture-data/EUscreen/presentation_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_annopage_1-e2e.json",
+      "type" : "AnnotationPage"
+    } ]
+  } ],
+  "provider" : [ {
+    "id" : "https://www.europeana.eu/en/about-us",
+    "type" : "Agent",
     "homepage" : [ {
-      "id" : "https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html",
+      "id" : "https://www.europeana.eu",
       "type" : "Text",
       "label" : {
         "en" : [ "Europeana" ]
       },
       "format" : "text/html"
     } ],
-    "requiredStatement" : {
-      "en" : [ "<span about='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A'><a href='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html'><span property='dc:title' xml:lang='en'>Chopin's Places</span><span property='dc:title' xml:lang='pl'>Miejsca Chopina</span></a>. <a href='http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A'>Narodowy Instytut Audiowizualny</a>. <a href='http://rightsstatements.org/vocab/InC/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>In Copyright</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>" ]
-    },
-    "rights" : {
-      "id" : "http://rightsstatements.org/vocab/InC/1.0/",
-      "type" : "Text",
-      "format" : "text/html"
-    },
-    "seeAlso" : [ {
-      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.json-ld",
-      "type" : "Dataset",
-      "format" : "application/ld+json",
-      "profile" : "http://www.europeana.eu/schemas/edm/"
-    }, {
-      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.json",
-      "type" : "Dataset",
-      "format" : "application/json",
-      "profile" : "http://www.europeana.eu/schemas/edm/"
-    }, {
-      "id" : "https://www.europeana.eu/api/v2/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.rdf",
-      "type" : "Dataset",
-      "format" : "application/rdf+xml",
-      "profile" : "http://www.europeana.eu/schemas/edm/"
-    } ],
-    "start" : {
-      "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1",
-      "type" : "Canvas"
-    },
-    "items" : [ {
-      "id" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1",
-      "type" : "Canvas",
-      "label" : {
-        "@none" : [ "p. 1" ]
-      },
-      "requiredStatement" : {
-        "en" : [ "<span about='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A'><a href='https://www.europeana.eu/portal/record/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A.html'><span property='dc:title' xml:lang='en'>Chopin's Places</span><span property='dc:title' xml:lang='pl'>Miejsca Chopina</span></a>. <a href='http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A'>Narodowy Instytut Audiowizualny</a>. <a href='http://rightsstatements.org/vocab/InC/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>In Copyright</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>" ]
-      },
-      "items" : [ {
-        "type" : "AnnotationPage",
-        "items" : [ {
-          "type" : "Annotation",
-          "motivation" : "painting",
-          "body" : {
-            "id" : "http://www.euscreen.eu/item.html?id=EUS_3C083B8925D2E14C954507769E47992A",
-            "type" : "Text",
-            "format" : "text/html;charset=UTF-8"
-          },
-          "target" : "https://iiif.europeana.eu/presentation/2051926/data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A/canvas/p1"
-        } ]
-      } ],
-      "annotations" : [ {
-        "id" : "http://127.0.0.1:8081/tests/fixture-data/EUscreen/presentation_2051926_data_euscreenXL_EUS_3C083B8925D2E14C954507769E47992A_annopage_1-e2e.json",
-        "type" : "AnnotationPage"
-      } ]
-    } ],
-    "provider" : [ {
-      "id" : "https://www.europeana.eu/en/about-us",
-      "type" : "Agent",
-      "homepage" : [ {
-        "id" : "https://www.europeana.eu",
-        "type" : "Text",
-        "label" : {
-          "en" : [ "Europeana" ]
-        },
-        "format" : "text/html"
-      } ],
-      "logo" : [ {
-        "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
-        "type" : "Image"
-      } ]
+    "logo" : [ {
+      "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+      "type" : "Image"
     } ]
-  }
+  } ]
+}
