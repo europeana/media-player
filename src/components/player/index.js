@@ -66,7 +66,7 @@ export default class Player {
   }
 
   createAVComponent() {
-    this.$avcomponent = $('<div class="iiif-av-component" tabindex="0"></div>');
+    this.$avcomponent = $('<section class="iiif-av-component" tabindex="0"></section>');
     this.elem.append(this.$avcomponent);
 
     let player = this;
@@ -277,9 +277,25 @@ export default class Player {
   }
 
   updateAVComponentLanguage(player) {
-    this.elem.find('.volume-mute').attr('title', player.banana.i18n('player-mute'));
-    this.elem.find('.button-fullscreen').attr('title', player.banana.i18n('player-fullscreen'));
-    this.elem.find('.button-play').attr('title', player.banana.i18n('player-play'));
+    [
+      {
+        sel: '.volume-mute',
+        lab: 'player-mute'
+      },
+      {
+        sel: '.button-fullscreen',
+        lab: 'player-fullscreen'
+      },
+      {
+        sel: '.button-play',
+        lab: 'player-play'
+      }
+    ].forEach((conf) => {
+      this.elem.find(conf.sel).attr({
+        'title': player.banana.i18n(conf.lab),
+        'aria-label': player.banana.i18n(conf.lab)
+      });
+    });
   }
 
   createButton(name, text, classname, openCloseHandler) {
