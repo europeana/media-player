@@ -248,10 +248,6 @@
   z-index: 2;
 }
 
-button:focus {
-  outline: 0;
-}
-
 .iiif-av-component .range-timeline-container .ui-slider-handle:focus {
   outline-width: 0;
 }
@@ -329,10 +325,11 @@ button:focus {
   border: 0;
   box-shadow: none;
   font-size: 0;
-  padding: 0 16px 0 0;
+  margin: 0 16px 0 0;
+  padding: 0;
 
   &:last-of-type {
-    padding-right: 4px;
+    margin-right: 4px;
   }
 
   i {
