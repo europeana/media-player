@@ -50,7 +50,19 @@ Run:
 
 ### Dependencies
 
-The player has unbundled dependencies on [jQuery](https://www.npmjs.com/package/jquery) and [jQuery-UI](https://www.npmjs.com/package/webpack-jquery-ui) that have not been packed into this library. Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
+The player has unbundled dependencies on [jQuery](https://www.npmjs.com/package/jquery) and [jQuery-UI](https://www.npmjs.com/package/webpack-jquery-ui) that have not been packed into this library. For jQuery-UI also [themes/base/jquery.ui.core.css](http://code.jquery.com/ui/1.10.1/themes/base/jquery.ui.core.css) and [themes/base/jquery.ui.slider.css](http://code.jquery.com/ui/1.10.1/themes/base/jquery.ui.slider.css) are required in order to show slider buttons.
+
+Example:
+
+```html
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery.ui.core.css"></link>
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery.ui.slider.css"></link>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
+```
+
+Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
 
 ### Embed player
 
