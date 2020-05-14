@@ -73,18 +73,19 @@
     width: 100%;
     z-index: 10000;
   }
-
-  .anno {
-    background: transparent;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    position: absolute;
-  }
 }
 
-.canvas-container .moremenu,
-.canvas-container .subtitlemenu {
+.anno {
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  list-style: none;
+  position: absolute;
+}
+
+.moremenu,
+.subtitlemenu {
   background-color: #fff;
   border-radius: 4px;
   color: #000;
@@ -99,8 +100,8 @@
   }
 }
 
-.canvas-container .moremenu-option,
-.canvas-container .subtitlemenu-option {
+.moremenu-option,
+.subtitlemenu-option {
   cursor: pointer;
   line-height: 32px;
   padding: 0 16px;
