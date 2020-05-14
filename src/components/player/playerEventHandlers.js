@@ -105,7 +105,7 @@ function toggleMenuOption(player, e, cls) {
   if (elMenu.is(':visible')) {
     hidePopups(player, '[data-opener=' + elMenu.data('opener') + ']');
   } else {
-    const marginBottom = 8;
+    const marginBottom = -6;
     const bottomVal = elPlayer.find('.options-container').height() + marginBottom;
     hidePopups(player);
     elMenu.css({ bottom: bottomVal, right: 16 });
