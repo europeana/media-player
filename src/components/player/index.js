@@ -195,15 +195,15 @@ export default class Player {
 
     this.elem.find('.button-fullscreen').before(btnSubtitles);
 
-    let menu = '<div class="anno subtitlemenu" data-opener="Subtitles">';
-    for (let i = 0; i < textTracks.length; i++) {
-      menu += '<div class="subtitlemenu-option" data-language="' +textTracks[i].language + '">'
-       + languages.find(lang => lang.iso === textTracks[i].language).name
-       + '</div>';
-    }
-    menu += '</div>';
+    let menu = '<ul class="anno subtitlemenu" data-opener="Subtitles" >';
+    menu += Array.from(textTracks).map((track) => {
+      return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">'
+      + languages.find(lang => lang.iso === track.language).name
+      + '</li>';
+    });
+    menu += '</ul>';
 
-    this.elem.find('.canvas-container').append(menu);
+    btnSubtitles.after(menu);
 
     btnSubtitles.on('optionSet', (e, value) => {
       if (value) {
@@ -217,6 +217,10 @@ export default class Player {
 
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
+    }).on('keypress', (e) => {
+      if (e.key === 'Enter') {
+        subtitleMenuEventHandler(player, e);
+      }
     });
 
     $('.subtitlemenu-option').each((i, option) => {
