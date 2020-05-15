@@ -18,9 +18,9 @@ describe('Event Handling', () => {
   };
 
   const addSubtitleElement = () => {
-    if($('.subtitlemenu').length === 0){
-      $('.canvas-container').append('<span class="subtitlemenu" data-opener="Subtitles">Dummy menu</span>');
-    }
+    player.initLanguages([{
+      language: 'nl'
+    }]);
   };
 
   beforeEach((done) => {
@@ -31,14 +31,14 @@ describe('Event Handling', () => {
     });
   });
 
-  it('should close the subtitle menu', () => {
+  it('should open and close the subtitle menu', () => {
     addSubtitleElement();
-    $('.subtitlemenu').addClass('showing');
-    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
     const testEvent = Object.assign(emptyEvent, { target: { hasClass: ()=> { return false; } } });
     pEvents.subtitleMenuEventHandler(player, testEvent);
+    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+    pEvents.subtitleMenuEventHandler(player, testEvent);
     expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
-    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
   });
 
   it('should close the subtitle menu on resize', () => {
@@ -48,6 +48,19 @@ describe('Event Handling', () => {
     pEvents.resizeEventHandler(player);
     expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
     expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+  });
+
+  it('should set a class on the opener when a menu option is set', () => {
+
+    const selBtnSubtitles = '.btn[data-name=Subtitles]';
+    const selOption = '.subtitlemenu-option';
+
+    addSubtitleElement();
+    expect($(selBtnSubtitles).hasClass('option-set')).toBeFalsy();
+    $(selOption).click();
+    expect($(selBtnSubtitles).hasClass('option-set')).toBeTruthy();
+    $(selOption).click();
+    expect($(selBtnSubtitles).hasClass('option-set')).toBeFalsy();
   });
 
   it('has a key shortcut for fullscreen', () => {
@@ -130,15 +143,6 @@ describe('Event Handling', () => {
     fireKeyUp();
     expect($(selSlider).attr('style')).toEqual(`width: 100%;`);
   });
-
-  /*
-  it('should toggle the subtitles', () => {
-    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-    // not exported...
-    pEvents.toggleMenuOption(player, { preventDefault: () => {} }, 'subtitlemenu', 'Subtitles');
-    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-  });
-  */
 
   it('should open types', () => {
     spyOn(window, 'open').and.callFake(() => {});

@@ -98,7 +98,7 @@ const cssRule = function() {
 
 const fontRule = () => {
   return {
-    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    test: /\.(woff|woff2|eot|ttf|svg)$/,
     use: ['url-loader?limit=100000&mimetype=application/font-woff']
   };
 };
@@ -107,16 +107,8 @@ const pngRule = function() {
   return {
     test: /.*\.png$/i,
     loaders: [ 'file-loader', {
-      loader: 'image-webpack-loader',
-      query: {
-        progressive: true,
-        pngquant: {
-          quality: '65-90',
-          speed: 4
-        }
-      }
-    }
-    ]
+      loader: 'image-webpack-loader'
+    }]
   };
 };
 
