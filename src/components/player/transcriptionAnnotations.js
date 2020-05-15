@@ -33,7 +33,7 @@ function fetchTextResource(player, annotationResource, textResource) {
           track.addCue(handleCaption(element, fullText));
         }
       });
-      player.initLanguages();
+      player.initLanguages(player.elem.find('video')[0].textTracks);
     })
   });
 }
