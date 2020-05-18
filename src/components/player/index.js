@@ -143,7 +143,7 @@ export default class Player {
 
       let canvases = helper.getCanvases();
       if (canvases.length > 1) {
-        initCanvasNavigation(canvases);
+        console.error('ERROR: too many canvases');
       } else {
         $('.canvasNavigationContainer').hide();
       }
