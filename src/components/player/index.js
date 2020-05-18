@@ -313,6 +313,10 @@ export default class Player {
       {
         sel: '.button-play',
         lab: 'player-play'
+      },
+      {
+        sel: 'data-name[Subtitles]',
+        lab: 'player-subtitles'
       }
     ].forEach((conf) => {
       this.elem.find(conf.sel).attr({
