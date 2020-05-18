@@ -218,10 +218,45 @@ describe('Player functions', () => {
 
     it('should show and hide the subtitle list on clicks of the menu', () => {
       expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'))
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
       expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'))
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
       expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+    });
+
+    it('should show and hide the subtitle list on key enter', () => {
+      const getEnterKeyEvent = () => {
+        return new KeyboardEvent('keypress',
+          {
+            altKey:false,
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            charCode: 0,
+            code: 'Enter',
+            composed: true,
+            ctrlKey: false,
+            currentTarget: null,
+            defaultPrevented: true,
+            detail: 0,
+            eventPhase: 0,
+            isComposing: false,
+            isTrusted: true,
+            key: 'Enter',
+            keyCode: 13,
+            location: 0,
+            metaKey: false,
+            repeat: false,
+            returnValue: false,
+            shiftKey: false,
+            type: 'keypress',
+            which: 13
+          }
+        );
+      };
+      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+      $('.subtitlemenu-option')[0].dispatchEvent(getEnterKeyEvent());
+      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
     });
 
     it('should show the Dutch subtitles in the video on click of the menu item', () => {

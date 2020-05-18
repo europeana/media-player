@@ -25,12 +25,14 @@ const i18n = require('./i18n/languages.json');
 
 let helper;
 let configuredLanguage;
+let timeoutMouseMove;
 
 export default class Player {
   constructor(elem) {
     if (!elem) {
       return;
     }
+
     this.elem = $(elem);
     this.videoId = '';
     this.avcomponent;
@@ -83,14 +85,35 @@ export default class Player {
 
     this.avcomponent.on('play', () => {
       playEventHandler(player);
+      this.elem.addClass('playing');
     });
 
     this.avcomponent.on('pause', () => {
       pauseEventHandler(player);
+      this.elem.removeClass('playing');
+    });
+
+    this.elem.on('mousemove', () => {
+      this.elem.addClass('moving');
+      if (timeoutMouseMove) {
+        window.clearTimeout(timeoutMouseMove);
+      }
+      timeoutMouseMove = setTimeout(() => {
+        this.elem.removeClass('moving');
+      }, 3000);
     });
 
     this.avcomponent.on('mediaready', () => {
       this.handleMediaReady(player);
+      const optionsContainer = this.elem.find('.options-container');
+      const playerWrapper = player.elem.find('.playwrapper');
+      optionsContainer.on('mouseenter', () => {
+        playerWrapper.addClass('force-controls');
+      });
+
+      optionsContainer.on('mouseleave', () => {
+        playerWrapper.removeClass('force-controls');
+      });
     });
 
     this.avcomponent.on('fullscreen', (value) => {
@@ -182,8 +205,7 @@ export default class Player {
     this.itemSelectListener(vObj.manifest);
   }
 
-  initLanguages() {
-    let textTracks = this.elem.find('video')[0].textTracks;
+  initLanguages(textTracks) {
 
     // check if we have any texttracks
     if (textTracks.length === 0) {
@@ -195,16 +217,15 @@ export default class Player {
 
     this.elem.find('.button-fullscreen').before(btnSubtitles);
 
-    let menu = '<div class="anno subtitlemenu" data-opener="Subtitles">';
-    for (let i = 0; i < textTracks.length; i++) {
-      menu += '<div class="subtitlemenu-option" data-language="' +textTracks[i].language + '">'
-       + languages.find(lang => lang.iso === textTracks[i].language).name
-       + '</div>';
-    }
-    menu += '</div>';
+    let menu = '<ul class="anno subtitlemenu" data-opener="Subtitles" >';
+    menu += Array.from(textTracks).map((track) => {
+      let label = languages.find(lang => lang.iso === track.language);
+      label = label && label.name ? label.name : track.language;
+      return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
+    });
+    menu += '</ul>';
 
-    this.elem.find('.canvas-container').append(menu);
-
+    btnSubtitles.after(menu);
     btnSubtitles.on('optionSet', (e, value) => {
       if (value) {
         btnSubtitles.addClass('option-set');
@@ -217,6 +238,10 @@ export default class Player {
 
     $('.subtitlemenu-option').on('click', (e) => {
       subtitleMenuEventHandler(player, e);
+    }).on('keypress', (e) => {
+      if (e.key === 'Enter') {
+        subtitleMenuEventHandler(player, e);
+      }
     });
 
     $('.subtitlemenu-option').each((i, option) => {
@@ -250,7 +275,6 @@ export default class Player {
 
     if (player.editorurl && player.editorurl.length > 0) {
       let showMenu = player.needToShowMenu(player);
-
       if (showMenu) {
         this.addEditorOption(player);
       }
@@ -299,8 +323,8 @@ export default class Player {
   }
 
   createButton(name, text, classname, openCloseHandler) {
-    let button = $('<button class="btn" data-name="'+name+'" title="'+text+'"><i class="av-icon '+classname+'" aria-hidden="true"></i>'+text+'</button>');
-
+    let markup = '<button class="btn" data-name="' + name + '" title="' + text + '"><i class="av-icon ' + classname + '" aria-hidden="true"></i>' + text + '</button>';
+    let button = $(markup);
     if (openCloseHandler) {
       button.on('open-close', (e, value) => {
         if (value) {
@@ -314,14 +338,14 @@ export default class Player {
   }
 
   handleMenuOptions(player) {
-    this.elem.find('.canvas-container').append('<div class="anno moremenu" data-opener="More"></div>');
-
+    this.elem.find('.btn[data-name=More]').after('<ul class="anno moremenu" data-opener="More"></ul>');
     let options = { embed: true, annotation: false, playlist: false, subtitles: false };
     options = player.determineOptionDisplay(player, options);
 
     for (let [key, value] of Object.entries(options)) {
       if (value) {
-        this.elem.find('.moremenu').append('<div id=\'create-' + key + '-link\' class=\'moremenu-option\'>' + this.banana.i18n('player-create-' + key) + '</div>');
+        const markup = '<li id=\'create-' + key + '-link\' class=\'moremenu-option\' tabindex=\'0\'>' + this.banana.i18n('player-create-' + key) + '</li>';
+        this.elem.find('.moremenu').append(markup);
         this.elem.find('#create-' + key + '-link').on('click', (e) => {
           openEditorTypeEventHandler(player, e, key);
         });
@@ -369,5 +393,16 @@ export default class Player {
 
   hidePlayerMenus(player) {
     hidePopups(player);
+  }
+
+  setTitle(title) {
+    let markup = $(`<div class="info">
+      <span class="title-logo">
+        <a class="title-link"></a>
+        <a class="logo-link" href="https://www.europeana.eu" target="_blank" rel="noopener"></a>
+      </span>
+    </div>`);
+    this.elem.after(markup);
+    markup.find('.title-link').text(title);
   }
 }
