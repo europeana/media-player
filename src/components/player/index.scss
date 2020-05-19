@@ -598,13 +598,7 @@ $title-height: 54px;
 
 /* push the right-hand buttons right with a left auto-margin (on the first only) and a source reorder */
 
-.btn.button-fullscreen,
-.btn[data-name=More],
-.btn[data-name=Subtitles] {
-  order: 1;
-}
-
-.time-display + .btn {
+.volume + .btn {
   margin-left: auto;
 }
 
