@@ -152,14 +152,14 @@ function subtitleMenuEventHandler(player,  e) {
 function openEditorTypeEventHandler(player, e, type) {
   //prevent the play/pause handler to react
   e.stopPropagation();
-  window.open(player.editorurl+'?manifest='+encodeURIComponent(player.manifesturl)+'#'+type, '_blank');
+  window.open(player.editorurl+ '?manifest=' + encodeURIComponent(player.manifesturl) + '#' + type, '_blank');
 }
 
 function mediaErrorHandler(player, error) {
   console.error('media error', error);
 
   player.elem.find('.player').removeClass('player--loading');
-  let errormessage = player.banana.i18n('player-error')+': ';
+  let errormessage = player.banana.i18n('player-error') + ': ';
   switch (error.code) {
     case 1:
       errormessage += player.banana.i18n('player-error-loading');
@@ -178,7 +178,7 @@ function mediaErrorHandler(player, error) {
       break;
   }
 
-  player.elem.find('.canvas-container').append('<div class=\'anno errormessage\'>'+errormessage+'</div>');
+  player.elem.find('.canvas-container').append('<div class=\'anno errormessage\'>' + errormessage + '</div>');
 }
 
 module.exports = {
