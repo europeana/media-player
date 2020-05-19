@@ -1,4 +1,4 @@
-/* global $ initCanvasNavigation */
+/* global $ */
 
 import './index.scss';
 
@@ -104,6 +104,7 @@ export default class Player {
     });
 
     this.avcomponent.on('mediaready', () => {
+      $('.time-display').after($('.volume'));
       this.handleMediaReady(player);
       const optionsContainer = this.elem.find('.options-container');
       const playerWrapper = player.elem.find('.playwrapper');
