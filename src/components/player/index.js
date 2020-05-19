@@ -1,4 +1,4 @@
-/* global $ initCanvasNavigation */
+/* global $ */
 
 import './index.scss';
 
@@ -104,6 +104,7 @@ export default class Player {
     });
 
     this.avcomponent.on('mediaready', () => {
+      $('.time-display').after($('.volume'));
       this.handleMediaReady(player);
       const optionsContainer = this.elem.find('.options-container');
       const playerWrapper = player.elem.find('.playwrapper');
@@ -143,7 +144,7 @@ export default class Player {
 
       let canvases = helper.getCanvases();
       if (canvases.length > 1) {
-        initCanvasNavigation(canvases);
+        console.error('ERROR: too many canvases');
       } else {
         $('.canvasNavigationContainer').hide();
       }
@@ -313,6 +314,10 @@ export default class Player {
       {
         sel: '.button-play',
         lab: 'player-play'
+      },
+      {
+        sel: 'data-name[Subtitles]',
+        lab: 'player-subtitles'
       }
     ].forEach((conf) => {
       this.elem.find(conf.sel).attr({
