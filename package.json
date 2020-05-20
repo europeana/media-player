@@ -1,6 +1,6 @@
 {
   "name": "@europeana/media-player",
-  "version": "0.6.4",
+  "version": "0.6.6",
   "license": "EUPL-1.2",
   "main": "dist/europeana-media-player.min.js",
   "author": {
