@@ -41,6 +41,7 @@ export default class Player {
     this.manifesturl;
     this.editorurl;
     this.banana;
+    this.canvasId;
   }
 
   init(videoObj, editorurl, language) {
@@ -75,8 +76,8 @@ export default class Player {
 
     this.avcomponent = new IIIFAVComponent.AVComponent({ target: this.$avcomponent[0] });
 
-    this.avcomponent.on('mediaerror', (error) => {
-      mediaErrorHandler(player, error);
+    this.avcomponent.on('mediaerror', (error, canvasId) => {
+      mediaErrorHandler(player, error, canvasId);
     });
 
     this.avcomponent.on('log', (message) => {
@@ -104,7 +105,6 @@ export default class Player {
     });
 
     this.avcomponent.on('mediaready', () => {
-      $('.time-display').after($('.volume'));
       this.handleMediaReady(player);
       const optionsContainer = this.elem.find('.options-container');
       const playerWrapper = player.elem.find('.playwrapper');
@@ -144,10 +144,21 @@ export default class Player {
 
       let canvases = helper.getCanvases();
       if (canvases.length > 1) {
-        console.error('ERROR: too many canvases');
-      } else {
-        $('.canvasNavigationContainer').hide();
+        canvases.forEach((canvas) => {
+          $('[data-id=\''+canvas.id+'\']').hide();
+        });
       }
+
+      if (this.canvasId !== null) {
+        this.avcomponent.showCanvas(this.canvasId);
+        $('[data-id=\''+this.canvasId+'\']').show();
+      } else {
+        this.avcomponent.showCanvas(canvases[0].id);
+        $('[data-id=\''+canvases[0].id+'\']').show();
+      }
+
+      $('.canvasNavigationContainer').hide();
+
     }, (error) => {
       console.error('ERROR: Could not load manifest data.', error);
     });
@@ -203,6 +214,9 @@ export default class Player {
     }
 
     this.manifesturl = vObj.manifest;
+
+    this.canvasId = vObj.canvasId || null;
+
     this.itemSelectListener(vObj.manifest);
   }
 
@@ -409,5 +423,12 @@ export default class Player {
     </div>`);
     this.elem.after(markup);
     markup.find('.title-link').text(title);
+  }
+
+  setCanvas(canvasId) {
+    this.avcomponent.set({
+      virtualCanvasEnabled: false
+    });
+    this.avcomponent.showCanvas(canvasId);
   }
 }

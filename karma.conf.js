@@ -124,7 +124,7 @@ let configuration = {
   exclude: [],
   files: files(),
   autoWatch: true,
-  singleRun: true,
+  singleRun: false,
   failOnEmptyTestSuite: false,
   frameworks: ['jasmine'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],

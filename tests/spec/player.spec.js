@@ -11,6 +11,7 @@ const manifestWebm = 'http://localhost:9876/base/tests/fixture-data/manifest-web
 const manifestM4v = 'http://localhost:9876/base/tests/fixture-data/manifest-m4v.json';
 const manifestWmv = 'http://localhost:9876/base/tests/fixture-data/manifest-wmv.json';
 const manifestEUscreen = 'http://localhost:9876/base/tests/fixture-data/manifest-euscreen.json';
+const manifestMultipleCanvases = 'http://localhost:9876/base/tests/fixture-data/manifest-two-canvases.json';
 
 describe('Player functions', () => {
 
@@ -63,6 +64,26 @@ describe('Player functions', () => {
     expect('.button-play').toBeTruthy();
 
     emp.player.avcomponent.on('languagesinitialized', () => {
+      cbDone(emp.player);
+    });
+  };
+
+  const getPlayerWithOptions = (vObj, options, cbDone) => {
+    const EuropeanaMediaPlayer = empIndex.default;
+
+    let emp = new EuropeanaMediaPlayer(
+      appendFixture(elWrapperClass),
+      vObj,
+      options
+    );
+
+    expect(emp.player).toBeTruthy();
+    expect(emp.player.avcomponent).toBeTruthy();
+    expect(document.querySelector(`.${elClass}`)).toBeTruthy();
+    expect('.button-play').toBeTruthy();
+
+    emp.player.avcomponent.on('mediaready', () => {
+      console.log("media ready");
       cbDone(emp.player);
     });
   };
@@ -263,6 +284,66 @@ describe('Player functions', () => {
       expect($('video')[0].textTracks[0].mode).toEqual('hidden');
       $('.subtitlemenu-option[data-language=nl-NL')[0].dispatchEvent(new Event('click'));
       expect($('video')[0].textTracks[0].mode).toEqual('showing');
+    });
+  });
+
+  describe('Multiple canvases manifest', () => {
+
+    let player;
+
+    describe('load in a default way', () => {
+      beforeEach((done) => {
+        let vObj = {manifest: manifestMultipleCanvases};
+        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        getPlayerWithOptions(vObj, options, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        });
+      });
+
+      it('should have a two video components', () => {
+        expect($('video').length).toEqual(2);
+      });
+
+      it('should have on default the first canvas visible, the second not', () => {
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeTruthy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeFalsy();
+      });
+    });
+
+    describe('load with the second canvas as param', () => {
+      beforeEach((done) => {
+        let vObj = {manifest: manifestMultipleCanvases, canvasId: "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"};
+        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        getPlayerWithOptions(vObj, options, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        }, options);
+      });
+
+      it('should have the second canvas visible, the first not', () => {
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeFalsy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
+      });
+    });
+
+    describe('load default set to second canvas via call', () => {
+      beforeEach((done) => {
+        let vObj = {manifest: manifestMultipleCanvases};
+        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        getPlayerWithOptions(vObj, options, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        }, options);
+      });
+
+      it('should have initially the first canvas visible, after the setCanvas() call the second', () => {
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeTruthy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeFalsy();
+        player.setCanvas("https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2");
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeFalsy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
+      });
     });
   });
 });
