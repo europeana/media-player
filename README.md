@@ -88,22 +88,24 @@ The constructor accepts the following parameters
 
 Name | Type | Description
 ---- | ---- | -----------
-container| _DOM Element_ | the DOM element in which to create the player
-videoObject | _JSON Object_ | the object containing the video properties
+container| _DOM Element_ | the DOM element in which to create the player, mandatory
+videoObject | _JSON Object_ | the object containing the video properties, mandatory
 options | _JSON Object_ | an optional object containing the player options
 
-The _videoObject_ requires the following property
+The _videoObject_ accepts the following properties
 
 Name | Type | Description
 ---- | ---- | -----------
-manifest | _String_ | the url of the IIIF manifest for the media item
+manifest | _String_ | the url of the IIIF manifest for the media item, mandatory
+canvasId | _String_ | the canvasId of the canvas to show, can be used when having a manifest with multiple canvases, optional
+
 
 The _options_ accepts the following properties
 
 Name | Type | Description
 ---- | ---- | -----------
-editor | _String_ | url, allows to configure an external editor so that embedding and other editorial options can be done on that page
-language | _String_ | 2 character [iso 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), all official languages of the European Union are supported. The default language is English
+editor | _String_ | url, allows to configure an external editor so that embedding and other editorial options can be done on that page, optional
+language | _String_ | 2 character [iso 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), all official languages of the European Union are supported. The default language is English, optional
 
 ### Examples
 
@@ -138,6 +140,29 @@ var videoObj = { manifest : "https://iiif.europeana.eu/presentation/2051906/data
 var options = { editor: "https://video-editor.eu", language: "nl" };
 new EuropeanaMediaPlayer(container, videoObj, options);
 ```
+
+### Multiple canvases example
+
+This example loads a manifest containing multiple canvas elements and loads the second canvas element (p2) on initialisation
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3", canvasId: "https://iiif.europeana.eu/presentation/2051921/data_euscreenXL_7081/canvas/p2" };
+new EuropeanaMediaPlayer(container, videoObj);
+```
+
+### Multiple canvases example via setCanvas
+
+This example loads a manifest containing multiple canvas elements and loads the second canvas element(p2) when invoking the setCanvas() call
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3" }
+var player = new EuropeanaMediaPlayer(container, videoObj);
+....
+player.setCanvas("https://iiif.europeana.eu/presentation/2051921/data_euscreenXL_7081/canvas/p2");
+```
+
 
 ## License
 

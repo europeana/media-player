@@ -155,7 +155,7 @@ function openEditorTypeEventHandler(player, e, type) {
   window.open(player.editorurl+ '?manifest=' + encodeURIComponent(player.manifesturl) + '#' + type, '_blank');
 }
 
-function mediaErrorHandler(player, error) {
+function mediaErrorHandler(player, error, canvasId) {
   console.error('media error', error);
 
   player.elem.find('.player').removeClass('player--loading');
@@ -178,7 +178,7 @@ function mediaErrorHandler(player, error) {
       break;
   }
 
-  player.elem.find('.canvas-container').append('<div class=\'anno errormessage\'>' + errormessage + '</div>');
+  player.elem.find('.player[data-id="'+canvasId+'"] > .canvas-container').append('<div class=\'anno errormessage\'>' + errormessage + '</div>');
 }
 
 module.exports = {
