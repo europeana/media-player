@@ -85,7 +85,7 @@ describe('Event Handling', () => {
       'Error: unknown'
     ].forEach((msg, index) => {
       $('.errormessage').remove();
-      pEvents.mediaErrorHandler(player, { code: index + 1 });
+      pEvents.mediaErrorHandler(player, { code: index + 1 }, 'https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1');
       expect($('.errormessage').text()).toEqual(msg);
     })
     $('.errormessage').remove();
