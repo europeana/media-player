@@ -1,0 +1,153 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/manifest",
+  "type" : "Manifest",
+  "label" : {
+    "en" : [ "Six cities competition weightlifting" ],
+    "nl" : [ "Zesstedenwedstrijd gewichtheffen" ]
+  },
+  "summary" : {
+    "en" : [ "Newsreels in which Dutch subjects of a certain week are presented.", "A weightlifting competition takes place in an audience filled hall in Breda. The participants are from Beverwijk, Delft, Den Haag, Venlo, Eindhoven and Breda. During World War II the newsreels by film producers Polygoon and Profilti were controlled by the German occupiers. Polygoon and Profilti had to work together with the German film rental office Tobis. From January 1, 1941 the newsreels were therefore called Tobis News. Until the fall of 1944 newsreels under this name were produced alternately by Polygoon and Profilti." ],
+    "nl" : [ "Bioscoopjournaals waarin Nederlandse onderwerpen van een bepaalde week worden gepresenteerd.", "In Breda vinden, in een zaal met publiek, wedstrijden gewichtheffen plaats met deelnemers uit Beverwijk, Delft, Den Haag, Venlo, Eindhoven en Breda. Tijdens de Tweede Wereldoorlog stonden de bioscoopjournaals van de filmfabrieken Polygoon en Profilti onder toezicht van de Duitse bezetter. Polygoon en Profilti moesten samenwerken met het Duitse filmverhuurkantoor Tobis. Vanaf 1 januari 1941 kreeg het bioscoopjournaal daarom de naam Tobis Nieuws. Tot in het najaar van 1944 werden onder deze naam door Polygoon en Profilti om de beurt journaals geproduceerd." ]
+  },
+  "metaData" : [ {
+    "label" : {
+      "en" : [ "date" ]
+    },
+    "value" : {
+      "@none" : [ "1944-02-01" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "@none" : [ "Moving Image" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "nld" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "source" ]
+    },
+    "value" : {
+      "en" : [ "Open Images" ],
+      "nl" : [ "Open Beelden" ]
+    }
+  } ],
+  "thumbnail" : [ {
+    "id" : "https://api.europeana.eu/thumbnail/v2/url.json?uri=http%3A%2F%2Fopenbeelden.nl%2Fimages%2F603382%2FZesstedenwedstrijd_gewichtheffen_%25280_30%2529.png&type=VIDEO",
+    "type" : "Image"
+  } ],
+  "homepage" : [ {
+    "id" : "https://www.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067",
+    "type" : "Text",
+    "label" : {
+      "en" : [ "Europeana" ]
+    },
+    "format" : "text/html"
+  } ],
+  "requiredStatement" : {
+    "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Six cities competition weightlifting</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Zesstedenwedstrijd gewichtheffen</a></span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://openbeelden.nl/media/10067' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel='noopener'>CC BY-SA</a></span></span></div>" ]
+  },
+  "rights" : {
+    "id" : "http://creativecommons.org/licenses/by-sa/4.0/",
+    "type" : "Text",
+    "format" : "text/html"
+  },
+  "seeAlso" : [ {
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.json-ld",
+    "type" : "Dataset",
+    "format" : "application/ld+json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.json",
+    "type" : "Dataset",
+    "format" : "application/json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051906/data_euscreenXL_http___openbeelden_nl_media_10067.rdf",
+    "type" : "Dataset",
+    "format" : "application/rdf+xml",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  } ],
+  "start" : {
+    "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1",
+    "type" : "Canvas"
+  },
+  "items" : [ {
+    "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 1" ]
+    },
+    "height" : 240,
+    "width" : 320,
+    "duration" : 60.4,
+    "requiredStatement" : {
+      "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Six cities competition weightlifting</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Zesstedenwedstrijd gewichtheffen</a></span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://openbeelden.nl/media/10067' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel='noopener'>CC BY-SA</a></span></span></div>" ]
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "http://localhost:9876/base/tests/fixture-data/manifest.mp4",
+          "type" : "Video",
+          "format" : "video/quicktime"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"
+      } ]
+    } ]
+  },
+  {
+    "id" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 2" ]
+    },
+    "height" : 240,
+    "width" : 320,
+    "duration" : 110,
+    "requiredStatement" : {
+      "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'en'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Six cities competition weightlifting</a></span></span><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'nl'><a href='http://data.europeana.eu/item/2051906/data_euscreenXL_http___openbeelden_nl_media_10067' target='_blank' rel='noopener'>Zesstedenwedstrijd gewichtheffen</a></span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue'><a href='http://openbeelden.nl/media/10067' target='_blank' rel='noopener'>Netherlands Institute for Sound and Vision</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Netherlands</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-cc'></li><li class='icon-by'></li><li class='icon-sa'></li></ul><a href='http://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel='noopener'>CC BY-SA</a></span></span></div>" ]
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "http://localhost:9876/base/tests/fixture-data/EUscreen/EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.mp4",
+          "type" : "Video",
+          "format" : "video/mp4"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"
+      } ]
+    } ]
+  } ],
+  "provider" : [ {
+    "id" : "https://www.europeana.eu/en/about-us",
+    "type" : "Agent",
+    "homepage" : [ {
+      "id" : "https://www.europeana.eu",
+      "type" : "Text",
+      "label" : {
+        "en" : [ "Europeana" ]
+      },
+      "format" : "text/html"
+    } ],
+    "logo" : [ {
+      "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+      "type" : "Image"
+    } ]
+  } ]
+}
