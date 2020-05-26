@@ -293,8 +293,8 @@ describe('Player functions', () => {
 
     describe('load in a default way', () => {
       beforeEach((done) => {
-        let vObj = {manifest: manifestMultipleCanvases};
-        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        const vObj = {manifest: manifestMultipleCanvases};
+        const options = {mode: 'player', manifest: manifestMultipleCanvases};
         getPlayerWithOptions(vObj, options, (innerPlayer) => {
           player = innerPlayer;
           done();
@@ -313,8 +313,8 @@ describe('Player functions', () => {
 
     describe('load with the second canvas as param', () => {
       beforeEach((done) => {
-        let vObj = {manifest: manifestMultipleCanvases, canvasId: "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"};
-        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        const vObj = {manifest: manifestMultipleCanvases, canvasId: "https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"};
+        const options = {mode: 'player', manifest: manifestMultipleCanvases};
         getPlayerWithOptions(vObj, options, (innerPlayer) => {
           player = innerPlayer;
           done();
@@ -329,8 +329,8 @@ describe('Player functions', () => {
 
     describe('load default set to second canvas via call', () => {
       beforeEach((done) => {
-        let vObj = {manifest: manifestMultipleCanvases};
-        let options = {mode: 'player', manifest: manifestMultipleCanvases};
+        const vObj = {manifest: manifestMultipleCanvases};
+        const options = {mode: 'player', manifest: manifestMultipleCanvases};
         getPlayerWithOptions(vObj, options, (innerPlayer) => {
           player = innerPlayer;
           done();
