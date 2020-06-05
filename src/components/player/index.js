@@ -42,6 +42,8 @@ export default class Player {
     this.editorurl;
     this.banana;
     this.canvasId;
+    this.canvases;
+    this.mediaItem;
   }
 
   init(videoObj, editorurl, language) {
@@ -142,9 +144,9 @@ export default class Player {
     this.handler.ldManifest(data, (helper) => {
       player.manifest = helper.manifest;
 
-      let canvases = helper.getCanvases();
-      if (canvases.length > 1) {
-        canvases.forEach((canvas) => {
+      this.canvases = helper.getCanvases();
+      if (this.canvases.length > 1) {
+        this.canvases.forEach((canvas) => {
           $('[data-id=\''+canvas.id+'\']').hide();
         });
       }
@@ -152,9 +154,15 @@ export default class Player {
       if (this.canvasId !== null) {
         this.avcomponent.showCanvas(this.canvasId);
         $('[data-id=\''+this.canvasId+'\']').show();
+      } else if (this.mediaItem !== null) {
+        const canvas = this.getCanvasForMediaItem(this.mediaItem);
+        if (canvas !== null) {
+          this.setMediaItem(this.mediaItem);
+          $('[data-id=\''+canvas+'\']').show();
+        }
       } else {
-        this.avcomponent.showCanvas(canvases[0].id);
-        $('[data-id=\''+canvases[0].id+'\']').show();
+        this.avcomponent.showCanvas(this.canvases[0].id);
+        $('[data-id=\''+this.canvases[0].id+'\']').show();
       }
 
       $('.canvasNavigationContainer').hide();
@@ -214,8 +222,8 @@ export default class Player {
     }
 
     this.manifesturl = vObj.manifest;
-
     this.canvasId = vObj.canvasId || null;
+    this.mediaItem = vObj.mediaItem || null;
 
     this.itemSelectListener(vObj.manifest);
   }
@@ -423,6 +431,23 @@ export default class Player {
     </div>`);
     this.elem.after(markup);
     markup.find('.title-link').text(title);
+  }
+
+  getCanvasForMediaItem(mediaUrl) {
+    for (let i = 0; i < this.canvases.length; i++) {
+      const canvasContent = this.canvases[i].getContent();
+      if (mediaUrl === canvasContent[0].__jsonld.body.id) {
+        return this.canvases[i].id;
+      }
+    }
+    return null;
+  }
+
+  setMediaItem(mediaUrl) {
+    const canvas = this.getCanvasForMediaItem(mediaUrl);
+    if (canvas !== null) {
+      this.setCanvas(canvas);
+    }
   }
 
   setCanvas(canvasId) {

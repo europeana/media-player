@@ -163,6 +163,27 @@ var player = new EuropeanaMediaPlayer(container, videoObj);
 player.setCanvas("https://iiif.europeana.eu/presentation/2051921/data_euscreenXL_7081/canvas/p2");
 ```
 
+### Multiple media items example
+
+This example loads a manifest containing multiple canvas elements each containing a media item and loads the canvas containing the provided media item on initialisation
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3", mediaItem: "http://thraki.mmb.org.gr/002_07.mpg" };
+new EuropeanaMediaPlayer(container, videoObj);
+```
+
+### Multiple media items example via setMediaItem
+
+This example loads a manifest containing multiple canvas elements each containing a media item and loads the canvas containing the provided media item when invoking the setMediaItem() call
+
+```javascript
+var container = document.body;
+var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3" }
+var player = new EuropeanaMediaPlayer(container, videoObj);
+....
+player.setMediaItem("http://thraki.mmb.org.gr/002_07.mpg");
+```
 
 ## License
 
