@@ -345,5 +345,40 @@ describe('Player functions', () => {
         expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
       });
     });
+
+    describe('load with the second media item as param', () => {
+      beforeEach((done) => {
+        const vObj = {manifest: manifestMultipleCanvases, mediaItem: "http://localhost:9876/base/tests/fixture-data/EUscreen/EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.mp4"};
+        const options = {mode: 'player', manifest: manifestMultipleCanvases};
+        getPlayerWithOptions(vObj, options, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        }, options);
+      });
+
+      it('should have the second canvas visible, the first not', () => {
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeFalsy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
+      });
+    });
+
+    describe('load default set to second media item via call', () => {
+      beforeEach((done) => {
+        const vObj = {manifest: manifestMultipleCanvases};
+        const options = {mode: 'player', manifest: manifestMultipleCanvases};
+        getPlayerWithOptions(vObj, options, (innerPlayer) => {
+          player = innerPlayer;
+          done();
+        }, options);
+      });
+
+      it('should have initially the first canvas visible, after the setCanvas() call the second', () => {
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeTruthy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeFalsy();
+        player.setMediaItem("http://localhost:9876/base/tests/fixture-data/EUscreen/EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2.mp4");
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeFalsy();
+        expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
+      });
+    });
   });
 });
