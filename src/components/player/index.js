@@ -59,7 +59,7 @@ export default class Player {
     };
 
     //Check if the language is set, and if we have this present, otherwise default to English
-    if (language.length === 0 || languages.find(lang => lang.code === language) === undefined) {
+    if (language.length === 0 || languages.find(lang => lang.code === language) === undefined || i18n[language] === undefined) {
       language = 'en';
     } else {
       configuredLanguage = language;
@@ -245,7 +245,7 @@ export default class Player {
       let label = languages.find(lang => lang.iso === track.language);
       label = label && label.name ? label.name : track.language;
       return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
-    });
+    }).join('');
     menu += '</ul>';
 
     btnSubtitles.after(menu);
