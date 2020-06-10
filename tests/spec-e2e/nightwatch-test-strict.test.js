@@ -20,7 +20,8 @@ module.exports = {
       })
       .assert.attributeContains(selPlay, 'title', 'Play')
       .assert.not.cssClassPresent(selPlayIcon, 'pause')
-      .click(selPlay)
+      .pause(extraWaitTime)
+      .click(selPlay)      
       .assert.cssClassPresent(selPlayIcon, 'pause')
       .pause(extraWaitTime)
       .getText(selTime, function(result) {
