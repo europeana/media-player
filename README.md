@@ -158,9 +158,9 @@ This example loads a manifest containing multiple canvas elements and loads the 
 ```javascript
 var container = document.body;
 var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3" }
-var player = new EuropeanaMediaPlayer(container, videoObj);
+var emp = new EuropeanaMediaPlayer(container, videoObj);
 ....
-player.setCanvas("https://iiif.europeana.eu/presentation/2051921/data_euscreenXL_7081/canvas/p2");
+emp.player.setCanvas("https://iiif.europeana.eu/presentation/2051921/data_euscreenXL_7081/canvas/p2");
 ```
 
 ### Multiple media items example
@@ -180,9 +180,9 @@ This example loads a manifest containing multiple canvas elements each containin
 ```javascript
 var container = document.body;
 var videoObj = { manifest : "https://iiif.europeana.eu/presentation//2051921/data_euscreenXL_7081/manifest?format=3" }
-var player = new EuropeanaMediaPlayer(container, videoObj);
+var emp = new EuropeanaMediaPlayer(container, videoObj);
 ....
-player.setMediaItem("http://thraki.mmb.org.gr/002_07.mpg");
+emp.player.setMediaItem("http://thraki.mmb.org.gr/002_07.mpg");
 ```
 
 ## License
