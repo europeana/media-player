@@ -63,6 +63,12 @@ Example:
 ```
 
 Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
+ 
+Example: 
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.3/dash.all.min.js" type="text/javascript"></script>
+```
 
 ### Embed player
 
