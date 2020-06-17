@@ -12,6 +12,7 @@ const manifestM4v = 'http://localhost:9876/base/tests/fixture-data/manifest-m4v.
 const manifestWmv = 'http://localhost:9876/base/tests/fixture-data/manifest-wmv.json';
 const manifestEUscreen = 'http://localhost:9876/base/tests/fixture-data/manifest-euscreen.json';
 const manifestMultipleCanvases = 'http://localhost:9876/base/tests/fixture-data/manifest-two-canvases.json';
+const manifestMPEGDash = 'http://localhost:9876/base/tests/fixture-data/manifest-mpegdash.json';
 
 describe('Player functions', () => {
 
@@ -379,6 +380,25 @@ describe('Player functions', () => {
         expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p1"]').is(':visible')).toBeFalsy();
         expect($('.player[data-id="https://iiif.europeana.eu/presentation/2051906/data_euscreenXL_http___openbeelden_nl_media_10067/canvas/p2"]').is(':visible')).toBeTruthy();
       });
+    });
+  });
+
+  describe('MPEG Dash check', () => {
+
+    let player;
+
+    beforeEach((done) => {
+      getPlayer(manifestMPEGDash, (innerPlayer) => {
+        player = innerPlayer;
+        done();
+      });
+    });
+
+    it('should have an duration as this is derived from the stream', () => {
+      const duration = document.querySelector('.canvas-duration');
+      expect(duration.textContent).toMatch(/[0-9][0-9]:[0-9][0-9]/);
+      const t = new Date(`1970-01-01T00:${duration.textContent}Z`);
+      expect(t.getSeconds() | t.getMinutes()).toBeTruthy();
     });
   });
 });
