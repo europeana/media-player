@@ -1,6 +1,6 @@
 {
   "name": "@europeana/media-player",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "license": "EUPL-1.2",
   "main": "dist/europeana-media-player.min.js",
   "author": {
@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@iiif/base-component": "^2.0.1",
-    "@iiif/iiif-av-component": "Noterik/iiif-av-component#build2",
+    "@iiif/iiif-av-component": "github:Noterik/iiif-av-component#build2",
     "@iiif/iiif-tree-component": "^2.0.2",
-    "@iiif/manifold": "^2.0.2",
+    "@iiif/manifold": "github:Noterik/manifold#build",
     "banana-i18n": "^1.2.1",
     "dashjs": "^2.9.3",
     "dotenv": "^8.0.0",
