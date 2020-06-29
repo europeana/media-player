@@ -102,7 +102,7 @@ The _videoObject_ accepts the following properties
 
 Name | Type | Description
 ---- | ---- | -----------
-manifest | _String_ | the url of the IIIF manifest for the media item, mandatory
+manifest | _String_ / _JSON Object_ | the url of the IIIF manifest for the media item or the manifest itself as JSON object, mandatory
 canvasId | _String_ | the canvasId of the canvas to show, can be used when having a manifest with multiple canvases, optional
 
 
