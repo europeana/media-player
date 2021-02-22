@@ -30,6 +30,7 @@ module.exports = {
       })
       .waitForElementVisible(selBtnFS)
       .click(selBtnFS)
+      .pause(1000)
       .getElementSize(selCanvas, function (result) {
         this.assert.ok(result.value.width <= outerWidth, `Check width (${result.value.width}) <= ${outerWidth} after clicking fullscreen twice`);
       })
@@ -45,6 +46,7 @@ module.exports = {
         this.assert.ok(result.value.height > outerHeight, `Check height (${result.value.height}) > ${outerHeight} after clicking fullscreen.`);
       })
       .click(selBtnFS)
+      .pause(1000)
       .getElementSize(selCanvas, function (result) {
         this.assert.ok(result.value.height <= outerHeight, `Check height (${result.value.height}) <= ${outerHeight} after clicking fullscreen twice.`);
       })
