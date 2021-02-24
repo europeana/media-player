@@ -11,6 +11,186 @@ $gap-small: 8px;
   src: url('https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff') format('woff');
 }
 
+.btn {
+  background: 0 0;
+  border: 0;
+  box-shadow: none;
+  font-size: 0;
+  margin: 0 8px 0 0;
+  padding: 0;
+
+  &:last-of-type {
+    margin-right: 4px;
+  }
+
+  i {
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    height: 24px;
+    vertical-align: middle;
+    width: 24px;
+  }
+}
+
+.btn .av-icon-play {
+  background-size: 100%;
+  position: relative;
+  width: 14px;
+
+  &.play {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='21px' height='21px' viewBox='0 0 21 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Eplay icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-105.000000, -747.000000)' fill='%23D6D9DD'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cg id='UI' transform='translate(20.526946, 19.327103)'%3E%3Cpath d='M7.09481147,39.4485981 C7.02536685,39.4485981 6.93277401,39.4254499 6.86332938,39.3791535 C6.74758834,39.3097089 6.67814371,39.1708196 6.67814371,39.0319304 L6.67814371,19.8652134 C6.67814371,19.7263242 6.74758834,19.5874349 6.86332938,19.5179903 C7.00221864,19.4253975 7.14110789,19.4253975 7.27999714,19.4948421 L26.4467141,29.0782006 C26.5856033,29.1476452 26.6781962,29.2865344 26.6781962,29.4485719 C26.6781962,29.6106094 26.5856033,29.7494986 26.4467141,29.8189432 L7.27999714,39.4023017 C7.21055252,39.4254499 7.1642561,39.4485981 7.09481147,39.4485981 Z' id='play-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &.play:hover {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='21px' height='21px' viewBox='0 0 21 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Eplay icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-105.000000, -747.000000)' fill='%23FFFFFF'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cg id='UI' transform='translate(20.526946, 19.327103)'%3E%3Cpath d='M7.09481147,39.4485981 C7.02536685,39.4485981 6.93277401,39.4254499 6.86332938,39.3791535 C6.74758834,39.3097089 6.67814371,39.1708196 6.67814371,39.0319304 L6.67814371,19.8652134 C6.67814371,19.7263242 6.74758834,19.5874349 6.86332938,19.5179903 C7.00221864,19.4253975 7.14110789,19.4253975 7.27999714,19.4948421 L26.4467141,29.0782006 C26.5856033,29.1476452 26.6781962,29.2865344 26.6781962,29.4485719 C26.6781962,29.6106094 26.5856033,29.7494986 26.4467141,29.8189432 L7.27999714,39.4023017 C7.21055252,39.4254499 7.1642561,39.4485981 7.09481147,39.4485981 Z' id='play-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &.pause {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='15px' height='15px' viewBox='0 0 15 15' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Epause icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='annotation-type-dropdown-menu' transform='translate(-19.000000, -212.000000)' fill='%23D6D9DD'%3E%3Cg id='dropdown' transform='translate(5.000000, 0.000000)'%3E%3Cpath d='M18.5156143,226.968748 L15.5156214,226.968748 C14.6874984,226.968748 14.015625,226.296874 14.015625,225.468751 L14.015625,214.468777 C14.015625,213.640654 14.6874984,212.968781 15.5156214,212.968781 L18.5156143,212.968781 C19.3437373,212.968781 20.0156107,213.640654 20.0156107,214.468777 L20.0156107,225.468751 C20.0156107,226.296874 19.3437373,226.968748 18.5156143,226.968748 Z M28.0155916,225.468751 C28.0155916,226.296874 27.3437182,226.968748 26.5155952,226.968748 L23.5156024,226.968748 C22.6874793,226.968748 22.0156059,226.296874 22.0156059,225.468751 L22.0156059,214.468777 C22.0156059,213.640654 22.6874793,212.968781 23.5156024,212.968781 L26.5155952,212.968781 C27.3437182,212.968781 28.0155916,213.640654 28.0155916,214.468777 L28.0155916,225.468751 Z' id='pause-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &.pause:hover {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='15px' height='15px' viewBox='0 0 15 15' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Epause icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='annotation-type-dropdown-menu' transform='translate(-19.000000, -212.000000)' fill='%23FFFFFF'%3E%3Cg id='dropdown' transform='translate(5.000000, 0.000000)'%3E%3Cpath d='M18.5156143,226.968748 L15.5156214,226.968748 C14.6874984,226.968748 14.015625,226.296874 14.015625,225.468751 L14.015625,214.468777 C14.015625,213.640654 14.6874984,212.968781 15.5156214,212.968781 L18.5156143,212.968781 C19.3437373,212.968781 20.0156107,213.640654 20.0156107,214.468777 L20.0156107,225.468751 C20.0156107,226.296874 19.3437373,226.968748 18.5156143,226.968748 Z M28.0155916,225.468751 C28.0155916,226.296874 27.3437182,226.968748 26.5155952,226.968748 L23.5156024,226.968748 C22.6874793,226.968748 22.0156059,226.296874 22.0156059,225.468751 L22.0156059,214.468777 C22.0156059,213.640654 22.6874793,212.968781 23.5156024,212.968781 L26.5155952,212.968781 C27.3437182,212.968781 28.0155916,213.640654 28.0155916,214.468777 L28.0155916,225.468751 Z' id='pause-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+.info {
+  bottom: 0;
+  color: #fff;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+/* Logo / link */
+
+.logo-link {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 40 51'%3E%3Cdefs%3E%3Cpath id='a' d='M32.412 14.114h.049-.049M9.607 29.09c3.59 0 6.502 2.908 6.502 6.494s-2.911 6.494-6.502 6.494c-3.59 0-6.502-2.908-6.502-6.494s2.912-6.494 6.502-6.494m4.707 14.54a3.353 3.353 0 013.348-3.345 3.352 3.352 0 013.348 3.344 3.352 3.352 0 01-3.348 3.344 3.352 3.352 0 01-3.348-3.344m25.668-26.51a11.78 11.78 0 01-.097-1.309c-.097-.34-.146-.872-.194-1.163-.146-.388-.146-.533-.195-.824-.097-.29-.097-.29-.242-.92-.34-1.212-.874-2.424-1.456-3.587-.388-.727-.873-1.357-1.358-1.987a6.1 6.1 0 00-.486-.582c-.194-.242-1.261-1.502-1.6-1.793-.34-.29-.632-.582-1.02-.872-.34-.291-.728-.582-1.067-.824-.291-.243-.631-.34-.922-.534C29.695 1.707 27.85.883 25.959.447 19.603-1.007 12.13 1.125 8.006 6.31a48.449 48.449 0 00-1.31 1.648c-.194.242-.291.581-.485.872-.388.63-.68 1.212-.97 1.89-1.165 2.569-1.893 5.72-1.65 8.676.145 1.647.436 3.295 1.019 4.846.194.485.34.97.582 1.454.145.34.534 1.018.582 1.115A9.687 9.687 0 000 35.68c0 5.331 4.367 9.693 9.704 9.693 1.165 0 2.28-.194 3.3-.582 0 .049.048.049.048.097.534 2.084 2.426 3.684 4.707 3.684 2.669 0 4.852-2.181 4.852-4.847a4.841 4.841 0 00-3.785-4.75c0-.048.049-.096.049-.145.048-.194.145-.388.194-.581a3.67 3.67 0 00.194-.776c0-.145.049-.29.049-.485.048-.193.048-.387.048-.581.049-.049.097 0 .194 0 1.068.048 2.135.242 3.203.145 1.989-.097 4.124-.484 5.92-1.308 1.891-.824 3.735-1.89 5.288-3.296.728-.63 1.456-1.357 2.038-2.18.291-.389.63-.728.873-1.116.194-.339.485-.678.68-1.017.145-.243.145-.388.29-.63.098-.146.195-.291.243-.485.146-.34.194-.727.194-1.115.049-.727-.194-1.502-.63-2.132-.34-.533-1.165-1.018-1.796-1.212-.728-.194-1.6-.145-2.329.097-.776.29-1.31.97-1.746 1.696-.486.776-.922 1.503-1.553 2.133-1.213 1.211-2.523 2.18-4.124 2.81-6.114 2.473-13.198-.872-15.236-7.124-.922-2.908-.68-6.155.825-8.869a12.572 12.572 0 013.105-3.683 10.587 10.587 0 012.232-1.357c.728-.29 1.456-.485 2.183-.727.583-.194 1.36-.242 1.941-.29.631-.05 1.31-.05 1.941.048 1.31.193 2.669.533 3.882 1.114.63.34 1.358.776 1.94 1.26.583.485 1.214 1.067 1.699 1.648.388.485.582.824.97 1.309.389.581.922 1.211.97 1.938h-4.56c-1.456 0-3.057-.339-4.416.34-1.407.727-2.523 2.762-1.6 4.265.436.727.63 1.308 1.455 1.696.825.388 1.504.436 2.426.436 2.086-.048 4.173 0 6.26 0h3.25c.922 0 1.844.049 2.717-.29 1.31-.437 2.038-1.842 1.893-3.393'%3E%3C/path%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a'%3E%3C/use%3E%3C/mask%3E%3Cuse fill='%231A1A1A' xlink:href='%23a'%3E%3C/use%3E%3Cg fill='%23FFF' mask='url%28%23b%29'%3E%3Cpath d='M0 0h40v50.169H0z'%3E%3C/path%3E%3C/g%3E%3Cpath d='M0 0h40v50.169H0z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+
+
+  background-repeat: no-repeat;
+  display: block;
+  height: 50px;
+  margin: $gap-small $gap-small 0 0;
+  pointer-events: all;
+  width: 40px;
+}
+
+.title-logo {
+  align-items: center;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-link {
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 27px;
+  overflow: hidden;
+  padding: 0 $gap-small;
+  pointer-events: all;
+  position: relative;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  top: 0;
+  transform: translateY(0);
+  white-space: nowrap;
+
+  @media (min-width: $bp-large) { // allow 2 lines
+    max-height: $title-height;
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.showing,
+.options-container,
+.title-logo {
+  transition: transform 0.4s ease 0s;
+}
+
+.range-timeline-container {
+  background: #14a4c3;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  height: 4px;
+
+  .ui-slider-range {
+    background: #79b2e3;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .ui-slider-handle {
+    background: #79b2e3;
+    border: 'none';
+    border-radius: 7px;
+    cursor: pointer;
+    height: 14px;
+    margin-left: -7px;
+    margin-top: 0;
+    width: 14px;
+    z-index: 2;
+  }  
+}
+
+.canvas-timeline-container {
+  border-radius: 0;
+  background: #bbbcbc;
+  border: 0;
+  cursor: pointer;
+  height: 4px;
+  width: 0;
+
+  .duration-highlight {
+    background: #14a4c3;
+    height: 4px;
+    position: absolute;
+  }
+
+  .ui-slider-range {
+    background: #0a72cc;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .ui-slider-handle {
+    background: #0a72cc;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    height: 14px;
+    margin-left: -7px;
+    margin-top: 0;
+    width: 14px;
+    z-index: 2;
+  }
+}
+
+.canvas-timeline-container, 
+.range-timeline-container {
+  .ui-slider-handle:focus {
+    outline-width: 0;
+  }
+}
+
 .iiif-av-component {
   background: #000;
   font-family: 'Open Sans', 'Arial', sans-serif;
@@ -31,6 +211,82 @@ $gap-small: 8px;
     height: 100%;
     width: 100%;
   }
+
+  .av-icon-previous {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gcJDCgq14wdqwAAAJ9JREFUSMft1TsOQUEUgOETpUYpcmMFEtuwEyvR2oLeQpQ6m6AiEY/Gp0CDK5L7Epm/mzmT+c/JzJyJSCQSdYI1Tuh9WNPGpGzx0Y0sJ97BAmoTo4/VPb77ds9WwYRGEbGMiMFjqvKKMfbKtipx9z6eek/p4gMuGGImn9LFe5wx95n/qbixM278VmfP7xib2sVFOtfP9+pmfqdEIvHTXAHKs7eDn/hqpQAAAABJRU5ErkJggg==');
+  }
+
+  .av-icon-next {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gcJDCkVePEB1wAAAKJJREFUSMftlbENwjAQRb8iqqSgRFHEBEiswRw0TJI2K7ANJR1LQJU0gISUR+MKSJTCOhzpXuPirHu2zz5LjuNYAtRAPhIvgSdwjS0GOAHLgXgV5jxii7uQ+AKsY4izqe4wbiSdgZ1VjVu+OVgc9S8xQBPiK2sxwBHYAj1wn5pzEWFde0mFpJekPvkdz7LG5rf69vmOZ9W5ku/V//mdHMdJmjdBx46OkJJ4sAAAAABJRU5ErkJggg==');
+  }
+
+  .options-container {
+    background: linear-gradient(0deg, rgba(50, 50, 50, 0.75) 0%, rgba(29, 29, 29, 0) 100%);
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 $gap-small;
+    position: absolute;
+    right: 0;
+    transform: translateY(0);
+  }
+
+  .canvas-timeline-container {
+    width: auto !important;
+  }
+
+  .loading-progress {
+    background-color: #ccc;
+    box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    height: 4px;
+    position: absolute;
+  }
+}
+
+.playing {
+  .showing {
+    transform: translate(calc(100% + 20px), -76px);
+  }
+
+  .options-container {
+    transform: translateY(calc(100% + 20px));
+  }
+
+  + .info .title-logo {
+    transform: translateY(calc(-100% - 20px));
+  }
+}
+
+.playing.force-controls,
+.playing.moving {
+  .showing {
+    transform: translateX(0);
+  }
+
+  + .info .title-logo {
+    transform: translateY(0);
+  }
+
+  .options-container,
+  + .info .title-logo {
+    transform: translateY(0);
+  }
+}
+
+/* push the right-hand buttons right with a left auto-margin (on the first only) and a source reorder */
+
+.volume + .btn {
+  margin-left: auto;
+}
+
+.btn[data-name=Subtitles] {
+  display: block !important;
+}
+
+.btn[data-name=Subtitles],
+.btn[title=Previous],
+.btn[title=Next] {
+  display: none;
 }
 
 .poster-container {
@@ -123,14 +379,6 @@ $gap-small: 8px;
   }
 }
 
-.range-timeline-container {
-  background: #14a4c3;
-  border: 0;
-  border-radius: 0;
-  cursor: pointer;
-  height: 4px;
-}
-
 .hover-preview {
   overflow: hidden; /* prevent pointer arrow splitting from label at ends of timeline */
   padding-bottom: 7px;
@@ -165,21 +413,6 @@ $gap-small: 8px;
   position: absolute;
 }
 
-.canvas-timeline-container {
-  border-radius: 0;
-  background: #bbbcbc;
-  border: 0;
-  cursor: pointer;
-  height: 4px;
-  width: 0;
-
-  .duration-highlight {
-    background: #14a4c3;
-    height: 4px;
-    position: absolute;
-  }
-}
-
 .timeline-item-container {
   background: #cfcfcf;
   min-height: 6px;
@@ -204,57 +437,6 @@ $gap-small: 8px;
   .timeline-item.active {
     background: #333;
   }
-}
-//}
-
-//.iiif-av-component .canvas-timeline-container .ui-slider-range {
-.canvas-timeline-container .ui-slider-range {
-  background: #0a72cc;
-  border-radius: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-//  .iiif-av-component .canvas-timeline-container .ui-slider-handle {
-.canvas-timeline-container .ui-slider-handle {
-  background: #0a72cc;
-  border: 0;
-  border-radius: 7px;
-  cursor: pointer;
-  height: 14px;
-  margin-left: -7px;
-  margin-top: 0;
-  width: 14px;
-  z-index: 2;
-}
-
-//  .iiif-av-component .canvas-timeline-container .ui-slider-handle:focus {
-.canvas-timeline-container .ui-slider-handle:focus {
-  outline-width: 0;
-}
-
-//  .iiif-av-component .range-timeline-container .ui-slider-range {
-.range-timeline-container .ui-slider-range {
-  background: #79b2e3;
-  border-radius: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-//.iiif-av-component .range-timeline-container .ui-slider-handle {
-.range-timeline-container .ui-slider-handle {  background: #79b2e3;
-  border: 'none';
-  border-radius: 7px;
-  cursor: pointer;
-  height: 14px;
-  margin-left: -7px;
-  margin-top: 0;
-  width: 14px;
-  z-index: 2;
-}
-
-.iiif-av-component .range-timeline-container .ui-slider-handle:focus {
-  outline-width: 0;
 }
 
 .controls-container,
@@ -323,53 +505,6 @@ $gap-small: 8px;
   }
 }
 
-.btn {
-  background: 0 0;
-  border: 0;
-  box-shadow: none;
-  font-size: 0;
-  margin: 0 8px 0 0;
-  padding: 0;
-
-  &:last-of-type {
-    margin-right: 4px;
-  }
-
-  i {
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 0;
-    height: 24px;
-    vertical-align: middle;
-    width: 24px;
-  }
-}
-
-.btn .av-icon-play {
-
-  background-size: 100%;
-  position: relative;
-  width: 14px;
-
-  &.play {
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='21px' height='21px' viewBox='0 0 21 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Eplay icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-105.000000, -747.000000)' fill='%23D6D9DD'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cg id='UI' transform='translate(20.526946, 19.327103)'%3E%3Cpath d='M7.09481147,39.4485981 C7.02536685,39.4485981 6.93277401,39.4254499 6.86332938,39.3791535 C6.74758834,39.3097089 6.67814371,39.1708196 6.67814371,39.0319304 L6.67814371,19.8652134 C6.67814371,19.7263242 6.74758834,19.5874349 6.86332938,19.5179903 C7.00221864,19.4253975 7.14110789,19.4253975 7.27999714,19.4948421 L26.4467141,29.0782006 C26.5856033,29.1476452 26.6781962,29.2865344 26.6781962,29.4485719 C26.6781962,29.6106094 26.5856033,29.7494986 26.4467141,29.8189432 L7.27999714,39.4023017 C7.21055252,39.4254499 7.1642561,39.4485981 7.09481147,39.4485981 Z' id='play-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  &.play:hover {
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='21px' height='21px' viewBox='0 0 21 21' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Eplay icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-105.000000, -747.000000)' fill='%23FFFFFF'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cg id='UI' transform='translate(20.526946, 19.327103)'%3E%3Cpath d='M7.09481147,39.4485981 C7.02536685,39.4485981 6.93277401,39.4254499 6.86332938,39.3791535 C6.74758834,39.3097089 6.67814371,39.1708196 6.67814371,39.0319304 L6.67814371,19.8652134 C6.67814371,19.7263242 6.74758834,19.5874349 6.86332938,19.5179903 C7.00221864,19.4253975 7.14110789,19.4253975 7.27999714,19.4948421 L26.4467141,29.0782006 C26.5856033,29.1476452 26.6781962,29.2865344 26.6781962,29.4485719 C26.6781962,29.6106094 26.5856033,29.7494986 26.4467141,29.8189432 L7.27999714,39.4023017 C7.21055252,39.4254499 7.1642561,39.4485981 7.09481147,39.4485981 Z' id='play-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  &.pause {
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='15px' height='15px' viewBox='0 0 15 15' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Epause icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='annotation-type-dropdown-menu' transform='translate(-19.000000, -212.000000)' fill='%23D6D9DD'%3E%3Cg id='dropdown' transform='translate(5.000000, 0.000000)'%3E%3Cpath d='M18.5156143,226.968748 L15.5156214,226.968748 C14.6874984,226.968748 14.015625,226.296874 14.015625,225.468751 L14.015625,214.468777 C14.015625,213.640654 14.6874984,212.968781 15.5156214,212.968781 L18.5156143,212.968781 C19.3437373,212.968781 20.0156107,213.640654 20.0156107,214.468777 L20.0156107,225.468751 C20.0156107,226.296874 19.3437373,226.968748 18.5156143,226.968748 Z M28.0155916,225.468751 C28.0155916,226.296874 27.3437182,226.968748 26.5155952,226.968748 L23.5156024,226.968748 C22.6874793,226.968748 22.0156059,226.296874 22.0156059,225.468751 L22.0156059,214.468777 C22.0156059,213.640654 22.6874793,212.968781 23.5156024,212.968781 L26.5155952,212.968781 C27.3437182,212.968781 28.0155916,213.640654 28.0155916,214.468777 L28.0155916,225.468751 Z' id='pause-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  &.pause:hover {
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='15px' height='15px' viewBox='0 0 15 15' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3Epause icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='annotation-type-dropdown-menu' transform='translate(-19.000000, -212.000000)' fill='%23FFFFFF'%3E%3Cg id='dropdown' transform='translate(5.000000, 0.000000)'%3E%3Cpath d='M18.5156143,226.968748 L15.5156214,226.968748 C14.6874984,226.968748 14.015625,226.296874 14.015625,225.468751 L14.015625,214.468777 C14.015625,213.640654 14.6874984,212.968781 15.5156214,212.968781 L18.5156143,212.968781 C19.3437373,212.968781 20.0156107,213.640654 20.0156107,214.468777 L20.0156107,225.468751 C20.0156107,226.296874 19.3437373,226.968748 18.5156143,226.968748 Z M28.0155916,225.468751 C28.0155916,226.296874 27.3437182,226.968748 26.5155952,226.968748 L23.5156024,226.968748 C22.6874793,226.968748 22.0156059,226.296874 22.0156059,225.468751 L22.0156059,214.468777 C22.0156059,213.640654 22.6874793,212.968781 23.5156024,212.968781 L26.5155952,212.968781 C27.3437182,212.968781 28.0155916,213.640654 28.0155916,214.468777 L28.0155916,225.468751 Z' id='pause-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-}
-
 .iiif-av-component .av-icon-mute {
   &.on {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24' fill='%23D6D9DD'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z'%3E%3C/path%3E%3Cpath d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3C/svg%3E");
@@ -398,29 +533,19 @@ $gap-small: 8px;
   }
 }
 
-.iiif-av-component {
-  .av-icon-previous {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gcJDCgq14wdqwAAAJ9JREFUSMft1TsOQUEUgOETpUYpcmMFEtuwEyvR2oLeQpQ6m6AiEY/Gp0CDK5L7Epm/mzmT+c/JzJyJSCQSdYI1Tuh9WNPGpGzx0Y0sJ97BAmoTo4/VPb77ds9WwYRGEbGMiMFjqvKKMfbKtipx9z6eek/p4gMuGGImn9LFe5wx95n/qbixM278VmfP7xib2sVFOtfP9+pmfqdEIvHTXAHKs7eDn/hqpQAAAABJRU5ErkJggg==');
-  }
-
-  .av-icon-next {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gcJDCkVePEB1wAAAKJJREFUSMftlbENwjAQRb8iqqSgRFHEBEiswRw0TJI2K7ANJR1LQJU0gISUR+MKSJTCOhzpXuPirHu2zz5LjuNYAtRAPhIvgSdwjS0GOAHLgXgV5jxii7uQ+AKsY4izqe4wbiSdgZ1VjVu+OVgc9S8xQBPiK2sxwBHYAj1wn5pzEWFde0mFpJekPvkdz7LG5rf69vmOZ9W5ku/V//mdHMdJmjdBx46OkJJ4sAAAAABJRU5ErkJggg==');
-  }
-}
-
 .btn[data-name='More'] {
   .av-icon-more {
     background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='18px' height='5px' viewBox='0 0 18 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EOptions icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-734.000000, -755.000000)' fill='%23D6D9DD'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cpath d='M658.14521,50.953271 C656.964301,50.953271 656.006986,49.9699712 656.006986,48.7570093 C656.006986,47.5440475 656.964301,46.5607477 658.14521,46.5607477 C659.326118,46.5607477 660.283433,47.5440475 660.283433,48.7570093 C660.283433,49.9699712 659.326118,50.953271 658.14521,50.953271 Z M671.82984,50.953271 C670.648932,50.953271 669.691617,49.9699712 669.691617,48.7570093 C669.691617,47.5440475 670.648932,46.5607477 671.82984,46.5607477 C673.010749,46.5607477 673.968064,47.5440475 673.968064,48.7570093 C673.968064,49.9699712 673.010749,50.953271 671.82984,50.953271 Z M664.987525,50.953271 C663.806617,50.953271 662.849301,49.9699712 662.849301,48.7570093 C662.849301,47.5440475 663.806617,46.5607477 664.987525,46.5607477 C666.168433,46.5607477 667.125749,47.5440475 667.125749,48.7570093 C667.125749,49.9699712 666.168433,50.953271 664.987525,50.953271 Z' id='Options-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     margin-top: 13px;
   }
 
-  &:not(.open):hover .av-icon-more {
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='18px' height='5px' viewBox='0 0 18 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EOptions icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-734.000000, -755.000000)' fill='%23FFFFFF'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cpath d='M658.14521,50.953271 C656.964301,50.953271 656.006986,49.9699712 656.006986,48.7570093 C656.006986,47.5440475 656.964301,46.5607477 658.14521,46.5607477 C659.326118,46.5607477 660.283433,47.5440475 660.283433,48.7570093 C660.283433,49.9699712 659.326118,50.953271 658.14521,50.953271 Z M671.82984,50.953271 C670.648932,50.953271 669.691617,49.9699712 669.691617,48.7570093 C669.691617,47.5440475 670.648932,46.5607477 671.82984,46.5607477 C673.010749,46.5607477 673.968064,47.5440475 673.968064,48.7570093 C673.968064,49.9699712 673.010749,50.953271 671.82984,50.953271 Z M664.987525,50.953271 C663.806617,50.953271 662.849301,49.9699712 662.849301,48.7570093 C662.849301,47.5440475 663.806617,46.5607477 664.987525,46.5607477 C666.168433,46.5607477 667.125749,47.5440475 667.125749,48.7570093 C667.125749,49.9699712 666.168433,50.953271 664.987525,50.953271 Z' id='Options-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
   &.open .av-icon-more {
     background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='18px' height='5px' viewBox='0 0 18 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EOptions icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-734.000000, -755.000000)' fill='%230771ce'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cpath d='M658.14521,50.953271 C656.964301,50.953271 656.006986,49.9699712 656.006986,48.7570093 C656.006986,47.5440475 656.964301,46.5607477 658.14521,46.5607477 C659.326118,46.5607477 660.283433,47.5440475 660.283433,48.7570093 C660.283433,49.9699712 659.326118,50.953271 658.14521,50.953271 Z M671.82984,50.953271 C670.648932,50.953271 669.691617,49.9699712 669.691617,48.7570093 C669.691617,47.5440475 670.648932,46.5607477 671.82984,46.5607477 C673.010749,46.5607477 673.968064,47.5440475 673.968064,48.7570093 C673.968064,49.9699712 673.010749,50.953271 671.82984,50.953271 Z M664.987525,50.953271 C663.806617,50.953271 662.849301,49.9699712 662.849301,48.7570093 C662.849301,47.5440475 663.806617,46.5607477 664.987525,46.5607477 C666.168433,46.5607477 667.125749,47.5440475 667.125749,48.7570093 C667.125749,49.9699712 666.168433,50.953271 664.987525,50.953271 Z' id='Options-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
+
+  &:not(.open):hover .av-icon-more {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='18px' height='5px' viewBox='0 0 18 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EOptions icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Backend' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EUMediaPlayer-Video-Editor-1400px' transform='translate(-734.000000, -755.000000)' fill='%23FFFFFF'%3E%3Cg id='Main-content' transform='translate(24.000000, 24.000000)'%3E%3Cg id='Main-card' transform='translate(1.000000, 86.000000)'%3E%3Cg id='Media-Card' transform='translate(53.000000, 141.000000)'%3E%3Cg id='Video' transform='translate(0.000000, 56.000000)'%3E%3Cg id='UI-bottom-section' transform='translate(0.000000, 401.476636)'%3E%3Cpath d='M658.14521,50.953271 C656.964301,50.953271 656.006986,49.9699712 656.006986,48.7570093 C656.006986,47.5440475 656.964301,46.5607477 658.14521,46.5607477 C659.326118,46.5607477 660.283433,47.5440475 660.283433,48.7570093 C660.283433,49.9699712 659.326118,50.953271 658.14521,50.953271 Z M671.82984,50.953271 C670.648932,50.953271 669.691617,49.9699712 669.691617,48.7570093 C669.691617,47.5440475 670.648932,46.5607477 671.82984,46.5607477 C673.010749,46.5607477 673.968064,47.5440475 673.968064,48.7570093 C673.968064,49.9699712 673.010749,50.953271 671.82984,50.953271 Z M664.987525,50.953271 C663.806617,50.953271 662.849301,49.9699712 662.849301,48.7570093 C662.849301,47.5440475 663.806617,46.5607477 664.987525,46.5607477 C666.168433,46.5607477 667.125749,47.5440475 667.125749,48.7570093 C667.125749,49.9699712 666.168433,50.953271 664.987525,50.953271 Z' id='Options-icon'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }  
 }
 
 .iiif-av-component .av-icon-fullscreen {
@@ -476,142 +601,6 @@ $gap-small: 8px;
   }
 }
 
-.iiif-av-component .options-container {
-  background: linear-gradient(0deg, rgba(50, 50, 50, 0.75) 0%, rgba(29, 29, 29, 0) 100%);
-  bottom: 0;
-  left: 0;
-  margin: 0;
-  padding: 0 $gap-small;
-  position: absolute;
-  right: 0;
-  transform: translateY(0);
-}
-
-.iiif-av-component .canvas-timeline-container {
-  width: auto !important;
-}
-
-.iiif-av-component .loading-progress {
-  background-color: #ccc;
-  box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-  height: 4px;
-  position: absolute;
-}
-
-.info {
-  bottom: 0;
-  color: #fff;
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
-/* Logo / link */
-
-.logo-link {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 40 51'%3E%3Cdefs%3E%3Cpath id='a' d='M32.412 14.114h.049-.049M9.607 29.09c3.59 0 6.502 2.908 6.502 6.494s-2.911 6.494-6.502 6.494c-3.59 0-6.502-2.908-6.502-6.494s2.912-6.494 6.502-6.494m4.707 14.54a3.353 3.353 0 013.348-3.345 3.352 3.352 0 013.348 3.344 3.352 3.352 0 01-3.348 3.344 3.352 3.352 0 01-3.348-3.344m25.668-26.51a11.78 11.78 0 01-.097-1.309c-.097-.34-.146-.872-.194-1.163-.146-.388-.146-.533-.195-.824-.097-.29-.097-.29-.242-.92-.34-1.212-.874-2.424-1.456-3.587-.388-.727-.873-1.357-1.358-1.987a6.1 6.1 0 00-.486-.582c-.194-.242-1.261-1.502-1.6-1.793-.34-.29-.632-.582-1.02-.872-.34-.291-.728-.582-1.067-.824-.291-.243-.631-.34-.922-.534C29.695 1.707 27.85.883 25.959.447 19.603-1.007 12.13 1.125 8.006 6.31a48.449 48.449 0 00-1.31 1.648c-.194.242-.291.581-.485.872-.388.63-.68 1.212-.97 1.89-1.165 2.569-1.893 5.72-1.65 8.676.145 1.647.436 3.295 1.019 4.846.194.485.34.97.582 1.454.145.34.534 1.018.582 1.115A9.687 9.687 0 000 35.68c0 5.331 4.367 9.693 9.704 9.693 1.165 0 2.28-.194 3.3-.582 0 .049.048.049.048.097.534 2.084 2.426 3.684 4.707 3.684 2.669 0 4.852-2.181 4.852-4.847a4.841 4.841 0 00-3.785-4.75c0-.048.049-.096.049-.145.048-.194.145-.388.194-.581a3.67 3.67 0 00.194-.776c0-.145.049-.29.049-.485.048-.193.048-.387.048-.581.049-.049.097 0 .194 0 1.068.048 2.135.242 3.203.145 1.989-.097 4.124-.484 5.92-1.308 1.891-.824 3.735-1.89 5.288-3.296.728-.63 1.456-1.357 2.038-2.18.291-.389.63-.728.873-1.116.194-.339.485-.678.68-1.017.145-.243.145-.388.29-.63.098-.146.195-.291.243-.485.146-.34.194-.727.194-1.115.049-.727-.194-1.502-.63-2.132-.34-.533-1.165-1.018-1.796-1.212-.728-.194-1.6-.145-2.329.097-.776.29-1.31.97-1.746 1.696-.486.776-.922 1.503-1.553 2.133-1.213 1.211-2.523 2.18-4.124 2.81-6.114 2.473-13.198-.872-15.236-7.124-.922-2.908-.68-6.155.825-8.869a12.572 12.572 0 013.105-3.683 10.587 10.587 0 012.232-1.357c.728-.29 1.456-.485 2.183-.727.583-.194 1.36-.242 1.941-.29.631-.05 1.31-.05 1.941.048 1.31.193 2.669.533 3.882 1.114.63.34 1.358.776 1.94 1.26.583.485 1.214 1.067 1.699 1.648.388.485.582.824.97 1.309.389.581.922 1.211.97 1.938h-4.56c-1.456 0-3.057-.339-4.416.34-1.407.727-2.523 2.762-1.6 4.265.436.727.63 1.308 1.455 1.696.825.388 1.504.436 2.426.436 2.086-.048 4.173 0 6.26 0h3.25c.922 0 1.844.049 2.717-.29 1.31-.437 2.038-1.842 1.893-3.393'%3E%3C/path%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a'%3E%3C/use%3E%3C/mask%3E%3Cuse fill='%231A1A1A' xlink:href='%23a'%3E%3C/use%3E%3Cg fill='%23FFF' mask='url%28%23b%29'%3E%3Cpath d='M0 0h40v50.169H0z'%3E%3C/path%3E%3C/g%3E%3Cpath d='M0 0h40v50.169H0z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-
-
-  background-repeat: no-repeat;
-  display: block;
-  height: 50px;
-  margin: $gap-small $gap-small 0 0;
-  pointer-events: all;
-  width: 40px;
-}
-
-.title-logo {
-  align-items: center;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-  display: flex;
-  justify-content: space-between;
-}
-
-.title-link {
-  box-sizing: border-box;
-  color: #fff;
-  display: block;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 27px;
-  overflow: hidden;
-  padding: 0 $gap-small;
-  pointer-events: all;
-  position: relative;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  top: 0;
-  transform: translateY(0);
-  white-space: nowrap;
-
-  @media (min-width: $bp-large) { // allow 2 lines
-    max-height: $title-height;
-    text-overflow: unset;
-    white-space: normal;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-
-.playing {
-  .showing {
-    transform: translate(calc(100% + 20px), -76px);
-  }
-
-  .options-container {
-    transform: translateY(calc(100% + 20px));
-  }
-
-  + .info .title-logo {
-    transform: translateY(calc(-100% - 20px));
-  }
-
-}
-
-.playing.force-controls,
-.playing.moving {
-  .showing {
-    transform: translateX(0);
-  }
-
-  + .info .title-logo {
-    transform: translateY(0);
-  }
-
-  .options-container,
-  + .info .title-logo {
-    transform: translateY(0);
-  }
-}
-
-.showing,
-.options-container,
-.title-logo {
-  transition: transform 0.4s ease 0s;
-}
-
-/* push the right-hand buttons right with a left auto-margin (on the first only) and a source reorder */
-
-.volume + .btn {
-  margin-left: auto;
-}
-
-.btn[data-name=Subtitles] {
-  display: block !important;
-}
-
-.btn[data-name=Subtitles],
-.btn[title=Previous],
-.btn[title=Next] {
-  display: none;
-}
-
 @media (min-width: $bp-min) {
   .btn {
     margin: 0 $gap-large 0 0;
@@ -633,3 +622,4 @@ $gap-small: 8px;
     padding: 0 $gap-large;
   }
 }
+
