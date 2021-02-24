@@ -17,15 +17,18 @@ module.exports = {
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement(selTimeline, 0, 0)
       .mouseButtonDown(0)
+      .pause(extraWaitTime)
       .getElementSize(selTimeline, function (result) {
         this.moveToElement(selTimeline, result.value.width, 0);
       })
+      .pause(extraWaitTime)
       .mouseButtonUp(0)
       .pause(extraWaitTime)
       .getText(selTime, function(result) {
         browser.assert.ok(result.value === videoEndTime, `Expect time ${result.value} to be at ${videoEndTime}`);
       })
       .mouseButtonDown(0)
+      .pause(extraWaitTime)
       .getElementSize(selTimeline, function (result) {
         this.moveToElement(selTimeline, (result.value.width / 2) -1, result.value.height / 2);
       })
