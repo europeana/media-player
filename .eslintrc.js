@@ -51,7 +51,6 @@ module.exports = {
     'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     'no-tabs': 'error',
     'no-trailing-spaces': 'error',
-    'no-underscore-dangle': 'error',
     'no-unneeded-ternary': 'error',
     'no-var': 'error',
     'no-whitespace-before-property': 'error',
