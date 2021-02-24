@@ -12,7 +12,7 @@ module.exports = {
      .waitForElementVisible(selTime);
    },
   'Using slider to scrub video': (browser) => {
-    const extraWaitTime = 1;
+    const extraWaitTime = 1000;
     browser
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement(selTimeline, 0, 0)
