@@ -9,20 +9,20 @@ let player;
 let language = '';
 
 export const init = (container, videoObj, options) => {
-  //Create unique player id
+  // Create unique player id
   let playerId = uuidv4();
 
-  //Append player to container with the unique id
+  // Append player to container with the unique id
   $(container).append('<section id="eups-player-' + playerId + '" class="eups-player"></section>');
 
-  //Set options
+  // Set options
   editorurl = options.editor || editorurl;
   language = options.language || language;
 
-  //Create player
+  // Create player
   player = new Player(document.getElementById('eups-player-' + playerId));
 
-  //Initialize player
+  // Initialize player
   player.init(videoObj, editorurl, language);
 };
 

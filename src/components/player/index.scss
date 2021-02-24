@@ -13,7 +13,7 @@ $gap-small: 8px;
 
 .iiif-av-component {
   background: #000;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', 'Arial', sans-serif;
   height: 100%;
   margin: 0 auto;
   outline: none;
@@ -131,14 +131,6 @@ $gap-small: 8px;
   height: 4px;
 }
 
-.canvas-timeline-container {
-  background: #bbbcbc;
-  border: 0;
-  cursor: pointer;
-  height: 4px;
-  width: 0;
-}
-
 .hover-preview {
   overflow: hidden; /* prevent pointer arrow splitting from label at ends of timeline */
   padding-bottom: 7px;
@@ -175,6 +167,11 @@ $gap-small: 8px;
 
 .canvas-timeline-container {
   border-radius: 0;
+  background: #bbbcbc;
+  border: 0;
+  cursor: pointer;
+  height: 4px;
+  width: 0;
 
   .duration-highlight {
     background: #14a4c3;
