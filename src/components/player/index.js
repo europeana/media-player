@@ -1,6 +1,6 @@
 /* global $ */
 
-import './index.scss';
+import './scss/index.scss';
 
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
