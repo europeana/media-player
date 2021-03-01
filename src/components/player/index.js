@@ -160,7 +160,7 @@ export default class Player {
           this.setMediaItem(this.mediaItem);
           $('[data-id=\'' + canvas + '\']').show();
         }
-      } else {
+      } else if (this.canvasId === null && this.mediaItem === null) {
         this.avcomponent.showCanvas(this.canvases[0].id);
         $('[data-id=\'' + this.canvases[0].id + '\']').show();
       }
