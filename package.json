@@ -13,7 +13,7 @@
     "build:production": "env NODE_ENV=production webpack-cli",
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
-    "lint:style": "npx stylelint src/**/*.scss",
+    "lint:style": "npx stylelint src/**/scss/*.scss",
     "lint:style:fix": "npm run lint:style -- --fix",
     "test": "env EUSCREEN_INFO_URL=http://localhost:9876/base/tests/fixture-data/EUscreen/ karma start",
     "test:coverage": "npm run test -- --coverage",
