@@ -11,13 +11,6 @@ module.exports = {
      browser.url(target_url)
      .waitForElementVisible(selCanvas, waitTime)
      .resizeWindow(outerWidth, outerHeight)
-
-     .getElementSize(selCanvas, function (result) {
-       console.log(JSON.stringify(result.value.height))
-     })
-     .getElementSize('body', function (result) {
-       console.log(JSON.stringify(result.value.height))
-     })
   },
   'Should fill available width on fullscreen': (browser) => {
     browser
