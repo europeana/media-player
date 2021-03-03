@@ -19,7 +19,7 @@ function fetchAnnotations(player) {
 }
 
 function fetchTextResource(player, annotationResource, textResource) {
-  //determine text, fetch, then loop over all entries and add them to a text track
+  // determine text, fetch, then loop over all entries and add them to a text track
   $.ajax({
     type: 'GET',
     url: textResource.resource['@id'],
@@ -39,10 +39,10 @@ function fetchTextResource(player, annotationResource, textResource) {
 }
 
 function handleCaption(element, fullText) {
-  let characterRange = element.resource['@id'].substring(element.resource['@id'].lastIndexOf('=')+1);
+  let characterRange = element.resource['@id'].substring(element.resource['@id'].lastIndexOf('=') + 1);
   let charRange = characterRange.split(',');
   let subtitleString = fullText.value.substring(charRange[0], charRange[1]);
-  let timeRange = element.on[0].substring(element.on[0].lastIndexOf('=')+1);
+  let timeRange = element.on[0].substring(element.on[0].lastIndexOf('=') + 1);
   let tRange = timeRange.split(',');
 
   let cue = new VTTCue(timeToSeconds(tRange[0]), timeToSeconds(tRange[1]), subtitleString);
@@ -64,7 +64,7 @@ function timeToSeconds(time) {
 
   milliseconds = parts[1].length === 2 ? parseInt(parts[1]) * 10 : parseInt(parts[1]);
 
-  return (hours * 3600 + minutes * 60 + seconds) +'.'+ milliseconds;
+  return ((hours * 3600) + (minutes * 60) + seconds) + '.' + milliseconds;
 }
 
 module.exports = {
