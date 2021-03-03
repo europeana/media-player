@@ -82,9 +82,10 @@ export default class Player {
       mediaErrorHandler(player, error, canvasId);
     });
 
-    this.avcomponent.on('log', (message) => {
-      console.log(message);
-    });
+    // For debugging purposes uncomment this to see player process updates, do not use in production
+    // this.avcomponent.on('log', (message) => {
+    //   console.log(message);
+    // });
 
     this.avcomponent.on('play', () => {
       playEventHandler(player);

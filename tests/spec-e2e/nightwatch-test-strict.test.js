@@ -16,7 +16,6 @@ module.exports = {
     browser
       .getText(selTime, function(result) {
         let initialValue = parseInt(result.value.split(':').pop());
-        console.log(`${selTime} actual value = ${initialValue}`);
         browser.assert.ok(initialValue <= 1, `Expect initial time ${initialValue} to be 0 or 1 second`);
       })
       .assert.attributeContains(selPlay, 'title', 'Play')
