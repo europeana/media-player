@@ -1,6 +1,6 @@
 /* global $ */
 
-import './index.scss';
+import './scss/index.scss';
 
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
@@ -58,7 +58,7 @@ export default class Player {
       virtualCanvasEnabled: true
     };
 
-    //Check if the language is set, and if we have this present, otherwise default to English
+    // Check if the language is set, and if we have this present, otherwise default to English
     if (language.length === 0 || languages.find(lang => lang.code === language) === undefined || i18n[language] === undefined) {
       language = 'en';
     } else {
@@ -148,26 +148,25 @@ export default class Player {
       this.canvases = helper.getCanvases();
       if (this.canvases.length > 1) {
         this.canvases.forEach((canvas) => {
-          $('[data-id=\''+canvas.id+'\']').hide();
+          $('[data-id=\'' + canvas.id + '\']').hide();
         });
       }
 
       if (this.canvasId !== null) {
         this.avcomponent.showCanvas(this.canvasId);
-        $('[data-id=\''+this.canvasId+'\']').show();
+        $('[data-id=\'' + this.canvasId + '\']').show();
       } else if (this.mediaItem !== null) {
         const canvas = this.getCanvasForMediaItem(this.mediaItem);
         if (canvas !== null) {
           this.setMediaItem(this.mediaItem);
-          $('[data-id=\''+canvas+'\']').show();
+          $('[data-id=\'' + canvas + '\']').show();
         }
-      } else {
+      } else if (this.canvasId === null && this.mediaItem === null) {
         this.avcomponent.showCanvas(this.canvases[0].id);
-        $('[data-id=\''+this.canvases[0].id+'\']').show();
+        $('[data-id=\'' + this.canvases[0].id + '\']').show();
       }
 
       $('.canvasNavigationContainer').hide();
-
     }, (error) => {
       console.error('ERROR: Could not load manifest data.', error);
     });
@@ -219,7 +218,7 @@ export default class Player {
 
   createManifest(vObj) {
     if (!vObj.manifest && vObj.source.startsWith('EUS_')) {
-      vObj.manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id='+vObj.source;
+      vObj.manifest = 'https://videoeditor.noterik.com/manifest/euscreenmanifest.php?id=' + vObj.source;
     }
 
     this.manifesturl = vObj.manifest;
@@ -230,7 +229,6 @@ export default class Player {
   }
 
   initLanguages(textTracks) {
-
     // check if we have any texttracks
     if (textTracks.length === 0) {
       return;
@@ -280,7 +278,7 @@ export default class Player {
       resizeEventHandler(player);
     });
 
-    //show button only if we have at least one language set
+    // show button only if we have at least one language set
     btnSubtitles.show();
     this.avcomponent.fire('languagesinitialized');
   }
@@ -405,8 +403,7 @@ export default class Player {
         this.setImage(player, player.manifest.__jsonld.thumbnail[0].id);
         break;
     }
-    player.elem.css({ width : '100%', height : '100%' });
-
+    player.elem.css({ width: '100%', height: '100%' });
   }
 
   getMediaType(player) {
@@ -415,7 +412,7 @@ export default class Player {
 
   setImage(player, image) {
     const playerEl = player.elem;
-    playerEl.find('.canvas-container').css({ 'background-image' : 'url(' + image +')' });
+    playerEl.find('.canvas-container').css({ 'background-image': 'url(' + image + ')' });
     playerEl.find('.canvas-container').addClass('audio-background');
   }
 
