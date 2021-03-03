@@ -34,12 +34,15 @@ module.exports = {
       .end()
   },
   'Clicking play and then pause': (browser) => {
+    const extraWaitTime = 1000;
     browser
       .assert.visible('.playcircle')
       .click(selPlay)
+      .pause(extraWaitTime)
       .assert.attributeContains(selPlay, 'title', 'Pause')
       .assert.not.visible('.playcircle')
       .click(selPlay)
+      .pause(extraWaitTime)
       .assert.attributeContains(selPlay, 'title', 'Play')
       .end()
   },
