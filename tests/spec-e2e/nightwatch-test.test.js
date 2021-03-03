@@ -34,10 +34,7 @@ module.exports = {
       })
       .mouseButtonUp(0)
       .pause(extraWaitTime)
-      .getText(selTime, function(result) {
-        let initialValue = result.value;
-        console.log(`${selTime} actual value = ${initialValue}`);
-      })
+      .getText(selTime)
       .assert.containsText(selTime, videoMidTime)
       .end()
   },
