@@ -2,6 +2,7 @@ const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html';
 const waitTime = 10000;
 const selTime = '.canvas-time';
 const selPlay = '.button-play';
+const selVideo = 'video.anno';
 const selPlayIcon = selPlay + ' .av-icon';
 
 module.exports = {
@@ -23,19 +24,24 @@ module.exports = {
       .click(selPlay)      
       .assert.cssClassPresent(selPlayIcon, 'pause')
       .pause(extraWaitTime)
+      .click(selPlay) 
+      .waitForElementVisible(selTime, extraWaitTime)
       .getText(selTime, function(result) {
         let updatedValue = parseInt(result.value.split(':').pop());
         browser.assert.ok(updatedValue >= 1, `Expect time ${updatedValue} to have elapsed`);
-      })
+      }) 
       .end()
   },
   'Clicking play and then pause': (browser) => {
+    const extraWaitTime = 1000;
     browser
       .assert.visible('.playcircle')
       .click(selPlay)
+      .pause(extraWaitTime)
       .assert.attributeContains(selPlay, 'title', 'Pause')
       .assert.not.visible('.playcircle')
       .click(selPlay)
+      .pause(extraWaitTime)
       .assert.attributeContains(selPlay, 'title', 'Play')
       .end()
   },
