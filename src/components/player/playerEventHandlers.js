@@ -11,21 +11,21 @@ function pauseEventHandler(player) {
 }
 
 function volumeChangedEventHandler(player, value) {
-  let muteType = value !== 0 ? 'player-mute' : 'player-unmute';
+  let muteType = value === 0 ? 'player-unmute' : 'player-mute';
   player.elem.find('.volume-mute').attr('title', player.banana.i18n(muteType));
 }
 
 function keyEventHandler(player, e) {
-  if (e.keyCode === 32 || e.keyCode === 75) {  //space bar, k button
+  if (e.keyCode === 32 || e.keyCode === 75) {  // space bar, k button
     playPauseEventHandler(player);
   }
-  if (e.keyCode === 70) { //f button
+  if (e.keyCode === 70) { // f button
     player.elem.find('.button-fullscreen').click();
   }
-  if (e.keyCode === 38) { //volume up by 10%
+  if (e.keyCode === 38) { // volume up by 10%
     handleVolumeChange(player, 0.1);
   }
-  if (e.keyCode === 40) { //volume down by 10%
+  if (e.keyCode === 40) { // volume down by 10%
     handleVolumeChange(player, -0.1);
   }
 }
@@ -150,9 +150,9 @@ function subtitleMenuEventHandler(player,  e) {
 }
 
 function openEditorTypeEventHandler(player, e, type) {
-  //prevent the play/pause handler to react
+  // prevent the play/pause handler to react
   e.stopPropagation();
-  window.open(player.editorurl+ '?manifest=' + encodeURIComponent(player.manifesturl) + '#' + type, '_blank');
+  window.open(player.editorurl + '?manifest=' + encodeURIComponent(player.manifesturl) + '#' + type, '_blank');
 }
 
 function mediaErrorHandler(player, error, canvasId) {
@@ -178,7 +178,7 @@ function mediaErrorHandler(player, error, canvasId) {
       break;
   }
 
-  player.elem.find('.player[data-id="'+canvasId+'"] > .canvas-container').append('<div class=\'anno errormessage\'>' + errormessage + '</div>');
+  player.elem.find('.player[data-id="' + canvasId + '"] > .canvas-container').append('<div class=\'anno errormessage\'>' + errormessage + '</div>');
 }
 
 module.exports = {
