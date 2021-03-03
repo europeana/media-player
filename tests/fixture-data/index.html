@@ -22,9 +22,6 @@
         let langParam = window.location.toString().match(/[\?&]language=([\w-]*)/);
         if(langParam){
           language = langParam[1];
-          console.log('set language to ' + language);
-        } else {
-          console.log('no language set');
         }
         var container = document.body;
         var videoObj = { manifest : "manifest-euscreen-e2e.json" };
