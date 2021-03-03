@@ -146,35 +146,6 @@ describe('Player functions', () => {
         expect($('video')[0].duration).toBeGreaterThan(0);
       });
     });
-
-    /*
-    describe('should not support wmv', () => {
-      let error;
-
-      beforeEach((done) => {
-        getErrorPlayer(manifestWmv, (innerPlayer, err) => {
-          player = innerPlayer;
-          error = err;
-          done();
-        });
-      });
-
-      it('should show an error message for wmv', () => {
-        expect($('.errormessage').length).toBeTruthy();
-      });
-
-      it('should have an undefined video duration', () => {
-        console.log('acual duration ' + $('video')[0].duration);
-        expect($('video')[0].duration).toBeUndefined;
-      });
-
-      it('should have media error code 4', () => {
-        console.log('actual error code ' + error.code);
-         expect(error.code).toEqual(4);
-      });
-
-    });
-    */
   });
 
   describe('Audio format checks', () => {

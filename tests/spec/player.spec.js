@@ -85,7 +85,6 @@ describe('Player functions', () => {
     expect('.button-play').toBeTruthy();
 
     emp.player.avcomponent.on('mediaready', () => {
-      console.log("media ready");
       cbDone(emp.player);
     });
   };
