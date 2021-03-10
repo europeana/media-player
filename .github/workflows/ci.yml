@@ -24,8 +24,8 @@ jobs:
       with:
         node-version: 12.x
     - run: npm install
-    - run: export CHROME_BIN=chromium-browser
-    - run: npm run test
+    - run: sudo apt-get install xvfb
+    - run: xvfb-run --auto-servernum npm test
 
   test-e2e:
     runs-on: ubuntu-latest
