@@ -24,7 +24,6 @@ jobs:
       with:
         node-version: 12.x
     - run: npm install
-    - run: sudo apt-get install google-chrome-stable -y
     - run: npm run test
 
   test-e2e:
