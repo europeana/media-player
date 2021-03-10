@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: 12.x
     - run: npm install
+    - run: export CHROME_BIN=chromium-browser
     - run: npm run test
 
   test-e2e:
