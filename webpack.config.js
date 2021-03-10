@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
