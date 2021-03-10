@@ -23,8 +23,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: export CHROME_BIN=/usr/bin/google-chrome
     - run: npm install
+    - run: export CHROME_BIN=/usr/bin/google-chrome
     - run: npm run test
 
   test-e2e:
