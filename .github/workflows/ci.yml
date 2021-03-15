@@ -24,7 +24,6 @@ jobs:
       with:
         node-version: 12.x
     - run: npm install
-    - run: sudo apt-get install xvfb
     - run: xvfb-run --auto-servernum npm test
 
   test-e2e:
