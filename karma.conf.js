@@ -42,15 +42,6 @@ const client = function() {
   };
 };
 
-const customLaunchers = function() {
-  return {
-    chromeTravisCi: {
-      base: 'ChromeHeadless',
-      flags: [ '--no-sandbox', '--disable-setuid-sandbox' ]
-    }
-  };
-};
-
 const webpackInit = () => {
   return {
     cache: true,
@@ -149,8 +140,7 @@ let configuration = {
     './tests/spec/**/*.js': ['webpack', 'sourcemap'],
     './src/**/*.js': ['webpack', 'sourcemap', ... includeCoverage ? ['coverage'] : []],
   },
-  webpackMiddleware: webpackMiddleware(),
-  customLaunchers: customLaunchers()
+  webpackMiddleware: webpackMiddleware()
 };
 
 if(includeCoverage){
@@ -159,10 +149,6 @@ if(includeCoverage){
     reports: [ 'html' ],
     fixWebpackSourcePaths: true
   };
-}
-
-if (process.env.TRAVIS) {
-  configuration.browsers = ['chromeTravisCi'];
 }
 
 module.exports = function(config) {
