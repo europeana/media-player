@@ -10,6 +10,14 @@ Created as part of the [Europeana Media Project](https://pro.europeana.eu/projec
 Install package dependencies:
 * `npm install`
 
+### Development environment
+
+Run a development environment
+* `npm run dev`
+
+Insert the IIIF manifest of the item you want to view and click on "Load in player".  
+Find some manifest examples [below](#examples)
+
 ### Linting
 To lint-check the `.js` run:
 * `npm run lint`
