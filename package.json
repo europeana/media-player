@@ -11,7 +11,7 @@
   "scripts": {
     "build": "webpack-cli",
     "build:production": "env NODE_ENV=production webpack-cli",
-    "dev": "webpack serve --env NODE_ENV=development --open",
+    "dev": "webpack serve --env NODE_ENV=development --open --config webpack.dev.js",
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
     "lint:style": "npx stylelint src/**/scss/*.scss",
