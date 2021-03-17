@@ -16,21 +16,27 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="./dist/europeana-media-player.min.js" type="text/javascript"></script>
+    <script src="../dist/europeana-media-player.min.js" type="text/javascript"></script>
     <script>
-      $(document).ready(function() {
+      function loadPlayer(manifest) {
+        if (document.querySelector('.eups-player')) document.querySelector('.eups-player').remove()
         let language = null;
         let langParam = window.location.toString().match(/[\?&]language=([\w-]*)/);
         if(langParam){
           language = langParam[1];
         }
         var container = document.body;
-        var videoObj = { manifest : "tests/fixture-data/manifest-euscreen-e2e.json" };
+        var videoObj = { manifest : manifest };
         var options = { editor: "https://video-editor.eu", language: language };
         new EuropeanaMediaPlayer(container, videoObj, options);
-      });
+      };
     </script>
   </head>
   <body>
+    <form>
+      <label for="manifest">IIIF manifest:</label><br>
+      <input type="text" id="manifest" name="manifest" size="100"><br>
+      <input type="button" onclick="loadPlayer(this.form.manifest.value)" value="Load in player">
+    </form> 
   </body>
 </html>
