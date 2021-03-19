@@ -3,7 +3,7 @@
   <head>
     <style>
       html,
-      body{
+      body, .player-container {
         height: 100%;
         margin: 0;
         width: 100%;
@@ -18,25 +18,29 @@
     <script src="https://code.jquery.com/ui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
     <script src="../dist/europeana-media-player.min.js" type="text/javascript"></script>
     <script>
-      function loadPlayer(manifest) {
-        if (document.querySelector('.eups-player')) document.querySelector('.eups-player').remove()
+      function loadPlayer(event) {
+        event.preventDefault()
+        if (document.querySelector(".player-container").hasChildNodes) while (document.querySelector(".player-container").firstChild) {
+          document.querySelector(".player-container").firstChild.remove()
+        }
         let language = null;
         let langParam = window.location.toString().match(/[\?&]language=([\w-]*)/);
         if(langParam){
           language = langParam[1];
         }
-        var container = document.body;
-        var videoObj = { manifest : manifest };
+        var container = document.querySelector(".player-container");
+        var videoObj = { manifest : document.getElementById("manifest").value };
         var options = { editor: "https://video-editor.eu", language: language };
         new EuropeanaMediaPlayer(container, videoObj, options);
       };
     </script>
   </head>
   <body>
-    <form>
+    <form onsubmit="loadPlayer(event)">
       <label for="manifest">IIIF manifest:</label><br>
       <input type="text" id="manifest" name="manifest" size="100"><br>
-      <input type="button" onclick="loadPlayer(this.form.manifest.value)" value="Load in player">
+      <input type="submit" value="Load in player">
     </form> 
+    <div class="player-container"></div>
   </body>
 </html>
