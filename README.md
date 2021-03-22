@@ -9,6 +9,17 @@ Created as part of the [Europeana Media Project](https://pro.europeana.eu/projec
 Install package dependencies:
 * `npm install`
 
+### Development environment
+
+Run a development environment
+* `npm run dev`
+
+This will start a [webpack-dev-server](https://github.com/webpack/webpack-dev-server#usage) serving dev/index.html on port 8080, alternatively specify a custom port:
+* `npm run dev -- --port [CUSTOM_PORT]`
+
+Insert a IIIF manifest url of the item you want to view and click on "Load in player".
+Find some manifest examples [below](#examples)
+
 ### Linting
 To lint-check the `.js` run:
 * `npm run lint`
