@@ -15,7 +15,10 @@ Install package dependencies:
 Run a development environment
 * `npm run dev`
 
-Insert the IIIF manifest of the item you want to view and click on "Load in player".  
+This will start a [webpack-dev-server](https://github.com/webpack/webpack-dev-server#usage) serving dev/index.html on port 8080, alternatively specify a custom port:
+* `npm run dev -- --port [CUSTOM_PORT]`
+
+Insert a IIIF manifest url of the item you want to view and click on "Load in player".
 Find some manifest examples [below](#examples)
 
 ### Linting
