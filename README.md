@@ -1,6 +1,8 @@
 # Europeana Media Player Library
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/034304037fa168609682/maintainability)](https://codeclimate.com/github/europeana/media-player/maintainability)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=europeana_media-player&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=europeana_media-player)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=europeana_media-player&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=europeana_media-player)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=europeana_media-player&metric=security_rating)](https://sonarcloud.io/dashboard?id=europeana_media-player)
 
 Created as part of the [Europeana Media Project](https://pro.europeana.eu/project/europeana-media)
 
@@ -73,8 +75,8 @@ Example:
 ```
 
 Further [dashjs](https://www.npmjs.com/package/dashjs) is needed if you plan to stream MPEG DASH videos.
- 
-Example: 
+
+Example:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.3/dash.all.min.js" type="text/javascript"></script>
