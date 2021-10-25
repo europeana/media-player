@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <style>
+      html,
+      body{
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+      .eups-player{
+        min-height: 300px;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="../../dist/europeana-media-player.min.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function() {
+        let language = null;
+        let langParam = window.location.toString().match(/[\?&]language=([\w-]*)/);
+        if(langParam){
+          language = langParam[1];
+        }
+        var container = document.body;
+        var videoObj = { manifest : "manifest-euscreen-e2e-multilingual.json" };
+        var options = { editor: "https://video-editor.eu", language: language };
+        new EuropeanaMediaPlayer(container, videoObj, options);
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

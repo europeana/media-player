@@ -3,38 +3,51 @@
 const languages = require('../languages/lang.js').default.locales;
 
 function handleTranscriptionAnnotations(player) {
-  if (player.manifest.__jsonld.items[0].annotations && player.manifest.__jsonld.items[0].annotations[0]) {
-    fetchAnnotations(player);
+  if (player.manifest.__jsonld.items[0].annotations) {
+    (async() => {
+      await Promise.all(player.manifest.__jsonld.items[0].annotations.map(async(annotation) => {
+        await fetchAnnotations(player, annotation);
+      }));
+      player.initLanguages(player.elem.find('video')[0].textTracks);
+    })();
   }
 }
 
-function fetchAnnotations(player) {
-  $.get(player.manifest.__jsonld.items[0].annotations[0].id, (response) => {
-    let textResource = response.resources.find((resource) => {
-      return resource.dcType === 'Media';
-    });
+async function fetchAnnotations(player, annotation) {
+  return new Promise((resolve) => {
+    $.get(annotation.id).then(async(response) => {
+      let textResource = response.resources.find((resource) => {
+        return resource.dcType === 'Media';
+      });
 
-    fetchTextResource(player, response, textResource);
+      await fetchTextResource(player, response, textResource, annotation.language);
+      resolve(true);
+    });
   });
 }
 
-function fetchTextResource(player, annotationResource, textResource) {
+async function fetchTextResource(player, annotationResource, textResource, language) {
   // determine text, fetch, then loop over all entries and add them to a text track
-  $.ajax({
-    type: 'GET',
-    url: textResource.resource['@id'],
-    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-    dataType: 'json',
-    success: ((fullText) => {
-      let track = player.elem.find('video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === fullText.language).iso);
+  return new Promise((resolve) => {
+    $.ajax({
+      type: 'GET',
+      url: textResource.resource['@id'],
+      contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+      dataType: 'json'
+    }).then((fullText) => {
+      if (language === undefined) { // backwards compatibility with old format
+        language = fullText.language;
+      }
+      let track = player.elem.find('video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === language).iso);
 
       annotationResource.resources.forEach(element => {
         if (element.dcType === 'Caption') {
           track.addCue(handleCaption(element, fullText));
         }
       });
-      player.initLanguages(player.elem.find('video')[0].textTracks);
-    })
+    }).then(() => {
+      resolve(true);
+    });
   });
 }
 

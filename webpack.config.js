@@ -11,7 +11,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 const config = function(mode) {
   let conf = {
     mode,
-    entry: ['./src/index.js'],
+    entry: ['babel-polyfill','./src/index.js'],
     module: {
       rules:
         rules()

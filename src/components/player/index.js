@@ -240,9 +240,24 @@ export default class Player {
     this.elem.find('.button-fullscreen').before(btnSubtitles);
 
     let menu = '<ul class="anno subtitlemenu" data-opener="Subtitles" >';
-    menu += Array.from(textTracks).map((track) => {
+    let tracksArray = Array.from(textTracks);
+
+    // Order languages alphabetically
+    tracksArray.sort((a, b) => {
+      let languageA = languages.find(lang => lang.iso === a.language);
+      languageA = languageA && languageA.name.toLowerCase() ? languageA.name : a.language;
+      let languageB = languages.find(lang => lang.iso === b.language);
+      languageB = languageB && languageB.name.toLowerCase() ? languageB.name : b.language;
+      return languageA.localeCompare(languageB);
+    });
+
+    // Determine media item language so we can add [CC] in case of that language
+    const mediaItemLanguage = this.getLanguageForCanvas();
+
+    menu += tracksArray.map((track) => {
       let label = languages.find(lang => lang.iso === track.language);
       label = label && label.name ? label.name : track.language;
+      label += track.language === mediaItemLanguage ? ' [CC]' : '';
       return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
     }).join('');
     menu += '</ul>';
@@ -437,6 +452,29 @@ export default class Player {
       if (mediaUrl === canvasContent[0].__jsonld.body.id) {
         return this.canvases[i].id;
       }
+    }
+    return null;
+  }
+
+  getLanguageForCanvas() {
+    if (this.canvasId !== null) {
+      for (let i = 0; i < this.canvases.length; i++) {
+        if (this.canvasId === this.canvases[i].id) {
+          return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).iso;
+        }
+      }
+      return null;
+    } else if (this.mediaItem !== null) {
+      for (let i = 0; i < this.canvases.length; i++) {
+        const canvasContent = this.canvases[i].getContent();
+        if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
+          return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+        }
+        return null;
+      }
+    } else if (this.canvasId === null && this.mediaItem === null) {
+      const canvasContent = this.canvases[0].getContent();
+      return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
     }
     return null;
   }
