@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const path = require('path');
 const webpack = require('webpack');
@@ -22,19 +22,30 @@ const config = function(mode) {
       externals(),
     plugins:
       plugins(),
-    node: {
-      fs: 'empty'
+    resolve: {
+      alias: {
+        process: 'process/browser'
+      },
+      fallback: {
+        fs: false,
+        process: require.resolve('process/browser'),
+        stream: require.resolve('stream-browserify')
+      }
     },
     devtool: (mode === 'development') ? 'inline-source-map': false,
     optimization: {
       minimize: true,
       minimizer: [
         new TerserPlugin(),
-        new OptimizeCssAssetsPlugin({
-          cssProcessorPluginOptions: {
-            discardComments: { removeAll: true }
-          },
-          canPrint: false
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: [
+              "default",
+              {
+                discardComments: { removeAll: true },
+              },
+            ]
+          }
         })
       ]
     }
@@ -106,9 +117,11 @@ const fontRule = () => {
 const pngRule = function() {
   return {
     test: /.*\.png$/i,
-    loaders: [ 'file-loader', {
-      loader: 'image-webpack-loader'
-    }]
+    use: [
+      {
+        loader: 'image-webpack-loader'
+      }
+    ]
   };
 };
 
@@ -116,9 +129,8 @@ const icoRule = function() {
   return {
     test: /favicon\.ico$/,
     loader: 'url-loader',
-    query: {
-      limit: 1,
-      name: '[name].[ext]',
+    options: {
+      limit: 1
     }
   }
 };
@@ -130,7 +142,7 @@ const output = function() {
     libraryExport: 'default',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/'
+    publicPath: '/dist/',
   };
 };
 
@@ -154,7 +166,8 @@ const plugins = function() {
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
-        'window.$': 'jquery'
+        'window.$': 'jquery',
+        process: 'process/browser'
       })
     ];
   }

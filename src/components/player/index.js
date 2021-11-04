@@ -460,6 +460,9 @@ export default class Player {
     if (this.canvasId !== null) {
       for (let i = 0; i < this.canvases.length; i++) {
         if (this.canvasId === this.canvases[i].id) {
+          if (!this.canvases[i].getContent()[0].__jsonld.body.language) {
+            return '';
+          }
           return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).iso;
         }
       }
@@ -468,12 +471,18 @@ export default class Player {
       for (let i = 0; i < this.canvases.length; i++) {
         const canvasContent = this.canvases[i].getContent();
         if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
+          if (!canvasContent[0].__jsonld.body.language) {
+            return '';
+          }
           return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
         }
         return null;
       }
     } else if (this.canvasId === null && this.mediaItem === null) {
       const canvasContent = this.canvases[0].getContent();
+      if (!canvasContent[0].__jsonld.body.language) {
+        return '';
+      }
       return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
     }
     return null;
