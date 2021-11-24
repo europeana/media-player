@@ -239,27 +239,10 @@ export default class Player {
 
     this.elem.find('.button-fullscreen').before(btnSubtitles);
 
+    const tracksArray = this.getSortedTracks(textTracks);
+
     let menu = '<ul class="anno subtitlemenu" data-opener="Subtitles" >';
-    let tracksArray = Array.from(textTracks);
-
-    // Order languages alphabetically
-    tracksArray.sort((a, b) => {
-      let languageA = languages.find(lang => lang.iso === a.language);
-      languageA = languageA && languageA.name.toLowerCase() ? languageA.name : a.language;
-      let languageB = languages.find(lang => lang.iso === b.language);
-      languageB = languageB && languageB.name.toLowerCase() ? languageB.name : b.language;
-      return languageA.localeCompare(languageB);
-    });
-
-    // Determine media item language so we can add [CC] in case of that language
-    const mediaItemLanguage = this.getLanguageForCanvas();
-
-    menu += tracksArray.map((track) => {
-      let label = languages.find(lang => lang.iso === track.language);
-      label = label && label.name ? label.name : track.language;
-      label += track.language === mediaItemLanguage ? ' [CC]' : '';
-      return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
-    }).join('');
+    menu += this.getLanguageMenuContent(tracksArray);
     menu += '</ul>';
 
     btnSubtitles.after(menu);
@@ -458,36 +441,50 @@ export default class Player {
 
   getLanguageForCanvas() {
     if (this.canvasId !== null) {
-      for (let i = 0; i < this.canvases.length; i++) {
-        if (this.canvasId === this.canvases[i].id) {
-          if (!this.canvases[i].getContent()[0].__jsonld.body.language) {
-            return '';
-          }
-          return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).iso;
-        }
-      }
-      return null;
+      return this.getLanguageForCanvasId();
     } else if (this.mediaItem !== null) {
-      for (let i = 0; i < this.canvases.length; i++) {
-        const canvasContent = this.canvases[i].getContent();
-        if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
-          if (canvasContent[0].__jsonld.body.language) {
-            return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
-          } else {
-            return '';
-          }
+      return this.getLanguageForMediaItem();
+    } else if (this.canvasId === null && this.mediaItem === null) {
+      return this.getLanguageWhenNoCanvasIdOrMediaItemAvailable();
+    } else {
+      return null;
+    }
+  }
+
+  getLanguageForCanvasId() {
+    for (let i = 0; i < this.canvases.length; i++) {
+      if (this.canvasId === this.canvases[i].id) {
+        if (this.canvases[i].getContent()[0].__jsonld.body.language) {
+          return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).iso;
         } else {
           return null;
         }
       }
-    } else if (this.canvasId === null && this.mediaItem === null) {
-      const canvasContent = this.canvases[0].getContent();
-      if (!canvasContent[0].__jsonld.body.language) {
-        return '';
-      }
-      return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
     }
     return null;
+  }
+
+  getLanguageForMediaItem() {
+    for (let i = 0; i < this.canvases.length; i++) {
+      const canvasContent = this.canvases[i].getContent();
+      if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
+        if (canvasContent[0].__jsonld.body.language) {
+          return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+        } else {
+          return null;
+        }
+      }
+    }
+    return null;
+  }
+
+  getLanguageWhenNoCanvasIdOrMediaItemAvailable() {
+    const canvasContent = this.canvases[0].getContent();
+    if (canvasContent[0].__jsonld.body.language) {
+      return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+    } else {
+      return null;
+    }
   }
 
   setMediaItem(mediaUrl) {
@@ -502,5 +499,34 @@ export default class Player {
       virtualCanvasEnabled: false
     });
     this.avcomponent.showCanvas(canvasId);
+  }
+
+  getSortedTracks(textTracks) {
+    const tracksArray = Array.from(textTracks);
+
+    // Order languages alphabetically
+    tracksArray.sort((a, b) => {
+      let languageA = languages.find(lang => lang.iso === a.language);
+      languageA = languageA && languageA.name.toLowerCase() ? languageA.name : a.language;
+      let languageB = languages.find(lang => lang.iso === b.language);
+      languageB = languageB && languageB.name.toLowerCase() ? languageB.name : b.language;
+      return languageA.localeCompare(languageB);
+    });
+
+    return tracksArray;
+  }
+
+  getLanguageMenuContent(tracksArray) {
+     // Determine media item language so we can add [CC] in case of that language
+     const mediaItemLanguage = this.getLanguageForCanvas();
+
+     const menuContent = tracksArray.map((track) => {
+       let label = languages.find(lang => lang.iso === track.language);
+       label = label && label.name ? label.name : track.language;
+       label += track.language === mediaItemLanguage ? ' [CC]' : '';
+       return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
+     }).join('');
+
+     return menuContent;
   }
 }
