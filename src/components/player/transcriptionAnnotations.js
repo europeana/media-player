@@ -38,7 +38,7 @@ async function fetchTextResource(player, annotationResource, textResource, langu
       if (language === undefined) { // backwards compatibility with old format
         language = fullText.language;
       }
-      let track = player.elem.find('video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === language).iso);
+      const track = player.elem.find('video')[0].addTextTrack('subtitles', 'subitles', languages.find(lang => lang.code === language).iso);
 
       annotationResource.resources.forEach(element => {
         if (element.dcType === 'Caption') {

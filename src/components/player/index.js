@@ -471,12 +471,14 @@ export default class Player {
       for (let i = 0; i < this.canvases.length; i++) {
         const canvasContent = this.canvases[i].getContent();
         if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
-          if (!canvasContent[0].__jsonld.body.language) {
+          if (canvasContent[0].__jsonld.body.language) {
+            return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+          } else {
             return '';
           }
-          return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+        } else {
+          return null;
         }
-        return null;
       }
     } else if (this.canvasId === null && this.mediaItem === null) {
       const canvasContent = this.canvases[0].getContent();
