@@ -517,16 +517,16 @@ export default class Player {
   }
 
   getLanguageMenuContent(tracksArray) {
-     // Determine media item language so we can add [CC] in case of that language
-     const mediaItemLanguage = this.getLanguageForCanvas();
+    // Determine media item language so we can add [CC] in case of that language
+    const mediaItemLanguage = this.getLanguageForCanvas();
 
-     const menuContent = tracksArray.map((track) => {
-       let label = languages.find(lang => lang.iso === track.language);
-       label = label && label.name ? label.name : track.language;
-       label += track.language === mediaItemLanguage ? ' [CC]' : '';
-       return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
-     }).join('');
+    const menuContent = tracksArray.map((track) => {
+      let label = languages.find(lang => lang.iso === track.language);
+      label = label && label.name ? label.name : track.language;
+      label += track.language === mediaItemLanguage ? ' [CC]' : '';
+      return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
+    }).join('');
 
-     return menuContent;
+    return menuContent;
   }
 }
