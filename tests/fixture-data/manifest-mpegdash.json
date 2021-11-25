@@ -118,7 +118,7 @@
         "motivation" : "painting",
         "timeMode" : "trim",
         "body" : {
-          "id" : "https://5ad4b00cebcc2.streamlock.net/vod/archivioluce/MpegG300/G000301.mp4/manifest.mpd",
+          "id" : "https://livesim.dashif.org/livesim/chunkdur_1/ato_7/testpic4_8s/Manifest.mpd",
           "type" : "Video",
           "format" : "application/dash+xml"
         },
