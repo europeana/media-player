@@ -168,6 +168,14 @@ const plugins = function() {
         'window.jQuery': 'jquery',
         'window.$': 'jquery',
         process: 'process/browser'
+      }),
+      new webpack.DefinePlugin({
+        'process.env.EUSCREEN_INFO_URL': JSON.stringify(process.env.EUSCREEN_INFO_URL)
+      })
+    ];
+  } else {
+    plugins = [ new webpack.DefinePlugin({
+      'process.env.EUSCREEN_INFO_URL': JSON.stringify(process.env.EUSCREEN_INFO_URL)
       })
     ];
   }
