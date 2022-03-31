@@ -14,9 +14,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: >
-      git config --global url."https://github.com/".insteadOf
-      ssh://git@github.com/
+    - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
     - run: npm ci
     - run: npm run lint
     - run: npm run lint:style
@@ -30,9 +28,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: >
-      git config --global url."https://github.com/".insteadOf
-      ssh://git@github.com/
+    - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
     - run: npm ci
     - run: xvfb-run --auto-servernum npm test
 
@@ -45,8 +41,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: >
-      git config --global url."https://github.com/".insteadOf
-      ssh://git@github.com/
+    - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
     - run: npm ci
     - run: npm run test:e2e:chrome:headless
