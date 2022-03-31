@@ -113,5 +113,9 @@
     "presets": [
       "env"
     ]
+  },
+  "engines": {
+    "node": "^14",
+    "npm": "^6"
   }
 }
