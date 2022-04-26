@@ -5,8 +5,8 @@ import './scss/index.scss';
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
 
-const Manifold = require('@iiif/manifold');
-const IIIFAVComponent = require('@iiif/iiif-av-component');
+const Manifold = require('@noterik/manifold');
+const IIIFAVComponent = require('@noterik/iiif-av-component');
 require('dashjs');
 
 require('webpack-jquery-ui/slider');
