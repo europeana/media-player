@@ -7,7 +7,7 @@
     "motivation" : "sc:painting",
     "dcType" : "Media",
     "resource" : {
-      "@id" : "http://127.0.0.1:8084/tests/fixture-data/EUscreen/api_fulltext_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_16a58e9bb840eecb55104701abacfee9-en.json"
+      "@id" : "http://127.0.0.1:8085/tests/fixture-data/EUscreen/api_fulltext_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_16a58e9bb840eecb55104701abacfee9-en.json"
     },
     "on" : [ "http://www.euscreen.eu/item.html?id=EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2" ]
   }, {

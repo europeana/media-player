@@ -6,7 +6,7 @@ const express = require('express')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.config.js')
 // default port where dev server listens for incoming traffic
-const port = process.env.PORT || 8084
+const port = process.env.PORT || 8085
 // automatically open browser
 const autoOpenBrowser = false
 
