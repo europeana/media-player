@@ -122,7 +122,7 @@ const rules = () => {
         test: /\.js$/,
         include: /src/,
         exclude: /node_modules/,
-        use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
+        use: [{ loader: 'istanbul-instrumenter-loader', options: { esModules: true } }]
       }
     ] : []
   ];
