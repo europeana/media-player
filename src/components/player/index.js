@@ -189,6 +189,8 @@ export default class Player {
           .then((h) => {
             helper = h;
             player.setAvComponent(player, successcb);
+          }).catch((e) => {
+            errorcb(e);
           });
       } else {
         player.setAvComponent(player, successcb);

@@ -33,7 +33,7 @@
     "@iiif/base-component": "^2.0.1",
     "@iiif/iiif-tree-component": "^2.0.2",
     "@noterik/iiif-av-component": "^1.1.0",
-    "@noterik/manifold": "2.0.4-pre-5",
+    "@noterik/manifold": "2.0.14",
     "banana-i18n": "^1.3.1",
     "dashjs": "^2.9.3",
     "dotenv": "^8.6.0",
