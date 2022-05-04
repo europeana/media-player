@@ -1,12 +1,12 @@
 'use strict'
 
-const opn = require('opn')
+const opn = require('open')
 const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.config.js')
 // default port where dev server listens for incoming traffic
-const port = process.env.PORT || 8081
+const port = process.env.PORT || 8085
 // automatically open browser
 const autoOpenBrowser = false
 
@@ -14,8 +14,7 @@ const app = express()
 const compiler = webpack(webpackConfig)
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  quiet: true
+  publicPath: webpackConfig.output.publicPath
 })
 
 // serve webpack bundle output

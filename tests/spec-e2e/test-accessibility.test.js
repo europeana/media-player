@@ -1,4 +1,4 @@
-const target_url = 'http://127.0.0.1:8081/tests/fixture-data/index.html?language=nl';
+const target_url = 'http://127.0.0.1:8085/tests/fixture-data/index.html?language=nl';
 const waitTime = 10000;
 const selBtnFS = '.button-fullscreen';
 const selBtnSubs = '.btn[data-name=Subtitles]';

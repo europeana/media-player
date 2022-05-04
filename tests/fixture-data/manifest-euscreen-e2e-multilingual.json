@@ -91,14 +91,25 @@
         "body" : {
           "id" : "http://www.euscreen.eu/item.html?id=EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2",
           "type" : "Video",
-          "language" :	"nl"
+          "language" : "nl"
         },
         "target" : "https://iiif.europeana.eu/presentation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/canvas/p1"
       } ]
     } ],
     "annotations" : [ {
       "id" : "http://127.0.0.1:8085/tests/fixture-data/EUscreen/presentation_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_annopage_1-e2e-nl.json",
-      "type" : "AnnotationPage"
+      "type" : "AnnotationPage",
+      "language": "nl"
+    },
+    {
+      "id" : "http://127.0.0.1:8085/tests/fixture-data/EUscreen/presentation_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_annopage_1-e2e-de.json",
+      "type" : "AnnotationPage",
+      "language": "de"
+    },
+    {
+      "id" : "http://127.0.0.1:8085/tests/fixture-data/EUscreen/presentation_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_annopage_1-e2e-en.json",
+      "type" : "AnnotationPage",
+      "language": "en"
     } ]
   } ],
   "provider" : [ {

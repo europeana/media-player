@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
-        "module": "es2015"
+        "module": "es2015",
+        "paths": {
+            "stream": [
+                "node_modules/sax/lib/sax.js"
+            ]
+        }
     }
 }

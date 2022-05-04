@@ -29,6 +29,11 @@ const files = function() {
         served:   true
       }
     })
+  )
+  .concat(
+    [
+      'node_modules/babel-polyfill/dist/polyfill.min.js'
+    ]
   );
 };
 
@@ -49,13 +54,32 @@ const webpackInit = () => {
     module: {
       rules: rules(),
     },
-    plugins:
-      plugins()
+    plugins: plugins(),
+    resolve: {
+      alias: {
+        process: 'process/browser'
+      },
+      fallback: {
+        fs: false,
+        process: require.resolve('process/browser'),
+        stream: require.resolve('stream-browserify')
+      }
+    },
+    optimization: {
+      runtimeChunk: false,
+      splitChunks: false
+    },
+    output: {
+      publicPath: ''
+    },
   }
 };
 
 const plugins = () => {
-  return [ new webpack.DefinePlugin({
+  return [ new webpack.ProvidePlugin({
+    process: 'process/browser'
+  }),
+  new webpack.DefinePlugin({
     'process.env': {
       EUSCREEN_INFO_URL: JSON.stringify(process.env.EUSCREEN_INFO_URL)
     }
@@ -72,14 +96,17 @@ const rules = () => {
     },
     {
       test: /\.[s]?css$/,
-      loader: 'style-loader!css-loader!sass-loader'
+      use: [
+        'style-loader',
+        { loader: 'css-loader', options: { sourceMap: true } },
+        { loader: 'sass-loader', options: { sourceMap: true } }
+      ]
     },
     {
       test: /favicon\.ico$/,
       loader: 'url-loader',
-      query: {
-        limit: 1,
-        name: '[name].[ext]',
+      options: {
+        limit: 1
       }
     },
     ... includeCoverage ? [
@@ -95,7 +122,7 @@ const rules = () => {
         test: /\.js$/,
         include: /src/,
         exclude: /node_modules/,
-        use: [{ loader: 'istanbul-instrumenter-loader', query: { esModules: true } }]
+        use: [{ loader: 'istanbul-instrumenter-loader', options: { esModules: true } }]
       }
     ] : []
   ];
@@ -117,7 +144,7 @@ let configuration = {
   autoWatch: true,
   singleRun: true,
   failOnEmptyTestSuite: false,
-  frameworks: ['jasmine'],
+  frameworks: ['jasmine', 'webpack'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
   reporters: ['progress', 'kjhtml', 'spec', ... includeCoverage ? ['coverage'] : []],
   //address that the server will listen on, '0.0.0.0' is default
