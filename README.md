@@ -58,7 +58,7 @@ Run:
 
 ### Publication
 
-* publishes to [npm](https://www.npmjs.com/package/europeanamediaplayer) using a [web-action](actions?query=workflow%3A%22Node.js+Package%22)
+* on releases publishes to [npm](https://www.npmjs.com/package/europeanamediaplayer) using a [web-action](https://github.com/europeana/media-player/blob/master/.github/workflows/npmpublish.yml)
 
 ### Dependencies
 
