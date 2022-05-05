@@ -107,6 +107,7 @@
     },
     "height" : 300,
     "width" : 400,
+    "duration" : 600,
     "requiredStatement" : {
       "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'it'><a href='http://data.europeana.eu/item/2051914/data_euscreenXL_IL5000041487' target='_blank' rel='noopener'>Palermo: XI Congresso Nazionale di Urbanistica.\n    La speculazione edilizia ad Agrigento (il disastro di Agrigento): il ministro dei Lavori Pubblici, Mancini, ordina un'inchiesta sul mancato rispetto delle norme di sicurezza nella costruzione di un complesso di edilizia economica e popolare; Agrigento no</a></span></span><span class='field'><span class='fname'>Date:</span><span class='fvalue'>1966</span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue' xml:lang = 'it'><a href='https://www.archivioluce.com/' target='_blank' rel='noopener'>Istituto Luce - Cinecittà</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Italy</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-rs-yes'></li></ul><a href='http://rightsstatements.org/vocab/InC/1.0/' target='_blank' rel='noopener'>In Copyright</a></span></span></div>" ]
     },
