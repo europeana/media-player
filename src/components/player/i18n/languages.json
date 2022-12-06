@@ -15,7 +15,7 @@
         "player-error-loading": "loading aborted",
         "player-error-network": "network error",
         "player-error-decoding": "decoding of media failed",
-        "player-error-format": "media format not suppported by this browser",
+        "player-error-format": "media format not supported by this browser",
         "player-error-unknown": "unknown"
     },
     "nl": {

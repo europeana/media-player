@@ -81,7 +81,7 @@ describe('Event Handling', () => {
       'Error: loading aborted',
       'Error: network error',
       'Error: decoding of media failed',
-      'Error: media format not suppported by this browser',
+      'Error: media format not supported by this browser',
       'Error: unknown'
     ].forEach((msg, index) => {
       $('.errormessage').remove();
