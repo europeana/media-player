@@ -73,7 +73,7 @@
     "karma-sourcemap-loader": "^0.3.8",
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "^5.0.0",
-    "nightwatch": "^1.7.13",
+    "nightwatch": "^2.6.3",
     "nightwatch-accessibility": "^1.11.2",
     "node-sass": "^7.0.1",
     "npm-force-resolutions": "^0.0.10",
