@@ -1,0 +1,145 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "https://iiif.europeana.eu/presentation/2051914/data_euscreenXL_IL5000041487/manifest",
+  "type" : "Manifest",
+  "label" : {
+    "it" : [ "Palermo: XI Congresso Nazionale di Urbanistica.\n    La speculazione edilizia ad Agrigento (il disastro di Agrigento): il ministro dei Lavori Pubblici, Mancini, ordina un'inchiesta sul mancato rispetto delle norme di sicurezza nella costruzione di un complesso di edilizia economica e popolare.", "Agrigento no." ]
+  },
+  "metaData" : [ {
+    "label" : {
+      "en" : [ "date" ]
+    },
+    "value" : {
+      "it" : [ "07/11/1966" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "format" ]
+    },
+    "value" : {
+      "en" : [ "black&white", "mono" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "@none" : [ "<a href='http://data.europeana.eu/concept/base/61'>http://data.europeana.eu/concept/base/61</a>" ],
+      "de" : [ "Wochenschau" ],
+      "sv" : [ "Journalfilm" ],
+      "uk" : [ "Кінохроніка" ],
+      "ja" : [ "ニュース映画" ],
+      "en" : [ "Newsreel" ],
+      "it" : [ "Cinegiornale" ],
+      "pl" : [ "Kronika filmowa" ],
+      "ro" : [ "Jurnal de actualități" ],
+      "hu" : [ "Filmhíradó" ],
+      "he" : [ "יומן קולנוע" ],
+      "nl" : [ "Filmjournaal" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "type" ]
+    },
+    "value" : {
+      "en" : [ "Newsreel" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "@none" : [ "ita" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "language" ]
+    },
+    "value" : {
+      "en" : [ "Italian" ]
+    }
+  } ],
+  "thumbnail" : [ {
+    "id" : "https://api.europeana.eu/thumbnail/v2/url.json?uri=http%3A%2F%2Fimage.archivioluce.com%2Fdm_0%2FIL%2Fvideo_frames%2Fhigh%2FmpegG%2FG000301.jpg&type=VIDEO",
+    "type" : "Image"
+  } ],
+  "homepage" : [ {
+    "id" : "https://www.europeana.eu/item/2051914/data_euscreenXL_IL5000041487",
+    "type" : "Text",
+    "label" : {
+      "en" : [ "Europeana" ]
+    },
+    "format" : "text/html"
+  } ],
+  "requiredStatement" : {
+    "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'it'><a href='http://data.europeana.eu/item/2051914/data_euscreenXL_IL5000041487' target='_blank' rel='noopener'>Palermo: XI Congresso Nazionale di Urbanistica.\n    La speculazione edilizia ad Agrigento (il disastro di Agrigento): il ministro dei Lavori Pubblici, Mancini, ordina un'inchiesta sul mancato rispetto delle norme di sicurezza nella costruzione di un complesso di edilizia economica e popolare; Agrigento no</a></span></span><span class='field'><span class='fname'>Date:</span><span class='fvalue'>1966</span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue' xml:lang = 'it'><a href='https://www.archivioluce.com/' target='_blank' rel='noopener'>Istituto Luce - Cinecittà</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Italy</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-rs-yes'></li></ul><a href='http://rightsstatements.org/vocab/InC/1.0/' target='_blank' rel='noopener'>In Copyright</a></span></span></div>" ]
+  },
+  "rights" : {
+    "id" : "http://rightsstatements.org/vocab/InC/1.0/",
+    "type" : "Text",
+    "format" : "text/html"
+  },
+  "seeAlso" : [ {
+    "id" : "https://www.europeana.eu/api/v2/record/2051914/data_euscreenXL_IL5000041487.json-ld",
+    "type" : "Dataset",
+    "format" : "application/ld+json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051914/data_euscreenXL_IL5000041487.json",
+    "type" : "Dataset",
+    "format" : "application/json",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  }, {
+    "id" : "https://www.europeana.eu/api/v2/record/2051914/data_euscreenXL_IL5000041487.rdf",
+    "type" : "Dataset",
+    "format" : "application/rdf+xml",
+    "profile" : "http://www.europeana.eu/schemas/edm/"
+  } ],
+  "start" : {
+    "id" : "https://iiif.europeana.eu/presentation/2051914/data_euscreenXL_IL5000041487/canvas/p1",
+    "type" : "Canvas"
+  },
+  "items" : [ {
+    "id" : "https://iiif.europeana.eu/presentation/2051914/data_euscreenXL_IL5000041487/canvas/p1",
+    "type" : "Canvas",
+    "label" : {
+      "@none" : [ "p. 1" ]
+    },
+    "height" : 300,
+    "width" : 400,
+    "duration" : 600,
+    "requiredStatement" : {
+      "en" : [ "<link rel='stylesheet' type='text/css' href='https://style.europeana.eu/attribution/style.css'/><div class='attribution'><span class='field'><span class='fname'>Title:</span><span class='fvalue' xml:lang = 'it'><a href='http://data.europeana.eu/item/2051914/data_euscreenXL_IL5000041487' target='_blank' rel='noopener'>Palermo: XI Congresso Nazionale di Urbanistica.\n    La speculazione edilizia ad Agrigento (il disastro di Agrigento): il ministro dei Lavori Pubblici, Mancini, ordina un'inchiesta sul mancato rispetto delle norme di sicurezza nella costruzione di un complesso di edilizia economica e popolare; Agrigento no</a></span></span><span class='field'><span class='fname'>Date:</span><span class='fvalue'>1966</span></span><span class='field'><span class='fname'>Institution:</span><span class='fvalue' xml:lang = 'it'><a href='https://www.archivioluce.com/' target='_blank' rel='noopener'>Istituto Luce - Cinecittà</a></span></span><span class='field'><span class='fname'>Country:</span><span class='fvalue'>Italy</span></span><span class='field'><span class='fname'>Rights:</span><span class='fvalue'><ul class='rights-list'><li class='icon-rs-yes'></li></ul><a href='http://rightsstatements.org/vocab/InC/1.0/' target='_blank' rel='noopener'>In Copyright</a></span></span></div>" ]
+    },
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "items" : [ {
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "timeMode" : "trim",
+        "body" : {
+          "id" : "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
+          "type" : "Video",
+          "format" : "application/vnd.apple.mpegurl"
+        },
+        "target" : "https://iiif.europeana.eu/presentation/2051914/data_euscreenXL_IL5000041487/canvas/p1"
+      } ]
+    } ]
+  } ],
+  "provider" : [ {
+    "id" : "https://www.europeana.eu/en/about-us",
+    "type" : "Agent",
+    "homepage" : [ {
+      "id" : "https://www.europeana.eu",
+      "type" : "Text",
+      "label" : {
+        "en" : [ "Europeana" ]
+      },
+      "format" : "text/html"
+    } ],
+    "logo" : [ {
+      "id" : "https://style.europeana.eu/images/europeana-logo-default.png",
+      "type" : "Image"
+    } ]
+  } ]
+}

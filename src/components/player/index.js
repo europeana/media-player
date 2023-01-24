@@ -8,6 +8,7 @@ require('@iiif/base-component');
 const Manifold = require('@noterik/manifold');
 const IIIFAVComponent = require('@noterik/iiif-av-component');
 require('dashjs');
+require('hls.js');
 
 require('webpack-jquery-ui/slider');
 require('webpack-jquery-ui/effects');

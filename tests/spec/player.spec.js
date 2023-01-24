@@ -14,6 +14,7 @@ const manifestEUscreen = 'http://localhost:9876/base/tests/fixture-data/manifest
 const manifestMultipleCanvases = 'http://localhost:9876/base/tests/fixture-data/manifest-two-canvases.json';
 const manifestMPEGDash = 'http://localhost:9876/base/tests/fixture-data/manifest-mpegdash.json';
 const jsonManifest = require('../fixture-data/manifest.json');
+const manifestHls = 'http://localhost:9876/base/tests/fixture-data/manifest-hls.json';
 
 describe('Player functions', () => {
 
@@ -414,6 +415,25 @@ describe('Player functions', () => {
     });
 
     it('should have an duration taken from the JSON manifest', () => {
+      const duration = document.querySelector('.canvas-duration');
+      expect(duration.textContent).toMatch(/[0-9][0-9]:[0-9][0-9]/);
+      const t = new Date(`1970-01-01T00:${duration.textContent}Z`);
+      expect(t.getSeconds() | t.getMinutes()).toBeTruthy();
+    });
+  });
+
+  describe('HLS check', () => {
+
+    let player;
+
+    beforeEach((done) => {
+      getPlayer(manifestHls, (innerPlayer) => {
+        player = innerPlayer;
+        done();
+      });
+    });
+
+    it('should have an duration as this is derived from the stream', () => {
       const duration = document.querySelector('.canvas-duration');
       expect(duration.textContent).toMatch(/[0-9][0-9]:[0-9][0-9]/);
       const t = new Date(`1970-01-01T00:${duration.textContent}Z`);

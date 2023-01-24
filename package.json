@@ -1,6 +1,6 @@
 {
   "name": "@europeana/media-player",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "EUPL-1.2",
   "main": "dist/europeana-media-player.min.js",
   "author": {
@@ -37,6 +37,7 @@
     "banana-i18n": "^1.3.1",
     "dashjs": "^2.9.3",
     "dotenv": "^8.6.0",
+    "hls.js": "^1.1.5",
     "jquery": "^3.5.1",
     "webpack-jquery-ui": "^2.0.1"
   },

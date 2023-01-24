@@ -152,6 +152,7 @@ const externals = function() {
     externals = {
       jquery: 'jquery',
       dashjs: 'dashjs',
+      'hls.js': 'hls.js',
       'webpack-jquery-ui/slider': 'webpack-jquery-ui/slider',
       'webpack-jquery-ui/effects': 'webpack-jquery-ui/effects'
     };

@@ -6,9 +6,8 @@ const files = function() {
   {
     pattern: `./tests/spec/**/*.spec.js`, watched: true, type: 'module' },
     'https://code.jquery.com/jquery-3.4.1.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'
-    //'http://localhost:9876/base/spec/fixture-data/jquery-3.4.1.min.js',
-    //'http://localhost:9876/base/spec/fixture-data/jquery-ui.min.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+    'https://unpkg.com/hls.js@1.1.5/dist/hls.min.js'
   ]
   .concat(
     ['jpg', 'json', 'mp3', 'mp4', 'mov', 'webm', 'm4v', 'wmv'].map((ext) => {

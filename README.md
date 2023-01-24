@@ -82,6 +82,14 @@ Example:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.3/dash.all.min.js" type="text/javascript"></script>
 ```
 
+Support for HLS video streams can be enabled by including [hls.js](https://www.npmjs.com/package/hls.js)
+
+Example:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.5/hls.min.js" type="text/javascript"></script>
+```
+
 ### Embed player
 
 To embed the player please firstyourself first make sure to include the Europeana Media Player Library
