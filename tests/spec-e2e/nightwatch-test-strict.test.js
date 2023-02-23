@@ -48,19 +48,24 @@ module.exports = {
   'Subtitles are displayed.': (browser) => {
     const extraWaitTime = 1000;
     const selBtn = '.btn[data-name=Subtitles]';
-    const selMenu = '.subtitlemenu-option';
+    const selDialogBox = '.subtitledialogbox';
+    const selToggle = '.subtitledialogboxtoggleline input';
+    const selOptions = '.subtitledialogboxlanguage div[role="button"]';
+    const muiList = 'MuiPopover-root li';
     browser
       .waitForElementVisible(selBtn, waitTime)
-      .assert.not.visible(selMenu)
+      .assert.not.visible(selDialogBox)
       .assert.not.cssClassPresent(selBtn, 'open')
       .pause(extraWaitTime)
       .click(selBtn)
-      .waitForElementVisible(selMenu, waitTime)
-      .assert.attributeEquals(selMenu, 'data-language', 'nl-NL')
-      .assert.containsText(selMenu, 'Nederlands')
+      .waitForElementVisible(selDialogBox, waitTime)
+      .click(selToggle)
+      .click(selOptions)
+      .assert.attributeEquals(muiList, 'data-value', 'nl-NL')
+      .assert.containsText(muiList, 'Nederlands')
       .assert.cssClassPresent(selBtn, 'open')
-      .click(selMenu)
-      .assert.not.visible(selMenu)
+      .click(selBtn)
+      .assert.not.visible(selDialogBox)
       .assert.not.cssClassPresent(selBtn, 'open')
       .end()
   }

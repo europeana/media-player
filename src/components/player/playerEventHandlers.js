@@ -93,7 +93,7 @@ function editorButtonEventHandler(player, e) {
 }
 
 function toggleSubtitlesEventHandler(player, e) {
-  toggleMenuOption(player, e, 'subtitlemenu');
+  toggleMenuOption(player, e, 'subtitledialogbox');
 }
 
 function toggleMenuOption(player, e, cls) {
@@ -123,31 +123,6 @@ const messagePopupOpener = (elMenu, eventType, value) => {
     }
   }
 };
-
-// clicks on a subtitle menu item
-
-function subtitleMenuEventHandler(player,  e) {
-  const elPlayer = player.elem;
-  const selClass = 'selected';
-  const textTracks = elPlayer.find('video')[0].textTracks;
-  const tgt = $(e.target);
-  const optionAlreadySelected = tgt.hasClass(selClass);
-  const selLang = optionAlreadySelected ? '(clear)' : tgt.data('language');
-
-  Array.from(textTracks).forEach((track) => {
-    track.mode = selLang === track.language ? 'showing' : 'hidden';
-  });
-  toggleMenuOption(player, e, 'subtitlemenu');
-  messagePopupOpener(elPlayer.find('.subtitlemenu-option').parent(), 'optionSet', !optionAlreadySelected);
-
-  elPlayer.find('.subtitlemenu-option').removeClass(selClass);
-  if (!optionAlreadySelected) {
-    tgt.addClass(selClass);
-  }
-
-  e.stopPropagation();
-  e.preventDefault();
-}
 
 function openEditorTypeEventHandler(player, e, type) {
   // prevent the play/pause handler to react
@@ -183,5 +158,5 @@ function mediaErrorHandler(player, error, canvasId) {
 
 module.exports = {
   hidePopups,
-  playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler
+  playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler
 };

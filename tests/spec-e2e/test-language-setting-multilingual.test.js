@@ -1,7 +1,7 @@
 const target_url = 'http://127.0.0.1:8085/tests/fixture-data/index-multilingual.html?language=nl';
 const waitTime = 10000;
 const selBtnSubs = '.btn[data-name=Subtitles]';
-const selMenu = '.subtitlemenu-option';
+const selMenu = '.subtitledialogbox';
 const selMenuDutch = '.subtitlemenu-option[data-language=nl-NL]'
 const expectedLanguagesOrder = ['Deutsch', 'English', 'Nederlands [CC]'];
 

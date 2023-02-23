@@ -2,7 +2,7 @@ const target_url = 'http://127.0.0.1:8085/tests/fixture-data/index.html?language
 const waitTime = 10000;
 const selBtnFS = '.button-fullscreen';
 const selBtnSubs = '.btn[data-name=Subtitles]';
-const selMenu = '.subtitlemenu-option';
+const selMenu = '.subtitledialogbox';
 
 module.exports = {
   beforeEach: (browser) => {

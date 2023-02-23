@@ -233,20 +233,15 @@ describe('Player functions', () => {
       expect($('.btn[data-name=Subtitles').length).toBeTruthy();
     });
 
-    it('should hold only the Dutch subtitles', () => {
-      expect($('.subtitlemenu-option').length).toEqual(1);
-      expect($('.subtitlemenu-option').attr('data-language')).toEqual("nl-NL");
+    it('should show and hide the subtitle dialog box on clicks of the menu', () => {
+      expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
+      expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
+      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
+      expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
     });
 
-    it('should show and hide the subtitle list on clicks of the menu', () => {
-      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
-      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
-      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-    });
-
-    it('should show and hide the subtitle list on key enter', () => {
+    it('should show and hide the subtitle dialog box on key enter', () => {
       const getEnterKeyEvent = () => {
         return new KeyboardEvent('keypress',
           {
@@ -276,14 +271,33 @@ describe('Player functions', () => {
           }
         );
       };
-      expect($('.subtitlemenu').is(':visible')).toBeFalsy();
+      expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
       $('.subtitlemenu-option')[0].dispatchEvent(getEnterKeyEvent());
-      expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+      expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
+    });
+
+    it('should have the subtitle switch default disabled', () => {
+      expect($('.subtitledialogboxtoggleline').find('input')[0].checked).toBeFalsy();
+    });
+
+    it('should enable the dropdown menu on toggling the subtitle switch button', () => {
+      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].attr('aria-disabled').toBeTruthy(); 
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
+      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].attr('aria-disabled').toBeFalsy();
+    });
+
+    it('should hold only the Dutch subtitles', () => {
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
+      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].dispatchEvent(new Event('click'));
+      expect($('.MuiPopover-root').find('li').length).toEqual(1);
+      expect($('.MuiPopover-root').find('li').attr('data-value')).toEqual("nl-NL");
     });
 
     it('should show the Dutch subtitles in the video on click of the menu item', () => {
       expect($('video')[0].textTracks[0].mode).toEqual('hidden');
-      $('.subtitlemenu-option[data-language=nl-NL')[0].dispatchEvent(new Event('click'));
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
+      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].dispatchEvent(new Event('click'));
+      $('.MuiPopover-root').find('li[data-language=nl-NL')[0].dispatchEvent(new Event('click'));
       expect($('video')[0].textTracks[0].mode).toEqual('showing');
     });
   });

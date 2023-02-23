@@ -23,6 +23,7 @@ const config = function(mode) {
     plugins:
       plugins(),
     resolve: {
+      extensions: ['ts', '.tsx', '.js', '.json'],
       alias: {
         process: 'process/browser'
       },
@@ -62,7 +63,7 @@ const config = function(mode) {
 const rules = function() {
   let rules =
     [
-      jsRule(), htmlRule(), cssRule(), fontRule(), pngRule(), icoRule()
+      jsRule(), tsRule(), htmlRule(), cssRule(), fontRule(), pngRule(), icoRule()
     ];
 
   return rules;
@@ -81,6 +82,29 @@ const jsRule = function() {
   };
 
   return jsRule;
+};
+
+const tsRule = function() {
+  let tsRule = {
+    test: /\.(ts)x?$/,
+    exclude: /(node_modules|bower_components)/,
+    use: [
+      {
+      loader: 'babel-loader',
+      options: {
+        presets: ['env']
+      },
+      },
+      {
+        loader: 'ts-loader',
+        options: {
+          configFile: path.resolve('./tsconfig.json'),
+        }
+      }
+    ]
+  };
+
+  return tsRule;
 };
 
 const htmlRule = function() {
