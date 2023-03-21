@@ -1,4 +1,5 @@
 const includeCoverage = process.argv[3] && process.argv[3].match('coverage');
+const path = require('path');
 const webpack = require('webpack');
 
 const files = function() {
@@ -56,6 +57,7 @@ const webpackInit = () => {
     },
     plugins: plugins(),
     resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
         process: 'process/browser'
       },
@@ -95,6 +97,20 @@ const rules = () => {
       loader: 'babel-loader'
     },
     {
+      test: /\.tsx$/,
+      include: /src/,
+      exclude: /node_modules|test/,
+      use: [
+        { 
+          loader: 'babel-loader' 
+        }, 
+        { 
+          loader: 'ts-loader', 
+          options: { configFile: path.resolve('./tsconfig.json') } 
+        }
+      ]
+    },
+    {
       test: /\.[s]?css$/,
       use: [
         'style-loader',
@@ -123,6 +139,21 @@ const rules = () => {
         include: /src/,
         exclude: /node_modules/,
         use: [{ loader: 'istanbul-instrumenter-loader', options: { esModules: true } }]
+      },
+      {
+        enforce: 'pre',
+        test: /\.(ts)x?$/,
+        include: /src/,
+        exclude: /node_modules/,
+        use: [
+          { 
+            loader: 'babel-loader' 
+          }, 
+          { 
+            loader: 'ts-loader', 
+            options: { configFile: path.resolve('./tsconfig.json') } 
+          }
+        ]
       }
     ] : []
   ];
@@ -142,8 +173,9 @@ let configuration = {
   exclude: [],
   files: files(),
   autoWatch: true,
-  singleRun: true,
+  singleRun: false,
   failOnEmptyTestSuite: false,
+  stopSpecOnExpectationFailure: true,
   frameworks: ['jasmine', 'webpack'],
   browsers: ['Chrome' /*,'PhantomJS','Firefox','Edge','ChromeCanary','Opera','IE','Safari'*/],
   reporters: ['progress', 'kjhtml', 'spec', ... includeCoverage ? ['coverage'] : []],
@@ -166,6 +198,7 @@ let configuration = {
   preprocessors: {
     './tests/spec/**/*.js': ['webpack', 'sourcemap'],
     './src/**/*.js': ['webpack', 'sourcemap', ... includeCoverage ? ['coverage'] : []],
+    './src/**/*.tsx': ['webpack', 'sourcemap', ... includeCoverage ? ['coverage'] : []]
   },
   webpackMiddleware: webpackMiddleware()
 };

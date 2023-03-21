@@ -19,7 +19,8 @@ describe('Event Handling', () => {
 
   const addSubtitleElement = () => {
     player.initLanguages([{
-      language: 'nl'
+      language: 'nl-NL',
+      label: 'Nederlands'
     }]);
   };
 
@@ -27,12 +28,12 @@ describe('Event Handling', () => {
     player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
     player.init({ manifest: manifestEditable }, manifestEditable, '');
     player.avcomponent.on('mediaready', function() {
-      done();
+      addSubtitleElement();
+      setTimeout(done, 1000);
     });
   });
 
   it('should close the subtitle menu on resize', () => {
-    addSubtitleElement();
     $('.subtitledialogbox').addClass('showing');
     expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
     pEvents.resizeEventHandler(player);

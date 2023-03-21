@@ -22,7 +22,7 @@ const { handleEUscreenItem } = require('./EUscreen');
 
 const { handleTranscriptionAnnotations } = require('./transcriptionAnnotations');
 
-const { SubtitleMenu } = require('./subtitleMenu.tsx');
+const { SubtitleMenu } = require('./subtitleMenu');
 
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
@@ -258,13 +258,18 @@ export default class Player {
       toggleSubtitlesEventHandler(this, e);
     }); 
 
+    btnSubtitles.on('keypress', (e) => {
+      if (e.key === 'Enter') {
+        toggleSubtitlesEventHandler(this, e);
+      }
+    });
+    
     $(window).on('resize', () => {
       resizeEventHandler(player);
     });
 
     // show button only if we have at least one language set
     btnSubtitles.show();
-    this.avcomponent.fire('languagesinitialized');
   }
 
   hasEnded() {

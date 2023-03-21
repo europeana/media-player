@@ -1,5 +1,12 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*",
+                "components/player/*"
+            ]
+        },
         "module": "commonjs",
         "target": "es5",
         "allowJs": true,

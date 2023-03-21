@@ -121,6 +121,8 @@ export const SubtitleMenu = ({ tracks, player }: Props) => {
     document.getElementsByClassName("subtitledialogbox")[0].classList.remove("showing");
     document.querySelectorAll("[data-name='Subtitles']")[0].classList.remove("open");
   }
+  
+  player.avcomponent.fire('languagesinitialized');
 
   return (
     <div className='anno subtitledialogbox' data-opener="Subtitles">
@@ -190,6 +192,7 @@ export const SubtitleMenu = ({ tracks, player }: Props) => {
               lineHeight: "18px",
               height: "36px"
             }}
+            className="saveSubtitles"
             onClick={handleSave}
           >
             Save

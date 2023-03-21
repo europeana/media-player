@@ -23,7 +23,7 @@ const config = function(mode) {
     plugins:
       plugins(),
     resolve: {
-      extensions: ['ts', '.tsx', '.js', '.json'],
+      extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
         process: 'process/browser'
       },

@@ -29,10 +29,15 @@ describe('Player functions', () => {
   const removeFixtures = (className, id) => {
     $(`.${elClass}`).remove();
     $(`.${elWrapperClass}`).remove();
+  };
 
+  const setPlayerHeight = (className) => {
+    let style = `<style>.`+className+` { height: 400px !important; }</style>`;
+    $(style).appendTo('head');
   };
 
   const getPlayer = (manifestToUse, cbDone) => {
+    setPlayerHeight(elClass);
     const EuropeanaMediaPlayer = empIndex.default;
 
     let emp = new EuropeanaMediaPlayer(
@@ -88,6 +93,34 @@ describe('Player functions', () => {
       cbDone(emp.player);
     });
   };
+
+  function waitForElementAvailable(selector, callback) {
+    var interval;
+    if ($(selector).length) {
+      callback();
+    } else {
+      interval = setInterval(function () {
+        if ($(selector).length) {
+          clearInterval(interval);
+          callback();
+        }
+      }, 10);
+    }
+  }
+
+  function waitForElementToBeRemoved(selector, callback) {
+    var interval;
+    if (!$(selector).length) {
+      callback();
+    } else {
+      interval = setInterval(function () {
+        if (!$(selector).length) {
+          clearInterval(interval);
+          callback();
+        }
+      }, 10);
+    }
+  }
 
   beforeEach(() => {
     removeFixtures();
@@ -215,13 +248,12 @@ describe('Player functions', () => {
   });
 
   describe('EUscreen manifest', () => {
-
     let player;
 
     beforeEach((done) => {
       getSubtitlePlayer(manifestEUscreen, (innerPlayer) => {
         player = innerPlayer;
-        done();
+        setTimeout(done, 500);
       });
     });
 
@@ -235,9 +267,9 @@ describe('Player functions', () => {
 
     it('should show and hide the subtitle dialog box on clicks of the menu', () => {
       expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
+      $('.btn[data-name=Subtitles]')[0].dispatchEvent(new Event('click'));
       expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
-      $('.btn[data-name=Subtitles')[0].dispatchEvent(new Event('click'));
+      $('.btn[data-name=Subtitles]')[0].dispatchEvent(new Event('click'));
       expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
     });
 
@@ -272,7 +304,7 @@ describe('Player functions', () => {
         );
       };
       expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
-      $('.subtitlemenu-option')[0].dispatchEvent(getEnterKeyEvent());
+      $('.btn[data-name=Subtitles]')[0].dispatchEvent(getEnterKeyEvent());
       expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
     });
 
@@ -281,24 +313,39 @@ describe('Player functions', () => {
     });
 
     it('should enable the dropdown menu on toggling the subtitle switch button', () => {
-      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].attr('aria-disabled').toBeTruthy(); 
-      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
-      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].attr('aria-disabled').toBeFalsy();
+      expect($('.subtitledialogboxlanguage').find('input').attr('disabled')).toEqual("disabled"); 
+      Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'checked').set.call($('.subtitledialogboxtoggleline').find('input')[0], true);
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click', { bubbles: true}));
+      expect($('.subtitledialogboxlanguage').find('input').attr('disabled')).toBeUndefined();
     });
 
-    it('should hold only the Dutch subtitles', () => {
-      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
-      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].dispatchEvent(new Event('click'));
-      expect($('.MuiPopover-root').find('li').length).toEqual(1);
-      expect($('.MuiPopover-root').find('li').attr('data-value')).toEqual("nl-NL");
+    it('should hold only the Dutch subtitles', (done) => {
+      Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'checked').set.call($('.subtitledialogboxtoggleline').find('input')[0], true);
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click', { bubbles: true}));
+      $('.subtitledialogboxlanguage').find('div[role=button]')[0].dispatchEvent(new MouseEvent('mousedown', { bubbles: true}));
+      waitForElementAvailable(".MuiMenu-root", function () {
+        expect($('.MuiMenu-root').find('li').length).toEqual(2);
+        expect($('.MuiMenu-root').find('li:nth-child(2)').attr('data-value')).toEqual("nl-NL");
+        $('.MuiMenu-root').find('li[data-value=nl-NL]')[0].dispatchEvent(new Event('click', { bubbles: true}));
+        $('.saveSubtitles')[0].dispatchEvent(new Event('click', { bubbles: true}));
+        done();
+      });    
     });
 
-    it('should show the Dutch subtitles in the video on click of the menu item', () => {
+    it('should show the Dutch subtitles in the video on click of the menu item', (done) => {
       expect($('video')[0].textTracks[0].mode).toEqual('hidden');
-      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click'));
-      $('.subtitledialogboxlanguage').find('div[role="button"]')[0].dispatchEvent(new Event('click'));
-      $('.MuiPopover-root').find('li[data-language=nl-NL')[0].dispatchEvent(new Event('click'));
-      expect($('video')[0].textTracks[0].mode).toEqual('showing');
+      $('.btn[data-name=Subtitles]')[0].dispatchEvent(new Event('click'));
+      Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'checked').set.call($('.subtitledialogboxtoggleline').find('input')[0], true);
+      $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click', { bubbles: true}));
+      $('.subtitledialogboxlanguage').find('div[role=button]')[0].dispatchEvent(new MouseEvent('mousedown', { bubbles: true}));
+      waitForElementAvailable(".MuiMenu-root", function () {
+        $('.MuiMenu-root').find('li[data-value=nl-NL]')[0].dispatchEvent(new Event('click', { bubbles: true}));
+        waitForElementToBeRemoved(".MuiMenu-root", function () {
+          $('.saveSubtitles')[0].dispatchEvent(new Event('click', { bubbles: true}));
+          expect($('video')[0].textTracks[0].mode).toEqual('showing');
+          done();
+        });
+      });     
     });
   });
 
