@@ -4,8 +4,6 @@ const geckodriver = require('geckodriver');
 module.exports = {
   src_folders: ['tests/spec-e2e'],
   output_folder: '../reports',
-  custom_commands_path: ['./node_modules/nightwatch-accessibility/commands'],
-  custom_assertions_path: ['./node_modules/nightwatch-accessibility/assertions'],
   page_objects_path: '',
   selenium: {
     start_process: false

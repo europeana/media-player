@@ -66,7 +66,7 @@ export default class Player {
     if (language.length === 0 || languages.find(lang => lang.code === language) === undefined || i18n[language] === undefined) {
       language = 'en';
     } else {
-      configuredLanguage = language;
+      configuredLanguage = languages.find(lang => lang.code === language).iso;
     }
 
     const banana = new Banana(language);
@@ -247,23 +247,31 @@ export default class Player {
     this.elem.find('.button-fullscreen').before('<div id="subtitle-menu"/>');
 
     const tracksArray = this.getSortedTracks(textTracks);
+    let enabledLanguage;
+
+    // only pass the configured language to the subtitle component if we have this actual language as subtitle available
+    tracksArray.forEach((track) => {
+      if (track.language === configuredLanguage) {
+        enabledLanguage = configuredLanguage;
+      }
+    });
 
     const subtitleMenuContainer = this.elem.find('#subtitle-menu')[0];
     const root = ReactDOM.createRoot(subtitleMenuContainer);
-    root.render( 
-      <SubtitleMenu tracks={tracksArray} player={player} />
+    root.render(
+      <SubtitleMenu tracks={tracksArray} player={player} configuredLanguage={enabledLanguage} />
     );
 
     btnSubtitles[0].addEventListener('click', (e) => {
       toggleSubtitlesEventHandler(this, e);
-    }); 
+    });
 
     btnSubtitles.on('keypress', (e) => {
       if (e.key === 'Enter') {
         toggleSubtitlesEventHandler(this, e);
       }
     });
-    
+
     $(window).on('resize', () => {
       resizeEventHandler(player);
     });

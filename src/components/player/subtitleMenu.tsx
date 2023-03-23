@@ -58,26 +58,27 @@ const SubtitleSwitch = styled(Switch)(({ theme }) => ({
 
 interface Props {
   tracks: TextTrack[],
-  player: JQuery
+  player: JQuery,
+  configuredLanguage: string | undefined;
 }
 
 interface menuItemRefs {
   [key: string]: React.RefObject<HTMLLIElement>;
 }
 
-export const SubtitleMenu = ({ tracks, player }: Props) => {
-  const [languageSelectDisabled, setLanguageSelectDisabled] = React.useState(true);  
-  const [selectedLanguage, setSelectedLanguage] = React.useState("");  
-  const [showAccuracyText, setShowAccuracytext] = React.useState(false);
-
-  const [openingStateLanguageSelectDisabled, setOpeningStateLanguageSelectDisabled] = React.useState(true);
-  const [openingStateSelectedLanguage, setOpeningStateSelectedLanguage] = React.useState("");
-  const [openingStateShowAccuracyText, setOpeningStateShowAccuracytext] = React.useState(false);
-
+export const SubtitleMenu = ({ tracks, player, configuredLanguage }: Props) => {
   const refs : menuItemRefs = {}
   tracks.forEach((track) => {
       refs[track.language] = React.createRef()
   });
+  
+  const [languageSelectDisabled, setLanguageSelectDisabled] = configuredLanguage === undefined ? React.useState(true) : React.useState(false);  
+  const [selectedLanguage, setSelectedLanguage] = configuredLanguage === undefined ? React.useState("") : React.useState(configuredLanguage);  
+  const [showAccuracyText, setShowAccuracytext] = configuredLanguage === undefined ? React.useState(false) : refs[configuredLanguage].current?.innerText.endsWith("(auto-generated)") ? React.useState(false) : React.useState(true);
+
+  const [openingStateLanguageSelectDisabled, setOpeningStateLanguageSelectDisabled] = configuredLanguage === undefined ? React.useState(true) : React.useState(false);
+  const [openingStateSelectedLanguage, setOpeningStateSelectedLanguage] = configuredLanguage === undefined ? React.useState("") : React.useState(configuredLanguage);
+  const [openingStateShowAccuracyText, setOpeningStateShowAccuracytext] = configuredLanguage === undefined ? React.useState(false) : refs[configuredLanguage].current?.innerText.endsWith("(auto-generated)") ? React.useState(false) : React.useState(true);
 
   const handleSubtitleChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value);
@@ -108,6 +109,14 @@ export const SubtitleMenu = ({ tracks, player }: Props) => {
     setOpeningStateSelectedLanguage(selectedLanguage);
     setOpeningStateShowAccuracytext(showAccuracyText);
 
+    enableSubtitle();
+
+    //hide non typescript menu wrapper
+    document.getElementsByClassName("subtitledialogbox")[0].classList.remove("showing");
+    document.querySelectorAll("[data-name='Subtitles']")[0].classList.remove("open");
+  }
+
+  const enableSubtitle = () => {
     //enable subtitle on video element
     const textTracks: TextTrackList = player.elem.find("video")[0].textTracks;
 
@@ -116,10 +125,10 @@ export const SubtitleMenu = ({ tracks, player }: Props) => {
         (languageSelectDisabled ? 'hidden' : 'showing') :
         'hidden';
     });
+  }
 
-    //hide non typescript menu wrapper
-    document.getElementsByClassName("subtitledialogbox")[0].classList.remove("showing");
-    document.querySelectorAll("[data-name='Subtitles']")[0].classList.remove("open");
+  if (configuredLanguage !== undefined) {    
+    enableSubtitle();
   }
   
   player.avcomponent.fire('languagesinitialized');

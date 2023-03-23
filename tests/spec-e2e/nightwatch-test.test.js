@@ -16,24 +16,15 @@ module.exports = {
     browser
       .assert.attributeContains('.ui-slider-handle', 'style', 'left: 0')
       .moveToElement(selTimeline, 0, 0)
-      .mouseButtonDown(0)
       .pause(extraWaitTime)
       .getElementSize(selTimeline, function (result) {
-        this.moveToElement(selTimeline, result.value.width, 0);
+        this.dragAndDrop(selTimeline, {x: (result.value.width / 2), y: 0});
       })
-      .pause(extraWaitTime)
-      .mouseButtonUp(0)
       .pause(extraWaitTime)
       .getText(selTime, function(result) {
         browser.assert.ok(result.value === videoEndTime, `Expect time ${result.value} to be at ${videoEndTime}`);
       })
-      .mouseButtonDown(0)
-      .pause(extraWaitTime)
-      .getElementSize(selTimeline, function (result) {
-        this.moveToElement(selTimeline, (result.value.width / 2) -1, result.value.height / 2);
-      })
-      .mouseButtonUp(0)
-      .pause(extraWaitTime)
+      .dragAndDrop(selTimeline, {x: 0, y: 0})
       .getText(selTime)
       .assert.containsText(selTime, videoMidTime)
       .end()
@@ -41,13 +32,13 @@ module.exports = {
   'Volume controls': (browser) => {
     browser
       .assert.attributeEquals('.volume-mute', 'title','Mute')
-      .moveToElement('.volume-slider', 2, 2)
-      .mouseButtonDown(0)
-      .moveToElement('.volume-slider', 0, 2)
-      .mouseButtonUp(0)
+      .getElementSize('.volume-slider', function (result) {
+        this.dragAndDrop('.volume-slider', {x: -(result.value.width / 2), y: 0});
+      })
       .assert.attributeEquals('.volume-mute', 'title','Unmute')
-      .moveToElement('.volume-slider', 70, 2)
-      .mouseButtonClick(0)
+      .getElementSize('.volume-slider', function (result) {
+        this.dragAndDrop('.volume-slider', {x: ((result.value.width / 10) * 7), y: 0});
+      })
       .assert.attributeEquals('.volume-mute', 'title','Mute')
       .end()
   },

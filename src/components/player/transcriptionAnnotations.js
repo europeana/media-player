@@ -42,7 +42,7 @@ async function fetchTextResource(player, annotationResource, textResource, langu
       let label = languages.find(lang => lang.code === language);
       label = label && label.name ? label.name : language;
       label += language === mediaItemLanguage ? ' [CC]' : '';
-      label += source !== undefined ? ' (auto-generated)' : '';
+      label += source === undefined ? '' : ' (auto-generated)';
 
       const track = player.elem.find('video')[0].addTextTrack('subtitles', label, languages.find(lang => lang.code === language).iso);
 

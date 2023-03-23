@@ -1,28 +1,33 @@
 const target_url = 'http://127.0.0.1:8085/tests/fixture-data/index-multilingual.html?language=nl';
 const waitTime = 10000;
-const selBtnSubs = '.btn[data-name=Subtitles]';
-const selMenu = '.subtitledialogbox';
-const selMenuDutch = '.subtitlemenu-option[data-language=nl-NL]'
-const expectedLanguagesOrder = ['Deutsch', 'English', 'Nederlands [CC]'];
+const selBtn = '.btn[data-name=Subtitles]';
+const selDialogBox = '.subtitledialogbox';
+const selToggle = '.subtitledialogboxtoggleline input';
+const selOptions = '.subtitledialogboxlanguage div[role="button"]';
+const muiList = '.MuiList-root li';
+const expectedLanguagesOrder = ['-', 'Deutsch', 'English', 'Nederlands [CC]'];
 
 module.exports = {
   tags: ['skip-chrome-headless'],
   beforeEach: (browser) => {
      browser.url(target_url)
-     .waitForElementVisible(selBtnSubs, waitTime);
+     .waitForElementVisible(selBtn, waitTime);
   },
   'Should initialise with Dutch, English and German subtitles': (browser) => {
     browser
-      .assert.cssClassPresent(selBtnSubs, 'option-set')
-      .click(selBtnSubs)
-      .elements('css selector', selMenu, (elements) => {
+      .assert.not.visible(selDialogBox)
+      .assert.not.cssClassPresent(selBtn, 'open')
+      .click(selBtn)
+      .waitForElementVisible(selDialogBox, waitTime)
+      .click(selToggle)
+      .click(selOptions)
+      .elements('css selector', muiList, (elements) => {
         elements.value.forEach(function (element, index) {
-          browser.elementIdText(element.ELEMENT, function (res) {
+          browser.elementIdText(element[Object.keys(element)[0]], function (res) {
             browser.assert.equal(res.value, expectedLanguagesOrder[index]);
           });
         });
       })
-      .assert.cssClassPresent(selMenuDutch, 'selected')
       .end();
   }
 };

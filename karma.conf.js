@@ -173,7 +173,7 @@ let configuration = {
   exclude: [],
   files: files(),
   autoWatch: true,
-  singleRun: false,
+  singleRun: true,
   failOnEmptyTestSuite: false,
   stopSpecOnExpectationFailure: true,
   frameworks: ['jasmine', 'webpack'],

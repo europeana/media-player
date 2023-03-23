@@ -51,7 +51,7 @@ module.exports = {
     const selDialogBox = '.subtitledialogbox';
     const selToggle = '.subtitledialogboxtoggleline input';
     const selOptions = '.subtitledialogboxlanguage div[role="button"]';
-    const muiList = 'MuiPopover-root li';
+    const muiList = '.MuiList-root li[data-value="nl-NL"]';
     browser
       .waitForElementVisible(selBtn, waitTime)
       .assert.not.visible(selDialogBox)
@@ -63,6 +63,7 @@ module.exports = {
       .click(selOptions)
       .assert.attributeEquals(muiList, 'data-value', 'nl-NL')
       .assert.containsText(muiList, 'Nederlands')
+      .click(muiList)
       .assert.cssClassPresent(selBtn, 'open')
       .click(selBtn)
       .assert.not.visible(selDialogBox)
