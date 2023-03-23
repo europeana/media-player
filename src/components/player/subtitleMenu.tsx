@@ -180,6 +180,7 @@ export const SubtitleMenu = ({ tracks, player, configuredLanguage }: Props) => {
           variant="outlined" 
           style={{
               borderRadius: 4,
+              borderWidth: "1px",
               borderColor: "#0a72cc",
               color: "#0a72cc",
               padding: "9px",
