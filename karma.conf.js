@@ -56,17 +56,7 @@ const webpackInit = () => {
       rules: rules(),
     },
     plugins: plugins(),
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.json'],
-      alias: {
-        process: 'process/browser'
-      },
-      fallback: {
-        fs: false,
-        process: require.resolve('process/browser'),
-        stream: require.resolve('stream-browserify')
-      }
-    },
+    resolve: resolve(),
     optimization: {
       runtimeChunk: false,
       splitChunks: false
@@ -87,6 +77,20 @@ const plugins = () => {
     }
   })]
 };
+
+const resolve = () => {
+  return {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      process: 'process/browser'
+    },
+    fallback: {
+      fs: false,
+      process: require.resolve('process/browser'),
+      stream: require.resolve('stream-browserify')
+    }
+  }
+}
 
 const rules = () => {
   return [
