@@ -160,6 +160,7 @@ export const SubtitleMenu = ({ tracks, player, configuredLanguage }: Props) => {
               displayEmpty
               inputProps={{ 'aria-label': 'Without label' }}
               disabled={languageSelectDisabled}
+              MenuProps={{ container: player.elem.find(".player")[0] }}
             >
               <MenuItem disabled value="" sx={{color: '#767676', fontSize: '14px'}}>-</MenuItem>
               {tracks.map(track => 
