@@ -5,7 +5,7 @@ const selDialogBox = '.subtitledialogbox';
 const selToggle = '.subtitledialogboxtoggleline input';
 const selOptions = '.subtitledialogboxlanguage div[role="button"]';
 const muiList = '.MuiList-root li';
-const expectedLanguagesOrder = ['-', 'Deutsch', 'English', 'Nederlands [CC]'];
+const expectedLanguagesOrder = ['Deutsch', 'English', 'Nederlands [CC]'];
 
 module.exports = {
   tags: ['skip-chrome-headless'],

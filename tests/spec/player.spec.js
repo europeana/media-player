@@ -324,8 +324,8 @@ describe('Player functions', () => {
       $('.subtitledialogboxtoggleline').find('input')[0].dispatchEvent(new Event('click', { bubbles: true}));
       $('.subtitledialogboxlanguage').find('div[role=button]')[0].dispatchEvent(new MouseEvent('mousedown', { bubbles: true}));
       waitForElementAvailable(".MuiMenu-root", function () {
-        expect($('.MuiMenu-root').find('li').length).toEqual(2);
-        expect($('.MuiMenu-root').find('li:nth-child(2)').attr('data-value')).toEqual("nl-NL");
+        expect($('.MuiMenu-root').find('li').length).toEqual(1);
+        expect($('.MuiMenu-root').find('li:nth-child(1)').attr('data-value')).toEqual("nl-NL");
         $('.MuiMenu-root').find('li[data-value=nl-NL]')[0].dispatchEvent(new Event('click', { bubbles: true}));
         $('.saveSubtitles')[0].dispatchEvent(new Event('click', { bubbles: true}));
         done();
