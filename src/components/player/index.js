@@ -1,6 +1,8 @@
 /* global $ */
 
 import './scss/index.scss';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 require('@iiif/iiif-tree-component');
 require('@iiif/base-component');
@@ -14,11 +16,13 @@ require('webpack-jquery-ui/effects');
 
 import Banana from 'banana-i18n';
 
-const { hidePopups, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, subtitleMenuEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
+const { hidePopups, playEventHandler, pauseEventHandler, volumeChangedEventHandler, keyEventHandler, playPauseEventHandler, fullScreenEventHandler, editorButtonEventHandler, toggleSubtitlesEventHandler, openEditorTypeEventHandler, mediaErrorHandler, resizeEventHandler } = require('./playerEventHandlers');
 
 const { handleEUscreenItem } = require('./EUscreen');
 
 const { handleTranscriptionAnnotations } = require('./transcriptionAnnotations');
+
+const { SubtitleMenu } = require('./subtitleMenu');
 
 const languages = require('../languages/lang.js').default.locales;
 const i18n = require('./i18n/languages.json');
@@ -62,7 +66,7 @@ export default class Player {
     if (language.length === 0 || languages.find(lang => lang.code === language) === undefined || i18n[language] === undefined) {
       language = 'en';
     } else {
-      configuredLanguage = language;
+      configuredLanguage = languages.find(lang => lang.code === language).iso;
     }
 
     const banana = new Banana(language);
@@ -240,37 +244,31 @@ export default class Player {
     const player = this;
 
     this.elem.find('.button-fullscreen').before(btnSubtitles);
+    this.elem.find('.button-fullscreen').before('<div id="subtitle-menu"/>');
 
     const tracksArray = this.getSortedTracks(textTracks);
+    let enabledLanguage;
 
-    let menu = '<ul class="anno subtitlemenu" data-opener="Subtitles" >';
-    menu += this.getLanguageMenuContent(tracksArray);
-    menu += '</ul>';
-
-    btnSubtitles.after(menu);
-    btnSubtitles.on('optionSet', (e, value) => {
-      if (value) {
-        btnSubtitles.addClass('option-set');
-      } else {
-        btnSubtitles.removeClass('option-set');
+    // only pass the configured language to the subtitle component if we have this actual language as subtitle available
+    tracksArray.forEach((track) => {
+      if (track.language === configuredLanguage) {
+        enabledLanguage = configuredLanguage;
       }
-    })[0].addEventListener('click', (e) => {
+    });
+
+    const subtitleMenuContainer = this.elem.find('#subtitle-menu')[0];
+    const root = ReactDOM.createRoot(subtitleMenuContainer);
+    root.render(
+      <SubtitleMenu tracks={tracksArray} player={player} configuredLanguage={enabledLanguage} />
+    );
+
+    btnSubtitles[0].addEventListener('click', (e) => {
       toggleSubtitlesEventHandler(this, e);
     });
 
-    $('.subtitlemenu-option').on('click', (e) => {
-      subtitleMenuEventHandler(player, e);
-    }).on('keypress', (e) => {
+    btnSubtitles.on('keypress', (e) => {
       if (e.key === 'Enter') {
-        subtitleMenuEventHandler(player, e);
-      }
-    });
-
-    $('.subtitlemenu-option').each((i, option) => {
-      const op = $(option);
-      if (op.data('language').indexOf(configuredLanguage + '-') === 0) {
-        op.click();
-        hidePopups(this);
+        toggleSubtitlesEventHandler(this, e);
       }
     });
 
@@ -280,7 +278,6 @@ export default class Player {
 
     // show button only if we have at least one language set
     btnSubtitles.show();
-    this.avcomponent.fire('languagesinitialized');
   }
 
   hasEnded() {
@@ -306,7 +303,9 @@ export default class Player {
     cContainer.append('<div class=\'anno playwrapper\'><span class=\'playcircle\'></span></div>');
 
     this.handleMediaType(player);
-    handleTranscriptionAnnotations(player);
+    // Determine media item language so we can add [CC] in case of that language
+    const mediaItemLanguage = this.getLanguageForCanvas();
+    handleTranscriptionAnnotations(player, mediaItemLanguage);
 
     cContainer.on('click', () => {
       playPauseEventHandler(player);
@@ -457,7 +456,7 @@ export default class Player {
     for (let i = 0; i < this.canvases.length; i++) {
       if (this.canvasId === this.canvases[i].id) {
         if (this.canvases[i].getContent()[0].__jsonld.body.language) {
-          return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).iso;
+          return languages.find(lang => lang.code === this.canvases[i].getContent()[0].__jsonld.body.language).code;
         } else {
           return null;
         }
@@ -471,7 +470,7 @@ export default class Player {
       const canvasContent = this.canvases[i].getContent();
       if (this.mediaItem === canvasContent[0].__jsonld.body.id) {
         if (canvasContent[0].__jsonld.body.language) {
-          return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+          return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).code;
         } else {
           return null;
         }
@@ -483,7 +482,7 @@ export default class Player {
   getLanguageWhenNoCanvasIdOrMediaItemAvailable() {
     const canvasContent = this.canvases[0].getContent();
     if (canvasContent[0].__jsonld.body.language) {
-      return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).iso;
+      return languages.find(lang => lang.code === canvasContent[0].__jsonld.body.language).code;
     } else {
       return null;
     }
@@ -516,19 +515,5 @@ export default class Player {
     });
 
     return tracksArray;
-  }
-
-  getLanguageMenuContent(tracksArray) {
-    // Determine media item language so we can add [CC] in case of that language
-    const mediaItemLanguage = this.getLanguageForCanvas();
-
-    const menuContent = tracksArray.map((track) => {
-      let label = languages.find(lang => lang.iso === track.language);
-      label = label && label.name ? label.name : track.language;
-      label += track.language === mediaItemLanguage ? ' [CC]' : '';
-      return '<li class="subtitlemenu-option" data-language="' + track.language + '" tabindex="0">' + label + '</li>';
-    }).join('');
-
-    return menuContent;
   }
 }

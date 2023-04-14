@@ -8,10 +8,17 @@ module.exports = {
   parserOptions: {
     "ecmaVersion": 8,
     parser: 'babel-eslint',
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   },
   extends: [
     'eslint:recommended'
+  ],
+  plugins: [
+    'react'
   ],
   rules: {
     'array-bracket-newline': ['error', 'consistent'],
@@ -62,6 +69,8 @@ module.exports = {
     'padded-blocks': ['error', 'never'],
     'prefer-arrow-callback': 'error',
     'quotes': ['error', 'single'],
+    'react/jsx-uses-vars': 'error',
+    'react/jsx-uses-react': 'error',
     'semi-spacing': ['error'],
     'semi-style': ['error', 'last'],
     'semi': ['error', 'always'],

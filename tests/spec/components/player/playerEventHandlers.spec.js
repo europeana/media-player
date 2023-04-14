@@ -19,7 +19,8 @@ describe('Event Handling', () => {
 
   const addSubtitleElement = () => {
     player.initLanguages([{
-      language: 'nl'
+      language: 'nl-NL',
+      label: 'Nederlands'
     }]);
   };
 
@@ -27,40 +28,17 @@ describe('Event Handling', () => {
     player = new Player(appendFixture('eups-player', 'eups-player-123')[0]);
     player.init({ manifest: manifestEditable }, manifestEditable, '');
     player.avcomponent.on('mediaready', function() {
-      done();
+      addSubtitleElement();
+      setTimeout(done, 1000);
     });
   });
 
-  it('should open and close the subtitle menu', () => {
-    addSubtitleElement();
-    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
-    const testEvent = Object.assign(emptyEvent, { target: { hasClass: ()=> { return false; } } });
-    pEvents.subtitleMenuEventHandler(player, testEvent);
-    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
-    pEvents.subtitleMenuEventHandler(player, testEvent);
-    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
-  });
-
   it('should close the subtitle menu on resize', () => {
-    addSubtitleElement();
-    $('.subtitlemenu').addClass('showing');
-    expect($('.subtitlemenu').is(':visible')).toBeTruthy();
+    $('.subtitledialogbox').addClass('showing');
+    expect($('.subtitledialogbox').is(':visible')).toBeTruthy();
     pEvents.resizeEventHandler(player);
-    expect($('.subtitlemenu').hasClass('showing')).toBeFalsy();
-    expect($('.subtitlemenu').is(':visible')).toBeFalsy();
-  });
-
-  it('should set a class on the opener when a menu option is set', () => {
-
-    const selBtnSubtitles = '.btn[data-name=Subtitles]';
-    const selOption = '.subtitlemenu-option';
-
-    addSubtitleElement();
-    expect($(selBtnSubtitles).hasClass('option-set')).toBeFalsy();
-    $(selOption).click();
-    expect($(selBtnSubtitles).hasClass('option-set')).toBeTruthy();
-    $(selOption).click();
-    expect($(selBtnSubtitles).hasClass('option-set')).toBeFalsy();
+    expect($('.subtitledialogbox').hasClass('showing')).toBeFalsy();
+    expect($('.subtitledialogbox').is(':visible')).toBeFalsy();
   });
 
   it('has a key shortcut for fullscreen', () => {
