@@ -17,7 +17,7 @@ async function fetchAnnotations(player, annotation, mediaItemLanguage) {
   return new Promise((resolve) => {
     $.get(annotation.id).then(async(response) => {
       let textResource = response.resources.find((resource) => {
-        return resource.dcType === 'Media';
+        return (resource.dcType === 'Media') || (resource.textGranularity === 'media');
       });
 
       await fetchTextResource(player, response, textResource, annotation.language, annotation.source, mediaItemLanguage);
@@ -47,7 +47,7 @@ async function fetchTextResource(player, annotationResource, textResource, langu
       const track = player.elem.find('video')[0].addTextTrack('subtitles', label, languages.find(lang => lang.code === language).iso);
 
       annotationResource.resources.forEach(element => {
-        if (element.dcType === 'Caption') {
+        if ((element.dcType === 'Caption') || (element.textGranularity === 'caption')) {
           track.addCue(handleCaption(element, fullText));
         }
       });
