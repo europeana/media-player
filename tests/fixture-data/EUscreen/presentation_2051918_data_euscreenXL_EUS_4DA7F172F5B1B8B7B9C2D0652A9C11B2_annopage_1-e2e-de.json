@@ -5,7 +5,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/cdfce7d81612c4b21d585ae98dd7d753",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Media",
+    "textGranularity": "media",
     "resource" : {
       "@id" : "http://127.0.0.1:8085/tests/fixture-data/EUscreen/api_fulltext_2051918_data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2_16a58e9bb840eecb55104701abacfee9-de.json"
     },
@@ -14,7 +14,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/76e4062138d56182ade76263b90bba91",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=0,47"
     },
@@ -23,7 +23,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/202736f1a377c67c52af8f36494c6a79",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=48,93"
     },
@@ -32,7 +32,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/a38c52d67f9c0e53022a13ce7aebc5c1",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=94,158"
     },
@@ -41,7 +41,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/ab7500818f3f2268ac72de238fd16705",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=159,195"
     },
@@ -50,7 +50,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/7e57452f024cb686b570b2dca3ac9a34",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=196,246"
     },
@@ -59,7 +59,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/cafc2a7cbfe8c04c6fb6aaacaffcc577",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=247,316"
     },
@@ -68,7 +68,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/516fe14ed7764fd378af14a23aaa4564",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=317,366"
     },
@@ -77,7 +77,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/4e679cdccb76adc43a8ff566c2b33130",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=367,430"
     },
@@ -86,7 +86,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/2ffe0e4c9a15b85cc179de8796f62c42",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=431,494"
     },
@@ -95,7 +95,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/43df57f357ef58f73d6ca472615a75d6",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=495,562"
     },
@@ -104,7 +104,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/a09ba0cdbc7639b16b3c577c8d5323cf",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=563,618"
     },
@@ -113,7 +113,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/7a8a801f6cad0eecc6910f8a08281c16",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=619,670"
     },
@@ -122,7 +122,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/9e76d08907b73c2c5f0f43e31ef45091",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=671,709"
     },
@@ -131,7 +131,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/11d3ebad13ae784adb216f5446784215",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=710,779"
     },
@@ -140,7 +140,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/afa1ab61f1c47fd2cdc54667fe9ba96f",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=780,853"
     },
@@ -149,7 +149,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/e884e61755ab308d1618f39aa5ca78c9",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=854,916"
     },
@@ -158,7 +158,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/fe7456b264e0584bde50641337cd0f77",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=917,958"
     },
@@ -167,7 +167,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/78d384f30fdf5ae05d7842d20fbc3d27",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=959,1034"
     },
@@ -176,7 +176,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/9f7b0fb89be145128979cfd658736dd5",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=1035,1083"
     },
@@ -185,7 +185,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/575c40be2ff6e9f23b7a7a9c53d55a53",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=1084,1163"
     },
@@ -194,7 +194,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/6fa251551bd0c5c1c876d77be18f62f3",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=1164,1207"
     },
@@ -203,7 +203,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/f45159e9fe9426b653bfa72ec4506ff7",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=1208,1263"
     },
@@ -212,7 +212,7 @@
     "@id" : "https://data.europeana.eu/annotation/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/24e663970e25cb97e6388b9576826477",
     "@type" : "oa:Annotation",
     "motivation" : "sc:painting",
-    "dcType" : "Caption",
+    "textGranularity": "caption",
     "resource" : {
       "@id" : "https://www.europeana.eu/api/fulltext/2051918/data_euscreenXL_EUS_4DA7F172F5B1B8B7B9C2D0652A9C11B2/16a58e9bb840eecb55104701abacfee9#char=1264,1317"
     },
