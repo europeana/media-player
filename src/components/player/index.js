@@ -188,7 +188,7 @@ export default class Player {
     }).then((h) => {
       helper = h;
 
-      if (helper.manifest.__jsonld.items[0].items[0].items[0].body.id.indexOf('http://www.euscreen.eu/item.html?id=') > -1) {
+      if (helper.manifest.__jsonld.items[0].items[0].items[0].body.id.indexOf('://www.euscreen.eu/item.html?id=') > -1) {
         handleEUscreenItem(player, helper)
           .then((h) => {
             helper = h;
